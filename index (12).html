@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StyleDesk.ai — AI Receptionist for Barbers & Nail Techs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --maroon-dark: #4d1020; --maroon-mid: #3a0d19; --maroon-deep: #22070f;
+      --maroon-btn: #7c1f36; --pink-light: #f0c6cf;
+      --white: #ffffff; --black: #000000;
+      --border: rgba(255,255,255,0.1); --bg-card: rgba(255,255,255,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #4d0020, #3a0019, #22000f); min-height: 100vh; color: #fff; overflow-x: hidden; }
+
+    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
+    .header-inner { max-width: 1152px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; color: #fff; }
+    .logo span { color: rgba(255,255,255,0.6); }
+    .header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; }
+
+    .hero { padding: 80px 24px; max-width: 1152px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+    .ai-badge { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 100px; font-size: 14px; backdrop-filter: blur(4px); margin-bottom: 16px; }
+    .exclusive-bar { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 11px 0; text-align: center; }
+    .exclusive-bar span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
+    .exclusive-bar strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .exclusive-dot { display: inline-block; width: 5px; height: 5px; background: #f0c6cf; border-radius: 50%; margin: 0 10px; vertical-align: middle; position: relative; top: -1px; }
+    .toggle-wrap { display: inline-flex; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); border-radius: 100px; padding: 4px; margin-bottom: 24px; }
+    .toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 100px; font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; font-weight: 500; }
+    .toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
+    .hero h1 { font-size: clamp(40px, 5vw, 60px); font-weight: 500; line-height: 1.2; letter-spacing: -1.5px; margin-bottom: 24px; }
+    .hero h1 .pink { color: #f0c6cf; display: block; margin-top: -48px; }
+    .hero-sub { font-size: 18px; line-height: 1.8; color: rgba(255,255,255,0.8); max-width: 540px; margin-bottom: 32px; font-weight: 400; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-white { background: #fff; color: #3a0d19; padding: 16px 24px; border-radius: 16px; font-weight: 600; font-size: 15px; text-decoration: none; font-family: 'Inter', sans-serif; }
+    .btn-outline { background: rgba(255,255,255,0.05); color: #fff; padding: 16px 24px; border-radius: 16px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); font-family: 'Inter', sans-serif; }
+
+    .chat-outer { border-radius: 28px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.1); padding: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+    .chat-inner { border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: #1c0a10; padding: 20px; }
+    .chat-title { font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 16px; }
+    .chat-divider { height: 1px; background: rgba(255,255,255,0.3); border-radius: 100px; margin-bottom: 20px; }
+    .chat-messages { display: flex; flex-direction: column; gap: 12px; }
+    .msg-bubble { max-width: 280px; border-radius: 20px; padding: 12px 16px; font-size: 14px; line-height: 1.5; }
+    .msg-right { margin-left: auto; background: #7c1f36; color: #fff; border-bottom-right-radius: 4px; }
+    .msg-left { background: rgba(255,255,255,0.1); color: #fff; border-bottom-left-radius: 4px; }
+
+    .pain-section { padding: 64px 24px; }
+    .pain-inner { max-width: 672px; margin: 0 auto; text-align: center; }
+    .pain-inner h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.3; letter-spacing: -0.5px; margin-bottom: 32px; }
+    .pain-points p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 16px; line-height: 1.6; }
+    .pain-cta { font-weight: 600; color: #f0c6cf; font-size: 16px; line-height: 1.6; }
+
+    .how-section { padding: 64px 24px; }
+    .how-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 48px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; max-width: 1152px; margin: 0 auto; }
+    .step-card { border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 24px; transition: background 0.2s; }
+    .step-card:hover { background: rgba(255,255,255,0.15); }
+    .step-num { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+    .step-card p { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; font-weight: 400; }
+
+    .value-banner { padding: 32px 24px; max-width: 896px; margin: 0 auto; }
+    .value-inner { border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 24px; text-align: center; }
+    .value-inner p:first-child { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .value-inner p:last-child { color: rgba(255,255,255,0.6); font-size: 15px; font-weight: 400; }
+
+    .setup-section { padding: 48px 24px; max-width: 896px; margin: 0 auto; text-align: center; }
+    .setup-section h3 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .setup-section p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; font-weight: 400; }
+
+    .features-section { padding: 80px 24px; max-width: 1152px; margin: 0 auto; }
+    .features-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+    .features-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -1px; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; transition: all 0.2s; }
+    .feature-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; }
+    .feature-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; }
+
+    .pricing-section { padding: 64px 24px; max-width: 1152px; margin: 0 auto; }
+    .pricing-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 48px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card { border-radius: 28px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 24px; transition: all 0.3s; cursor: pointer; }
+    .pricing-card:hover { transform: scale(1.05); background: #fff; color: #000; }
+    .pricing-card.pro-featured { transform: scale(1.08); border-color: rgba(255,255,255,0.25); }
+    .pricing-card.pro-featured:hover { transform: scale(1.12); }
+    .pricing-card:hover .pricing-sub { color: rgba(0,0,0,0.6); }
+    .pricing-card:hover .pricing-features { color: #000; }
+    .pricing-name { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+    .pricing-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 16px; font-weight: 400; }
+    .pricing-price { font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 400; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 8px; }
+    .check { color: #4ade80; font-weight: 700; font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+    .pricing-card:hover .check { color: #16a34a; }
+
+    .risk-section { padding: 24px; text-align: center; color: rgba(255,255,255,0.8); font-size: 16px; max-width: 896px; margin: 0 auto; font-weight: 400; }
+
+    .demo-section { padding: 64px 24px; max-width: 768px; margin: 0 auto; }
+    .demo-card { border-radius: 28px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 32px; text-align: center; }
+    .demo-card h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .demo-card p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 15px; font-weight: 400; }
+    .demo-btn { display: block; width: 100%; background: #fff; color: #000; padding: 16px; border-radius: 14px; font-weight: 600; font-size: 16px; text-decoration: none; }
+
+    .tax-section { max-width: 1000px; margin: 0 auto 60px; padding: 0 24px; }
+    .tax-inner { background: rgba(123,28,46,0.08); border: 1px solid rgba(200,60,80,0.15); border-radius: 12px; padding: 16px 24px; display: flex; align-items: flex-start; gap: 12px; }
+    .tax-inner p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; font-weight: 400; }
+    .tax-inner strong { color: rgba(255,255,255,0.7); }
+
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 48px 24px; max-width: 1152px; margin: 0 auto; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 24px; }
+    .footer-logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; }
+    .footer-logo span { color: rgba(255,255,255,0.5); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; font-weight: 400; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 400; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .footer-inner { flex-direction: column; }
+      .pricing-card.featured { transform: none; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg-bubble {
+      opacity: 0;
+      animation: fadeInDown 0.4s ease forwards;
+    }
+
+    .msg-bubble:nth-child(1) { animation-delay: 0.2s; }
+    .msg-bubble:nth-child(2) { animation-delay: 0.7s; }
+    .msg-bubble:nth-child(3) { animation-delay: 1.2s; }
+    .msg-bubble:nth-child(4) { animation-delay: 1.7s; }
+    .msg-bubble:nth-child(5) { animation-delay: 2.2s; }
+    .msg-bubble:nth-child(6) { animation-delay: 2.7s; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">StyleDesk<span>.ai</span></a>
+    <a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="header-btn">Book Demo</a>
+  </div>
+</header>
+
+  <div class="exclusive-bar">
+    <span><span class="exclusive-dot"></span>The only AI booking tool built <strong>exclusively for barbers &amp; nail techs</strong><span class="exclusive-dot"></span></span>
+  </div>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="ai-badge">AI Booking &amp; Analytics</div><br/>
+        <div class="toggle-wrap">
+          <button class="toggle-btn active" id="btnBarber" onclick="switchType('barber')">Barbershop</button>
+          <button class="toggle-btn" id="btnNail" onclick="switchType('nail')">Nail Salon</button>
+        </div>
+        <h1>Every Call.<br>Every Text.<span class="pink"><br>Handled.</span></h1>
+        <p class="hero-sub" id="heroSub">We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.</p>
+        <div class="hero-btns">
+          <a href="#demo" class="btn-white">Book Demo</a>
+          <a href="#pricing" class="btn-outline">View Pricing</a>
+        </div>
+      </div>
+      <div>
+        <div class="chat-outer">
+          <div class="chat-inner">
+            <div class="chat-title">How SMS works</div>
+            <div class="chat-divider"></div>
+            <div class="chat-messages">
+              <div class="msg-bubble msg-right" id="c1"></div>
+              <div class="msg-bubble msg-left"  id="b1"></div>
+              <div class="msg-bubble msg-right" id="c2"></div>
+              <div class="msg-bubble msg-left"  id="b2"></div>
+              <div class="msg-bubble msg-right" id="c3"></div>
+              <div class="msg-bubble msg-left"  id="b3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Sample Call Demo -->
+  <section style="padding: 64px 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div style="max-width: 1152px; margin: 0 auto;">
+      <div style="border-radius: 28px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.1); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+
+        <!-- Left: Text -->
+        <div>
+          <p style="font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px;">Live demo</p>
+          <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px;">Sample Call Demo</h2>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 32px; font-weight: 400;">Hear StyleDesk in action. Call our live demo number and ask about services, pricing, or hours — the AI will answer just like it would for any barber or nail tech on the platform.</p>
+          <a href="tel:+12408754777" style="display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 18px 28px; text-decoration: none; color: #fff; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <div style="width: 48px; height: 48px; background: #7c1f36; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 0 0 0 rgba(124,31,54,0.6); animation: callpulse 2s infinite;">📞</div>
+            <div>
+              <div style="font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: #fff; letter-spacing: 1px;">+1 (240) 875-4777</div>
+              <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 3px;">Tap or click to call the live AI demo</div>
+            </div>
+            <div style="color: rgba(255,255,255,0.4); font-size: 20px; margin-left: auto;">→</div>
+          </a>
+        </div>
+
+        <!-- Right: What to try -->
+        <div style="background: #1c0a10; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); padding: 28px;">
+          <div style="font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 16px; text-align: center;">Try asking...</div>
+          <div style="height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 20px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,0.85); border-left: 3px solid #7c1f36;">"How much is a haircut?"</div>
+            <div style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,0.85); border-left: 3px solid #7c1f36;">"What are your hours today?"</div>
+            <div style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,0.85); border-left: 3px solid #7c1f36;">"How much is a full set?"</div>
+            <div style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,0.85); border-left: 3px solid #7c1f36;">"Can I book an appointment?"</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes callpulse {
+      0% { box-shadow: 0 0 0 0 rgba(124,31,54,0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(124,31,54,0); }
+      100% { box-shadow: 0 0 0 0 rgba(124,31,54,0); }
+    }
+  </style>
+
+  <section class="pain-section">
+    <div class="pain-inner">
+      <h2>You're losing clients every day and you don't even know it.</h2>
+      <div class="pain-points">
+        <p>• Calls come in while you're with a client — and go unanswered</p>
+        <p>• Most people don't leave voicemails — they just book somewhere else</p>
+        <p>• Slow replies mean you lose the booking before you even respond</p>
+      </div>
+      <p class="pain-cta">StyleDesk captures, responds, and books them instantly — so you don't lose business.</p>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <h2>How it works</h2>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><p>A client calls or texts your business</p></div>
+      <div class="step-card"><div class="step-num">2</div><p>AI responds instantly and engages them</p></div>
+      <div class="step-card"><div class="step-num">3</div><p>Appointment gets booked automatically</p></div>
+    </div>
+  </section>
+
+  <section class="value-banner">
+    <div class="value-inner">
+      <p>One extra client per day pays for this.</p>
+      <p>Most shops make back their subscription in just 1–2 bookings.</p>
+    </div>
+  </section>
+
+  <section class="setup-section">
+    <h3>No setup. No training. Works instantly.</h3>
+    <p>You don't need new software or complicated systems. StyleDesk works with your business right away.</p>
+  </section>
+
+  <section class="features-section">
+    <p class="features-label">Features</p>
+    <h2 class="features-title">Everything in every plan</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">📞</div><h4>24/7 call answering</h4><p>AI picks up every call, day or night — no voicemail, no missed clients.</p></div>
+      <div class="feature-card"><div class="feature-icon">💬</div><h4>24/7 text replies</h4><p>AI responds to every text instantly — even at 2am on a Sunday.</p></div>
+      <div class="feature-card"><div class="feature-icon">📱</div><h4>Dedicated local number</h4><p>Your own business number with your area code. Clients recognize and trust it.</p></div>
+      <div class="feature-card"><div class="feature-icon">📅</div><h4>Auto booking link</h4><p>After answering questions, StyleDesk texts your booking link automatically.</p></div>
+      <div class="feature-card"><div class="feature-icon">⏰</div><h4>Hours, pricing &amp; services</h4><p>AI knows your full menu and answers every question accurately.</p></div>
+      <div class="feature-card"><div class="feature-icon">1️⃣</div><h4>Press 1 to connect</h4><p>Clients can press 1 at any time to transfer directly to you.</p></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><h4>Call &amp; text dashboard</h4><p>See every call and full text conversation in your dashboard anytime.</p></div>
+      <div class="feature-card"><div class="feature-icon">✏️</div><h4>Edit your info anytime</h4><p>Update services, prices, hours and booking link instantly from your dashboard.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-section">
+    <h2>Pricing</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">Basic</div>
+        <div class="pricing-sub">Front Desk</div>
+        <div class="pricing-price">$29/mo</div>
+        <ul class="pricing-features">
+          <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
+          <li><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
+          <li><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
+          <li><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
+          <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
+          <li><span class="check">✔</span><span>Simple call &amp; text history dashboard</span></li>
+        </ul>
+      </div>
+      <div class="pricing-card pro-featured">
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-sub">Operations Center — Most Popular</div>
+        <div class="pricing-price">$49/mo</div>
+        <ul class="pricing-features">
+          <li><span class="check">✔</span><span>Everything in Basic +</span></li>
+          <li><span class="check">✔</span><span>Up to 5 individual logins/numbers<br>+ 1 owner</span></li>
+          <li><span class="check">✔</span><span>Promotional broadcast — goes to every client</span></li>
+          <li><span class="check">✔</span><span>Weekly summary report emailed</span></li>
+          <li><span class="check">✔</span><span>Voicemail transcription</span></li>
+          <li><span class="check">✔</span><span>Custom AI personality</span></li>
+          <li><span class="check">✔</span><span>Sleek StyleDesk branded dashboard experience</span></li>
+          <li><span class="check">✔</span><span>Choose up to 3 languages — AI responds in your client's language</span></li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-sub">Executive Analytics Platform</div>
+        <div class="pricing-price">$99/mo</div>
+        <ul class="pricing-features">
+          <li><span class="check">✔</span><span>Everything in Pro +</span></li>
+          <li><span class="check">✔</span><span>Up to 10 individual logins/numbers<br>+ 2 owners</span></li>
+          <li><span class="check">✔</span><span>Performance leaderboard — most booking links sent</span></li>
+          <li><span class="check">✔</span><span>Monthly report card — auto generated PDF emailed on the 1st</span></li>
+          <li><span class="check">✔</span><span>Custom SMS signature, logo upload, AI name, dashboard color &amp; more</span></li>
+          <li><span class="check">✔</span><span>Smart FAQ builder — custom Q&amp;As StyleDesk uses for clients</span></li>
+          <li><span class="check">✔</span><span>Up to 30 languages to choose from</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="risk-section">Try it risk-free. If it doesn't book more clients, don't keep it.</section>
+
+  <section id="demo" class="demo-section">
+    <div class="demo-card">
+      <h2>Schedule your demo</h2>
+      <p>Spots are limited. Book now.</p>
+      <a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="demo-btn">Book Demo</a>
+    </div>
+  </section>
+
+  <div class="tax-section">
+    <div class="tax-inner">
+      <div style="font-size:16px;flex-shrink:0">💼</div>
+      <p><strong>Tax note:</strong> StyleDesk.ai may qualify as a deductible business expense under Section 179. This is not tax advice. Please consult a licensed tax professional for guidance specific to your situation.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">StyleDesk<span>.ai</span></a>
+    <div class="footer-links">
+      <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>
+      <a href="https://www.instagram.com/styledesk.ai" target="_blank">📸 Instagram</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 StyleDesk AI, LLC. All rights reserved.</p>
+    <p>Built for barbers &amp; nail techs who never stop hustling 💈💅</p>
+  </div>
+</footer>
+
+<script>
+  const convos = {
+    barber: {
+      customer: [
+        "Hey, how much is a haircut?",
+        "What are your hours today?",
+        "Yes please!"
+      ],
+      business: [
+        "Hey! Haircuts start at $35, fades at $45. We also do beard trims for $20. 💈",
+        "We're open Mon–Sat 9AM to 7PM. You can walk in or book ahead to lock in your time. Want me to send you the booking link?",
+        "Here you go — tap to grab your spot anytime 👇\ncal.com/styledesk-demo"
+      ],
+    },
+    nail: {
+      customer: [
+        "Hi! How much is a full acrylic set?",
+        "What are your hours this week?",
+        "Yes, send it over!"
+      ],
+      business: [
+        "Hey! Full acrylic sets start at $55. We can add gel color for $15 or nail art from $5 per nail. Anything else you'd like to know? 💅",
+        "We're open Tue–Sat 10AM to 7PM and Sunday 11AM to 5PM. Closed Mondays! Want me to send you the booking link so you can pick a time?",
+        "Perfect! Here's your link — super quick to book 👇\ncal.com/styledesk-nails"
+      ],
+    },
+  }
+  const subs = {
+    barber: "We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.",
+    nail: "We help nail salons respond instantly, fill last-minute openings, and keep your chairs fully booked throughout the day.",
+  }
+  function switchType(type) {
+    document.getElementById('btnBarber').classList.toggle('active', type === 'barber')
+    document.getElementById('btnNail').classList.toggle('active', type === 'nail')
+    document.getElementById('heroSub').textContent = subs[type]
+    const c = convos[type]
+    for (let i = 1; i <= 3; i++) {
+      const cEl = document.getElementById('c'+i)
+      const bEl = document.getElementById('b'+i)
+      cEl.textContent = c.customer[i-1]
+      bEl.textContent = c.business[i-1]
+      // Restart animation by cloning
+      void cEl.offsetWidth
+      void bEl.offsetWidth
+      cEl.style.animation = 'none'
+      bEl.style.animation = 'none'
+      setTimeout(() => {
+        cEl.style.animation = ''
+        bEl.style.animation = ''
+      }, 10)
+    }
+  }
+  switchType('barber')
+</script>
+</body>
+</html>
