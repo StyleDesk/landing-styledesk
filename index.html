@@ -115,7 +115,7 @@
     .pricing-section { padding: 64px 24px; max-width: 1152px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); }
     .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 24px; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: stretch; }
-    .pricing-card { border-radius: 18px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 18px; transition: all 0.3s; cursor: pointer; }
+    .pricing-card { border-radius: 18px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); padding: 18px; transition: all 0.3s; cursor: pointer; display: flex; flex-direction: column; }
     .pricing-card:hover { transform: scale(1.03); background: #fff; color: #000; }
     .pricing-card.pro-featured { border-color: rgba(255,255,255,0.25); border-width: 1.5px; transform: scale(1.06); }
     .pricing-card.pro-featured:hover { transform: scale(1.02); background: #fff; color: #000; }
@@ -125,10 +125,10 @@
     .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
     .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 10px; font-weight: 400; }
     .pricing-price { font-size: 24px; font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 400; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 400; flex: 1; }
     .pricing-features li { display: flex; align-items: flex-start; gap: 5px; }
     .check { color: #4ade80; font-weight: 700; font-size: 10px; margin-top: 1px; flex-shrink: 0; }
-    .pricing-btn { display: block; width: 100%; text-align: center; background: #fff; color: #000; padding: 11px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: 14px; transition: all 0.2s; }
+    .pricing-btn { display: block; width: 100%; text-align: center; background: #fff; color: #000; padding: 11px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; padding-top: 14px; transition: all 0.2s; box-sizing: border-box; }
     .pricing-btn:hover { background: #f0c6cf; color: #3a0d19; }
 
     /* RISK */
