@@ -9,7 +9,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: #0a0208; min-height: 100vh; color: #fff; overflow-x: hidden; }
 
     /* SCROLL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -82,7 +82,7 @@
     .call-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500; color: #fff; }
     .call-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
     .try-box { background: rgba(255,255,255,0.02); border-radius: 16px; border: 0.5px solid rgba(255,255,255,0.06); padding: 24px; }
-    .try-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 14px; letter-spacing: 0.5px; }
+    .try-title { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 14px; letter-spacing: 0.5px; }
     .try-divider { height: 0.5px; background: rgba(255,255,255,0.06); margin-bottom: 16px; }
     .try-item { background: rgba(255,255,255,0.03); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: rgba(255,255,255,0.7); border-left: 2px solid #7c1f36; margin-bottom: 8px; transition: all 0.2s; }
     .try-item:last-child { margin-bottom: 0; }
@@ -131,10 +131,13 @@
     .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
     .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
-    .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
+    .pricing-card:hover { background: #fff; color: #000; border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
     .pricing-card.pro-featured { border-color: rgba(201,160,100,0.25); border-width: 1px; }
     .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #c9a064; color: #1a0008; font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 100px; letter-spacing: 0.5px; }
-    .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.4); box-shadow: 0 0 50px rgba(201,160,100,0.12), 0 0 100px rgba(124,31,54,0.08); }
+    .pricing-card.pro-featured:hover { background: #fff; color: #000; border-color: rgba(201,160,100,0.4); box-shadow: 0 0 50px rgba(201,160,100,0.12), 0 0 100px rgba(124,31,54,0.08); }
+    .pricing-card:hover .pricing-sub, .pricing-card.pro-featured:hover .pricing-sub { color: rgba(0,0,0,0.5); }
+    .pricing-card:hover .pricing-features, .pricing-card.pro-featured:hover .pricing-features { color: #000; }
+    .pricing-card:hover .check, .pricing-card.pro-featured:hover .check { color: #16a34a; }
     .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
     .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-weight: 400; }
     .pricing-price { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
@@ -144,8 +147,11 @@
     .pricing-btn { display: block; width: 100%; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; transition: all 0.3s; box-sizing: border-box; border: 0.5px solid rgba(255,255,255,0.1); }
     .pricing-features + .pricing-btn { margin-top: 20px; }
     .pricing-btn:hover { background: #c9a064; color: #1a0008; border-color: #c9a064; }
+    .pricing-card:hover .pricing-btn { background: #7c1f36; color: #fff; border-color: #7c1f36; }
+    .pricing-card:hover .pricing-btn:hover { background: #9a2846; }
     .pro-featured .pricing-btn { background: #c9a064; color: #1a0008; border-color: #c9a064; }
-    .pro-featured .pricing-btn:hover { background: #d4ad74; }
+    .pro-featured:hover .pricing-btn { background: #7c1f36; color: #fff; border-color: #7c1f36; }
+    .pro-featured .pricing-btn:hover, .pro-featured:hover .pricing-btn:hover { background: #9a2846; color: #fff; }
 
     /* RISK */
     .risk-section { padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
