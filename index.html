@@ -113,18 +113,20 @@
     .dash-carousel { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); max-width: 1152px; margin: 0 auto; }
     .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; }
     .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 40px; }
-    .dash-slider { position: relative; overflow: hidden; border-radius: 16px; }
-    .dash-track { display: flex; transition: transform 0.5s ease; }
-    .dash-slide { min-width: 100%; }
-    .dash-slide img { width: 100%; border-radius: 14px; border: 0.5px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; }
-    .dash-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0,0,0,0.5); border: 0.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.7); font-size: 20px; transition: all 0.2s; z-index: 2; backdrop-filter: blur(8px); }
-    .dash-arrow:hover { background: rgba(0,0,0,0.7); color: #fff; }
-    .dash-arrow-left { left: 16px; }
-    .dash-arrow-right { right: 16px; }
-    .dash-label { text-align: center; margin-top: 20px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
+    .dash-stage { position: relative; height: 0; padding-bottom: 38%; max-width: 1100px; margin: 0 auto; }
+    .dash-card { position: absolute; top: 50%; border-radius: 12px; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform, opacity, left, width; overflow: hidden; }
+    .dash-card img { width: 100%; border-radius: 12px; display: block; }
+    .dash-card[data-pos="left"] { left: 2%; width: 24%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
+    .dash-card[data-pos="center"] { left: 50%; width: 48%; transform: translate(-50%, -50%) scale(1); opacity: 1; z-index: 3; filter: none; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+    .dash-card[data-pos="right"] { left: 74%; width: 24%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(-6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
+    .dash-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 10px; border: 1.5px solid rgba(201,160,100,0.4); background: rgba(201,160,100,0.06); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; transition: all 0.2s; }
+    .dash-arrow:hover { background: rgba(201,160,100,0.15); border-color: rgba(201,160,100,0.6); }
+    .dash-arrow-left { left: 0; }
+    .dash-arrow-right { right: 0; }
+    .dash-label { text-align: center; margin-top: 20px; font-size: 15px; font-weight: 600; transition: all 0.4s; }
     .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
-    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); cursor: pointer; transition: all 0.3s; }
-    .dash-dot.active { background: #c9a064; width: 24px; border-radius: 4px; }
+    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .dash-dot.active { background: #c9a064; width: 28px; border-radius: 4px; }
 
     .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
     .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
@@ -389,19 +391,21 @@
 <section class="dash-carousel reveal">
     <h2>See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
-    <div class="dash-slider">
-      <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">&#8592;</div>
-      <div class="dash-arrow dash-arrow-right" onclick="dashNext()">&#8594;</div>
-      <div class="dash-track" id="dashTrack">
-        <div class="dash-slide"><img src="images/basic-dashboard.png" alt="Basic Dashboard"/></div>
-        <div class="dash-slide"><img src="images/pro-dashboard.png" alt="Pro Dashboard"/></div>
-        <div class="dash-slide"><img src="images/premium-dashboard.png" alt="Premium Dashboard"/></div>
+    <div class="dash-stage">
+      <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a064" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
       </div>
+      <div class="dash-arrow dash-arrow-right" onclick="dashNext()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a064" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div class="dash-card" data-pos="left" id="dashC0" onclick="dashGo(0)"><img src="images/basic-dashboard.png" alt="Basic Dashboard"/></div>
+      <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)"><img src="images/pro-dashboard.png" alt="Pro Dashboard"/></div>
+      <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)"><img src="images/premium-dashboard.png" alt="Premium Dashboard"/></div>
     </div>
-    <p class="dash-label" id="dashLabel" style="color: rgba(255,255,255,0.5);">Basic — $49/mo</p>
+    <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro — $99/mo</span></p>
     <div class="dash-dots" id="dashDots">
-      <div class="dash-dot active" onclick="dashGo(0)"></div>
-      <div class="dash-dot" onclick="dashGo(1)"></div>
+      <div class="dash-dot" onclick="dashGo(0)"></div>
+      <div class="dash-dot active" onclick="dashGo(1)"></div>
       <div class="dash-dot" onclick="dashGo(2)"></div>
     </div>
   </section>
@@ -537,14 +541,20 @@
   switchType('barber')
 
   // Dashboard carousel
-  var dashIdx = 0
-  var dashLabels = ['Basic — $49/mo', 'Pro — $99/mo', 'Premium — $179/mo']
-  var dashColors = ['rgba(255,255,255,0.5)', '#f0c6cf', '#c9a064']
+  var dashIdx = 1
+  var dashLabels = ['<span style="color:#e8ddd0">Basic — $49/mo</span>', '<span style="color:#f0c6cf">Pro — $99/mo</span>', '<span style="color:#c9a064">Premium — $179/mo</span>']
+  var dashPosMap = {
+    0: {0:'center',1:'right',2:'left'},
+    1: {0:'left',1:'center',2:'right'},
+    2: {0:'right',1:'left',2:'center'}
+  }
   function dashGo(i) {
     dashIdx = i
-    document.getElementById('dashTrack').style.transform = 'translateX(-' + (dashIdx * 100) + '%)'
-    document.getElementById('dashLabel').textContent = dashLabels[dashIdx]
-    document.getElementById('dashLabel').style.color = dashColors[dashIdx]
+    var map = dashPosMap[dashIdx]
+    for (var s = 0; s < 3; s++) {
+      document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
+    }
+    document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
     var dots = document.getElementById('dashDots').children
     for (var d = 0; d < dots.length; d++) {
       dots[d].className = 'dash-dot' + (d === dashIdx ? ' active' : '')
