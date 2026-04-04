@@ -121,8 +121,8 @@
     .dash-card[data-pos="right"] { left: 92%; width: 14%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(-6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
     .dash-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
     .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
-    .dash-arrow-left { left: -110px; }
-    .dash-arrow-right { right: -110px; }
+    .dash-arrow-left { left: -130px; }
+    .dash-arrow-right { right: -130px; }
     .dash-label { text-align: center; margin-top: 40px; font-size: 15px; font-weight: 600; transition: all 0.4s; }
     .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
     .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -402,7 +402,7 @@
       <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)"><img src="images/pro-dashboard.png" alt="Pro Dashboard"/></div>
       <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)"><img src="images/premium-dashboard.png" alt="Premium Dashboard"/></div>
     </div>
-    <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro — $99/mo</span></p>
+    <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
     <div class="dash-dots" id="dashDots">
       <div class="dash-dot" onclick="dashGo(0)"></div>
       <div class="dash-dot active" onclick="dashGo(1)"></div>
@@ -542,7 +542,7 @@
 
   // Dashboard carousel
   var dashIdx = 1
-  var dashLabels = ['<span style="color:#e8ddd0">Basic — $49/mo</span>', '<span style="color:#f0c6cf">Pro — $99/mo</span>', '<span style="color:#c9a064">Premium — $179/mo</span>']
+  var dashLabels = ['<span style="color:#e8ddd0">Basic Dashboard</span>', '<span style="color:#f0c6cf">Pro Dashboard</span>', '<span style="color:#c9a064">Premium Dashboard</span>']
   var dashPosMap = {
     0: {0:'center',1:'right',2:'left'},
     1: {0:'left',1:'center',2:'right'},
