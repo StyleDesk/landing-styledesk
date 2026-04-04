@@ -310,7 +310,7 @@
 <div class="exclusive-bar">
   <div style="display:flex;align-items:center;gap:8px;">
     <div class="live-dot"></div>
-    <span>Live now · <strong id="callCount">0</strong> calls handled and counting</span>
+    <span>Live now · <strong id="callCount">0</strong> calls & <strong id="textCount">0</strong> texts handled and counting</span>
   </div>
   <div class="stats-divider"></div>
   <span>Built exclusively for <strong>barbers</strong> & <strong>nail techs</strong></span>
@@ -616,21 +616,27 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Live call counter
+  // Live call & text counter
   (async function() {
     try {
-      var res = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/calls?select=id', {
+      var callRes = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/calls?select=id', {
         headers: {
           'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
           'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
           'Prefer': 'count=exact'
         }
       })
-      var count = res.headers.get('content-range')
-      if (count) {
-        var total = count.split('/')[1]
-        document.getElementById('callCount').textContent = parseInt(total).toLocaleString()
-      }
+      var textRes = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/sms_threads?select=id', {
+        headers: {
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
+          'Prefer': 'count=exact'
+        }
+      })
+      var callCount = callRes.headers.get('content-range')
+      var textCount = textRes.headers.get('content-range')
+      if (callCount) document.getElementById('callCount').textContent = parseInt(callCount.split('/')[1]).toLocaleString()
+      if (textCount) document.getElementById('textCount').textContent = parseInt(textCount.split('/')[1]).toLocaleString()
     } catch(e) {}
   })()
 
