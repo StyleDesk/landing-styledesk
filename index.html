@@ -51,20 +51,29 @@
 
     /* PHONE FRAME SMS PREVIEW */
     .phone-frame { width: 280px; margin: 0 auto; }
-    .phone-outer { border-radius: 32px; border: 2px solid rgba(255,255,255,0.08); background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); padding: 8px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(124,31,54,0.1); }
-    .phone-notch { width: 80px; height: 6px; background: rgba(255,255,255,0.08); border-radius: 100px; margin: 6px auto 10px; }
-    .phone-screen { border-radius: 24px; background: #0f070a; padding: 16px; min-height: 340px; }
-    .chat-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 10px; letter-spacing: 0.5px; }
-    .chat-divider { height: 0.5px; background: rgba(255,255,255,0.08); margin-bottom: 14px; }
-    .chat-messages { display: flex; flex-direction: column; gap: 6px; }
-    .msg-bubble { max-width: 82%; border-radius: 14px; padding: 8px 11px; font-size: 11px; line-height: 1.45; opacity: 0; animation: fadeInUp 0.4s ease forwards; }
-    .msg-right { margin-left: auto; background: #7c1f36; color: #fff; border-bottom-right-radius: 3px; }
-    .msg-left { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); border-bottom-left-radius: 3px; }
-    .msg-bubble:nth-child(1){animation-delay:.3s} .msg-bubble:nth-child(2){animation-delay:.8s}
-    .msg-bubble:nth-child(3){animation-delay:1.3s} .msg-bubble:nth-child(4){animation-delay:1.8s}
-    .msg-bubble:nth-child(5){animation-delay:2.3s} .msg-bubble:nth-child(6){animation-delay:2.8s}
+    .phone-outer { border-radius: 36px; border: 2.5px solid rgba(255,255,255,0.1); background: linear-gradient(145deg, rgba(60,60,60,0.4), rgba(20,20,20,0.8)); padding: 10px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3); }
+    .phone-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: #000; border-radius: 14px; z-index: 2; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+    .phone-camera { width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #1a3a5c, #0a1520); border: 1px solid rgba(255,255,255,0.08); }
+    .phone-screen { border-radius: 28px; background: #000; padding: 0; min-height: 340px; overflow: hidden; }
+    .phone-statusbar { padding: 8px 16px 4px; display: flex; justify-content: space-between; align-items: center; }
+    .phone-statusbar-time { font-size: 9px; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .phone-contact { padding: 4px 16px 8px; display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+    .phone-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7c1f36, #5a1628); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #f0c6cf; }
+    .phone-contact-name { font-size: 11px; font-weight: 600; color: #fff; }
+    .phone-contact-num { font-size: 8px; color: rgba(255,255,255,0.35); }
+    .chat-messages { display: flex; flex-direction: column; gap: 6px; padding: 12px 12px; }
+    .chat-timestamp { text-align: center; margin-bottom: 4px; font-size: 8px; color: rgba(255,255,255,0.25); }
+    .msg-bubble { max-width: 80%; border-radius: 16px; padding: 8px 12px; font-size: 10px; line-height: 1.45; opacity: 0; animation: fadeInUp 0.4s ease forwards; }
+    .msg-right { margin-left: auto; background: #3b82f6; color: #fff; border-bottom-right-radius: 4px; }
+    .msg-left { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); border-bottom-left-radius: 4px; }
+    .msg-bubble:nth-child(2){animation-delay:.3s} .msg-bubble:nth-child(3){animation-delay:.8s}
+    .msg-bubble:nth-child(4){animation-delay:1.3s} .msg-bubble:nth-child(5){animation-delay:1.8s}
+    .msg-bubble:nth-child(6){animation-delay:2.3s} .msg-bubble:nth-child(7){animation-delay:2.8s}
     @keyframes fadeInUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    .phone-bar { width: 60px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 100px; margin: 12px auto 4px; }
+    .phone-input { padding: 6px 12px 10px; }
+    .phone-input-bar { background: rgba(255,255,255,0.06); border-radius: 20px; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; }
+    .phone-input-text { font-size: 10px; color: rgba(255,255,255,0.25); }
+    .phone-bar { width: 100px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 100px; margin: 6px auto 2px; }
 
     /* GLASS CARD MIXIN */
     .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0.5px solid rgba(255,255,255,0.06); }
@@ -302,18 +311,38 @@
       </div>
       <div>
         <div class="phone-frame">
-          <div class="phone-outer glass">
-            <div class="phone-notch"></div>
+          <div class="phone-outer">
+            <div class="phone-island"><div class="phone-camera"></div></div>
             <div class="phone-screen">
-              <div class="chat-title">Live SMS Preview</div>
-              <div class="chat-divider"></div>
+              <div class="phone-statusbar">
+                <span class="phone-statusbar-time">9:41</span>
+                <div style="display:flex;gap:4px;align-items:center;">
+                  <svg width="12" height="9" viewBox="0 0 12 9"><rect x="0" y="5" width="2" height="4" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="3" y="3" width="2" height="6" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="6" y="1" width="2" height="8" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="9" y="0" width="2" height="9" rx="0.5" fill="rgba(255,255,255,0.5)"/></svg>
+                  <div style="width:18px;height:9px;border-radius:2px;border:1px solid rgba(255,255,255,0.4);position:relative;"><div style="position:absolute;left:1px;top:1px;bottom:1px;width:12px;background:rgba(255,255,255,0.5);border-radius:1px;"></div></div>
+                </div>
+              </div>
+              <div class="phone-contact">
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="rgba(100,160,255,0.8)" stroke-width="1.5"><path d="M6 1L1 6l5 5"/></svg>
+                <div class="phone-avatar">S</div>
+                <div>
+                  <div class="phone-contact-name">StyleDesk AI</div>
+                  <div class="phone-contact-num">(240) 863-1455</div>
+                </div>
+              </div>
               <div class="chat-messages">
+                <div class="chat-timestamp">Today 2:14 PM</div>
                 <div class="msg-bubble msg-right" id="c1"></div>
                 <div class="msg-bubble msg-left"  id="b1"></div>
                 <div class="msg-bubble msg-right" id="c2"></div>
                 <div class="msg-bubble msg-left"  id="b2"></div>
                 <div class="msg-bubble msg-right" id="c3"></div>
                 <div class="msg-bubble msg-left"  id="b3"></div>
+              </div>
+              <div class="phone-input">
+                <div class="phone-input-bar">
+                  <span class="phone-input-text">Text Message</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(100,160,255,0.6)" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                </div>
               </div>
             </div>
             <div class="phone-bar"></div>
