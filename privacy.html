@@ -5,164 +5,272 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Privacy Policy — StyleDesk.ai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #4d0020, #3a0019, #22000f); min-height: 100vh; color: #fff; }
-
-    header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 50; }
-    .logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
-    .logo span { color: rgba(255,255,255,0.5); }
-    .back-btn { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); padding: 7px 16px; border-radius: 8px; transition: all 0.2s; }
-    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-
-    .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 80px; }
-
-    h1 { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
-    .updated { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 48px; font-weight: 400; }
-
-    h2 { font-size: 20px; font-weight: 600; margin: 40px 0 12px; color: #fff; }
-    p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 16px; font-weight: 400; }
-    ul { margin: 0 0 16px 20px; }
-    ul li { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 6px; font-weight: 400; }
-    a { color: #f0c6cf; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 40px 0; }
-
-    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 32px 24px; text-align: center; }
-    footer p { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 400; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; }
+    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
+    .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
+    .logo span { color: rgba(255,255,255,0.35); }
+    .back-link { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .back-link:hover { color: #fff; }
+    .content { max-width: 768px; margin: 0 auto; padding: 60px 24px 80px; }
+    .content h1 { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 40px; }
+    .content h2 { font-size: 18px; font-weight: 600; margin-top: 40px; margin-bottom: 12px; color: #f0c6cf; }
+    .content h3 { font-size: 15px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
+    .content p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 14px; }
+    .content ul { list-style: none; margin-bottom: 14px; padding-left: 0; }
+    .content ul li { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; padding-left: 20px; position: relative; }
+    .content ul li::before { content: '•'; position: absolute; left: 4px; color: #c9a064; }
+    .content a { color: #c9a064; text-decoration: none; }
+    .content a:hover { text-decoration: underline; }
+    .content strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+    .divider { height: 0.5px; background: rgba(255,255,255,0.06); margin: 40px 0; }
+    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 24px; text-align: center; }
+    footer p { font-size: 10px; color: rgba(255,255,255,0.25); }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html" class="logo"><img src="logo-nav.png" alt="StyleDesk" style="width:36px;height:36px;border-radius:8px;vertical-align:middle;margin-right:8px;object-fit:cover;">StyleDesk<span>.ai</span></a>
-  <a href="index.html" class="back-btn">← Back to home</a>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="28" height="28" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
+      StyleDesk<span>.ai</span>
+    </a>
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+  </div>
 </header>
 
-<div class="container">
+<div class="content">
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: March 2026</p>
+  <p class="updated">Last updated: April 5, 2026</p>
 
-  <p>StyleDesk AI, LLC ("StyleDesk," "we," "us," or "our") operates StyleDesk.ai and provides AI-powered communication tools for barbers and nail technicians. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our services.</p>
-  <p>By using StyleDesk.ai, you agree to the practices described in this policy. If you do not agree, please do not use our services.</p>
+  <p>StyleDesk AI, LLC ("StyleDesk," "we," "us," or "our") operates the StyleDesk.ai platform, including our website, dashboards, AI receptionist service, and related tools. This Privacy Policy explains how we collect, use, store, share, and protect your information when you use our services.</p>
+  <p>By using StyleDesk.ai, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our services.</p>
 
   <div class="divider"></div>
 
   <h2>1. Information We Collect</h2>
-  <p>We collect information in the following ways:</p>
-  <p><strong style="color:#fff">Information you provide directly:</strong></p>
+
+  <h3>1.1 Account Information</h3>
+  <p>When you create an account, we collect:</p>
   <ul>
-    <li>Your name, email address, and phone number when you sign up</li>
-    <li>Your shop name, business type, and booking link</li>
-    <li>Services, pricing, and business hours you enter in your dashboard</li>
-    <li>Payment information (processed securely through Stripe — we do not store card details)</li>
+    <li>Full name and business name</li>
+    <li>Email address</li>
+    <li>Phone number</li>
+    <li>Business address (if provided)</li>
+    <li>Booking platform URL</li>
+    <li>Service menu, pricing, and business hours</li>
+    <li>Plan selection and subscription status</li>
   </ul>
-  <p><strong style="color:#fff">Information collected automatically:</strong></p>
+
+  <h3>1.2 Call and Text Data</h3>
+  <p>When our AI receptionist handles calls and texts on your behalf, we collect:</p>
   <ul>
-    <li>Inbound call logs including caller phone numbers, call duration, and call status</li>
-    <li>Inbound and outbound SMS messages between your business number and your clients</li>
-    <li>Topics discussed during calls and texts (e.g., pricing, hours, booking)</li>
-    <li>Whether a booking link was sent during a conversation</li>
-    <li>Usage data such as login activity and dashboard interactions</li>
+    <li>Caller and sender phone numbers</li>
+    <li>Call duration, timestamps, and status</li>
+    <li>Call recordings and transcriptions</li>
+    <li>Text message content and conversation history</li>
+    <li>Voicemail recordings and transcriptions</li>
+    <li>Topics discussed during calls (e.g., pricing, booking, hours)</li>
+    <li>Whether a booking link was sent</li>
   </ul>
+
+  <h3>1.3 Payment Information</h3>
+  <p>Payment processing is handled entirely by <strong>Stripe, Inc.</strong> We do not store, process, or have access to your full credit card number, debit card number, or bank account details. Stripe's privacy policy governs the handling of your payment data. We receive only a confirmation of payment status, last four digits of your card, and billing address from Stripe.</p>
+
+  <h3>1.4 Usage Data</h3>
+  <p>We automatically collect information about how you use our platform, including:</p>
+  <ul>
+    <li>Pages visited and features used within the dashboard</li>
+    <li>Browser type, device type, and operating system</li>
+    <li>IP address and approximate geographic location</li>
+    <li>Referring website or source</li>
+    <li>Session duration and interaction patterns</li>
+  </ul>
+
+  <h3>1.5 Cookies and Tracking</h3>
+  <p>We use cookies and similar technologies to maintain your session, remember your preferences, and analyze site traffic. You can control cookies through your browser settings, though disabling them may limit some functionality.</p>
 
   <div class="divider"></div>
 
   <h2>2. How We Use Your Information</h2>
   <p>We use the information we collect to:</p>
   <ul>
-    <li>Provision and manage your dedicated business phone number</li>
-    <li>Power the AI voice and SMS responses on your behalf</li>
-    <li>Send booking links and automated messages to your clients</li>
-    <li>Display your call and text history in your dashboard</li>
-    <li>Send you weekly and monthly reports (Pro and Premium plans)</li>
+    <li>Provide, maintain, and improve our AI receptionist service</li>
+    <li>Answer calls and texts on your behalf using your business information</li>
+    <li>Send booking links to your callers and texters automatically</li>
+    <li>Display call and text history in your dashboard</li>
+    <li>Generate reports, insights, and analytics for your business</li>
     <li>Process payments and manage your subscription</li>
-    <li>Provide customer support and respond to your inquiries</li>
-    <li>Improve our AI models and service quality</li>
+    <li>Send transactional emails (account confirmations, receipts, reports)</li>
+    <li>Detect and prevent fraud, abuse, or unauthorized access</li>
     <li>Comply with legal obligations</li>
+    <li>Improve our AI models and service quality</li>
+    <li>Respond to your support requests</li>
   </ul>
 
   <div class="divider"></div>
 
   <h2>3. How We Share Your Information</h2>
-  <p>We do not sell your personal information. We may share your information with:</p>
+  <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties for marketing purposes. We share data only with the following categories of service providers, strictly as needed to operate our platform:</p>
+
+  <h3>3.1 Telecommunications</h3>
+  <p>We use <strong>Twilio, Inc.</strong> to power our phone number provisioning, call handling, and SMS messaging. Twilio processes caller phone numbers, call audio, and text message content on our behalf. Twilio's privacy policy applies to their handling of this data.</p>
+
+  <h3>3.2 Artificial Intelligence</h3>
+  <p>We use AI language models provided by <strong>OpenAI</strong> and/or <strong>Anthropic</strong> to generate conversational responses during calls and texts. Conversation content is sent to these providers for real-time processing. We do not use your data to train third-party AI models. These providers process data under strict data processing agreements.</p>
+
+  <h3>3.3 Payment Processing</h3>
+  <p>We use <strong>Stripe, Inc.</strong> to securely process all payments. Your payment information is transmitted directly to Stripe and is never stored on our servers.</p>
+
+  <h3>3.4 Infrastructure and Hosting</h3>
+  <p>We use trusted third-party cloud hosting, database, and content delivery providers to store and serve your data securely. All data is encrypted in transit and at rest.</p>
+
+  <h3>3.5 Analytics</h3>
+  <p>We use analytics tools to understand how users interact with our website and platform. This data is anonymized and aggregated where possible.</p>
+
+  <h3>3.6 Legal Requirements</h3>
+  <p>We may disclose your information if required to do so by law, regulation, legal process, or governmental request, or if we believe disclosure is necessary to protect our rights, your safety, or the safety of others, investigate fraud, or respond to a government request.</p>
+
+  <div class="divider"></div>
+
+  <h2>4. Call Recording and AI Disclosure</h2>
+  <p>Our AI receptionist may record calls for quality assurance and to provide call transcription features. When applicable:</p>
   <ul>
-    <li><strong style="color:#fff">Twilio</strong> — to power phone number provisioning, voice calls, and SMS delivery</li>
-    <li><strong style="color:#fff">OpenAI</strong> — to generate AI responses during calls and text conversations</li>
-    <li><strong style="color:#fff">Supabase</strong> — to store your account and conversation data securely</li>
-    <li><strong style="color:#fff">Stripe</strong> — to process subscription payments</li>
-    <li><strong style="color:#fff">Law enforcement or legal process</strong> — when required by law or to protect our rights</li>
+    <li>Callers are informed at the beginning of the call that they are speaking with an AI assistant</li>
+    <li>Call recordings are stored securely and accessible only to the business owner through their dashboard</li>
+    <li>Recordings are retained in accordance with our data retention policy (see Section 8)</li>
+    <li>You are responsible for ensuring compliance with any state or local call recording laws that may apply to your jurisdiction</li>
   </ul>
-  <p>All third-party providers are contractually obligated to protect your data and may only use it to provide services to us.</p>
+  <p>Some states require all-party consent for call recording. StyleDesk provides an AI disclosure at the start of each call, but you should consult with a legal professional to ensure compliance with your specific state and local laws.</p>
 
   <div class="divider"></div>
 
-  <h2>4. Your Clients' Data</h2>
-  <p>When your clients call or text your StyleDesk business number, we collect their phone numbers and the content of their messages in order to respond on your behalf and log the conversation in your dashboard.</p>
-  <p>As a StyleDesk customer, you are responsible for ensuring your clients are aware that their communications may be handled by an AI assistant. We recommend noting this on your booking page or business listings.</p>
-  <p>We do not use your clients' data for advertising or sell it to third parties.</p>
-
-  <div class="divider"></div>
-
-  <h2>5. Data Retention</h2>
-  <p>We retain your account data for as long as your subscription is active. Call logs and SMS conversations are retained for up to 12 months and may be deleted upon request.</p>
-  <p>If you cancel your subscription, your data will be retained for 30 days before permanent deletion, giving you time to export any records you need.</p>
+  <h2>5. SMS and Text Messaging</h2>
+  <ul>
+    <li>When a customer texts your StyleDesk business number, they consent to receiving AI-generated replies related to your business services, pricing, hours, and booking information</li>
+    <li>By using our service, you (the business owner) authorize StyleDesk to send text messages on your behalf to customers who contact your business number</li>
+    <li>We do not send unsolicited marketing texts to customers unless you explicitly initiate a broadcast through the platform</li>
+    <li>Customers can stop receiving texts at any time by replying STOP to your business number</li>
+    <li>Standard message and data rates may apply to customers based on their carrier plan</li>
+  </ul>
 
   <div class="divider"></div>
 
   <h2>6. Data Security</h2>
-  <p>We take the security of your data seriously. We use industry-standard measures including:</p>
+  <p>We take the security of your data seriously and implement industry-standard measures to protect it, including:</p>
   <ul>
-    <li>Encrypted data storage and transmission (HTTPS/TLS)</li>
-    <li>Row-level security on our database</li>
-    <li>Restricted access to production systems</li>
-    <li>Secure API key management</li>
+    <li>Encryption of data in transit using TLS/HTTPS</li>
+    <li>Encryption of data at rest in our databases</li>
+    <li>Row-level security to ensure users can only access their own data</li>
+    <li>Secure authentication and session management</li>
+    <li>Regular security reviews and updates</li>
+    <li>Limited employee access to production data on a need-to-know basis</li>
   </ul>
-  <p>However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security but are committed to protecting your information.</p>
+  <p>While we strive to protect your information, no method of electronic transmission or storage is 100% secure. We cannot guarantee absolute security but will notify you promptly in the event of a data breach that affects your personal information.</p>
 
   <div class="divider"></div>
 
-  <h2>7. Your Rights</h2>
-  <p>You have the right to:</p>
+  <h2>7. Your Rights and Choices</h2>
+  <p>You have the following rights regarding your data:</p>
+
+  <h3>7.1 Access and Portability</h3>
+  <p>You can access your call history, text conversations, and account information through your dashboard at any time. You may also request a copy of your data by contacting us.</p>
+
+  <h3>7.2 Correction</h3>
+  <p>You can update your business information, services, pricing, and hours at any time through your dashboard settings.</p>
+
+  <h3>7.3 Deletion</h3>
+  <p>You may request deletion of your account and all associated data by contacting us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. Upon receiving a verified deletion request, we will delete your data within 30 days, except where retention is required by law or for legitimate business purposes (such as fraud prevention or resolving disputes).</p>
+
+  <h3>7.4 Cancellation</h3>
+  <p>You may cancel your subscription at any time. Upon cancellation, your account will remain accessible until the end of your current billing period. After that, your data will be retained for 90 days before permanent deletion, giving you time to reactivate if needed.</p>
+
+  <h3>7.5 Opt-Out of Communications</h3>
+  <p>You can opt out of promotional emails by clicking the unsubscribe link in any email. Transactional emails (receipts, security alerts, service updates) cannot be opted out of while your account is active.</p>
+
+  <div class="divider"></div>
+
+  <h2>8. Data Retention</h2>
   <ul>
-    <li>Access the personal information we hold about you</li>
-    <li>Request correction of inaccurate data</li>
-    <li>Request deletion of your data</li>
-    <li>Opt out of non-essential communications</li>
-    <li>Export your call and text history from your dashboard</li>
+    <li><strong>Active accounts:</strong> All data is retained for the duration of your active subscription</li>
+    <li><strong>Cancelled accounts:</strong> Data is retained for 90 days after the end of your billing period, then permanently deleted</li>
+    <li><strong>Call recordings:</strong> Retained for 12 months from the date of the call, then automatically deleted</li>
+    <li><strong>Text message history:</strong> Retained for the duration of your active subscription plus 90 days after cancellation</li>
+    <li><strong>Payment records:</strong> Retained for 7 years as required by tax and accounting regulations</li>
+    <li><strong>Deletion requests:</strong> Processed within 30 days. Some data may be retained in encrypted backups for up to 90 additional days before full purge</li>
   </ul>
-  <p>To exercise any of these rights, contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
 
   <div class="divider"></div>
 
-  <h2>8. Cookies</h2>
-  <p>Our website uses minimal cookies necessary for authentication and session management. We do not use advertising or tracking cookies. You can disable cookies in your browser settings, though this may affect certain dashboard functionality.</p>
-
-  <div class="divider"></div>
-
-  <h2>9. Children's Privacy</h2>
-  <p>StyleDesk.ai is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us and we will delete it promptly.</p>
-
-  <div class="divider"></div>
-
-  <h2>10. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page and notify active subscribers by email for material changes. Your continued use of StyleDesk.ai after changes constitutes acceptance of the updated policy.</p>
-
-  <div class="divider"></div>
-
-  <h2>11. Contact Us</h2>
-  <p>If you have any questions about this Privacy Policy or how we handle your data, please contact us:</p>
+  <h2>9. California Privacy Rights (CCPA/CPRA)</h2>
+  <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA):</p>
   <ul>
-    <li>Email: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a></li>
-    <li>Business: StyleDesk AI, LLC</li>
-    <li>State of formation: Maryland, USA</li>
+    <li><strong>Right to Know:</strong> You may request details about the categories and specific pieces of personal information we have collected about you</li>
+    <li><strong>Right to Delete:</strong> You may request deletion of your personal information, subject to certain exceptions</li>
+    <li><strong>Right to Opt-Out of Sale:</strong> We do not sell your personal information. This right does not apply.</li>
+    <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of your privacy rights</li>
+    <li><strong>Right to Correct:</strong> You may request correction of inaccurate personal information</li>
+    <li><strong>Right to Limit Use of Sensitive Information:</strong> You may limit our use of sensitive personal information to what is necessary to provide the service</li>
   </ul>
+  <p>To exercise any of these rights, contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. We will verify your identity before processing your request and respond within 45 days.</p>
+
+  <div class="divider"></div>
+
+  <h2>10. Other State Privacy Rights</h2>
+  <p>Residents of Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), and other states with consumer privacy laws may have similar rights to access, delete, and correct their data, as well as the right to opt out of targeted advertising and profiling. We do not engage in targeted advertising or profiling. To exercise your rights, contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+
+  <div class="divider"></div>
+
+  <h2>11. Children's Privacy</h2>
+  <p>StyleDesk.ai is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If we become aware that we have collected data from a child under 18, we will take steps to delete that information promptly. If you believe a child has provided us with personal information, please contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+
+  <div class="divider"></div>
+
+  <h2>12. Third-Party Links</h2>
+  <p>Our website and platform may contain links to third-party websites, services, or applications (such as booking platforms, social media, or payment processors). We are not responsible for the privacy practices of these third parties. We encourage you to read their privacy policies before providing them with your information.</p>
+
+  <div class="divider"></div>
+
+  <h2>13. Business Transfers</h2>
+  <p>In the event of a merger, acquisition, reorganization, bankruptcy, or sale of all or a portion of our assets, your personal information may be transferred as part of that transaction. We will notify you via email and/or a prominent notice on our website of any change in ownership or use of your personal information, as well as any choices you may have regarding your information.</p>
+
+  <div class="divider"></div>
+
+  <h2>14. International Users</h2>
+  <p>StyleDesk.ai is operated from the United States. If you access our services from outside the United States, your information will be transferred to, stored, and processed in the United States. By using our services, you consent to the transfer of your information to the United States, which may have different data protection laws than your country of residence.</p>
+
+  <div class="divider"></div>
+
+  <h2>15. Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will:</p>
+  <ul>
+    <li>Update the "Last updated" date at the top of this page</li>
+    <li>Notify you by email if the changes significantly affect how we handle your data</li>
+    <li>Post a notice on our website for at least 30 days</li>
+  </ul>
+  <p>Your continued use of StyleDesk.ai after changes are posted constitutes your acceptance of the updated Privacy Policy.</p>
+
+  <div class="divider"></div>
+
+  <h2>16. Contact Us</h2>
+  <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, contact us at:</p>
+  <p>
+    <strong>StyleDesk AI, LLC</strong><br/>
+    Email: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a><br/>
+    Website: <a href="https://styledesk.ai">styledesk.ai</a>
+  </p>
+  <p>We will respond to all privacy-related inquiries within 30 days.</p>
+
 </div>
 
 <footer>
-  <p>© 2026 StyleDesk AI, LLC. All rights reserved.</p>
+  <p>&copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
 </footer>
 
 </body>
