@@ -48,6 +48,8 @@
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; position: relative; z-index: 1; }
     .ai-badge { display: inline-flex; border: 0.5px solid rgba(201,160,100,0.3); background: transparent; padding: 6px 14px; border-radius: 100px; font-size: 11px; margin-bottom: 14px; color: #c9a064; font-weight: 500; letter-spacing: 0.5px; }
     .toggle-wrap { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); border-radius: 100px; padding: 3px; margin-bottom: 20px; backdrop-filter: blur(10px); }
+    .toggle-mobile { display: none; }
+    .toggle-desktop { display: flex; justify-content: center; margin-bottom: 14px; }
     .toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.5); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.25s; }
     .toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
     .hero h1 { font-size: clamp(40px, 5vw, 60px); font-weight: 600; line-height: 1.15; letter-spacing: -2px; margin-bottom: 20px; }
@@ -240,6 +242,8 @@
       .sticky-cta-btn { background: #fff; color: #000; padding: 8px 18px; border-radius: 8px; font-size: 11px; font-weight: 600; text-decoration: none; flex-shrink: 0; }
       .header-tagline { display: none; }
       .header-nav a:not(.header-btn) { display: none; }
+      .toggle-desktop { display: none; }
+      .toggle-mobile { display: inline-flex; margin-bottom: 20px; }
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .hero { padding: 30px 16px 30px; }
       .hero h1 { font-size: 36px; }
@@ -340,9 +344,9 @@
     <div class="hero-grid">
       <div>
         <div class="ai-badge">AI Booking &amp; Analytics</div><br/>
-        <div class="toggle-wrap">
-          <button class="toggle-btn active" id="btnBarber" onclick="switchType('barber')">Barbershop</button>
-          <button class="toggle-btn" id="btnNail" onclick="switchType('nail')">Nail Salon</button>
+        <div class="toggle-wrap toggle-mobile">
+          <button class="toggle-btn active" onclick="switchType('barber')">Barbershop</button>
+          <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
         </div>
         <h1>Every Call.<br>Every Text.<span class="pink"><br>Handled.</span></h1>
         <p class="hero-sub" id="heroSub">We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.</p>
@@ -357,6 +361,12 @@
         </div>
       </div>
       <div>
+        <div class="toggle-desktop">
+          <div class="toggle-wrap" style="margin-bottom: 0;">
+            <button class="toggle-btn active" onclick="switchType('barber')">Barbershop</button>
+            <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
+          </div>
+        </div>
         <div class="phone-frame">
           <div class="phone-outer">
             <div class="phone-island"><div class="phone-camera"></div></div>
@@ -707,8 +717,11 @@
     nail: "We help nail salons respond instantly, fill last-minute openings, and keep your chairs fully booked throughout the day.",
   }
   function switchType(type) {
-    document.getElementById('btnBarber').classList.toggle('active', type === 'barber')
-    document.getElementById('btnNail').classList.toggle('active', type === 'nail')
+    var allBtns = document.querySelectorAll('.toggle-btn')
+    allBtns.forEach(function(btn) {
+      if (btn.textContent === 'Barbershop') btn.classList.toggle('active', type === 'barber')
+      if (btn.textContent === 'Nail Salon') btn.classList.toggle('active', type === 'nail')
+    })
     document.getElementById('heroSub').textContent = subs[type]
     const c = convos[type]
     for (let i = 1; i <= 3; i++) {
