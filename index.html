@@ -335,8 +335,6 @@
     <div class="live-dot"></div>
     <span>Live now · <strong id="callCount" style="font-family:'DM Mono',monospace;">0</strong> calls & <strong id="textCount" style="font-family:'DM Mono',monospace;">0</strong> texts handled and counting</span>
   </div>
-  <div class="stats-divider"></div>
-  <span>Built exclusively for <strong>barbers</strong> & <strong>nail techs</strong></span>
 </div>
 
 <main>
@@ -349,7 +347,7 @@
           <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
         </div>
         <h1>Every Call.<br>Every Text.<span class="pink"><br>Handled.</span></h1>
-        <p class="hero-sub" id="heroSub">We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.</p>
+        <p class="hero-sub">We help barbershops and nail salons respond instantly, fill last-minute openings, and keep your schedule fully booked.</p>
         <div class="hero-btns">
           <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="btn-white">Book Demo</a></span>
           <a href="#pricing" class="btn-outline">View Pricing</a>
@@ -722,7 +720,6 @@
       if (btn.textContent === 'Barbershop') btn.classList.toggle('active', type === 'barber')
       if (btn.textContent === 'Nail Salon') btn.classList.toggle('active', type === 'nail')
     })
-    document.getElementById('heroSub').textContent = subs[type]
     const c = convos[type]
     for (let i = 1; i <= 3; i++) {
       const cEl = document.getElementById('c'+i)
