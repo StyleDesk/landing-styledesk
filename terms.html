@@ -5,235 +5,416 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Terms of Service — StyleDesk.ai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #4d0020, #3a0019, #22000f); min-height: 100vh; color: #fff; }
-
-    header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 50; }
-    .logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
-    .logo span { color: rgba(255,255,255,0.5); }
-    .back-btn { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); padding: 7px 16px; border-radius: 8px; transition: all 0.2s; }
-    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-
-    .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 80px; }
-
-    .header-block { margin-bottom: 48px; }
-    h1 { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
-    .updated { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 20px; font-weight: 400; }
-    .intro-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px 24px; }
-    .intro-box p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 400; }
-
-    h2 { font-size: 20px; font-weight: 600; margin: 40px 0 12px; color: #fff; display: flex; align-items: center; gap: 10px; }
-    .section-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(240,198,207,0.15); border: 1px solid rgba(240,198,207,0.25); border-radius: 50%; font-size: 12px; font-weight: 600; color: #f0c6cf; flex-shrink: 0; }
-    p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 16px; font-weight: 400; }
-    ul { margin: 0 0 16px 20px; }
-    ul li { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 6px; font-weight: 400; }
-    a { color: #f0c6cf; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    strong { color: rgba(255,255,255,0.9); font-weight: 600; }
-
-    .highlight-box { background: rgba(240,198,207,0.06); border: 1px solid rgba(240,198,207,0.15); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
-    .highlight-box p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.65); }
-
-    .divider { height: 1px; background: rgba(255,255,255,0.07); margin: 40px 0; }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-    .contact-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 20px; }
-    .contact-card p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.6); }
-    .contact-card strong { display: block; font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 32px 24px; text-align: center; }
-    footer p { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 400; }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 30px; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; }
+    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
+    .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
+    .logo span { color: rgba(255,255,255,0.35); }
+    .back-link { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .back-link:hover { color: #fff; }
+    .content { max-width: 768px; margin: 0 auto; padding: 60px 24px 80px; }
+    .content h1 { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 40px; }
+    .content h2 { font-size: 18px; font-weight: 600; margin-top: 40px; margin-bottom: 12px; color: #f0c6cf; }
+    .content h3 { font-size: 15px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
+    .content p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 14px; }
+    .content ul, .content ol { margin-bottom: 14px; padding-left: 0; list-style: none; }
+    .content ul li, .content ol li { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; padding-left: 20px; position: relative; }
+    .content ul li::before { content: '•'; position: absolute; left: 4px; color: #c9a064; }
+    .content ol { counter-reset: ol-counter; }
+    .content ol li { counter-increment: ol-counter; }
+    .content ol li::before { content: counter(ol-counter, lower-alpha) ')'; position: absolute; left: 0; color: #c9a064; font-weight: 500; }
+    .content a { color: #c9a064; text-decoration: none; }
+    .content a:hover { text-decoration: underline; }
+    .content strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+    .divider { height: 0.5px; background: rgba(255,255,255,0.06); margin: 40px 0; }
+    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 24px; text-align: center; }
+    footer p { font-size: 10px; color: rgba(255,255,255,0.25); }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html" class="logo"><img src="logo-nav.png" alt="StyleDesk" style="width:36px;height:36px;border-radius:8px;vertical-align:middle;margin-right:8px;object-fit:cover;">StyleDesk<span>.ai</span></a>
-  <a href="index.html" class="back-btn">← Back to home</a>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="28" height="28" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
+      StyleDesk<span>.ai</span>
+    </a>
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+  </div>
 </header>
 
-<div class="container">
+<div class="content">
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: April 5, 2026</p>
 
-  <div class="header-block">
-    <h1>Terms of Service</h1>
-    <p class="updated">Last updated: March 2026</p>
-    <div class="intro-box">
-      <p>Please read these Terms of Service carefully before using StyleDesk.ai. By creating an account or using our services, you agree to be bound by these terms. If you do not agree, do not use our services.</p>
-    </div>
-  </div>
-
-  <h2><span class="section-num">1</span> About StyleDesk</h2>
-  <p>StyleDesk AI, LLC ("StyleDesk," "we," "us," or "our") provides an AI-powered communication platform designed exclusively for barbers and nail technicians. Our services include a dedicated business phone number, AI-powered call and SMS responses, a client dashboard, and related features as described on our website.</p>
+  <p>These Terms of Service ("Terms") govern your access to and use of the StyleDesk.ai platform, website, dashboards, AI receptionist service, and all related tools and features (collectively, the "Service") provided by StyleDesk AI, LLC ("StyleDesk," "we," "us," or "our").</p>
+  <p>By creating an account, subscribing to a plan, or using the Service in any way, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Service.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">2</span> Eligibility</h2>
-  <p>To use StyleDesk, you must:</p>
+  <h2>1. Eligibility</h2>
+  <p>To use StyleDesk.ai, you must:</p>
   <ul>
     <li>Be at least 18 years of age</li>
-    <li>Be a licensed or practicing barber, nail technician, or shop owner</li>
-    <li>Have the legal authority to enter into this agreement</li>
-    <li>Provide accurate and complete information during registration</li>
+    <li>Be authorized to operate or represent the business you are registering</li>
+    <li>Provide accurate, complete, and current information during registration</li>
+    <li>Have the legal authority to enter into a binding agreement</li>
   </ul>
-  <p>By using StyleDesk, you represent and warrant that you meet all eligibility requirements.</p>
+  <p>By using the Service, you represent and warrant that you meet all eligibility requirements. We reserve the right to refuse service or terminate accounts that do not meet these requirements.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">3</span> Your Account</h2>
-  <p>When you create a StyleDesk account, you are responsible for:</p>
+  <h2>2. Description of Service</h2>
+  <p>StyleDesk.ai provides an AI-powered receptionist service designed for barbershops and nail salons. The Service includes:</p>
   <ul>
-    <li>Keeping your login credentials secure and confidential</li>
-    <li>All activity that occurs under your account</li>
-    <li>Notifying us immediately of any unauthorized access at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a></li>
-    <li>Ensuring all information in your account is accurate and up to date</li>
+    <li>A dedicated local business phone number assigned to your account</li>
+    <li>AI-powered call answering and text message responses on behalf of your business</li>
+    <li>Automatic booking link delivery to callers and texters</li>
+    <li>Call recording, transcription, and voicemail handling</li>
+    <li>A web-based dashboard to view call history, text conversations, reports, and analytics</li>
+    <li>Staff management features (available on Pro and Premium plans)</li>
+    <li>Broadcast messaging capabilities (available on Pro and Premium plans)</li>
+    <li>Additional features as described on our website and within each plan tier</li>
   </ul>
-  <p>We reserve the right to suspend or terminate accounts that violate these terms or that we reasonably believe have been compromised.</p>
+  <p>The specific features available to you depend on your subscription plan (Basic, Pro, or Premium).</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">4</span> Subscription & Payment</h2>
-  <p>StyleDesk is offered on a monthly subscription basis. By subscribing, you agree to the following:</p>
+  <h2>3. Account Registration and Security</h2>
+
+  <h3>3.1 Account Creation</h3>
+  <p>You must create an account to use the Service. You agree to provide truthful, accurate, and complete information during registration and to update your information promptly if it changes.</p>
+
+  <h3>3.2 Account Security</h3>
+  <p>You are responsible for maintaining the security and confidentiality of your account credentials. You agree to:</p>
   <ul>
-    <li><strong>Billing:</strong> Your subscription fee is charged monthly to the payment method on file</li>
-    <li><strong>Auto-renewal:</strong> Subscriptions renew automatically each month unless cancelled</li>
-    <li><strong>Price changes:</strong> We will notify you at least 30 days before any price change takes effect</li>
-    <li><strong>Refunds:</strong> We do not offer refunds for partial months. If you cancel, your access continues until the end of the current billing period</li>
-    <li><strong>Failed payments:</strong> If payment fails, your account may be suspended until payment is resolved</li>
+    <li>Keep your login credentials confidential and not share them with unauthorized individuals</li>
+    <li>Notify us immediately at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> if you suspect unauthorized access to your account</li>
+    <li>Accept responsibility for all activity that occurs under your account</li>
   </ul>
-  <div class="highlight-box">
-    <p>💡 <strong>Our guarantee:</strong> If StyleDesk doesn't help you book more clients in your first 30 days, contact us and we'll work with you to make it right.</p>
-  </div>
 
-  <div class="divider"></div>
-
-  <h2><span class="section-num">5</span> Your Business Phone Number</h2>
-  <p>When you subscribe, StyleDesk provisions a dedicated business phone number on your behalf through Twilio. Please note:</p>
+  <h3>3.3 Multi-User Accounts (Pro and Premium)</h3>
+  <p>If your plan supports multiple users (staff members and owners):</p>
   <ul>
-    <li>The phone number is provisioned and owned by StyleDesk on your behalf</li>
-    <li>You may not port this number to another carrier without our written consent</li>
-    <li>If your subscription is cancelled, your number will be released after a 30-day grace period</li>
-    <li>We cannot guarantee a specific area code, though we make best efforts to match your preference</li>
-    <li>Number availability is subject to Twilio's availability in your area</li>
+    <li>The account owner is responsible for managing staff access and permissions</li>
+    <li>The account owner is responsible for all activity conducted by staff members under their account</li>
+    <li>Staff members receive individual phone lines linked to the parent account</li>
+    <li>Removing a staff member does not automatically delete their associated data</li>
+    <li>The account owner retains ownership of all data across all staff lines</li>
   </ul>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">6</span> Acceptable Use</h2>
-  <p>You agree to use StyleDesk only for legitimate business purposes. You may <strong>not</strong> use our platform to:</p>
+  <h2>4. Subscription Plans and Pricing</h2>
+
+  <h3>4.1 Plans</h3>
+  <p>StyleDesk.ai offers the following subscription plans:</p>
   <ul>
-    <li>Send spam, unsolicited messages, or bulk marketing without recipient consent</li>
-    <li>Impersonate another person or business</li>
-    <li>Transmit illegal, harmful, threatening, or harassing content</li>
-    <li>Violate any applicable federal, state, or local law including TCPA regulations</li>
-    <li>Attempt to reverse engineer, hack, or disrupt our systems</li>
-    <li>Resell or sublicense access to StyleDesk without written permission</li>
-    <li>Use StyleDesk for any business type other than barbering or nail services</li>
+    <li><strong>Basic ($49/month):</strong> For solo operators. Includes 1 business phone number, AI call and text handling, booking link delivery, and a basic dashboard.</li>
+    <li><strong>Pro ($99/month):</strong> For teams up to 5 staff members + 1 owner. Includes everything in Basic plus reports, insights, broadcasts, voicemail transcription, upselling, multi-language support (up to 3 languages), and an upgraded dashboard.</li>
+    <li><strong>Premium ($179/month):</strong> For teams up to 10 staff members + 2 owners. Includes everything in Pro plus leaderboard, custom AI voice and greeting, custom SMS signature, FAQ builder, auto follow-up texts, revenue tracking, multi-language support (up to 30 languages), and a premium dashboard with full customization.</li>
   </ul>
-  <p>Violation of these terms may result in immediate account termination without refund.</p>
+
+  <h3>4.2 Pricing Changes</h3>
+  <p>We reserve the right to change our pricing at any time. If we change pricing, we will provide at least 30 days' notice before the new pricing takes effect. Price changes will apply at the start of your next billing cycle after the notice period. Your continued use of the Service after a price change constitutes acceptance of the new pricing.</p>
+
+  <h3>4.3 Feature Changes</h3>
+  <p>We may add, modify, or remove features from any plan at any time. We will make reasonable efforts to notify you of significant feature changes. Removal of a feature does not entitle you to a refund unless the removed feature was the primary reason for your subscription and no reasonable alternative is provided.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">7</span> AI-Generated Content</h2>
-  <p>StyleDesk uses artificial intelligence to generate responses to your clients on your behalf. You acknowledge and agree that:</p>
+  <h2>5. Free Trials</h2>
+
+  <h3>5.1 Trial Period</h3>
+  <p>We may offer free trial periods for new subscribers. The trial period is 14 days for Basic and Pro plans, and 30 days for the Premium plan, unless otherwise stated at the time of signup.</p>
+
+  <h3>5.2 Trial Terms</h3>
   <ul>
-    <li>AI responses are generated automatically and may not always be perfect</li>
-    <li>You are responsible for configuring accurate information (hours, pricing, services) in your dashboard</li>
-    <li>StyleDesk is not liable for any inaccuracies in AI-generated responses resulting from incorrect information you provide</li>
-    <li>You should regularly review your dashboard settings to ensure responses are accurate</li>
-    <li>Clients communicating with your StyleDesk number are interacting with an AI — you are responsible for ensuring this complies with applicable laws in your area</li>
+    <li>A valid payment method is required to start a free trial</li>
+    <li>You will not be charged during the trial period</li>
+    <li>At the end of the trial period, your subscription will automatically convert to a paid subscription and your payment method will be charged unless you cancel before the trial ends</li>
+    <li>You may cancel your trial at any time before it ends without being charged</li>
+    <li>Free trials are limited to one per person, business, or payment method. Abuse of free trials may result in account termination.</li>
+    <li>We reserve the right to modify, suspend, or discontinue free trial offers at any time</li>
   </ul>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">8</span> SMS & Calling Compliance</h2>
-  <p>By using StyleDesk, you agree to comply with all applicable telecommunications laws including:</p>
+  <h2>6. Billing and Payments</h2>
+
+  <h3>6.1 Payment Processing</h3>
+  <p>All payments are processed securely through Stripe, Inc. By providing a payment method, you authorize us to charge the applicable subscription fees on a recurring monthly basis.</p>
+
+  <h3>6.2 Billing Cycle</h3>
+  <p>Subscriptions are billed monthly on the anniversary of your signup date. If your payment method fails, we will attempt to charge it again. If payment cannot be collected after multiple attempts, your account may be suspended or downgraded.</p>
+
+  <h3>6.3 Refund Policy</h3>
+  <p>Subscription fees are generally non-refundable. However, we may issue refunds at our discretion in the following cases:</p>
   <ul>
-    <li>The Telephone Consumer Protection Act (TCPA)</li>
-    <li>The CAN-SPAM Act</li>
-    <li>All applicable state laws regarding automated calling and texting</li>
+    <li>Service was completely unavailable for an extended period due to our fault</li>
+    <li>You were charged after successfully cancelling before your renewal date</li>
+    <li>Duplicate charges or billing errors</li>
   </ul>
-  <p>You are responsible for ensuring that clients who receive automated messages from your StyleDesk number have appropriate consent. StyleDesk provides the technology — you are responsible for how it is used.</p>
+  <p>Refund requests must be submitted within 30 days of the charge in question to <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+
+  <h3>6.4 Taxes</h3>
+  <p>Subscription fees do not include applicable taxes (sales tax, VAT, etc.). You are responsible for paying any applicable taxes associated with your use of the Service. StyleDesk.ai may qualify as a deductible business expense. Consult a licensed tax professional for guidance specific to your situation.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">9</span> Intellectual Property</h2>
-  <p>All content, features, branding, and technology on StyleDesk.ai are owned by StyleDesk AI, LLC and protected by applicable intellectual property laws. You may not copy, reproduce, distribute, or create derivative works from our platform without written permission.</p>
-  <p>You retain ownership of your shop information, services, and any content you enter into your dashboard.</p>
+  <h2>7. Cancellation and Termination</h2>
 
-  <div class="divider"></div>
-
-  <h2><span class="section-num">10</span> Disclaimer of Warranties</h2>
-  <p>StyleDesk is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that:</p>
+  <h3>7.1 Cancellation by You</h3>
+  <p>You may cancel your subscription at any time. Upon cancellation:</p>
   <ul>
-    <li>The service will be uninterrupted or error-free</li>
-    <li>AI responses will always be accurate or appropriate</li>
-    <li>The service will meet all of your specific business requirements</li>
-    <li>Any errors will be corrected within a specific timeframe</li>
+    <li>Your account will remain active until the end of your current billing period</li>
+    <li>No further charges will be applied</li>
+    <li>Your dedicated phone number will be released and may be reassigned</li>
+    <li>Your data will be retained for 90 days after the end of your billing period, then permanently deleted</li>
+    <li>You may reactivate your account within the 90-day retention window</li>
   </ul>
-  <p>Use of StyleDesk is at your own risk.</p>
 
-  <div class="divider"></div>
-
-  <h2><span class="section-num">11</span> Limitation of Liability</h2>
-  <p>To the maximum extent permitted by law, StyleDesk AI, LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to lost profits, lost clients, or business interruption arising from your use of our services.</p>
-  <p>Our total liability to you for any claim arising from use of StyleDesk shall not exceed the amount you paid us in the three months preceding the claim.</p>
-
-  <div class="divider"></div>
-
-  <h2><span class="section-num">12</span> Cancellation & Termination</h2>
-  <p><strong>You may cancel anytime</strong> by contacting us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. Upon cancellation:</p>
+  <h3>7.2 Termination by Us</h3>
+  <p>We reserve the right to suspend or terminate your account immediately, with or without notice, if:</p>
   <ul>
-    <li>Your access continues until the end of the current billing period</li>
-    <li>Your business number will be held for 30 days before release</li>
-    <li>Your data will be retained for 30 days then permanently deleted</li>
-    <li>No further charges will be made after cancellation</li>
+    <li>You violate any provision of these Terms</li>
+    <li>You use the Service for illegal, fraudulent, or abusive purposes</li>
+    <li>Your payment method fails and cannot be resolved after reasonable attempts</li>
+    <li>You engage in activity that harms or threatens to harm other users, our infrastructure, or third parties</li>
+    <li>Required by law or legal process</li>
   </ul>
-  <p>We reserve the right to terminate your account immediately for violations of these terms, with or without notice.</p>
+  <p>In the event of termination for cause, no refund will be provided for any remaining subscription period.</p>
+
+  <h3>7.3 Effect of Termination</h3>
+  <p>Upon termination, your right to use the Service ceases immediately. Sections of these Terms that by their nature should survive termination (including but not limited to intellectual property, limitation of liability, indemnification, and dispute resolution) will survive.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">13</span> Changes to These Terms</h2>
-  <p>We may update these Terms of Service from time to time. When we make material changes, we will notify you by email at least 14 days before they take effect. Your continued use of StyleDesk after the effective date constitutes acceptance of the updated terms.</p>
+  <h2>8. Acceptable Use</h2>
+  <p>You agree to use StyleDesk.ai only for lawful purposes related to operating your barbershop, nail salon, or similar personal care business. You agree <strong>not</strong> to:</p>
+  <ul>
+    <li>Use the Service to make or send unsolicited calls, texts, or spam</li>
+    <li>Use the Service for any illegal, fraudulent, deceptive, or harmful purpose</li>
+    <li>Use the Service to harass, threaten, or intimidate any person</li>
+    <li>Use the Service to impersonate another person or business</li>
+    <li>Use the Service to collect personal information without consent</li>
+    <li>Attempt to access another user's account or data</li>
+    <li>Interfere with, disrupt, or overload the Service or its infrastructure</li>
+    <li>Reverse engineer, decompile, or attempt to extract the source code of the Service</li>
+    <li>Resell, sublicense, or redistribute the Service without our written consent</li>
+    <li>Use the Service in violation of any applicable federal, state, or local law, including telecom regulations such as the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, or state-specific call recording and consent laws</li>
+    <li>Upload or transmit malware, viruses, or other harmful code</li>
+    <li>Use the broadcast feature to send promotional messages to individuals who have not contacted your business or who have opted out</li>
+  </ul>
+  <p>Violation of this section may result in immediate suspension or termination of your account.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">14</span> Governing Law</h2>
-  <p>These Terms of Service are governed by the laws of the State of Maryland, without regard to conflict of law principles. Any disputes arising from these terms shall be resolved in the courts of Maryland.</p>
+  <h2>9. AI Service Disclaimer</h2>
+
+  <h3>9.1 Nature of AI</h3>
+  <p>StyleDesk.ai uses artificial intelligence to answer calls and respond to text messages on behalf of your business. While we strive for accuracy, you acknowledge and agree that:</p>
+  <ul>
+    <li>AI-generated responses may occasionally contain errors, inaccuracies, or misunderstandings</li>
+    <li>The AI relies on the business information you provide (services, pricing, hours, booking link). If your information is incorrect or outdated, the AI's responses will reflect that</li>
+    <li>The AI may not perfectly handle every conversation, especially unusual or complex requests</li>
+    <li>The AI is not a substitute for professional legal, medical, financial, or emergency advice</li>
+  </ul>
+
+  <h3>9.2 Your Responsibility</h3>
+  <p>You are responsible for:</p>
+  <ul>
+    <li>Keeping your business information accurate and up to date in your dashboard</li>
+    <li>Reviewing call transcripts and text conversations regularly</li>
+    <li>Monitoring your dashboard for missed calls, voicemails, and unresolved conversations</li>
+    <li>Ensuring the AI's responses align with your business policies and local regulations</li>
+    <li>Informing us promptly of any issues with the AI's performance</li>
+  </ul>
+
+  <h3>9.3 No Guarantee of Results</h3>
+  <p>We do not guarantee that the Service will result in increased bookings, revenue, or customer satisfaction. Results depend on many factors outside our control, including your business quality, location, pricing, and market conditions.</p>
 
   <div class="divider"></div>
 
-  <h2><span class="section-num">15</span> Contact Us</h2>
-  <p>If you have any questions about these Terms of Service, please reach out:</p>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <strong>Email</strong>
-      <p><a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a></p>
-    </div>
-    <div class="contact-card">
-      <strong>Business</strong>
-      <p>StyleDesk AI, LLC</p>
-    </div>
-    <div class="contact-card">
-      <strong>State</strong>
-      <p>Maryland, USA</p>
-    </div>
-    <div class="contact-card">
-      <strong>Response time</strong>
-      <p>Within 2 business days</p>
-    </div>
-  </div>
+  <h2>10. Telecommunications Compliance</h2>
+
+  <h3>10.1 Phone Number</h3>
+  <p>StyleDesk assigns you a dedicated business phone number through our telecommunications provider. This number is owned by StyleDesk and licensed to you for the duration of your active subscription. Upon cancellation or termination, the number will be released and may be reassigned. You do not own the phone number.</p>
+
+  <h3>10.2 Call Recording</h3>
+  <p>The Service may record calls for quality assurance and transcription purposes. You acknowledge that:</p>
+  <ul>
+    <li>You are responsible for complying with all applicable call recording laws in your state and the states of your callers</li>
+    <li>Many states, including Maryland, require all-party consent for call recording</li>
+    <li>StyleDesk provides an AI disclosure at the start of each call, but you are ultimately responsible for ensuring compliance with your jurisdiction's laws</li>
+    <li>You agree to indemnify StyleDesk against any claims arising from call recording in your jurisdiction</li>
+  </ul>
+
+  <h3>10.3 SMS and Text Messaging</h3>
+  <p>You acknowledge and agree that:</p>
+  <ul>
+    <li>Text messages sent through the Service are subject to the Telephone Consumer Protection Act (TCPA) and applicable state laws</li>
+    <li>The AI will only respond to customers who initiate contact by texting your business number</li>
+    <li>Broadcast and promotional messages (Pro and Premium) may only be sent to customers who have previously contacted your business</li>
+    <li>You must honor opt-out requests (STOP) immediately</li>
+    <li>You are responsible for ensuring your use of SMS messaging complies with all applicable laws</li>
+    <li>Message and data rates may apply to your customers based on their carrier</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>11. Intellectual Property</h2>
+
+  <h3>11.1 Our Property</h3>
+  <p>The Service, including all software, code, AI models, prompts, algorithms, designs, branding, logos, trademarks, documentation, and content created by StyleDesk, is our exclusive property and is protected by intellectual property laws. You are granted a limited, non-exclusive, non-transferable, revocable license to use the Service solely for its intended purpose during your active subscription.</p>
+
+  <h3>11.2 Your Content</h3>
+  <p>You retain ownership of all business information, content, and data you provide to the Service (including your service menu, pricing, hours, and any uploaded materials). By providing this content, you grant us a non-exclusive, worldwide, royalty-free license to use, display, and process this content solely for the purpose of providing the Service to you.</p>
+
+  <h3>11.3 Customer Data</h3>
+  <p>Call recordings, text conversations, and customer phone numbers generated through your use of the Service are considered your business data. You retain ownership of this data, subject to our Privacy Policy and data retention schedule.</p>
+
+  <h3>11.4 Feedback</h3>
+  <p>If you provide us with suggestions, ideas, or feedback about the Service, you grant us an unrestricted, irrevocable, perpetual, royalty-free license to use that feedback for any purpose, including improving the Service, without obligation to you.</p>
+
+  <div class="divider"></div>
+
+  <h2>12. Limitation of Liability</h2>
+
+  <h3>12.1 Disclaimer of Warranties</h3>
+  <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR AVAILABILITY. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</p>
+
+  <h3>12.2 Limitation of Damages</h3>
+  <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL STYLEDESK AI, LLC, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+  <ul>
+    <li>Loss of revenue, profits, business, or anticipated savings</li>
+    <li>Loss of data or data breach</li>
+    <li>Loss of customers or bookings</li>
+    <li>Business interruption</li>
+    <li>Cost of substitute services</li>
+    <li>Any damages arising from AI errors, inaccuracies, or misunderstandings</li>
+    <li>Any damages arising from third-party service outages (Twilio, Stripe, hosting providers, AI providers)</li>
+  </ul>
+  <p>ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICE, WHETHER BASED ON WARRANTY, CONTRACT, TORT, NEGLIGENCE, OR ANY OTHER LEGAL THEORY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+  <h3>12.3 Maximum Liability</h3>
+  <p>OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE TOTAL AMOUNT YOU HAVE PAID TO US IN THE SIX (6) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</p>
+
+  <h3>12.4 Essential Purpose</h3>
+  <p>THE LIMITATIONS IN THIS SECTION APPLY EVEN IF ANY REMEDY FAILS OF ITS ESSENTIAL PURPOSE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES, SO SOME OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.</p>
+
+  <div class="divider"></div>
+
+  <h2>13. Indemnification</h2>
+  <p>You agree to indemnify, defend, and hold harmless StyleDesk AI, LLC, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
+  <ul>
+    <li>Your use of the Service</li>
+    <li>Your violation of these Terms</li>
+    <li>Your violation of any applicable law or regulation, including telecom and privacy laws</li>
+    <li>Your business information being inaccurate or misleading</li>
+    <li>Any claim by a third party (including your customers) related to the AI's responses or actions taken on behalf of your business</li>
+    <li>Your use of the broadcast or promotional messaging features</li>
+    <li>Any claim related to call recording in your jurisdiction</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>14. Service Availability and Downtime</h2>
+
+  <h3>14.1 Uptime</h3>
+  <p>We strive to maintain high availability of the Service but do not guarantee 100% uptime. The Service depends on third-party providers (including telecommunications, cloud hosting, and AI providers) that may experience outages beyond our control.</p>
+
+  <h3>14.2 Scheduled Maintenance</h3>
+  <p>We may perform scheduled maintenance that temporarily affects the Service. We will make reasonable efforts to provide advance notice of planned maintenance and schedule it during off-peak hours.</p>
+
+  <h3>14.3 Force Majeure</h3>
+  <p>We shall not be liable for any failure or delay in performing our obligations due to events beyond our reasonable control, including but not limited to natural disasters, acts of government, power outages, internet outages, telecommunications failures, cyberattacks, pandemics, or acts of terrorism.</p>
+
+  <div class="divider"></div>
+
+  <h2>15. Dispute Resolution</h2>
+
+  <h3>15.1 Informal Resolution</h3>
+  <p>Before filing any formal legal action, you agree to first contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> and attempt to resolve the dispute informally for at least 30 days.</p>
+
+  <h3>15.2 Governing Law</h3>
+  <p>These Terms shall be governed by and construed in accordance with the laws of the State of Maryland, without regard to its conflict of law provisions.</p>
+
+  <h3>15.3 Jurisdiction</h3>
+  <p>Any legal action or proceeding arising out of or relating to these Terms shall be brought exclusively in the state or federal courts located in Montgomery County, Maryland. You consent to the personal jurisdiction of such courts.</p>
+
+  <h3>15.4 Class Action Waiver</h3>
+  <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION. You waive your right to participate in a class action lawsuit or class-wide arbitration.</p>
+
+  <h3>15.5 Time Limitation</h3>
+  <p>Any claim or cause of action arising out of or related to these Terms or the Service must be filed within one (1) year after the cause of action arises. Failure to file within this period constitutes a permanent waiver of such claim.</p>
+
+  <div class="divider"></div>
+
+  <h2>16. Privacy</h2>
+  <p>Your use of the Service is also governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. By using the Service, you acknowledge that you have read and understood our Privacy Policy.</p>
+
+  <div class="divider"></div>
+
+  <h2>17. Third-Party Services</h2>
+  <p>The Service integrates with and relies on third-party services, including but not limited to telecommunications providers, payment processors, AI model providers, and cloud hosting services. We are not responsible for the performance, availability, or actions of these third-party services. Your use of these third-party services may be subject to their own terms and conditions.</p>
+  <p>The Service is designed to work alongside your existing booking platform (such as Booksy, Square, Fresha, Vagaro, or others). We do not replace your booking platform and are not affiliated with any booking platform provider. We are not responsible for issues arising from your booking platform.</p>
+
+  <div class="divider"></div>
+
+  <h2>18. Modifications to the Service</h2>
+  <p>We reserve the right to modify, update, suspend, or discontinue any part of the Service at any time, with or without notice. We will make reasonable efforts to provide advance notice of significant changes. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the Service.</p>
+
+  <div class="divider"></div>
+
+  <h2>19. Modifications to These Terms</h2>
+  <p>We may revise these Terms from time to time. When we make material changes:</p>
+  <ul>
+    <li>We will update the "Last updated" date at the top of this page</li>
+    <li>We will notify you by email at least 30 days before changes take effect</li>
+    <li>We may post a notice on our website</li>
+  </ul>
+  <p>Your continued use of the Service after the effective date of revised Terms constitutes your acceptance of the changes. If you do not agree with the revised Terms, you must stop using the Service and cancel your subscription.</p>
+
+  <div class="divider"></div>
+
+  <h2>20. Severability</h2>
+  <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect. The invalid or unenforceable provision shall be modified to the minimum extent necessary to make it valid and enforceable while preserving its original intent.</p>
+
+  <div class="divider"></div>
+
+  <h2>21. Entire Agreement</h2>
+  <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and StyleDesk AI, LLC regarding your use of the Service. These Terms supersede all prior or contemporaneous agreements, communications, and proposals, whether oral or written, between you and StyleDesk regarding the Service.</p>
+
+  <div class="divider"></div>
+
+  <h2>22. Waiver</h2>
+  <p>Our failure to enforce any right or provision of these Terms shall not constitute a waiver of that right or provision. Any waiver must be in writing and signed by an authorized representative of StyleDesk AI, LLC to be effective.</p>
+
+  <div class="divider"></div>
+
+  <h2>23. Assignment</h2>
+  <p>You may not assign or transfer your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms to an affiliate or in connection with a merger, acquisition, or sale of assets without your consent.</p>
+
+  <div class="divider"></div>
+
+  <h2>24. Contact Us</h2>
+  <p>If you have questions about these Terms, contact us at:</p>
+  <p>
+    <strong>StyleDesk AI, LLC</strong><br/>
+    Email: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a><br/>
+    Website: <a href="https://styledesk.ai">styledesk.ai</a>
+  </p>
 
 </div>
 
 <footer>
-  <p>© 2026 StyleDesk AI, LLC. All rights reserved.</p>
+  <p>&copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
 </footer>
 
 </body>
