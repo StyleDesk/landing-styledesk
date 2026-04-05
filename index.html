@@ -167,12 +167,7 @@
 
     /* PRICING */
     .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 20px; }
-    .pricing-toggle { display: flex; justify-content: center; margin-bottom: 36px; }
-    .pricing-toggle-inner { display: inline-flex; background: rgba(255,255,255,0.04); border-radius: 100px; padding: 3px; border: 0.5px solid rgba(255,255,255,0.08); }
-    .pricing-toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.5); padding: 7px 18px; border-radius: 100px; font-size: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.25s; }
-    .pricing-toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
-    .pricing-diff-hidden { display: none !important; }
+    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
     .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
     .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
@@ -505,11 +500,6 @@
     </div>
   </section>
 
-<section class="setup-section reveal">
-    <h3>No setup. No training. Works instantly.</h3>
-    <p>You don't need new software or complicated systems. StyleDesk works with your business right away.</p>
-  </section>
-
 <section class="dash-carousel reveal">
     <h2>See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
@@ -532,25 +522,24 @@
     </div>
   </section>
 
+<section class="setup-section reveal">
+    <h3>No setup. No training. Works instantly.</h3>
+    <p>You don't need new software or complicated systems. StyleDesk works with your business right away.</p>
+  </section>
+
 <section id="pricing" class="pricing-section">
     <h2 class="reveal">Pricing</h2>
-    <div class="pricing-toggle reveal">
-      <div class="pricing-toggle-inner">
-        <button class="pricing-toggle-btn active" onclick="togglePricing('all')">All Features</button>
-        <button class="pricing-toggle-btn" onclick="togglePricing('diff')">Differences Only</button>
-      </div>
-    </div>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
         <div class="pricing-name">Basic</div>
         <div class="pricing-sub">Front Desk</div>
         <div class="pricing-price">$49/month</div>
         <ul class="pricing-features">
-          <li class="shared-feature"><span class="check">✔</span><span>Dedicated business phone number</span></li>
-          <li class="shared-feature"><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
-          <li class="shared-feature"><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
-          <li class="shared-feature"><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
-          <li class="shared-feature"><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
+          <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
+          <li><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
+          <li><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
+          <li><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
+          <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
           <li><span class="check">✔</span><span>Simple call &amp; text history dashboard</span></li>
         </ul>
         <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
@@ -560,7 +549,7 @@
         <div class="pricing-sub">Operations Center</div>
         <div class="pricing-price">$99/month</div>
         <ul class="pricing-features">
-          <li class="shared-feature"><span class="check">✔</span><span>Everything in Basic +</span></li>
+          <li><span class="check">✔</span><span>Everything in Basic +</span></li>
           <li><span class="check">✔</span><span>Up to 5 individual logins/numbers + 1 owner</span></li>
           <li><span class="check">✔</span><span>Send promotional broadcasts to all your clients</span></li>
           <li><span class="check">✔</span><span>Smart upselling on every call and text</span></li>
@@ -577,7 +566,7 @@
         <div class="pricing-sub">Executive Analytics Platform</div>
         <div class="pricing-price">$179/month</div>
         <ul class="pricing-features">
-          <li class="shared-feature"><span class="check">✔</span><span>Everything in Pro +</span></li>
+          <li><span class="check">✔</span><span>Everything in Pro +</span></li>
           <li><span class="check">✔</span><span>Up to 10 individual logins/numbers + 2 owners</span></li>
           <li><span class="check">✔</span><span>Staff performance tracking and booking leaderboard</span></li>
           <li><span class="check">✔</span><span>Monthly report card PDF emailed on the 1st</span></li>
@@ -615,7 +604,7 @@
         <svg width="26" height="26" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
         StyleDesk<span>.ai</span>
       </a>
-      <p class="footer-brand-desc">The AI receptionist built exclusively for barbers and nail techs.</p>
+      <p class="footer-brand-desc">The only AI booking tool built exclusively for barbers and nail techs.</p>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">PRODUCT</div>
@@ -632,7 +621,7 @@
       <div class="footer-col-title">CONNECT</div>
       <a href="https://www.instagram.com/styledesk.ai" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/styledesk.ai" target="_blank">Facebook</a>
-      <a href="mailto:support@styledesk.ai">support@styledesk.ai</a>
+      <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -735,17 +724,6 @@
   }
   function dashNext() { dashGo((dashIdx + 1) % 3) }
   function dashPrev() { dashGo((dashIdx + 2) % 3) }
-
-  // Pricing toggle
-  function togglePricing(mode) {
-    var btns = document.querySelectorAll('.pricing-toggle-btn')
-    btns[0].className = 'pricing-toggle-btn' + (mode === 'all' ? ' active' : '')
-    btns[1].className = 'pricing-toggle-btn' + (mode === 'diff' ? ' active' : '')
-    var shared = document.querySelectorAll('.shared-feature')
-    for (var i = 0; i < shared.length; i++) {
-      shared[i].className = 'shared-feature' + (mode === 'diff' ? ' pricing-diff-hidden' : '')
-    }
-  }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
