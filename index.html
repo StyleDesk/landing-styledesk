@@ -167,7 +167,12 @@
 
     /* PRICING */
     .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; }
+    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .pricing-toggle { display: flex; justify-content: center; margin-bottom: 36px; }
+    .pricing-toggle-inner { display: inline-flex; background: rgba(255,255,255,0.04); border-radius: 100px; padding: 3px; border: 0.5px solid rgba(255,255,255,0.08); }
+    .pricing-toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.5); padding: 7px 18px; border-radius: 100px; font-size: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.25s; }
+    .pricing-toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
+    .pricing-diff-hidden { display: none !important; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
     .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
     .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
@@ -201,29 +206,30 @@
     .demo-btn { display: block; position: relative; background: #c9a064; color: #1a0008; padding: 13px 40px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s; }
     .demo-btn:hover { background: #d4ad74; }
 
-    /* TAX */
-    .tax-section { max-width: 1000px; margin: 0 auto 40px; padding: 0 24px; }
-    .tax-inner { background: rgba(124,31,54,0.06); border: 0.5px solid rgba(124,31,54,0.12); border-radius: 12px; padding: 14px 20px; display: flex; align-items: flex-start; gap: 12px; }
-    .tax-inner p { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.6; font-weight: 400; }
-    .tax-inner strong { color: rgba(255,255,255,0.6); }
-
     /* FOOTER */
-    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 24px 24px 24px 14px; max-width: 1152px; margin: 0 auto; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 40px 24px 24px; max-width: 1152px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
     .footer-logo { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
     .footer-logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
-    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 11px; font-weight: 400; transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
+    .footer-brand-desc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 10px; max-width: 220px; }
+    .footer-col-title { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
     .footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.05); padding-top: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .footer-tagline { text-align: center; padding: 16px 0 12px; font-size: 13px; color: rgba(255,255,255,0.35); font-style: italic; letter-spacing: 0.3px; }
     .footer-bottom p { font-size: 10px; color: rgba(255,255,255,0.25); font-weight: 400; }
 
     /* WORKS WITH */
     .works-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); }
 
+    /* STICKY MOBILE CTA */
+    .sticky-cta { display: none; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
+      .sticky-cta { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); border-top: 0.5px solid rgba(255,255,255,0.08); padding: 10px 16px; align-items: center; justify-content: space-between; }
+      .sticky-cta-text { font-size: 11px; font-weight: 600; color: #fff; }
+      .sticky-cta-sub { font-size: 9px; color: rgba(255,255,255,0.35); }
+      .sticky-cta-btn { background: #fff; color: #000; padding: 8px 18px; border-radius: 8px; font-size: 11px; font-weight: 600; text-decoration: none; flex-shrink: 0; }
       .header-tagline { display: none; }
       .header-nav a:not(.header-btn) { display: none; }
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -270,9 +276,7 @@
       .risk-section { padding: 24px 16px; font-size: 12px; }
       .demo-section { padding: 50px 16px; }
       .demo-card { padding: 24px 16px; }
-      .tax-section { padding: 0 16px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .footer-links { gap: 10px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
       .footer-bottom { flex-direction: column; }
       .exclusive-bar { font-size: 11px; padding: 8px 16px; flex-direction: column; gap: 6px; }
       .stats-divider { display: none; }
@@ -318,7 +322,7 @@
 <div class="exclusive-bar">
   <div style="display:flex;align-items:center;gap:8px;">
     <div class="live-dot"></div>
-    <span>Live now · <strong id="callCount">0</strong> calls & <strong id="textCount">0</strong> texts handled and counting</span>
+    <span>Live now · <strong id="callCount" style="font-family:'DM Mono',monospace;">0</strong> calls & <strong id="textCount" style="font-family:'DM Mono',monospace;">0</strong> texts handled and counting</span>
   </div>
   <div class="stats-divider"></div>
   <span>Built exclusively for <strong>barbers</strong> & <strong>nail techs</strong></span>
@@ -530,17 +534,23 @@
 
 <section id="pricing" class="pricing-section">
     <h2 class="reveal">Pricing</h2>
+    <div class="pricing-toggle reveal">
+      <div class="pricing-toggle-inner">
+        <button class="pricing-toggle-btn active" onclick="togglePricing('all')">All Features</button>
+        <button class="pricing-toggle-btn" onclick="togglePricing('diff')">Differences Only</button>
+      </div>
+    </div>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
         <div class="pricing-name">Basic</div>
         <div class="pricing-sub">Front Desk</div>
         <div class="pricing-price">$49/month</div>
         <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
-          <li><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
-          <li><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
-          <li><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
-          <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Dedicated business phone number</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
           <li><span class="check">✔</span><span>Simple call &amp; text history dashboard</span></li>
         </ul>
         <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
@@ -550,7 +560,7 @@
         <div class="pricing-sub">Operations Center</div>
         <div class="pricing-price">$99/month</div>
         <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Everything in Basic +</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Everything in Basic +</span></li>
           <li><span class="check">✔</span><span>Up to 5 individual logins/numbers + 1 owner</span></li>
           <li><span class="check">✔</span><span>Send promotional broadcasts to all your clients</span></li>
           <li><span class="check">✔</span><span>Smart upselling on every call and text</span></li>
@@ -567,7 +577,7 @@
         <div class="pricing-sub">Executive Analytics Platform</div>
         <div class="pricing-price">$179/month</div>
         <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Everything in Pro +</span></li>
+          <li class="shared-feature"><span class="check">✔</span><span>Everything in Pro +</span></li>
           <li><span class="check">✔</span><span>Up to 10 individual logins/numbers + 2 owners</span></li>
           <li><span class="check">✔</span><span>Staff performance tracking and booking leaderboard</span></li>
           <li><span class="check">✔</span><span>Monthly report card PDF emailed on the 1st</span></li>
@@ -595,37 +605,57 @@
     </div>
   </section>
 
-<div class="tax-section reveal">
-    <div class="tax-inner">
-      <div style="font-size:14px;flex-shrink:0">💼</div>
-      <p><strong>Tax note:</strong> StyleDesk.ai may qualify as a deductible business expense under Section 179. This is not tax advice. Please consult a licensed tax professional for guidance specific to your situation.</p>
-    </div>
-  </div>
 
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <a href="#" class="footer-logo">
-      <svg width="26" height="26" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
-      StyleDesk<span>.ai</span>
-    </a>
-    <div class="footer-links">
-      <a href="/cdn-cgi/l/email-protection#660e030a0a092615121f0a030203150d48070f"><span class="__cf_email__" data-cfemail="6109040d0d0e211215180d040504120a4f0008">[email&#160;protected]</span></a>
-      <a href="https://www.instagram.com/styledesk.ai" target="_blank">Instagram</a>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <svg width="26" height="26" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
+        StyleDesk<span>.ai</span>
+      </a>
+      <p class="footer-brand-desc">The AI receptionist built exclusively for barbers and nail techs.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">PRODUCT</div>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How it Works</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">COMPANY</div>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">CONNECT</div>
+      <a href="https://www.instagram.com/styledesk.ai" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/styledesk.ai" target="_blank">Facebook</a>
+      <a href="mailto:support@styledesk.ai">support@styledesk.ai</a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
-    <p>Built for barbers &amp; nail techs who never stop hustling.</p>
+    <p style="font-style: italic; color: rgba(255,255,255,0.2);">"You Fade. You File. We Handle the Rest."</p>
   </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Live call & text counter
+  // Live call & text counter with animation
+  function animateCount(el, target) {
+    var start = 0, duration = 1500, startTime = null
+    function step(ts) {
+      if (!startTime) startTime = ts
+      var progress = Math.min((ts - startTime) / duration, 1)
+      var eased = 1 - Math.pow(1 - progress, 3)
+      el.textContent = Math.floor(eased * target).toLocaleString()
+      if (progress < 1) requestAnimationFrame(step)
+      else el.textContent = target.toLocaleString()
+    }
+    requestAnimationFrame(step)
+  }
   (async function() {
     try {
       var callRes = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/calls?select=id', {
@@ -644,8 +674,8 @@
       })
       var callCount = callRes.headers.get('content-range')
       var textCount = textRes.headers.get('content-range')
-      if (callCount) document.getElementById('callCount').textContent = parseInt(callCount.split('/')[1]).toLocaleString()
-      if (textCount) document.getElementById('textCount').textContent = parseInt(textCount.split('/')[1]).toLocaleString()
+      if (callCount) animateCount(document.getElementById('callCount'), parseInt(callCount.split('/')[1]))
+      if (textCount) animateCount(document.getElementById('textCount'), parseInt(textCount.split('/')[1]))
     } catch(e) {}
   })()
 
@@ -706,6 +736,17 @@
   function dashNext() { dashGo((dashIdx + 1) % 3) }
   function dashPrev() { dashGo((dashIdx + 2) % 3) }
 
+  // Pricing toggle
+  function togglePricing(mode) {
+    var btns = document.querySelectorAll('.pricing-toggle-btn')
+    btns[0].className = 'pricing-toggle-btn' + (mode === 'all' ? ' active' : '')
+    btns[1].className = 'pricing-toggle-btn' + (mode === 'diff' ? ' active' : '')
+    var shared = document.querySelectorAll('.shared-feature')
+    for (var i = 0; i < shared.length; i++) {
+      shared[i].className = 'shared-feature' + (mode === 'diff' ? ' pricing-diff-hidden' : '')
+    }
+  }
+
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -716,5 +757,12 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 </script>
+<div class="sticky-cta">
+  <div>
+    <div class="sticky-cta-text">StyleDesk.ai</div>
+    <div class="sticky-cta-sub">AI receptionist for your shop</div>
+  </div>
+  <a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="sticky-cta-btn">Book Demo</a>
+</div>
 </body>
 </html>
