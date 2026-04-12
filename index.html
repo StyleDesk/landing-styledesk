@@ -173,9 +173,22 @@
     .dash-arrow-left { left: -120px; }
     .dash-arrow-right { right: -120px; }
     .dash-label { text-align: center; margin-top: 56px; font-size: 15px; font-weight: 600; transition: all 0.4s; position: relative; z-index: 1; }
-    .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; position: relative; z-index: 1; }
-    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .dash-dot.active { background: #c9a064; width: 28px; border-radius: 4px; }
+    /* TIER BADGES (replaces dots) */
+    .laptop-wrap { position: relative; }
+    .laptop-chrome { background: #1e1218; border-radius: 10px 10px 0 0; border: 1.5px solid rgba(255,255,255,0.08); border-bottom: none; padding: 8px 12px 0; }
+    .laptop-dots { display: flex; gap: 5px; margin-bottom: 8px; }
+    .laptop-dots span { width: 7px; height: 7px; border-radius: 50%; }
+    .laptop-screen { border-radius: 0 0 2px 2px; overflow: hidden; }
+    .laptop-screen img { width: 100%; display: block; border-radius: 0; }
+    .laptop-base { width: 104%; margin-left: -2%; height: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: 0 0 8px 8px; border: 1px solid rgba(255,255,255,0.05); border-top: none; }
+    .dash-card img { border-radius: 0; }
+    .dash-card[data-pos="center"] { box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+
+    /* TIER BADGES (replaces dots) */
+    .dash-tiers { display: flex; justify-content: center; gap: 8px; margin-top: 14px; position: relative; z-index: 1; }
+    .tier-badge { padding: 6px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 0.5px solid rgba(255,255,255,0.1); background: transparent; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; }
+    .tier-badge:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
+    .tier-badge.active { background: rgba(201,160,100,0.12); border-color: rgba(201,160,100,0.3); color: #c9a064; }
 
     .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
     .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
@@ -294,7 +307,12 @@
       .dash-arrow-right { right: -8px; }
       .dash-arrow svg { width: 16px; height: 16px; }
       .dash-label { margin-top: 24px; font-size: 13px; }
-      .dash-dots { margin-top: 12px; }
+      .dash-tiers { margin-top: 12px; }
+      .tier-badge { padding: 5px 14px; font-size: 11px; }
+      .laptop-chrome { padding: 5px 8px 0; }
+      .laptop-dots span { width: 5px; height: 5px; }
+      .laptop-dots { margin-bottom: 5px; gap: 4px; }
+      .laptop-base { height: 7px; }
       .pricing-section { padding: 60px 16px; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
       .pricing-card.pro-featured { transform: none; }
@@ -425,7 +443,7 @@
 <section class="pain-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="pain-inner reveal">
-      <h2 class="grad-text">Your phone is your biggest weakness... and your biggest opportunity.</h2>
+      <h2>Your phone is your biggest weakness... and your biggest opportunity.</h2>
       <div class="pain-points">
         <p>Right now, missed calls and unanswered texts are costing you clients.</p>
         <p>But what if every call got answered, every text got a reply, and every client got a booking link sent to them automatically?</p>
@@ -437,7 +455,7 @@
 
 <section id="how" class="how-section">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2 class="reveal grad-text">How it works</h2>
+    <h2 class="reveal">How it works</h2>
     <div class="steps-grid">
       <div class="step-card glass reveal reveal-delay-1">
         <div class="step-icon"><div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
@@ -464,7 +482,7 @@
     <div class="section-particles" aria-hidden="true"></div>
     <div class="call-inner reveal">
       <div class="call-label">Live demo</div>
-      <h2 class="call-title grad-text">Try StyleDesk right now</h2>
+      <h2 class="call-title">Try StyleDesk right now</h2>
       <p class="call-desc">Call or text our live demo number. Ask about services, pricing, or hours. The AI answers just like it would for any shop.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px;">
         <a href="tel:+12408754777" class="demo-cta-card cta-maroon">
@@ -501,7 +519,7 @@
     <div style="max-width: 1152px; margin: 0 auto; position: relative; z-index: 1;">
       <div style="text-align: center; margin-bottom: 48px;" class="reveal">
         <p style="font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 12px;">No switching required</p>
-        <h2 class="grad-text" style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf; -webkit-text-fill-color: #f0c6cf;">We make it work harder.</span></h2>
+        <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf;">We make it work harder.</span></h2>
         <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 600px; margin: 0 auto; font-weight: 400;">Keep using Booksy, Fresha, Square, or whatever you love. StyleDesk sits on top. Your clients book through your existing app, just like always.</p>
       </div>
       <div style="text-align: center;" class="reveal">
@@ -535,7 +553,7 @@
 
 <section class="dash-carousel reveal">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2 class="grad-text">See the dashboard in action</h2>
+    <h2>See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
     <div class="dash-stage">
       <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">
@@ -544,21 +562,21 @@
       <div class="dash-arrow dash-arrow-right" onclick="dashNext()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
       </div>
-      <div class="dash-card" data-pos="left" id="dashC0" onclick="dashGo(0)"><img src="images/basic-dashboard.png" alt="Basic Dashboard" loading="lazy"/></div>
-      <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)"><img src="images/pro-dashboard.png" alt="Pro Dashboard" loading="lazy"/></div>
-      <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)"><img src="images/premium-dashboard.png" alt="Premium Dashboard" loading="lazy"/></div>
+      <div class="dash-card" data-pos="left" id="dashC0" onclick="dashGo(0)"><div class="laptop-wrap"><div class="laptop-chrome"><div class="laptop-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div></div><div class="laptop-screen"><img src="images/basic-dashboard.png" alt="Basic Dashboard" loading="lazy"/></div><div class="laptop-base"></div></div></div>
+      <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)"><div class="laptop-wrap"><div class="laptop-chrome"><div class="laptop-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div></div><div class="laptop-screen"><img src="images/pro-dashboard.png" alt="Pro Dashboard" loading="lazy"/></div><div class="laptop-base"></div></div></div>
+      <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)"><div class="laptop-wrap"><div class="laptop-chrome"><div class="laptop-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div></div><div class="laptop-screen"><img src="images/premium-dashboard.png" alt="Premium Dashboard" loading="lazy"/></div><div class="laptop-base"></div></div></div>
     </div>
     <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
-    <div class="dash-dots" id="dashDots">
-      <div class="dash-dot" onclick="dashGo(0)"></div>
-      <div class="dash-dot active" onclick="dashGo(1)"></div>
-      <div class="dash-dot" onclick="dashGo(2)"></div>
+    <div class="dash-tiers" id="dashTiers">
+      <div class="tier-badge" onclick="dashGo(0)">Basic</div>
+      <div class="tier-badge active" onclick="dashGo(1)">Pro</div>
+      <div class="tier-badge" onclick="dashGo(2)">Premium</div>
     </div>
   </section>
 
 <section id="pricing" class="pricing-section">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2 class="reveal grad-text">Pricing</h2>
+    <h2 class="reveal">Pricing</h2>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
         <div class="pricing-name">Basic</div>
@@ -751,8 +769,8 @@
     var map = dashPosMap[dashIdx]
     for (var s = 0; s < 3; s++) document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
     document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
-    var dots = document.getElementById('dashDots').children
-    for (var d = 0; d < dots.length; d++) dots[d].className = 'dash-dot' + (d === dashIdx ? ' active' : '')
+    var tiers = document.getElementById('dashTiers').children
+    for (var d = 0; d < tiers.length; d++) tiers[d].className = 'tier-badge' + (d === dashIdx ? ' active' : '')
   }
   function dashNext() { dashGo((dashIdx + 1) % 3) }
   function dashPrev() { dashGo((dashIdx + 2) % 3) }
