@@ -52,7 +52,8 @@
     .has-particles { position: relative; }
 
     /* HERO */
-    .hero { padding: 80px 24px 60px; max-width: 1152px; margin: 0 auto; position: relative; }
+    .hero { padding: 80px 24px 60px; position: relative; }
+    .hero-inner { max-width: 1152px; margin: 0 auto; }
     .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(124,31,54,0.2) 0%, rgba(124,31,54,0.05) 40%, transparent 70%); pointer-events: none; z-index: 0; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; position: relative; z-index: 1; }
     .ai-badge { display: inline-flex; border: 0.5px solid rgba(201,160,100,0.3); background: transparent; padding: 6px 14px; border-radius: 100px; font-size: 11px; margin-bottom: 14px; color: #c9a064; font-weight: 500; letter-spacing: 0.5px; }
@@ -159,7 +160,7 @@
     .value-inner p:last-child { color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 400; }
 
     /* DASHBOARD — STATIC DEVICE FRAME + CROSSFADE */
-    .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); max-width: 1152px; margin: 0 auto; position: relative; }
+    .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
     .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; z-index: 1; }
     .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 40px; position: relative; z-index: 1; }
     .device-frame { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; border-radius: 12px; overflow: hidden; border: 2.5px solid rgba(255,255,255,0.1); background: rgba(60,60,60,0.4); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
@@ -181,7 +182,8 @@
     .setup-section p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; font-weight: 400; }
 
     /* FEATURES */
-    .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .features-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .features-inner { max-width: 1152px; margin: 0 auto; }
     .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; position: relative; z-index: 1; }
     @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     .grad-text { background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
@@ -194,7 +196,8 @@
     .feature-card p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; font-weight: 400; }
 
     /* PRICING */
-    .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .pricing-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .pricing-inner { max-width: 1152px; margin: 0 auto; }
     .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; position: relative; z-index: 1; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; position: relative; z-index: 1; }
     .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
@@ -218,7 +221,8 @@
     .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
 
     /* DEMO */
-    .demo-section { padding: 80px 24px; max-width: 768px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .demo-section { padding: 80px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .demo-inner { max-width: 768px; margin: 0 auto; }
     .demo-card { border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; border-color: rgba(201,160,100,0.15); z-index: 1; }
     .demo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #c9a064, transparent); }
     .demo-label { font-size: 11px; color: #c9a064; font-weight: 500; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
@@ -341,6 +345,7 @@
 <main>
 <section class="hero">
     <div class="section-particles" aria-hidden="true"></div>
+    <div class="hero-inner">
     <div class="hero-grid">
       <div>
         <div class="ai-badge">AI Booking &amp; Analytics</div><br/>
@@ -406,6 +411,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -506,6 +512,7 @@
 
 <section id="features" class="features-section">
     <div class="section-particles" aria-hidden="true"></div>
+    <div class="features-inner">
     <p class="features-label reveal">Features</p>
     <h2 class="features-title reveal">Included in every plan.</h2>
     <div class="features-grid">
@@ -517,6 +524,7 @@
       <div class="feature-card glass reveal reveal-delay-2"><div class="feature-icon">☎️</div><h4>Press 1 to connect</h4><p>Clients can press 1 at any time to transfer directly to you.</p></div>
       <div class="feature-card glass reveal reveal-delay-3"><div class="feature-icon">📊</div><h4>Call &amp; text dashboard</h4><p>See every call and full text conversation in your dashboard.</p></div>
       <div class="feature-card glass reveal reveal-delay-4"><div class="feature-icon">✏️</div><h4>Edit your info anytime</h4><p>Update services, prices, hours and booking link instantly.</p></div>
+    </div>
     </div>
   </section>
 
@@ -548,6 +556,7 @@
 
 <section id="pricing" class="pricing-section">
     <div class="section-particles" aria-hidden="true"></div>
+    <div class="pricing-inner">
     <h2 class="reveal">Pricing</h2>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
@@ -601,15 +610,18 @@
         <a href="https://buy.stripe.com/14A14p7ZifkD70t4YjgEg06" target="_blank" class="pricing-btn">Start 30-Day Free Trial</a>
       </div>
     </div>
+    </div>
   </section>
 
 <section id="demo" class="demo-section">
     <div class="section-particles" aria-hidden="true"></div>
+    <div class="demo-inner">
     <div class="demo-card glass reveal">
       <div class="demo-label">Limited Availability</div>
       <h2 class="grad-text">Ready to never miss a client again?</h2>
       <p>Book a 15-minute demo. See how StyleDesk works for your shop.</p>
       <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="demo-btn">Book Your Demo</a></span>
+    </div>
     </div>
   </section>
 
