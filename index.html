@@ -265,14 +265,15 @@
       .toggle-desktop { display: none; }
       .toggle-mobile { display: none; }
       .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
-      .hero-grid > div:first-child { order: 1; text-align: left; }
+      .hero-grid > div:first-child { order: 1; }
       .hero-grid > div:last-child { order: 2; }
       .hero-grid > div:last-child .toggle-desktop { display: flex; justify-content: center; margin-bottom: 10px; }
       .hero { padding: 20px 16px 24px; overflow: hidden; }
-      .hero h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; color: rgba(255,255,255,0.6); letter-spacing: -0.5px; line-height: 1.3; }
-      .hero h1 .pink { font-size: 42px; font-weight: 700; color: #f0c6cf; letter-spacing: -2px; margin-top: 4px; display: block; line-height: 1; }
-      .hero-sub { margin-left: 0; margin-right: 0; font-size: 14px; margin-bottom: 20px; text-align: left; }
-      .hero-btns { flex-direction: row; justify-content: flex-start; }
+      .hero h1 { font-size: 14px; font-weight: 500; margin-bottom: 6px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; line-height: 1.4; }
+      .hero h1 br { display: none; }
+      .hero h1 .pink { font-size: 52px; font-weight: 700; color: #f0c6cf; letter-spacing: -3px; margin-top: 8px; display: block; line-height: 1; text-transform: none; }
+      .hero-sub { margin-left: auto; margin-right: auto; font-size: 14px; margin-bottom: 20px; }
+      .hero-btns { flex-direction: row; justify-content: center; }
       .btn-white, .btn-outline { width: auto; text-align: center; padding: 12px 20px; font-size: 13px; }
       .ai-badge { margin-bottom: 10px; font-size: 10px; }
       .trust-badges { display: none; }
@@ -318,8 +319,8 @@
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 20px; }
-      .hero h1 .pink { font-size: 38px; }
+      .hero h1 { font-size: 13px; }
+      .hero h1 .pink { font-size: 46px; letter-spacing: -2.5px; }
       .hero-sub { font-size: 13px; margin-bottom: 16px; }
       .hero-btns { flex-direction: column; }
       .btn-white, .btn-outline { width: 100%; padding: 11px 18px; }
