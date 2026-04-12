@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; }
 
     /* SCROLL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -249,7 +249,7 @@
     .footer-bottom p { font-size: 10px; color: rgba(255,255,255,0.25); font-weight: 400; }
 
     /* WORKS WITH */
-    .works-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .works-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 
     /* STICKY MOBILE CTA */
     .sticky-cta { display: none; }
@@ -268,7 +268,7 @@
       .hero-grid > div:first-child { order: 1; }
       .hero-grid > div:last-child { order: 2; }
       .hero-grid > div:last-child .toggle-desktop { display: flex; justify-content: center; margin-bottom: 10px; }
-      .hero { padding: 20px 16px 24px; }
+      .hero { padding: 20px 16px 24px; overflow: hidden; }
       .hero h1 { font-size: 32px; margin-bottom: 14px; }
       .hero h1 .pink { font-size: 1.25em; }
       .hero-sub { margin-left: auto; margin-right: auto; font-size: 14px; margin-bottom: 20px; }
@@ -335,7 +335,7 @@
       .device-chrome span { width: 7px; height: 7px; }
       .device-chrome { padding: 8px 10px; gap: 5px; }
       .device-base { height: 10px; }
-      .device-base-wrap { max-width: 102%; margin-left: -1%; }
+      .device-base-wrap { max-width: 100%; margin-left: 0; }
     }
   </style>
 </head>
