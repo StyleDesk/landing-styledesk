@@ -143,7 +143,11 @@
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1152px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
     .step-card { border-radius: 16px; padding: 32px 20px; transition: all 0.3s; }
     .step-card:hover { transform: translateY(-4px); }
-    .step-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .step-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; }
+    @keyframes pulseRing { 0%{transform:scale(1);opacity:0.5} 100%{transform:scale(2.2);opacity:0} }
+    .step-icon .pulse-ring { position: absolute; inset: 0; border-radius: 14px; border: 1px solid rgba(240,198,207,0.2); animation: pulseRing 2.8s ease-out infinite; pointer-events: none; }
+    .step-icon .pulse-ring:nth-child(2) { animation-delay: 0.9s; }
+    .step-icon .pulse-ring:nth-child(3) { animation-delay: 1.8s; }
     .step-title { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
     .step-num { font-size: 12px; font-weight: 600; color: #c9a064; letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
     .step-card p { color: rgba(255,255,255,0.55); font-size: 13px; line-height: 1.5; font-weight: 400; }
@@ -180,7 +184,8 @@
     /* FEATURES */
     .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
     .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; position: relative; z-index: 1; }
-    .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; }
+    @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; z-index: 1; }
     .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); }
@@ -434,19 +439,19 @@
     <h2 class="reveal">How it works</h2>
     <div class="steps-grid">
       <div class="step-card glass reveal reveal-delay-1">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="step-icon"><div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
         <div class="step-num">Step 01</div>
         <div class="step-title">Get your number</div>
         <p>Sign up and get a dedicated business number with your area code</p>
       </div>
       <div class="step-card glass reveal reveal-delay-2">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="14" rx="2"/><circle cx="12" cy="16" r="2"/></svg></div>
+        <div class="step-icon"><div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="14" rx="2"/><circle cx="12" cy="16" r="2"/></svg></div>
         <div class="step-num">Step 02</div>
         <div class="step-title">AI takes over</div>
         <p>AI answers every call and text on your behalf, 24/7</p>
       </div>
       <div class="step-card glass reveal reveal-delay-3">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
+        <div class="step-icon"><div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
         <div class="step-num">Step 03</div>
         <div class="step-title">Clients booked</div>
         <p>Clients get answers and a booking link sent to them automatically</p>
@@ -643,7 +648,7 @@
       <div class="footer-col-title">CONNECT</div>
       <a href="https://www.instagram.com/styledesk.ai" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/styledesk.ai" target="_blank">Facebook</a>
-      <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>
+      <a href="/cdn-cgi/l/email-protection#345c5158585b7447404d58515051475f1a555d"><span class="__cf_email__" data-cfemail="167e737a7a795665626f7a737273657d38777f">[email&#160;protected]</span></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -652,7 +657,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
   // PARTICLE GENERATOR — fills every .section-particles with randomized dots
   (function() {
@@ -759,10 +764,4 @@
 </script>
 <div class="sticky-cta">
   <div>
-    <div class="sticky-cta-text">StyleDesk.ai</div>
-    <div class="sticky-cta-sub">AI receptionist for your shop</div>
-  </div>
-  <a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="sticky-cta-btn">Book Demo</a>
-</div>
-</body>
-</html>
+    <div class="sticky
