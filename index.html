@@ -42,29 +42,14 @@
     .stats-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.08); }
     .exclusive-dot { display: inline-block; width: 3px; height: 3px; background: #c9a064; border-radius: 50%; margin: 0 10px; vertical-align: middle; position: relative; top: -1px; }
 
-    /* =============================================
-       UPGRADE #2: FLOATING GOLD PARTICLES (HERO)
-       ============================================= */
-    @keyframes particleFloat1 { 0%,100%{transform:translateY(0) translateX(0) scale(1)} 50%{transform:translateY(-25px) translateX(8px) scale(1.2)} }
-    @keyframes particleFloat2 { 0%,100%{transform:translateY(0) translateX(0) scale(1)} 50%{transform:translateY(-18px) translateX(-6px) scale(0.85)} }
-    @keyframes particleFloat3 { 0%,100%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-30px) translateX(12px)} }
-    @keyframes particleFade { 0%,100%{opacity:0.15} 50%{opacity:0.35} }
-    .hero-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-    .hero-particle {
-      position: absolute; border-radius: 50%;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-    }
-    .hp1 { width: 4px; height: 4px; background: #c9a064; top: 12%; left: 10%; animation: particleFloat1 6s infinite, particleFade 6s infinite; }
-    .hp2 { width: 3px; height: 3px; background: #f0c6cf; top: 25%; left: 65%; animation: particleFloat2 7s infinite 0.8s, particleFade 7s infinite 0.8s; }
-    .hp3 { width: 5px; height: 5px; background: #c9a064; top: 55%; left: 35%; animation: particleFloat3 8s infinite 0.3s, particleFade 8s infinite 0.3s; }
-    .hp4 { width: 3px; height: 3px; background: #f0c6cf; top: 18%; left: 82%; animation: particleFloat1 9s infinite 1.5s, particleFade 9s infinite 1.5s; }
-    .hp5 { width: 4px; height: 4px; background: #c9a064; top: 70%; left: 18%; animation: particleFloat2 6.5s infinite 1s, particleFade 6.5s infinite 1s; }
-    .hp6 { width: 2px; height: 2px; background: rgba(255,255,255,0.6); top: 8%; left: 48%; animation: particleFloat3 7.5s infinite 0.6s, particleFade 7.5s infinite 0.6s; }
-    .hp7 { width: 3px; height: 3px; background: #c9a064; top: 42%; left: 88%; animation: particleFloat1 8.5s infinite 2s, particleFade 8.5s infinite 2s; }
-    .hp8 { width: 4px; height: 4px; background: #f0c6cf; top: 80%; left: 55%; animation: particleFloat2 7s infinite 1.2s, particleFade 7s infinite 1.2s; }
-    .hp9 { width: 2px; height: 2px; background: #c9a064; top: 35%; left: 5%; animation: particleFloat3 9.5s infinite 0.4s, particleFade 9.5s infinite 0.4s; }
-    .hp10 { width: 3px; height: 3px; background: rgba(255,255,255,0.5); top: 60%; left: 75%; animation: particleFloat1 7s infinite 1.8s, particleFade 7s infinite 1.8s; }
+    /* FLOATING PARTICLES */
+    @keyframes pFloat1 { 0%,100%{transform:translateY(0) translateX(0) scale(1)} 50%{transform:translateY(-25px) translateX(8px) scale(1.2)} }
+    @keyframes pFloat2 { 0%,100%{transform:translateY(0) translateX(0) scale(1)} 50%{transform:translateY(-18px) translateX(-6px) scale(0.85)} }
+    @keyframes pFloat3 { 0%,100%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-30px) translateX(12px)} }
+    @keyframes pFade { 0%,100%{opacity:0.12} 50%{opacity:0.3} }
+    .section-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .section-particles .p { position: absolute; border-radius: 50%; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+    .has-particles { position: relative; }
 
     /* HERO */
     .hero { padding: 80px 24px 60px; max-width: 1152px; margin: 0 auto; position: relative; }
@@ -120,24 +105,9 @@
     /* GLASS CARD MIXIN */
     .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0.5px solid rgba(255,255,255,0.06); }
 
-    /* =============================================
-       UPGRADE #5: ANIMATED GRADIENT DIVIDERS
-       ============================================= */
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    .gradient-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(201,160,100,0.05) 10%, rgba(201,160,100,0.4) 30%, rgba(124,31,54,0.5) 50%, rgba(201,160,100,0.4) 70%, rgba(201,160,100,0.05) 90%, transparent 100%);
-      background-size: 200% 100%;
-      animation: gradientFlow 6s linear infinite;
-      border: none;
-    }
-
     /* CALL DEMO */
-    .call-section { padding: 100px 24px; }
-    .call-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .call-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .call-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
     .call-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 10px; }
     .call-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 14px; }
     .call-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 32px; font-weight: 400; max-width: 500px; margin-left: auto; margin-right: auto; }
@@ -161,16 +131,16 @@
     .try-pill:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
 
     /* PAIN */
-    .pain-section { padding: 100px 24px; }
-    .pain-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .pain-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .pain-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
     .pain-inner h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; letter-spacing: -1px; margin-bottom: 36px; }
     .pain-points p { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.7; }
     .pain-cta { font-weight: 600; color: #c9a064; font-size: 17px; margin-top: 28px; line-height: 1.6; }
 
     /* HOW IT WORKS */
-    .how-section { padding: 100px 24px; }
-    .how-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 36px; }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1152px; margin: 0 auto; text-align: center; }
+    .how-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .how-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 36px; position: relative; z-index: 1; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1152px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
     .step-card { border-radius: 16px; padding: 32px 20px; transition: all 0.3s; }
     .step-card:hover { transform: translateY(-4px); }
     .step-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
@@ -184,12 +154,11 @@
     .value-inner p:first-child { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
     .value-inner p:last-child { color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 400; }
 
-    /* SETUP */
     /* DASHBOARD CAROUSEL */
-    .dash-carousel { padding: 60px 24px 40px; max-width: 1152px; margin: 0 auto; }
-    .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; }
-    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 52px; }
-    .dash-stage { position: relative; height: 540px; max-width: 1100px; margin: 0 auto; overflow: visible; }
+    .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); max-width: 1152px; margin: 0 auto; position: relative; }
+    .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; z-index: 1; }
+    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 52px; position: relative; z-index: 1; }
+    .dash-stage { position: relative; height: 540px; max-width: 1100px; margin: 0 auto; overflow: visible; z-index: 1; }
     .dash-card { position: absolute; top: 50%; border-radius: 12px; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform, opacity, left, width; overflow: hidden; }
     .dash-card img { width: 100%; border-radius: 12px; display: block; }
     .dash-card[data-pos="left"] { left: -4%; width: 16%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
@@ -199,73 +168,42 @@
     .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
     .dash-arrow-left { left: -120px; }
     .dash-arrow-right { right: -120px; }
-    .dash-label { text-align: center; margin-top: 56px; font-size: 15px; font-weight: 600; transition: all 0.4s; }
-    .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .dash-label { text-align: center; margin-top: 56px; font-size: 15px; font-weight: 600; transition: all 0.4s; position: relative; z-index: 1; }
+    .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; position: relative; z-index: 1; }
     .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .dash-dot.active { background: #c9a064; width: 28px; border-radius: 4px; }
 
-    .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; }
+    .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
     .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
     .setup-section p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; font-weight: 400; }
 
     /* FEATURES */
-    .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; }
-    .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; }
-    .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; }
-    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; position: relative; z-index: 1; }
+    .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; }
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; z-index: 1; }
     .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 18px; }
     .feature-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
     .feature-card p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; font-weight: 400; }
 
-    /* =============================================
-       UPGRADE #7: PRICING CARD SPOTLIGHT ROTATION
-       ============================================= */
-    @keyframes spotlightRotate {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
     /* PRICING */
-    .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
-    .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; position: relative; z-index: 1; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; position: relative; z-index: 1; }
+    .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
     .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
     .pricing-card.pro-featured { border-color: rgba(201,160,100,0.25); border-width: 1px; }
-    .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #c9a064; color: #1a0008; font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 100px; letter-spacing: 0.5px; z-index: 2; }
-    /* Spotlight glow on Pro card */
-    .pricing-card.pro-featured::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      height: 400px;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0%,
-        rgba(201,160,100,0.06) 15%,
-        transparent 30%,
-        rgba(124,31,54,0.05) 45%,
-        transparent 60%,
-        rgba(201,160,100,0.06) 75%,
-        transparent 90%
-      );
-      animation: spotlightRotate 10s linear infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
+    .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #c9a064; color: #1a0008; font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 100px; letter-spacing: 0.5px; }
     .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.4); box-shadow: 0 0 50px rgba(201,160,100,0.12), 0 0 100px rgba(124,31,54,0.08); }
-    /* Ensure all pricing card content sits above the spotlight */
-    .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; position: relative; z-index: 1; }
-    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-weight: 400; position: relative; z-index: 1; }
-    .pricing-price { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; position: relative; z-index: 1; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; flex: 1; position: relative; z-index: 1; }
+    .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-weight: 400; }
+    .pricing-price { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; flex: 1; }
     .pricing-features li { display: flex; align-items: flex-start; gap: 6px; }
     .check { color: #c9a064; font-weight: 600; font-size: 10px; margin-top: 2px; flex-shrink: 0; }
-    .pricing-btn { display: block; width: 100%; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; transition: all 0.3s; box-sizing: border-box; border: 0.5px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+    .pricing-btn { display: block; width: 100%; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; transition: all 0.3s; box-sizing: border-box; border: 0.5px solid rgba(255,255,255,0.1); }
     .pricing-features + .pricing-btn { margin-top: 20px; }
     .pricing-btn:hover { background: #c9a064; color: #1a0008; border-color: #c9a064; }
     .pro-featured .pricing-btn { background: #c9a064; color: #1a0008; border-color: #c9a064; }
@@ -275,8 +213,8 @@
     .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
 
     /* DEMO */
-    .demo-section { padding: 80px 24px; max-width: 768px; margin: 0 auto; }
-    .demo-card { border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; border-color: rgba(201,160,100,0.15); }
+    .demo-section { padding: 80px 24px; max-width: 768px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .demo-card { border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; border-color: rgba(201,160,100,0.15); z-index: 1; }
     .demo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #c9a064, transparent); }
     .demo-label { font-size: 11px; color: #c9a064; font-weight: 500; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
     .demo-card h2 { font-size: clamp(20px, 2vw, 28px); font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
@@ -299,7 +237,7 @@
     .footer-bottom p { font-size: 10px; color: rgba(255,255,255,0.25); font-weight: 400; }
 
     /* WORKS WITH */
-    .works-section { padding: 100px 24px; }
+    .works-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
 
     /* STICKY MOBILE CTA */
     .sticky-cta { display: none; }
@@ -409,20 +347,7 @@
 
 <main>
 <section class="hero">
-    <!-- UPGRADE #2: FLOATING PARTICLES -->
-    <div class="hero-particles">
-      <div class="hero-particle hp1"></div>
-      <div class="hero-particle hp2"></div>
-      <div class="hero-particle hp3"></div>
-      <div class="hero-particle hp4"></div>
-      <div class="hero-particle hp5"></div>
-      <div class="hero-particle hp6"></div>
-      <div class="hero-particle hp7"></div>
-      <div class="hero-particle hp8"></div>
-      <div class="hero-particle hp9"></div>
-      <div class="hero-particle hp10"></div>
-    </div>
-
+    <div class="section-particles" aria-hidden="true"></div>
     <div class="hero-grid">
       <div>
         <div class="ai-badge">AI Booking &amp; Analytics</div><br/>
@@ -491,10 +416,8 @@
     </div>
   </section>
 
-<!-- UPGRADE #5: GRADIENT DIVIDER (replaces border-top on pain section) -->
-<div class="gradient-divider"></div>
-
 <section class="pain-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <div class="pain-inner reveal">
       <h2>Your phone is your biggest weakness... and your biggest opportunity.</h2>
       <div class="pain-points">
@@ -506,9 +429,8 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section id="how" class="how-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <h2 class="reveal">How it works</h2>
     <div class="steps-grid">
       <div class="step-card glass reveal reveal-delay-1">
@@ -532,9 +454,8 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section class="call-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <div class="call-inner reveal">
       <div class="call-label">Live demo</div>
       <h2 class="call-title">Try StyleDesk right now</h2>
@@ -568,55 +489,30 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <!-- Works With Your Booking App -->
   <section class="works-section">
-    <div style="max-width: 1152px; margin: 0 auto;">
+    <div class="section-particles" aria-hidden="true"></div>
+    <div style="max-width: 1152px; margin: 0 auto; position: relative; z-index: 1;">
       <div style="text-align: center; margin-bottom: 48px;" class="reveal">
         <p style="font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 12px;">No switching required</p>
         <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf;">We make it work harder.</span></h2>
         <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 600px; margin: 0 auto; font-weight: 400;">Keep using Booksy, Fresha, Square, or whatever you love. StyleDesk sits on top. Your clients book through your existing app, just like always.</p>
       </div>
-
       <div style="text-align: center;" class="reveal">
         <p style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; letter-spacing: 1px;">WORKS WITH THE APPS YOU ALREADY USE</p>
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#00b67a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:14px;font-weight:700;color:white;font-family:'Inter',sans-serif;">b</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Booksy</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:0.5px solid rgba(255,255,255,0.15);">
-              <svg width="14" height="14" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="white"/></svg>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Square</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#3ecf8e;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:12px;font-weight:900;color:white;">Fr</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Fresha</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#7b3fe4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:12px;font-weight:900;color:white;">V</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Vagaro</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:100px;padding:8px 18px 8px 12px;backdrop-filter:blur(8px);">
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.3);">&amp; any other</span>
-          </div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);"><div style="width:26px;height:26px;border-radius:50%;background:#00b67a;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:14px;font-weight:700;color:white;font-family:'Inter',sans-serif;">b</span></div><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Booksy</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);"><div style="width:26px;height:26px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:0.5px solid rgba(255,255,255,0.15);"><svg width="14" height="14" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="white"/></svg></div><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Square</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);"><div style="width:26px;height:26px;border-radius:50%;background:#3ecf8e;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:12px;font-weight:900;color:white;">Fr</span></div><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Fresha</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);"><div style="width:26px;height:26px;border-radius:50%;background:#7b3fe4;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:12px;font-weight:900;color:white;">V</span></div><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Vagaro</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:100px;padding:8px 18px 8px 12px;backdrop-filter:blur(8px);"><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.3);">&amp; any other</span></div>
         </div>
       </div>
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section id="features" class="features-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <p class="features-label reveal">Features</p>
     <h2 class="features-title reveal">Included in every plan.</h2>
     <div class="features-grid">
@@ -631,9 +527,8 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section class="dash-carousel reveal">
+    <div class="section-particles" aria-hidden="true"></div>
     <h2>See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
     <div class="dash-stage">
@@ -655,9 +550,8 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section id="pricing" class="pricing-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <h2 class="reveal">Pricing</h2>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
@@ -713,9 +607,8 @@
     </div>
   </section>
 
-<div class="gradient-divider"></div>
-
 <section id="demo" class="demo-section">
+    <div class="section-particles" aria-hidden="true"></div>
     <div class="demo-card glass reveal">
       <div class="demo-label">Limited Availability</div>
       <h2>Ready to never miss a client again?</h2>
@@ -723,7 +616,6 @@
       <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="demo-btn">Book Your Demo</a></span>
     </div>
   </section>
-
 
 </main>
 
@@ -762,7 +654,29 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Live call & text counter with animation
+  // PARTICLE GENERATOR — fills every .section-particles with randomized dots
+  (function() {
+    var containers = document.querySelectorAll('.section-particles');
+    var colors = ['#c9a064', '#f0c6cf', '#c9a064', 'rgba(255,255,255,0.5)', '#f0c6cf', '#c9a064'];
+    var anims = ['pFloat1', 'pFloat2', 'pFloat3'];
+    containers.forEach(function(container, ci) {
+      for (var i = 0; i < 8; i++) {
+        var dot = document.createElement('div');
+        dot.className = 'p';
+        var size = 2 + Math.random() * 3;
+        var top = 5 + Math.random() * 85;
+        var left = 3 + Math.random() * 90;
+        var anim = anims[Math.floor(Math.random() * anims.length)];
+        var dur = 5 + Math.random() * 5;
+        var delay = Math.random() * 4;
+        var color = colors[(ci * 3 + i) % colors.length];
+        dot.style.cssText = 'width:'+size+'px;height:'+size+'px;background:'+color+';top:'+top+'%;left:'+left+'%;animation:'+anim+' '+dur+'s ease-in-out infinite '+delay+'s,pFade '+dur+'s ease-in-out infinite '+delay+'s;';
+        container.appendChild(dot);
+      }
+    });
+  })();
+
+  // Live call & text counter
   function animateCount(el, target) {
     var start = 0, duration = 1500, startTime = null
     function step(ts) {
@@ -778,18 +692,10 @@
   (async function() {
     try {
       var callRes = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/calls?select=id', {
-        headers: {
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
-          'Prefer': 'count=exact'
-        }
+        headers: { 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ', 'Prefer': 'count=exact' }
       })
       var textRes = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/sms_threads?select=id', {
-        headers: {
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
-          'Prefer': 'count=exact'
-        }
+        headers: { 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ', 'Prefer': 'count=exact' }
       })
       var callCount = callRes.headers.get('content-range')
       var textCount = textRes.headers.get('content-range')
@@ -807,10 +713,6 @@
       customer: ["Hi! How much is a full acrylic set?","What are your hours this week?","Yes, send it over!"],
       business: ["Hey! Full acrylic sets start at $55. We can add gel color for $15 or nail art from $5 per nail.","We're open Tue\u2013Sat 10AM to 7PM and Sunday 11AM to 5PM. Closed Mondays! Want me to send you the booking link so you can pick a time?","Perfect! Here's your link \u2014 super quick to book \uD83D\uDC47\ncal.com/styledesk-nails"],
     },
-  }
-  const subs = {
-    barber: "We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.",
-    nail: "We help nail salons respond instantly, fill last-minute openings, and keep your chairs fully booked throughout the day.",
   }
   function switchType(type) {
     var allBtns = document.querySelectorAll('.toggle-btn')
@@ -837,33 +739,21 @@
   // Dashboard carousel
   var dashIdx = 1
   var dashLabels = ['<span style="color:#e8ddd0">Basic Dashboard</span>', '<span style="color:#f0c6cf">Pro Dashboard</span>', '<span style="color:#c9a064">Premium Dashboard</span>']
-  var dashPosMap = {
-    0: {0:'center',1:'right',2:'left'},
-    1: {0:'left',1:'center',2:'right'},
-    2: {0:'right',1:'left',2:'center'}
-  }
+  var dashPosMap = { 0:{0:'center',1:'right',2:'left'}, 1:{0:'left',1:'center',2:'right'}, 2:{0:'right',1:'left',2:'center'} }
   function dashGo(i) {
     dashIdx = i
     var map = dashPosMap[dashIdx]
-    for (var s = 0; s < 3; s++) {
-      document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
-    }
+    for (var s = 0; s < 3; s++) document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
     document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
     var dots = document.getElementById('dashDots').children
-    for (var d = 0; d < dots.length; d++) {
-      dots[d].className = 'dash-dot' + (d === dashIdx ? ' active' : '')
-    }
+    for (var d = 0; d < dots.length; d++) dots[d].className = 'dash-dot' + (d === dashIdx ? ' active' : '')
   }
   function dashNext() { dashGo((dashIdx + 1) % 3) }
   function dashPrev() { dashGo((dashIdx + 2) % 3) }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible')
-      }
-    })
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible') })
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 </script>
