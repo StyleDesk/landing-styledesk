@@ -158,22 +158,35 @@
     .value-inner p:first-child { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
     .value-inner p:last-child { color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 400; }
 
-    /* DASHBOARD CAROUSEL — STATIC LAPTOP + CROSSFADE */
+    /* DASHBOARD CAROUSEL */
     .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); max-width: 1152px; margin: 0 auto; position: relative; }
     .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; z-index: 1; }
-    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 40px; position: relative; z-index: 1; }
-    .dash-laptop { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-    .laptop-chrome { background: #1e1218; border-radius: 12px 12px 0 0; border: 1.5px solid rgba(255,255,255,0.08); border-bottom: none; padding: 10px 14px 0; }
-    .laptop-dots { display: flex; gap: 6px; margin-bottom: 10px; }
-    .laptop-dots span { width: 8px; height: 8px; border-radius: 50%; }
-    .laptop-screen { position: relative; overflow: hidden; background: #0a0507; border-bottom: 1.5px solid rgba(255,255,255,0.08); border-left: 1.5px solid rgba(255,255,255,0.08); border-right: 1.5px solid rgba(255,255,255,0.08); }
-    .laptop-screen img { width: 100%; display: block; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; transform: scale(1.02); }
-    .laptop-screen img.active { opacity: 1; position: relative; transform: scale(1); }
-    .laptop-base { max-width: 960px; margin: 0 auto; height: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: 0 0 10px 10px; border: 1px solid rgba(255,255,255,0.05); border-top: none; }
-    .dash-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; position: relative; z-index: 1; }
-    .dash-arrow { width: 40px; height: 40px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
-    .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
-    .dash-label { font-size: 15px; font-weight: 600; transition: all 0.4s; position: relative; z-index: 1; }
+    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 52px; position: relative; z-index: 1; }
+    .dash-stage { position: relative; height: 580px; max-width: 1100px; margin: 0 auto; overflow: visible; z-index: 1; }
+    .dash-card { position: absolute; top: 50%; border-radius: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform, opacity, left, width; overflow: visible; }
+    .dash-card[data-pos="left"] { left: -4%; width: 16%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
+    .dash-card[data-pos="center"] { left: 50%; width: 94%; transform: translate(-50%, -50%) scale(1); opacity: 1; z-index: 3; filter: none; }
+    .dash-card[data-pos="right"] { left: 88%; width: 16%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(-6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
+    .dash-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+    .dash-arrow-left { left: -60px; }
+    .dash-arrow-right { right: -60px; }
+    .dash-label { text-align: center; margin-top: 56px; font-size: 15px; font-weight: 600; transition: all 0.4s; position: relative; z-index: 1; }
+
+    /* LAPTOP FRAME */
+    .laptop-frame { position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-radius: 12px; overflow: hidden; }
+    .laptop-lid { background: #2a1a22; border: 2px solid rgba(255,255,255,0.08); border-radius: 12px 12px 0 0; border-bottom: none; }
+    .laptop-toolbar { padding: 10px 14px; display: flex; align-items: center; gap: 7px; }
+    .laptop-toolbar span { width: 10px; height: 10px; border-radius: 50%; }
+    .laptop-toolbar-url { margin-left: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; padding: 4px 14px; font-size: 10px; color: rgba(255,255,255,0.25); font-family: 'DM Mono', monospace; flex: 1; max-width: 220px; }
+    .laptop-viewport { border-left: 2px solid rgba(255,255,255,0.08); border-right: 2px solid rgba(255,255,255,0.08); border-bottom: 2px solid rgba(255,255,255,0.08); overflow: hidden; }
+    .laptop-viewport img { width: 100%; display: block; }
+    .laptop-hinge { height: 6px; background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%); border-radius: 0; }
+    .laptop-bottom { height: 14px; background: linear-gradient(180deg, rgba(42,26,34,0.9) 0%, rgba(42,26,34,0.4) 100%); border-radius: 0 0 4px 4px; position: relative; }
+    .laptop-bottom::before { content: ''; position: absolute; bottom: 0; left: 10%; right: 10%; height: 3px; background: rgba(255,255,255,0.04); border-radius: 0 0 2px 2px; }
+    .laptop-base-shadow { height: 20px; background: radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.3) 0%, transparent 70%); margin-top: -2px; }
+
+    /* TIER BADGES */
     .dash-tiers { display: flex; justify-content: center; gap: 8px; margin-top: 14px; position: relative; z-index: 1; }
     .tier-badge { padding: 6px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 0.5px solid rgba(255,255,255,0.1); background: transparent; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; }
     .tier-badge:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
@@ -286,16 +299,24 @@
       .setup-section { padding: 50px 16px; }
       .dash-carousel { padding: 40px 16px 30px; }
       .dash-carousel h2 { font-size: 22px; }
-      .dash-carousel-sub { margin-bottom: 24px; font-size: 13px; }
-      .laptop-chrome { padding: 6px 10px 0; border-radius: 8px 8px 0 0; }
-      .laptop-dots span { width: 6px; height: 6px; }
-      .laptop-dots { margin-bottom: 6px; gap: 4px; }
-      .laptop-base { height: 8px; border-radius: 0 0 6px 6px; }
-      .dash-arrow { width: 32px; height: 32px; }
-      .dash-arrow svg { width: 14px; height: 14px; }
-      .dash-label { font-size: 13px; }
+      .dash-carousel-sub { margin-bottom: 32px; font-size: 13px; }
+      .dash-stage { height: 260px; }
+      .dash-card[data-pos="center"] { width: 88%; }
+      .dash-card[data-pos="left"] { left: -8%; width: 18%; }
+      .dash-card[data-pos="right"] { left: 90%; width: 18%; }
+      .dash-arrow { width: 36px; height: 36px; }
+      .dash-arrow-left { left: -4px; }
+      .dash-arrow-right { right: -4px; }
+      .dash-arrow svg { width: 16px; height: 16px; }
+      .dash-label { margin-top: 24px; font-size: 13px; }
       .dash-tiers { margin-top: 10px; }
       .tier-badge { padding: 5px 14px; font-size: 11px; }
+      .laptop-toolbar span { width: 7px; height: 7px; }
+      .laptop-toolbar { padding: 6px 10px; gap: 5px; }
+      .laptop-toolbar-url { display: none; }
+      .laptop-bottom { height: 10px; }
+      .laptop-hinge { height: 4px; }
+      .laptop-base-shadow { height: 14px; }
       .pricing-section { padding: 60px 16px; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
       .pricing-card.pro-featured { transform: none; }
@@ -314,6 +335,11 @@
       .phone-frame { width: 240px; }
       .features-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
       .dash-arrow { width: 28px; height: 28px; }
+      .dash-stage { height: 220px; }
+      .dash-card[data-pos="left"] { display: none; }
+      .dash-card[data-pos="right"] { display: none; }
+      .dash-arrow-left { left: 2px; }
+      .dash-arrow-right { right: 2px; }
       .call-btn { padding: 14px 20px; }
       .call-num { font-size: 16px; }
       .call-icon { width: 44px; height: 44px; }
@@ -532,30 +558,63 @@
     <div class="section-particles" aria-hidden="true"></div>
     <h2>See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
-    <div class="dash-laptop">
-      <div class="laptop-chrome">
-        <div class="laptop-dots">
-          <span style="background:#ff5f57"></span>
-          <span style="background:#febc2e"></span>
-          <span style="background:#28c840"></span>
+    <div class="dash-stage">
+      <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+      <div class="dash-arrow dash-arrow-right" onclick="dashNext()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div class="dash-card" data-pos="left" id="dashC0" onclick="dashGo(0)">
+        <div class="laptop-frame">
+          <div class="laptop-lid">
+            <div class="laptop-toolbar">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#febc2e"></span>
+              <span style="background:#28c840"></span>
+              <div class="laptop-toolbar-url">styledesk.ai/dashboard</div>
+            </div>
+          </div>
+          <div class="laptop-viewport"><img src="images/basic-dashboard.png" alt="Basic Dashboard" loading="lazy"/></div>
         </div>
+        <div class="laptop-hinge"></div>
+        <div class="laptop-bottom"></div>
+        <div class="laptop-base-shadow"></div>
       </div>
-      <div class="laptop-screen">
-        <img src="images/basic-dashboard.png" alt="Basic Dashboard" id="dashImg0" loading="lazy"/>
-        <img src="images/pro-dashboard.png" alt="Pro Dashboard" id="dashImg1" class="active" loading="lazy"/>
-        <img src="images/premium-dashboard.png" alt="Premium Dashboard" id="dashImg2" loading="lazy"/>
+      <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)">
+        <div class="laptop-frame">
+          <div class="laptop-lid">
+            <div class="laptop-toolbar">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#febc2e"></span>
+              <span style="background:#28c840"></span>
+              <div class="laptop-toolbar-url">styledesk.ai/dashboard</div>
+            </div>
+          </div>
+          <div class="laptop-viewport"><img src="images/pro-dashboard.png" alt="Pro Dashboard" loading="lazy"/></div>
+        </div>
+        <div class="laptop-hinge"></div>
+        <div class="laptop-bottom"></div>
+        <div class="laptop-base-shadow"></div>
       </div>
-      <div class="laptop-base"></div>
+      <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)">
+        <div class="laptop-frame">
+          <div class="laptop-lid">
+            <div class="laptop-toolbar">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#febc2e"></span>
+              <span style="background:#28c840"></span>
+              <div class="laptop-toolbar-url">styledesk.ai/dashboard</div>
+            </div>
+          </div>
+          <div class="laptop-viewport"><img src="images/premium-dashboard.png" alt="Premium Dashboard" loading="lazy"/></div>
+        </div>
+        <div class="laptop-hinge"></div>
+        <div class="laptop-bottom"></div>
+        <div class="laptop-base-shadow"></div>
+      </div>
     </div>
-    <div class="dash-nav">
-      <div class="dash-arrow" onclick="dashPrev()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
-      </div>
-      <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
-      <div class="dash-arrow" onclick="dashNext()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
-      </div>
-    </div>
+    <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
     <div class="dash-tiers" id="dashTiers">
       <div class="tier-badge" onclick="dashGo(0)">Basic</div>
       <div class="tier-badge active" onclick="dashGo(1)">Pro</div>
@@ -749,15 +808,14 @@
   }
   switchType('barber')
 
-  // Dashboard carousel — crossfade inside static laptop
+  // Dashboard carousel
   var dashIdx = 1
   var dashLabels = ['<span style="color:#e8ddd0">Basic Dashboard</span>', '<span style="color:#f0c6cf">Pro Dashboard</span>', '<span style="color:#c9a064">Premium Dashboard</span>']
+  var dashPosMap = { 0:{0:'center',1:'right',2:'left'}, 1:{0:'left',1:'center',2:'right'}, 2:{0:'right',1:'left',2:'center'} }
   function dashGo(i) {
     dashIdx = i
-    for (var s = 0; s < 3; s++) {
-      var img = document.getElementById('dashImg' + s)
-      if (s === dashIdx) { img.classList.add('active') } else { img.classList.remove('active') }
-    }
+    var map = dashPosMap[dashIdx]
+    for (var s = 0; s < 3; s++) document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
     document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
     var tiers = document.getElementById('dashTiers').children
     for (var d = 0; d < tiers.length; d++) tiers[d].className = 'tier-badge' + (d === dashIdx ? ' active' : '')
