@@ -168,16 +168,13 @@
     .device-screen { position: relative; overflow: hidden; background: #0a0507; }
     .device-screen img { width: 100%; display: block; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; }
     .device-screen img.active { opacity: 1; position: relative; }
-    .device-base { height: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); border-top: none; border-radius: 0 0 6px 6px; }
-    .device-base-wrap { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
-    .dash-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 28px; position: relative; z-index: 1; }
-    .dash-arrow { width: 40px; height: 40px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
-    .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
-    .dash-label { font-size: 15px; font-weight: 600; transition: all 0.4s; }
-    .dash-tiers { display: flex; justify-content: center; gap: 8px; margin-top: 14px; position: relative; z-index: 1; }
-    .tier-badge { padding: 6px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 0.5px solid rgba(255,255,255,0.1); background: transparent; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; }
-    .tier-badge:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
-    .tier-badge.active { background: rgba(201,160,100,0.12); border-color: rgba(201,160,100,0.3); color: #c9a064; }
+    .device-base { height: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); border-top: none; border-radius: 0 0 8px 8px; }
+    .device-base-wrap { max-width: 976px; margin: 0 auto; position: relative; z-index: 1; }
+    .dash-nav { display: flex; justify-content: center; margin-top: 28px; position: relative; z-index: 1; }
+    .dash-track { display: inline-flex; border-radius: 100px; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); padding: 3px; }
+    .dash-track-btn { padding: 8px 24px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); cursor: pointer; border-radius: 100px; transition: all 0.3s; border: none; background: transparent; font-family: 'Inter', sans-serif; position: relative; z-index: 1; }
+    .dash-track-btn:hover { color: rgba(255,255,255,0.6); }
+    .dash-track-btn.active { background: #c9a064; color: #1a0008; }
 
     .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
     .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
@@ -290,12 +287,8 @@
       .device-chrome { padding: 10px 12px; gap: 6px; }
       .device-chrome span { width: 9px; height: 9px; }
       .device-base { height: 16px; }
-      .device-base { height: 10px; }
-      .dash-arrow { width: 32px; height: 32px; }
-      .dash-arrow svg { width: 14px; height: 14px; }
-      .dash-label { font-size: 13px; }
-      .dash-tiers { margin-top: 10px; }
-      .tier-badge { padding: 5px 14px; font-size: 11px; }
+      .device-base { height: 14px; }
+      .dash-track-btn { padding: 6px 18px; font-size: 11px; }
       .pricing-section { padding: 60px 16px; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
       .pricing-card.pro-featured { transform: none; }
@@ -313,7 +306,6 @@
       .hero h1 .pink { font-size: 1.2em; }
       .phone-frame { width: 240px; }
       .features-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
-      .dash-arrow { width: 28px; height: 28px; }
       .call-btn { padding: 14px 20px; }
       .call-num { font-size: 16px; }
       .call-icon { width: 44px; height: 44px; }
@@ -530,8 +522,8 @@
 
 <section class="dash-carousel reveal">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2>See the dashboard in action</h2>
-    <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
+    <h2>Your shop, at a glance.</h2>
+    <p class="dash-carousel-sub">A real-time dashboard built for the way you work.</p>
     <div class="device-frame">
       <div class="device-chrome">
         <span style="background:#ff5f57"></span>
@@ -546,18 +538,11 @@
     </div>
     <div class="device-base-wrap"><div class="device-base"></div></div>
     <div class="dash-nav">
-      <div class="dash-arrow" onclick="dashPrev()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      <div class="dash-track" id="dashTrack">
+        <div class="dash-track-btn" onclick="dashGo(0)">Basic</div>
+        <div class="dash-track-btn active" onclick="dashGo(1)">Pro</div>
+        <div class="dash-track-btn" onclick="dashGo(2)">Premium</div>
       </div>
-      <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
-      <div class="dash-arrow" onclick="dashNext()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
-      </div>
-    </div>
-    <div class="dash-tiers" id="dashTiers">
-      <div class="tier-badge" onclick="dashGo(0)">Basic</div>
-      <div class="tier-badge active" onclick="dashGo(1)">Pro</div>
-      <div class="tier-badge" onclick="dashGo(2)">Premium</div>
     </div>
   </section>
 
@@ -749,19 +734,15 @@
 
   // Dashboard — crossfade inside static device frame
   var dashIdx = 1
-  var dashLabels = ['<span style="color:#e8ddd0">Basic Dashboard</span>', '<span style="color:#f0c6cf">Pro Dashboard</span>', '<span style="color:#c9a064">Premium Dashboard</span>']
   function dashGo(i) {
     dashIdx = i
     for (var s = 0; s < 3; s++) {
       var img = document.getElementById('dashImg' + s)
       if (s === dashIdx) img.classList.add('active'); else img.classList.remove('active')
     }
-    document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
-    var tiers = document.getElementById('dashTiers').children
-    for (var d = 0; d < tiers.length; d++) tiers[d].className = 'tier-badge' + (d === dashIdx ? ' active' : '')
+    var btns = document.getElementById('dashTrack').children
+    for (var d = 0; d < btns.length; d++) btns[d].className = 'dash-track-btn' + (d === dashIdx ? ' active' : '')
   }
-  function dashNext() { dashGo((dashIdx + 1) % 3) }
-  function dashPrev() { dashGo((dashIdx + 2) % 3) }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
