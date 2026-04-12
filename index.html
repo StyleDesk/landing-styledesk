@@ -144,7 +144,7 @@
     .step-card { border-radius: 16px; padding: 32px 20px; transition: all 0.3s; }
     .step-card:hover { transform: translateY(-4px); }
     .step-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; }
-    @keyframes pulseRing { 0%{transform:scale(1);opacity:0.5} 100%{transform:scale(2.2);opacity:0} }
+    @keyframes pulseRing { 0%{transform:scale(1);opacity:0.4} 100%{transform:scale(1.5);opacity:0} }
     .step-icon .pulse-ring { position: absolute; inset: 0; border-radius: 14px; border: 1px solid rgba(240,198,207,0.2); animation: pulseRing 2.8s ease-out infinite; pointer-events: none; }
     .step-icon .pulse-ring:nth-child(2) { animation-delay: 0.9s; }
     .step-icon .pulse-ring:nth-child(3) { animation-delay: 1.8s; }
@@ -185,6 +185,7 @@
     .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
     .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; position: relative; z-index: 1; }
     @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .grad-text { background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; z-index: 1; }
     .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
@@ -424,7 +425,7 @@
 <section class="pain-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="pain-inner reveal">
-      <h2>Your phone is your biggest weakness... and your biggest opportunity.</h2>
+      <h2 class="grad-text">Your phone is your biggest weakness... and your biggest opportunity.</h2>
       <div class="pain-points">
         <p>Right now, missed calls and unanswered texts are costing you clients.</p>
         <p>But what if every call got answered, every text got a reply, and every client got a booking link sent to them automatically?</p>
@@ -436,7 +437,7 @@
 
 <section id="how" class="how-section">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2 class="reveal">How it works</h2>
+    <h2 class="reveal grad-text">How it works</h2>
     <div class="steps-grid">
       <div class="step-card glass reveal reveal-delay-1">
         <div class="step-icon"><div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
@@ -463,7 +464,7 @@
     <div class="section-particles" aria-hidden="true"></div>
     <div class="call-inner reveal">
       <div class="call-label">Live demo</div>
-      <h2 class="call-title">Try StyleDesk right now</h2>
+      <h2 class="call-title grad-text">Try StyleDesk right now</h2>
       <p class="call-desc">Call or text our live demo number. Ask about services, pricing, or hours. The AI answers just like it would for any shop.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px;">
         <a href="tel:+12408754777" class="demo-cta-card cta-maroon">
@@ -500,7 +501,7 @@
     <div style="max-width: 1152px; margin: 0 auto; position: relative; z-index: 1;">
       <div style="text-align: center; margin-bottom: 48px;" class="reveal">
         <p style="font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 12px;">No switching required</p>
-        <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf;">We make it work harder.</span></h2>
+        <h2 class="grad-text" style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf; -webkit-text-fill-color: #f0c6cf;">We make it work harder.</span></h2>
         <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 600px; margin: 0 auto; font-weight: 400;">Keep using Booksy, Fresha, Square, or whatever you love. StyleDesk sits on top. Your clients book through your existing app, just like always.</p>
       </div>
       <div style="text-align: center;" class="reveal">
@@ -534,7 +535,7 @@
 
 <section class="dash-carousel reveal">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2>See the dashboard in action</h2>
+    <h2 class="grad-text">See the dashboard in action</h2>
     <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
     <div class="dash-stage">
       <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">
@@ -557,7 +558,7 @@
 
 <section id="pricing" class="pricing-section">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2 class="reveal">Pricing</h2>
+    <h2 class="reveal grad-text">Pricing</h2>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
         <div class="pricing-name">Basic</div>
@@ -616,7 +617,7 @@
     <div class="section-particles" aria-hidden="true"></div>
     <div class="demo-card glass reveal">
       <div class="demo-label">Limited Availability</div>
-      <h2>Ready to never miss a client again?</h2>
+      <h2 class="grad-text">Ready to never miss a client again?</h2>
       <p>Book a 15-minute demo. See how StyleDesk works for your shop.</p>
       <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="demo-btn">Book Your Demo</a></span>
     </div>
