@@ -198,7 +198,10 @@
     /* PRICING */
     .pricing-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
     .pricing-inner { max-width: 1152px; margin: 0 auto; }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; position: relative; z-index: 1; }
+    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 12px; position: relative; z-index: 1; }
+    .pricing-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 10px; text-align: center; position: relative; z-index: 1; }
+    .pricing-trust { display: flex; justify-content: center; gap: 18px; margin-bottom: 40px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .pricing-trust span { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.4); }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; position: relative; z-index: 1; }
     .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
     .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
@@ -557,7 +560,13 @@
 <section id="pricing" class="pricing-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="pricing-inner">
-    <h2 class="reveal">Pricing</h2>
+    <p class="pricing-eyebrow reveal">Plans & Pricing</p>
+    <h2 class="reveal">Invest in your business.</h2>
+    <div class="pricing-trust reveal">
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>No contracts</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel anytime</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free trial included</span>
+    </div>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
         <div class="pricing-name">Basic</div>
