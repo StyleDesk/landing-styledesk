@@ -6,11 +6,19 @@
   <title>StyleDesk.ai — AI Receptionist for Barbers & Nail Techs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; z-index: 100; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px 256px; }
+    .ambient-glow { position: absolute; width: 100%; pointer-events: none; z-index: 0; overflow: hidden; height: 600px; }
+    .ambient-glow::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,160,100,0.04) 0%, transparent 70%); }
+    .ambient-glow::after { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(124,31,54,0.06) 0%, transparent 70%); }
+    .ambient-glow.glow-left::before { top: -100px; left: -150px; }
+    .ambient-glow.glow-left::after { bottom: -100px; right: -100px; }
+    .ambient-glow.glow-right::before { top: -100px; right: -150px; }
+    .ambient-glow.glow-right::after { bottom: -100px; left: -100px; }
 
     /* SCROLL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -25,14 +33,14 @@
     .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px 14px 12px; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
     .logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
-    .header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .header-btn:hover { background: #c9a064; color: #1a0008; }
+    .header-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+    .header-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); }
     .header-tagline { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; letter-spacing: 0.3px; }
     .header-nav { display: flex; align-items: center; gap: 24px; }
     .header-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
     .header-nav a:hover { color: #fff; }
-    .header-nav .header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-weight: 600; position: relative; z-index: 1; }
-    .header-nav .header-btn:hover { background: #c9a064; color: #1a0008; }
+    .header-nav .header-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 8px 16px; border-radius: 8px; font-weight: 600; position: relative; z-index: 1; }
+    .header-nav .header-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); color: #1a0008; }
 
     /* EXCLUSIVE BAR */
     .exclusive-bar { width: 100%; border-bottom: 0.5px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); padding: 10px 0; text-align: center; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); display: flex; justify-content: center; align-items: center; gap: 24px; }
@@ -47,39 +55,54 @@
     @keyframes pFloat2 { 0%,100%{transform:translateY(0) translateX(0) scale(1)} 50%{transform:translateY(-18px) translateX(-6px) scale(0.85)} }
     @keyframes pFloat3 { 0%,100%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-30px) translateX(12px)} }
     @keyframes pFade { 0%,100%{opacity:0.12} 50%{opacity:0.3} }
+    @keyframes glitter { 0%{opacity:0.05;transform:scale(0.8)} 18%{opacity:0.65;transform:scale(1.2)} 25%{opacity:0.08;transform:scale(0.9)} 50%{opacity:0.55;transform:scale(1.15)} 58%{opacity:0.05;transform:scale(0.85)} 85%{opacity:0.6;transform:scale(1.2)} 92%{opacity:0.06;transform:scale(0.88)} 100%{opacity:0.05;transform:scale(0.8)} }
     .section-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
     .section-particles .p { position: absolute; border-radius: 50%; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+    .section-particles .p.glitter { border-radius: 2px; transform: rotate(45deg); box-shadow: 0 0 3px 1px currentColor; }
     .has-particles { position: relative; }
 
     /* HERO */
-    .hero { padding: 80px 24px 60px; position: relative; }
-    .hero-inner { max-width: 1152px; margin: 0 auto; }
-    .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(124,31,54,0.2) 0%, rgba(124,31,54,0.05) 40%, transparent 70%); pointer-events: none; z-index: 0; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; position: relative; z-index: 1; }
-    .ai-badge { display: inline-flex; border: 0.5px solid rgba(201,160,100,0.3); background: transparent; padding: 6px 14px; border-radius: 100px; font-size: 11px; margin-bottom: 14px; color: #c9a064; font-weight: 500; letter-spacing: 0.5px; }
-    .toggle-wrap { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); border-radius: 100px; padding: 3px; margin-bottom: 20px; backdrop-filter: blur(10px); }
+    .hero { padding: 100px 24px 80px; position: relative; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
+    .hero::before { content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 900px; height: 700px; background: radial-gradient(ellipse, rgba(201,160,100,0.08) 0%, rgba(124,31,54,0.15) 30%, rgba(124,31,54,0.03) 50%, transparent 70%); pointer-events: none; z-index: 0; }
+    .hero::after { content: ''; position: absolute; top: 60px; right: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,160,100,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 64px; position: relative; z-index: 1; }
+    .ai-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(201,160,100,0.25); background: rgba(201,160,100,0.04); padding: 8px 18px; border-radius: 100px; font-size: 10px; margin-bottom: 24px; color: #c9a064; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.4s ease; }
+    .ai-badge:hover { background: rgba(201,160,100,0.08); border-color: rgba(201,160,100,0.4); }
+    .ai-badge::before { content: ''; width: 6px; height: 6px; background: #c9a064; border-radius: 50%; box-shadow: 0 0 8px rgba(201,160,100,0.6); }
+    .toggle-wrap { display: inline-flex; border: 1px solid rgba(201,160,100,0.15); background: rgba(255,255,255,0.02); border-radius: 100px; padding: 3px; margin-bottom: 20px; backdrop-filter: blur(10px); }
     .toggle-mobile { display: none; }
-    .toggle-desktop { display: flex; justify-content: center; margin-bottom: 14px; }
-    .toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.5); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.25s; }
+    .toggle-desktop { display: flex; justify-content: center; margin-bottom: 18px; }
+    .toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.4); padding: 8px 20px; border-radius: 100px; font-size: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.3s ease; letter-spacing: 0.3px; }
+    .toggle-btn:hover { color: rgba(255,255,255,0.7); }
     .toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
-    .hero h1 { font-size: clamp(40px, 5vw, 60px); font-weight: 600; line-height: 1.15; letter-spacing: -2px; margin-bottom: 20px; }
-    .hero h1 .pink { color: #f0c6cf; display: block; font-size: 1.3em; line-height: 1; margin-top: -0.85em; }
-    .hero-sub { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.6); margin-bottom: 28px; font-weight: 400; max-width: 460px; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-white { background: #fff; color: #1a0008; padding: 13px 24px; border-radius: 10px; font-weight: 600; font-size: 14px; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s; }
-    .btn-white:hover { background: #c9a064; color: #1a0008; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(44px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; }
+    .hero h1 .line-top { display: block; font-family: 'Inter', sans-serif; font-size: 0.28em; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+    .hero h1 .pink { color: transparent; display: block; font-size: 1.35em; line-height: 1; margin-top: -0.85em; background: linear-gradient(135deg, #f0c6cf 0%, #c9a064 50%, #f0c6cf 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: heroTextShimmer 4s ease infinite; font-style: italic; }
+    @keyframes heroTextShimmer { 0%{background-position:0% center} 50%{background-position:200% center} 100%{background-position:0% center} }
+    .hero-accent-line { width: 48px; height: 2px; background: linear-gradient(90deg, #c9a064, transparent); margin-bottom: 20px; border-radius: 1px; }
+    .hero-sub { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.5); margin-bottom: 36px; font-weight: 300; max-width: 440px; letter-spacing: 0.2px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-white { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,160,100,0.4); background: linear-gradient(135deg, #d4ad74, #c9a064); }
     .btn-glow { position: relative; display: inline-flex; border-radius: 12px; }
-    .btn-glow::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 12px; background: linear-gradient(135deg, #c9a064, #7c1f36, #c9a064); background-size: 200% 200%; animation: shimmer 3s linear infinite; opacity: 0.6; z-index: 0; }
+    .btn-glow::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 12px; background: linear-gradient(135deg, #c9a064, #7c1f36, #c9a064); background-size: 200% 200%; animation: shimmer 3s linear infinite; opacity: 0.5; z-index: 0; transition: opacity 0.4s; }
+    .btn-glow:hover::before { opacity: 0.8; }
     .btn-glow .btn-white, .btn-glow .header-btn, .btn-glow .demo-btn { position: relative; z-index: 1; }
     @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-    .btn-outline { background: transparent; color: rgba(255,255,255,0.6); padding: 13px 24px; border-radius: 10px; font-weight: 500; font-size: 14px; text-decoration: none; border: 0.5px solid rgba(255,255,255,0.12); font-family: 'Inter', sans-serif; transition: all 0.2s; }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-    .trust-badges { display: flex; gap: 18px; margin-top: 40px; flex-wrap: wrap; }
-    .trust-badge { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.4); }
+    .btn-outline { background: transparent; color: rgba(255,255,255,0.5); padding: 14px 28px; border-radius: 10px; font-weight: 400; font-size: 13px; text-decoration: none; border: 1px solid rgba(201,160,100,0.2); font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 0.5px; position: relative; overflow: hidden; }
+    .btn-outline::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(201,160,100,0.08), transparent); transition: left 0.5s ease; }
+    .btn-outline:hover { border-color: rgba(201,160,100,0.4); color: #c9a064; }
+    .btn-outline:hover::before { left: 100%; }
+    .trust-badges { display: flex; gap: 24px; margin-top: 48px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04); }
+    .trust-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 300; letter-spacing: 0.3px; transition: color 0.3s; }
+    .trust-badge:hover { color: rgba(255,255,255,0.6); }
 
     /* PHONE FRAME SMS PREVIEW */
-    .phone-frame { width: 280px; margin: 0 auto; }
-    .phone-outer { border-radius: 36px; border: 2.5px solid rgba(255,255,255,0.1); background: linear-gradient(145deg, rgba(60,60,60,0.4), rgba(20,20,20,0.8)); padding: 10px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3); }
+    .phone-frame { width: 280px; margin: 0 auto; position: relative; }
+    .phone-frame::before { content: ''; position: absolute; top: -30px; left: -30px; right: -30px; bottom: -30px; background: radial-gradient(ellipse at center, rgba(201,160,100,0.08) 0%, transparent 70%); pointer-events: none; z-index: -1; }
+    .phone-outer { border-radius: 36px; border: 2px solid rgba(201,160,100,0.15); background: linear-gradient(145deg, rgba(60,60,60,0.4), rgba(20,20,20,0.9)); padding: 10px; position: relative; box-shadow: 0 50px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,160,100,0.08), inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.3); transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease; }
+    .phone-outer:hover { transform: translateY(-4px) rotateX(1deg); box-shadow: 0 60px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,160,100,0.12), 0 0 60px rgba(201,160,100,0.06), inset 0 1px 0 rgba(255,255,255,0.06); }
     .phone-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: #000; border-radius: 14px; z-index: 2; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
     .phone-camera { width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #1a3a5c, #0a1520); border: 1px solid rgba(255,255,255,0.08); }
     .phone-screen { border-radius: 28px; background: #000; padding: 0; min-height: 340px; overflow: hidden; }
@@ -172,10 +195,10 @@
     .device-base { height: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); border-top: none; border-radius: 0 0 8px 8px; }
     .device-base-wrap { max-width: 976px; margin: 0 auto; position: relative; z-index: 1; }
     .dash-nav { display: flex; justify-content: center; margin-top: 28px; position: relative; z-index: 1; }
-    .dash-track { display: inline-flex; border-radius: 100px; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); padding: 3px; }
+    .dash-track { display: inline-flex; border-radius: 100px; background: rgba(255,255,255,0.02); border: 1px solid rgba(201,160,100,0.15); padding: 3px; }
     .dash-track-btn { padding: 8px 24px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); cursor: pointer; border-radius: 100px; transition: all 0.3s; border: none; background: transparent; font-family: 'Inter', sans-serif; position: relative; z-index: 1; }
     .dash-track-btn:hover { color: rgba(255,255,255,0.6); }
-    .dash-track-btn.active { background: #c9a064; color: #1a0008; }
+    .dash-track-btn.active { background: #fff; color: #000; }
 
     .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
     .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
@@ -196,29 +219,41 @@
     .feature-card p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; font-weight: 400; }
 
     /* PRICING */
-    .pricing-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
-    .pricing-inner { max-width: 1152px; margin: 0 auto; }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 12px; position: relative; z-index: 1; }
-    .pricing-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 10px; text-align: center; position: relative; z-index: 1; }
-    .pricing-trust { display: flex; justify-content: center; gap: 18px; margin-bottom: 40px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .pricing-trust span { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.4); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; position: relative; z-index: 1; }
-    .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
-    .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
-    .pricing-card.pro-featured { border-color: rgba(201,160,100,0.25); border-width: 1px; }
-    .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #c9a064; color: #1a0008; font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 100px; letter-spacing: 0.5px; }
-    .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.4); box-shadow: 0 0 50px rgba(201,160,100,0.12), 0 0 100px rgba(124,31,54,0.08); }
-    .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
-    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-weight: 400; }
-    .pricing-price { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; flex: 1; }
-    .pricing-features li { display: flex; align-items: flex-start; gap: 6px; }
-    .check { color: #c9a064; font-weight: 600; font-size: 10px; margin-top: 2px; flex-shrink: 0; }
-    .pricing-btn { display: block; width: 100%; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; transition: all 0.3s; box-sizing: border-box; border: 0.5px solid rgba(255,255,255,0.1); }
-    .pricing-features + .pricing-btn { margin-top: 20px; }
-    .pricing-btn:hover { background: #c9a064; color: #1a0008; border-color: #c9a064; }
-    .pro-featured .pricing-btn { background: #c9a064; color: #1a0008; border-color: #c9a064; }
-    .pro-featured .pricing-btn:hover { background: #d4ad74; }
+    .pricing-section { padding: 120px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
+    .pricing-inner { max-width: 1180px; margin: 0 auto; }
+    .pricing-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 600; text-align: center; letter-spacing: -0.5px; margin-bottom: 16px; position: relative; z-index: 1; }
+    .pricing-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a064; margin-bottom: 12px; text-align: center; position: relative; z-index: 1; }
+    .pricing-divider { width: 40px; height: 1.5px; background: linear-gradient(90deg, transparent, #c9a064, transparent); margin: 0 auto 20px; position: relative; z-index: 1; }
+    .pricing-trust { display: flex; justify-content: center; gap: 24px; margin-bottom: 56px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .pricing-trust span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 300; letter-spacing: 0.3px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; position: relative; z-index: 1; }
+    .pricing-card { border-radius: 20px; padding: 36px 28px; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: default; display: flex; flex-direction: column; position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(12px); }
+    .pricing-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(180deg, rgba(201,160,100,0.03) 0%, transparent 40%); pointer-events: none; opacity: 0; transition: opacity 0.5s; }
+    .pricing-card:hover { border-color: rgba(201,160,100,0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,160,100,0.06); transform: translateY(-8px); }
+    .pricing-card:hover::after { opacity: 1; }
+    .pricing-card.pro-featured { border-color: rgba(201,160,100,0.2); background: rgba(201,160,100,0.03); }
+    .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; font-size: 9px; font-weight: 700; padding: 5px 18px; border-radius: 100px; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 4px 16px rgba(201,160,100,0.3); }
+    .pricing-card.pro-featured::after { opacity: 1; }
+    .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.35); box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 60px rgba(201,160,100,0.1); }
+    .pricing-tier-label { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .pricing-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 12px; font-weight: 300; letter-spacing: 0.2px; }
+    .pricing-price-wrap { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .pricing-price { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; letter-spacing: -1px; display: inline; }
+    .pricing-dollar { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; vertical-align: top; position: relative; top: 4px; margin-right: 1px; }
+    .pricing-price-period { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.35); margin-left: 2px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; flex: 1; letter-spacing: 0.2px; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 8px; transition: color 0.3s; }
+    .pricing-features li:hover { color: rgba(255,255,255,0.8); }
+    .check { color: #c9a064; font-weight: 500; font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+    .pricing-btn { display: block; width: 100%; text-align: center; background: transparent; color: rgba(255,255,255,0.6); padding: 14px; border-radius: 10px; font-weight: 500; font-size: 12px; text-decoration: none; margin-top: auto; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-sizing: border-box; border: 1px solid rgba(201,160,100,0.2); letter-spacing: 0.5px; position: relative; overflow: hidden; }
+    .pricing-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(201,160,100,0.1), transparent); transition: left 0.5s ease; }
+    .pricing-features + .pricing-btn { margin-top: 24px; }
+    .pricing-btn:hover { background: rgba(201,160,100,0.08); color: #c9a064; border-color: rgba(201,160,100,0.35); }
+    .pricing-btn:hover::before { left: 100%; }
+    .pro-featured .pricing-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; border-color: transparent; font-weight: 600; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
+    .pro-featured .pricing-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201,160,100,0.35); }
+    .pro-featured .pricing-btn::before { display: none; }
 
     /* RISK */
     .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
@@ -264,19 +299,20 @@
       .header-nav a:not(.header-btn) { display: none; }
       .toggle-desktop { display: none; }
       .toggle-mobile { display: none; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 28px; }
       .hero-grid > div:first-child { order: 1; }
       .hero-grid > div:last-child { order: 2; }
       .hero-grid > div:last-child .toggle-desktop { display: flex; justify-content: center; margin-bottom: 10px; }
-      .hero { padding: 28px 16px 28px; overflow: hidden; }
-      .hero h1 { font-size: 14px; font-weight: 500; margin-bottom: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; line-height: 1.4; word-spacing: 0; }
+      .hero { padding: 40px 16px 32px; overflow: hidden; }
+      .hero h1 { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 400; margin-bottom: 10px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; word-spacing: 0; }
       .hero h1 .pink br { display: none; }
       .hero-br { display: none; }
-      .hero h1 .pink { font-size: 52px; font-weight: 700; color: #f0c6cf; letter-spacing: -3px; margin-top: 8px; display: block; line-height: 1; text-transform: none; }
+      .hero h1 .pink { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; letter-spacing: -2px; margin-top: 8px; display: block; line-height: 1; text-transform: none; font-style: italic; }
+      .hero-accent-line { margin: 0 auto 18px; }
       .hero-sub { margin-left: auto; margin-right: auto; font-size: 14px; margin-bottom: 24px; margin-top: 16px; }
       .hero-btns { flex-direction: row; justify-content: center; }
-      .btn-white, .btn-outline { width: auto; text-align: center; padding: 12px 20px; font-size: 13px; }
-      .ai-badge { margin-bottom: 14px; font-size: 10px; }
+      .btn-white, .btn-outline { width: auto; text-align: center; padding: 12px 22px; font-size: 12px; }
+      .ai-badge { margin-bottom: 16px; font-size: 9px; }
       .trust-badges { display: none; }
       .phone-frame { width: 340px; margin: 0 auto; }
       .pain-section { padding: 60px 16px; }
@@ -303,10 +339,11 @@
       .device-chrome span { width: 9px; height: 9px; }
       .device-base { height: 14px; }
       .dash-track-btn { padding: 6px 18px; font-size: 11px; }
-      .pricing-section { padding: 60px 16px; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .pricing-section { padding: 80px 16px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 20px; }
+      .pricing-card { padding: 28px 22px; }
       .pricing-card.pro-featured { transform: none; }
-      .pricing-trust { gap: 12px; }
+      .pricing-trust { gap: 14px; }
       .pricing-trust span { font-size: 10px; }
       .works-section .reveal div[style*="display: flex"][style*="flex-wrap"] { gap: 8px; }
       .risk-section { padding: 24px 16px; font-size: 12px; }
@@ -321,11 +358,11 @@
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 13px; }
-      .hero h1 .pink { font-size: 46px; letter-spacing: -2.5px; }
+      .hero h1 { font-size: 12px; letter-spacing: 1.5px; }
+      .hero h1 .pink { font-size: 42px; letter-spacing: -2px; }
       .hero-sub { font-size: 13px; margin-bottom: 16px; }
       .hero-btns { flex-direction: column; }
-      .btn-white, .btn-outline { width: 100%; padding: 11px 18px; }
+      .btn-white, .btn-outline { width: 100%; padding: 13px 18px; }
       .phone-frame { width: 300px; }
       .features-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
       .call-btn { padding: 14px 20px; }
@@ -378,15 +415,16 @@
           <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
         </div>
         <h1>Every Call.<br class="hero-br"> Every Text.<span class="pink"><br>Handled.</span></h1>
+        <div class="hero-accent-line"></div>
         <p class="hero-sub">We help barbershops and nail salons respond instantly, fill last-minute openings, and keep your schedule fully booked.</p>
         <div class="hero-btns">
-          <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="btn-white">Book Demo</a></span>
+          <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="btn-white">Book a Demo</a></span>
           <a href="#pricing" class="btn-outline">View Pricing</a>
         </div>
         <div class="trust-badges">
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in under 5 minutes</span></div>
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cancel anytime</span></div>
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Try it risk-free</span></div>
+          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 5 minutes</span></div>
+          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cancel anytime</span></div>
+          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Risk-free trial</span></div>
         </div>
       </div>
       <div>
@@ -439,6 +477,7 @@
     </div>
   </section>
 
+<div class="ambient-glow glow-left" aria-hidden="true"></div>
 <section class="pain-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="pain-inner reveal">
@@ -534,6 +573,7 @@
     </div>
   </section>
 
+<div class="ambient-glow glow-right" aria-hidden="true"></div>
 <section id="features" class="features-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="features-inner">
@@ -578,21 +618,24 @@
     </div>
   </section>
 
+<div class="ambient-glow glow-left" aria-hidden="true"></div>
 <section id="pricing" class="pricing-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="pricing-inner">
     <p class="pricing-eyebrow reveal">Plans & Pricing</p>
     <h2 class="reveal">Invest in your business.</h2>
+    <div class="pricing-divider"></div>
     <div class="pricing-trust reveal">
-      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>No contracts</span>
-      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel anytime</span>
-      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free trial included</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>No contracts</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel anytime</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free trial included</span>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card glass reveal reveal-delay-1">
+
         <div class="pricing-name">Basic</div>
         <div class="pricing-sub">Front desk · For solo operators</div>
-        <div class="pricing-price">$49/month</div>
+        <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>49</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
           <li><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
@@ -604,9 +647,10 @@
         <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
       </div>
       <div class="pricing-card glass pro-featured reveal reveal-delay-2">
+
         <div class="pricing-name">Pro</div>
         <div class="pricing-sub">Built for growing shops · For teams up to 5</div>
-        <div class="pricing-price">$99/month</div>
+        <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>99</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><span class="check">✔</span><span>Everything in Basic +</span></li>
           <li><span class="check">✔</span><span>Up to 5 individual logins/numbers + 1 owner</span></li>
@@ -621,9 +665,10 @@
         <a href="https://buy.stripe.com/5kQ28t2EY3BV1G99ezgEg05" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
       </div>
       <div class="pricing-card glass reveal reveal-delay-3">
+
         <div class="pricing-name">Premium</div>
         <div class="pricing-sub">Built for busy shops · For teams up to 10</div>
-        <div class="pricing-price">$179/month</div>
+        <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>179</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><span class="check">✔</span><span>Everything in Pro +</span></li>
           <li><span class="check">✔</span><span>Up to 10 individual logins/numbers + 2 owners</span></li>
@@ -703,18 +748,21 @@
     var colors = ['#c9a064', '#f0c6cf', '#c9a064', 'rgba(255,255,255,0.5)', '#f0c6cf', '#c9a064'];
     var anims = ['pFloat1', 'pFloat2', 'pFloat3'];
     containers.forEach(function(container, ci) {
-      var count = window.innerWidth <= 768 ? 8 : 15;
+      var count = window.innerWidth <= 768 ? 10 : 20;
       for (var i = 0; i < count; i++) {
         var dot = document.createElement('div');
-        dot.className = 'p';
-        var size = 2 + Math.random() * 3;
+        var isGlitter = Math.random() < 0.5;
+        dot.className = 'p' + (isGlitter ? ' glitter' : '');
+        var size = isGlitter ? (1.5 + Math.random() * 2) : (2 + Math.random() * 3);
         var top = 5 + Math.random() * 85;
         var left = 3 + Math.random() * 90;
         var anim = anims[Math.floor(Math.random() * anims.length)];
         var dur = 5 + Math.random() * 5;
+        var glitterDur = 3 + Math.random() * 4;
         var delay = Math.random() * 4;
         var color = colors[(ci * 3 + i) % colors.length];
-        dot.style.cssText = 'width:'+size+'px;height:'+size+'px;background:'+color+';top:'+top+'%;left:'+left+'%;animation:'+anim+' '+dur+'s ease-in-out infinite '+delay+'s,pFade '+dur+'s ease-in-out infinite '+delay+'s;';
+        var fadeAnim = isGlitter ? 'glitter '+glitterDur+'s ease-in-out infinite '+delay+'s' : 'pFade '+dur+'s ease-in-out infinite '+delay+'s';
+        dot.style.cssText = 'width:'+size+'px;height:'+size+'px;background:'+color+';color:'+color+';top:'+top+'%;left:'+left+'%;animation:'+anim+' '+dur+'s ease-in-out infinite '+delay+'s,'+fadeAnim+';';
         container.appendChild(dot);
       }
     });
