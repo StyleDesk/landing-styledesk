@@ -53,9 +53,6 @@
     .beacon-ring { position: absolute; inset: -2px; border: 1px solid rgba(80,200,120,0.35); border-radius: 50%; animation: beaconRing 2.2s ease-out infinite; }
     .beacon-ring:nth-child(2) { animation-delay: 0.75s; }
     @keyframes beaconRing { 0%{transform:scale(1);opacity:0.6} 100%{transform:scale(2.8);opacity:0} }
-    .odometer { display: inline-flex; overflow: hidden; height: 16px; }
-    .odometer .digit { display: inline-block; font-family: 'DM Mono', monospace; color: #fff; font-size: 14px; font-weight: 600; line-height: 16px; animation: rollUp 0.6s ease-out forwards; opacity: 0; }
-    @keyframes rollUp { 0%{transform:translateY(100%);opacity:0} 100%{transform:translateY(0);opacity:1} }
     .stats-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.08); }
     .exclusive-dot { display: inline-block; width: 3px; height: 3px; background: #c9a064; border-radius: 50%; margin: 0 10px; vertical-align: middle; position: relative; top: -1px; }
 
@@ -413,11 +410,7 @@
     <div class="beacon-ring"></div>
     <div class="beacon-core"></div>
   </div>
-  <span>Live now ·</span>
-  <div class="odometer" id="callOdometer"></div>
-  <span>calls &</span>
-  <div class="odometer" id="textOdometer"></div>
-  <span>texts handled and counting</span>
+  <span>Live now · <strong id="callCount" style="font-family:'DM Mono',monospace;">0</strong> calls & <strong id="textCount" style="font-family:'DM Mono',monospace;">0</strong> texts handled and counting</span>
 </div>
 
 <main id="main-content">
@@ -791,17 +784,18 @@
     });
   })();
 
-  // Live call & text counter — odometer style
-  function populateOdometer(container, number) {
-    container.innerHTML = ''
-    var digits = String(number).split('')
-    digits.forEach(function(d, i) {
-      var span = document.createElement('span')
-      span.className = 'digit'
-      span.textContent = d
-      span.style.animationDelay = (0.2 + i * 0.15) + 's'
-      container.appendChild(span)
-    })
+  // Live call & text counter
+  function animateCount(el, target) {
+    var start = 0, duration = 1500, startTime = null
+    function step(ts) {
+      if (!startTime) startTime = ts
+      var progress = Math.min((ts - startTime) / duration, 1)
+      var eased = 1 - Math.pow(1 - progress, 3)
+      el.textContent = Math.floor(eased * target).toLocaleString()
+      if (progress < 1) requestAnimationFrame(step)
+      else el.textContent = target.toLocaleString()
+    }
+    requestAnimationFrame(step)
   }
   (async function() {
     var supabaseUrl = 'https://bimnwybwdocaevadudcl.supabase.co'
@@ -812,8 +806,8 @@
       var textRes = await fetch(supabaseUrl + '/rest/v1/rpc/get_sms_count', { method: 'POST', headers: headers })
       var callCount = await callRes.json()
       var textCount = await textRes.json()
-      if (callCount) populateOdometer(document.getElementById('callOdometer'), callCount)
-      if (textCount) populateOdometer(document.getElementById('textOdometer'), textCount)
+      if (callCount) animateCount(document.getElementById('callCount'), callCount)
+      if (textCount) animateCount(document.getElementById('textCount'), textCount)
     } catch(e) {}
   })()
 
