@@ -320,10 +320,12 @@
       .hero-mobile-tagline { display: block; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
       .hero-accent-line { margin: 0 auto 20px; }
       .hero-sub { margin-left: auto; margin-right: auto; font-size: 14px; margin-bottom: 28px; margin-top: 0; }
-      .hero-btns { flex-direction: column; align-items: center; }
-      .btn-white { width: auto; text-align: center; padding: 14px 36px; font-size: 14px; }
-      .btn-outline { display: inline-block; background: none; border: none; color: rgba(255,255,255,0.35); font-size: 12px; padding: 8px 0; width: auto; }
+      .hero-btns { flex-direction: row; justify-content: center; gap: 10px; }
+      .hero-btns .btn-glow { flex: 1; display: flex; }
+      .btn-white { flex: 1; text-align: center; padding: 13px 0; font-size: 13px; width: 100%; }
+      .btn-outline { flex: 1; text-align: center; padding: 13px 0; font-size: 13px; border: 1px solid rgba(201,160,100,0.2); color: rgba(255,255,255,0.5); }
       .btn-outline::before { display: none; }
+      .trust-badges { margin-top: 20px; padding-top: 14px; }
       .ai-badge { margin-bottom: 16px; font-size: 9px; }
       .ai-badge::before { display: none; }
       .hero-h1-desktop { display: none; }
@@ -331,7 +333,7 @@
       .hero-h1-mobile h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px; white-space: nowrap; }
       .hero-mobile-tagline { display: block; }
       .hero-sub-desktop { display: none; }
-      .hero-sub-mobile { display: block; font-size: 14px; }
+      .hero-sub-mobile { display: block; font-size: 14px; margin-bottom: 20px; }
       .trust-badges { display: flex; justify-content: center; gap: 14px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.04); }
       .phone-frame { width: 340px; margin: 0 auto; }
       .pain-section { padding: 60px 16px; }
@@ -380,8 +382,8 @@
       .hero-h1-mobile h1 { font-size: 32px; }
       .hero-h1-mobile .pink { font-size: 38px !important; }
       .hero-sub { font-size: 13px; margin-bottom: 16px; }
-      .hero-btns { flex-direction: column; align-items: center; }
-      .btn-white { width: auto; padding: 14px 32px; }
+      .hero-btns { flex-direction: row; }
+      .btn-white { flex: 1; padding: 13px 0; }
       .phone-frame { width: 300px; }
       .features-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
       .call-btn { padding: 14px 20px; }
