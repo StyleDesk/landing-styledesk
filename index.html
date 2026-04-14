@@ -90,6 +90,7 @@
     .hero-mobile-tagline { display: none; }
     .hero-sub-mobile { display: none; }
     .hero-accent-line { width: 48px; height: 2px; background: linear-gradient(90deg, #c9a064, transparent); margin-bottom: 20px; border-radius: 1px; }
+    .hero-accent-mobile { display: none; }
     .hero-sub { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 36px; font-weight: 300; max-width: 440px; letter-spacing: 0.2px; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
     .btn-white { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
@@ -318,7 +319,8 @@
       .hero-br { display: none; }
       .hero h1 .pink { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; letter-spacing: -2px; margin-top: 2px; display: block; line-height: 1; text-transform: none; font-style: italic; }
       .hero-mobile-tagline { display: block; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
-      .hero-accent-line { margin: 0 auto 20px; }
+      .hero-accent-desktop { display: none; }
+      .hero-accent-mobile { display: block; margin: 12px auto 14px; }
       .hero-sub { margin-left: auto; margin-right: auto; font-size: 14px; margin-bottom: 28px; margin-top: 0; }
       .hero-btns { flex-direction: row; justify-content: center; gap: 10px; }
       .hero-btns .btn-glow { flex: 1; display: flex; }
@@ -443,10 +445,11 @@
         <h1 class="hero-h1-desktop">Every Call.<br class="hero-br"> Every Text.<span class="pink"><br>Handled.</span></h1>
         <div class="hero-h1-mobile">
           <h1>Never Miss a Client.</h1>
+          <div class="hero-accent-line hero-accent-mobile"></div>
           <div class="hero-mobile-tagline">Every Call. Every Text.</div>
           <span class="pink" style="font-family:'Playfair Display',serif;font-style:italic;font-size:42px;font-weight:700;display:block;line-height:1;margin-top:2px;background:linear-gradient(135deg,#f0c6cf 0%,#c9a064 50%,#f0c6cf 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Handled.</span>
         </div>
-        <div class="hero-accent-line"></div>
+        <div class="hero-accent-line hero-accent-desktop"></div>
         <p class="hero-sub hero-sub-desktop">We help barbershops and nail salons respond instantly, fill last-minute openings, and keep your schedule fully booked.</p>
         <p class="hero-sub hero-sub-mobile">The only AI receptionist built exclusively for barbershops and nail salons. Answers calls, replies to texts, and books clients 24/7.</p>
         <div class="hero-btns">
