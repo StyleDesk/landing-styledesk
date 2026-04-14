@@ -227,7 +227,7 @@
     .pricing-trust { display: flex; justify-content: center; gap: 24px; margin-bottom: 56px; flex-wrap: wrap; position: relative; z-index: 1; }
     .pricing-trust span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 300; letter-spacing: 0.3px; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; position: relative; z-index: 1; }
-    .pricing-card { border-radius: 20px; padding: 36px 28px; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: default; display: flex; flex-direction: column; position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(12px); }
+    .pricing-card { border-radius: 20px; padding: 28px 24px 32px; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: default; display: flex; flex-direction: column; position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(12px); }
     .pricing-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(180deg, rgba(201,160,100,0.03) 0%, transparent 40%); pointer-events: none; opacity: 0; transition: opacity 0.5s; }
     .pricing-card:hover { border-color: rgba(201,160,100,0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,160,100,0.06); transform: translateY(-8px); }
     .pricing-card:hover::after { opacity: 1; }
@@ -236,19 +236,19 @@
     .pricing-card.pro-featured::after { opacity: 1; }
     .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.35); box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 60px rgba(201,160,100,0.1); }
     .pricing-tier-label { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
-    .pricing-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 4px; letter-spacing: 0.5px; }
-    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 12px; font-weight: 300; letter-spacing: 0.2px; }
-    .pricing-price-wrap { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .pricing-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 2px; letter-spacing: 0.5px; }
+    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 6px; font-weight: 300; letter-spacing: 0.2px; }
+    .pricing-price-wrap { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .pricing-price { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; letter-spacing: -1px; display: inline; }
     .pricing-dollar { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; vertical-align: top; position: relative; top: 4px; margin-right: 1px; }
     .pricing-price-period { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.35); margin-left: 2px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; flex: 1; letter-spacing: 0.2px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; flex: 1; letter-spacing: 0.2px; }
     .pricing-features li { display: flex; align-items: flex-start; gap: 8px; transition: color 0.3s; }
     .pricing-features li:hover { color: rgba(255,255,255,0.8); }
     .check { color: #c9a064; font-weight: 500; font-size: 10px; margin-top: 2px; flex-shrink: 0; }
     .pricing-btn { display: block; width: 100%; text-align: center; background: transparent; color: rgba(255,255,255,0.6); padding: 14px; border-radius: 10px; font-weight: 500; font-size: 12px; text-decoration: none; margin-top: auto; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-sizing: border-box; border: 1px solid rgba(201,160,100,0.2); letter-spacing: 0.5px; position: relative; overflow: hidden; }
     .pricing-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(201,160,100,0.1), transparent); transition: left 0.5s ease; }
-    .pricing-features + .pricing-btn { margin-top: 24px; }
+    .pricing-features + .pricing-btn { margin-top: 28px; }
     .pricing-btn:hover { background: rgba(201,160,100,0.08); color: #c9a064; border-color: rgba(201,160,100,0.35); }
     .pricing-btn:hover::before { left: 100%; }
     .pro-featured .pricing-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; border-color: transparent; font-weight: 600; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
@@ -637,12 +637,12 @@
         <div class="pricing-sub">Front desk · For solo operators</div>
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>49</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
           <li><span class="check">✔</span><span>AI replies to calls &amp; texts</span></li>
+          <li><span class="check">✔</span><span>Dedicated business phone number</span></li>
           <li><span class="check">✔</span><span>Answers services, pricing, hours, or direct transfer</span></li>
           <li><span class="check">✔</span><span>Sends personal booking link after questions</span></li>
-          <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
           <li><span class="check">✔</span><span>Simple call &amp; text history dashboard</span></li>
+          <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
         </ul>
         <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
       </div>
@@ -654,11 +654,12 @@
         <ul class="pricing-features">
           <li><span class="check">✔</span><span>Everything in Basic +</span></li>
           <li><span class="check">✔</span><span>Up to 5 individual logins/numbers + 1 owner</span></li>
-          <li><span class="check">✔</span><span>Send promotional broadcasts to all your clients</span></li>
           <li><span class="check">✔</span><span>Smart upselling on every call and text</span></li>
-          <li><span class="check">✔</span><span>Weekly summary report emailed</span></li>
-          <li><span class="check">✔</span><span>Voicemail transcription</span></li>
+          <li><span class="check">✔</span><span>Send promotional broadcasts to all your clients</span></li>
           <li><span class="check">✔</span><span>Client insights and repeat caller detection</span></li>
+          <li><span class="check">✔</span><span>AI insights</span></li>
+          <li><span class="check">✔</span><span>Voicemail transcription</span></li>
+          <li><span class="check">✔</span><span>Weekly summary report emailed</span></li>
           <li><span class="check">✔</span><span>Upgraded Pro dashboard with more features</span></li>
           <li><span class="check">✔</span><span>Choose up to 3 languages your AI responds in</span></li>
         </ul>
@@ -672,13 +673,13 @@
         <ul class="pricing-features">
           <li><span class="check">✔</span><span>Everything in Pro +</span></li>
           <li><span class="check">✔</span><span>Up to 10 individual logins/numbers + 2 owners</span></li>
-          <li><span class="check">✔</span><span>Staff performance tracking and booking leaderboard</span></li>
-          <li><span class="check">✔</span><span>Monthly report card PDF emailed on the 1st</span></li>
           <li><span class="check">✔</span><span>Custom AI voice and greeting for your shop</span></li>
           <li><span class="check">✔</span><span>Custom SMS signature on every text</span></li>
-          <li><span class="check">✔</span><span>Smart FAQ builder for more personalized answers</span></li>
-          <li><span class="check">✔</span><span>Auto follow-up texts to unbooked callers</span></li>
+          <li><span class="check">✔</span><span>Staff performance tracking and booking leaderboard</span></li>
           <li><span class="check">✔</span><span>Projected revenue tracking (weekly + monthly)</span></li>
+          <li><span class="check">✔</span><span>Auto follow-up texts to unbooked callers</span></li>
+          <li><span class="check">✔</span><span>Smart FAQ builder for more personalized answers</span></li>
+          <li><span class="check">✔</span><span>Monthly report card PDF emailed on the 1st</span></li>
           <li><span class="check">✔</span><span>Premium dashboard with advanced analytics and full customization</span></li>
           <li><span class="check">✔</span><span>Up to 30 languages to choose from</span></li>
         </ul>
