@@ -10,6 +10,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+    .skip-nav { position: absolute; top: -100px; left: 0; background: #c9a064; color: #1a0008; padding: 10px 20px; font-size: 13px; font-weight: 600; z-index: 100; text-decoration: none; border-radius: 0 0 8px 0; }
+    .skip-nav:focus { top: 0; }
+    *:focus-visible { outline: 2px solid #c9a064; outline-offset: 2px; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; position: relative; }
     body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; z-index: 100; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px 256px; }
     .ambient-glow { position: absolute; width: 100%; pointer-events: none; z-index: 0; overflow: hidden; height: 600px; }
@@ -87,7 +90,7 @@
     .hero h1 .pink { color: transparent; display: block; font-size: 1.35em; line-height: 1; margin-top: -0.85em; background: linear-gradient(135deg, #f0c6cf 0%, #c9a064 50%, #f0c6cf 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: heroTextShimmer 4s ease infinite; font-style: italic; }
     @keyframes heroTextShimmer { 0%{background-position:0% center} 50%{background-position:200% center} 100%{background-position:0% center} }
     .hero-accent-line { width: 48px; height: 2px; background: linear-gradient(90deg, #c9a064, transparent); margin-bottom: 20px; border-radius: 1px; }
-    .hero-sub { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.5); margin-bottom: 36px; font-weight: 300; max-width: 440px; letter-spacing: 0.2px; }
+    .hero-sub { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 36px; font-weight: 300; max-width: 440px; letter-spacing: 0.2px; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
     .btn-white { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,160,100,0.4); background: linear-gradient(135deg, #d4ad74, #c9a064); }
@@ -260,6 +263,7 @@
     .pro-featured .pricing-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; border-color: transparent; font-weight: 600; box-shadow: 0 4px 20px rgba(201,160,100,0.25); }
     .pro-featured .pricing-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201,160,100,0.35); }
     .pro-featured .pricing-btn::before { display: none; }
+    .pricing-renewal { font-size: 9px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 10px; line-height: 1.5; font-weight: 300; }
 
     /* RISK */
     .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
@@ -387,7 +391,8 @@
 </head>
 <body>
 
-<header>
+<a href="#main-content" class="skip-nav">Skip to content</a>
+<header role="banner">
   <div class="header-inner">
     <a href="#" class="logo">
       <svg width="34" height="34" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
@@ -415,7 +420,7 @@
   <span>texts handled and counting</span>
 </div>
 
-<main>
+<main id="main-content">
 <section class="hero">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="hero-inner">
@@ -436,7 +441,7 @@
         <div class="trust-badges">
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 5 minutes</span></div>
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cancel anytime</span></div>
-          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Risk-free trial</span></div>
+          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>No charge until trial ends</span></div>
         </div>
       </div>
       <div>
@@ -554,6 +559,7 @@
           </div>
         </a>
       </div>
+      <p style="font-size: 9px; color: rgba(255,255,255,0.2); margin-bottom: 24px; line-height: 1.5;">By calling or texting this number, you consent to receive automated AI-generated responses. Msg &amp; data rates may apply.</p>
       <div class="try-pills">
         <div class="try-pill">"How much is a haircut?"</div>
         <div class="try-pill">"What are your hours?"</div>
@@ -623,9 +629,9 @@
     <div class="device-base-wrap"><div class="device-base"></div></div>
     <div class="dash-nav">
       <div class="dash-track" id="dashTrack">
-        <div class="dash-track-btn" onclick="dashGo(0)">Basic</div>
-        <div class="dash-track-btn active" onclick="dashGo(1)">Pro</div>
-        <div class="dash-track-btn" onclick="dashGo(2)">Premium</div>
+        <button class="dash-track-btn" onclick="dashGo(0)" aria-label="View Basic dashboard">Basic</button>
+        <button class="dash-track-btn active" onclick="dashGo(1)" aria-label="View Pro dashboard">Pro</button>
+        <button class="dash-track-btn" onclick="dashGo(2)" aria-label="View Premium dashboard">Premium</button>
       </div>
     </div>
   </section>
@@ -657,6 +663,7 @@
           <li><span class="check">✔</span><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
         </ul>
         <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" rel="noopener noreferrer" class="pricing-btn">Start 14-Day Free Trial</a>
+        <p class="pricing-renewal">After trial, $49/mo. Cancel anytime from your dashboard.</p>
       </div>
       <div class="pricing-card glass pro-featured reveal reveal-delay-2">
 
@@ -676,6 +683,7 @@
           <li><span class="check">✔</span><span>Choose up to 3 languages your AI responds in</span></li>
         </ul>
         <a href="https://buy.stripe.com/5kQ28t2EY3BV1G99ezgEg05" target="_blank" rel="noopener noreferrer" class="pricing-btn">Start 14-Day Free Trial</a>
+        <p class="pricing-renewal">After trial, $99/mo. Cancel anytime from your dashboard.</p>
       </div>
       <div class="pricing-card glass reveal reveal-delay-3">
 
@@ -696,6 +704,7 @@
           <li><span class="check">✔</span><span>Up to 30 languages to choose from</span></li>
         </ul>
         <a href="https://buy.stripe.com/14A14p7ZifkD70t4YjgEg06" target="_blank" rel="noopener noreferrer" class="pricing-btn">Start 30-Day Free Trial</a>
+        <p class="pricing-renewal">After trial, $179/mo. Cancel anytime from your dashboard.</p>
       </div>
     </div>
     </div>
@@ -705,7 +714,7 @@
     <div class="section-particles" aria-hidden="true"></div>
     <div class="demo-inner">
     <div class="demo-card glass reveal">
-      <div class="demo-label">Limited Availability</div>
+      <div class="demo-label">Get Started</div>
       <h2 class="grad-text">Ready to never miss a client again?</h2>
       <p>Book a 15-minute demo. See how StyleDesk works for your shop.</p>
       <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" rel="noopener noreferrer" class="demo-btn">Book Your Demo</a></span>
@@ -715,7 +724,7 @@
 
 </main>
 
-<footer>
+<footer role="contentinfo">
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="footer-logo">
@@ -734,6 +743,7 @@
       <div class="footer-col-title">COMPANY</div>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html#do-not-sell">Do Not Sell or Share My Info</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">CONNECT</div>
