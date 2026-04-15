@@ -197,8 +197,10 @@
 
     /* DASHBOARD — STATIC DEVICE FRAME + CROSSFADE */
     .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; }
-    .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; z-index: 1; }
-    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 40px; position: relative; z-index: 1; }
+    .dash-carousel-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a064; margin-bottom: 10px; text-align: center; position: relative; z-index: 1; }
+    .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; position: relative; z-index: 1; }
+    .swipe-hint { display: none; }
+    .swipe-hint-text { text-align: center; margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; gap: 6px; }
     .device-frame { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; border-radius: 12px; overflow: hidden; border: 2.5px solid rgba(255,255,255,0.1); background: rgba(60,60,60,0.4); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
     .device-chrome { padding: 14px 18px; display: flex; align-items: center; gap: 9px; }
     .device-chrome span { width: 13px; height: 13px; border-radius: 50%; }
@@ -640,8 +642,8 @@
 
 <section class="dash-carousel reveal">
     <div class="section-particles" aria-hidden="true"></div>
-    <h2>Your shop, at a glance.</h2>
-    <p class="dash-carousel-sub">A real-time dashboard built for the way you work.</p>
+    <p class="dash-carousel-eyebrow">Dashboards</p>
+    <h2>Your business, at a glance.</h2>
     <div class="device-frame">
       <div class="device-chrome">
         <span style="background:#ff5f57"></span>
