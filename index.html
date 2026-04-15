@@ -364,6 +364,12 @@
       .device-chrome span { width: 9px; height: 9px; }
       .device-base { height: 14px; }
       .dash-track-btn { padding: 6px 18px; font-size: 11px; }
+      .device-screen { touch-action: pan-y; }
+      .device-screen .slide-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+      .device-screen .slide-track.dragging { transition: none; }
+      .device-screen .slide-track img { position: relative; opacity: 1; min-width: 100%; flex-shrink: 0; }
+      .swipe-hint { display: flex; }
+      .swipe-hint-text { text-align: center; margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; gap: 6px; }
       .pricing-section { padding: 80px 16px; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 20px; }
       .pricing-card { padding: 28px 22px; }
@@ -642,10 +648,12 @@
         <span style="background:#febc2e"></span>
         <span style="background:#28c840"></span>
       </div>
-      <div class="device-screen">
+      <div class="device-screen" id="dashSwipeArea">
+        <div class="slide-track" id="slideTrack">
         <img src="images/basic-dashboard.png" alt="Basic Dashboard" id="dashImg0" loading="lazy"/>
         <img src="images/pro-dashboard.png" alt="Pro Dashboard" id="dashImg1" class="active" loading="lazy"/>
         <img src="images/premium-dashboard.png" alt="Premium Dashboard" id="dashImg2" loading="lazy"/>
+        </div>
       </div>
     </div>
     <div class="device-base-wrap"><div class="device-base"></div></div>
@@ -655,6 +663,9 @@
         <button class="dash-track-btn active" onclick="dashGo(1)" aria-label="View Pro dashboard">Pro</button>
         <button class="dash-track-btn" onclick="dashGo(2)" aria-label="View Premium dashboard">Premium</button>
       </div>
+    </div>
+    <div class="swipe-hint" style="display:none;">
+      <div class="swipe-hint-text">← Swipe to explore dashboards →</div>
     </div>
   </section>
 
@@ -877,16 +888,68 @@
   }
   switchType('barber')
 
-  // Dashboard — crossfade inside static device frame
+  // Dashboard — crossfade on desktop, swipe on mobile
   var dashIdx = 1
+  var isMobile = window.innerWidth <= 768
+  var slideTrack = document.getElementById('slideTrack')
+
   function dashGo(i) {
-    dashIdx = i
-    for (var s = 0; s < 3; s++) {
-      var img = document.getElementById('dashImg' + s)
-      if (s === dashIdx) img.classList.add('active'); else img.classList.remove('active')
+    dashIdx = Math.max(0, Math.min(2, i))
+    if (isMobile && slideTrack) {
+      slideTrack.classList.remove('dragging')
+      slideTrack.style.transform = 'translateX(' + (-dashIdx * 100) + '%)'
+    } else {
+      for (var s = 0; s < 3; s++) {
+        var img = document.getElementById('dashImg' + s)
+        if (s === dashIdx) img.classList.add('active'); else img.classList.remove('active')
+      }
     }
     var btns = document.getElementById('dashTrack').children
     for (var d = 0; d < btns.length; d++) btns[d].className = 'dash-track-btn' + (d === dashIdx ? ' active' : '')
+  }
+
+  // Initialize mobile slide position
+  if (isMobile && slideTrack) {
+    slideTrack.style.transform = 'translateX(-100%)'
+  }
+
+  // Touch swipe handling (mobile only)
+  if (isMobile) {
+    var swipeArea = document.getElementById('dashSwipeArea')
+    var swipeStartX = 0, swipeCurrentX = 0, swiping = false
+    if (swipeArea) {
+      swipeArea.addEventListener('touchstart', function(e) {
+        swipeStartX = e.touches[0].clientX
+        swipeCurrentX = swipeStartX
+        swiping = true
+        slideTrack.classList.add('dragging')
+      }, { passive: true })
+
+      swipeArea.addEventListener('touchmove', function(e) {
+        if (!swiping) return
+        swipeCurrentX = e.touches[0].clientX
+        var diff = swipeCurrentX - swipeStartX
+        var offset = -dashIdx * 100
+        var dragPct = (diff / swipeArea.offsetWidth) * 100
+        if ((dashIdx === 0 && diff > 0) || (dashIdx === 2 && diff < 0)) dragPct *= 0.3
+        slideTrack.style.transform = 'translateX(' + (offset + dragPct) + '%)'
+      }, { passive: true })
+
+      swipeArea.addEventListener('touchend', function() {
+        if (!swiping) return
+        swiping = false
+        var diff = swipeCurrentX - swipeStartX
+        if (Math.abs(diff) > 50) {
+          if (diff < 0 && dashIdx < 2) dashGo(dashIdx + 1)
+          else if (diff > 0 && dashIdx > 0) dashGo(dashIdx - 1)
+          else dashGo(dashIdx)
+        } else {
+          dashGo(dashIdx)
+        }
+        var hint = document.querySelector('.swipe-hint')
+        if (hint) hint.style.display = 'none'
+      })
+    }
   }
 
   // Scroll reveal
