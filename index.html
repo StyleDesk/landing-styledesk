@@ -364,7 +364,7 @@
       .device-chrome span { width: 9px; height: 9px; }
       .device-base { height: 14px; }
       .dash-track-btn { padding: 6px 18px; font-size: 11px; }
-      .device-screen { touch-action: pan-y; }
+      .device-screen { touch-action: none; }
       .device-screen .slide-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
       .device-screen .slide-track.dragging { transition: none; }
       .device-screen .slide-track img { position: relative; opacity: 1; min-width: 100%; flex-shrink: 0; }
@@ -917,23 +917,36 @@
   if (isMobile) {
     var swipeArea = document.getElementById('dashSwipeArea')
     var swipeStartX = 0, swipeCurrentX = 0, swiping = false
+    var swipeStartY = 0, swipeLocked = false, swipeDir = null
     if (swipeArea) {
       swipeArea.addEventListener('touchstart', function(e) {
         swipeStartX = e.touches[0].clientX
+        swipeStartY = e.touches[0].clientY
         swipeCurrentX = swipeStartX
         swiping = true
+        swipeLocked = false
+        swipeDir = null
         slideTrack.classList.add('dragging')
       }, { passive: true })
 
       swipeArea.addEventListener('touchmove', function(e) {
         if (!swiping) return
         swipeCurrentX = e.touches[0].clientX
-        var diff = swipeCurrentX - swipeStartX
+        var diffX = swipeCurrentX - swipeStartX
+        var diffY = e.touches[0].clientY - swipeStartY
+        if (!swipeLocked) {
+          if (Math.abs(diffX) > 8 || Math.abs(diffY) > 8) {
+            swipeDir = Math.abs(diffX) > Math.abs(diffY) ? 'h' : 'v'
+            swipeLocked = true
+          } else return
+        }
+        if (swipeDir === 'v') return
+        e.preventDefault()
         var offset = -dashIdx * 100
-        var dragPct = (diff / swipeArea.offsetWidth) * 100
-        if ((dashIdx === 0 && diff > 0) || (dashIdx === 2 && diff < 0)) dragPct *= 0.3
+        var dragPct = (diffX / swipeArea.offsetWidth) * 100
+        if ((dashIdx === 0 && diffX > 0) || (dashIdx === 2 && diffX < 0)) dragPct *= 0.3
         slideTrack.style.transform = 'translateX(' + (offset + dragPct) + '%)'
-      }, { passive: true })
+      }, { passive: false })
 
       swipeArea.addEventListener('touchend', function() {
         if (!swiping) return
