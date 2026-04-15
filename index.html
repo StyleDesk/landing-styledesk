@@ -851,7 +851,7 @@
         dot.className = 'p' + (isGlitter ? ' glitter' : '');
         var size = isGlitter ? (1.5 + Math.random() * 2) : (2 + Math.random() * 3);
         var top = 5 + Math.random() * 85;
-        var left = 3 + Math.random() * 90;
+        var left = Math.random() < 0.5 ? (Math.random() * 18) : (82 + Math.random() * 18);
         var anim = anims[Math.floor(Math.random() * anims.length)];
         var dur = 5 + Math.random() * 5;
         var glitterDur = 3 + Math.random() * 4;
