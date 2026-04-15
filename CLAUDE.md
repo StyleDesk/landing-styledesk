@@ -66,7 +66,7 @@ styledesk-landing-wdky.vercel.app
 
 5\. How it Works — 3 steps
 
-6\. Live demo — call/text (240) 875-4777
+6\. Live demo — call/text (301) 888-7454
 
 7\. Works With — Booksy, Square, Fresha, Vagaro
 
