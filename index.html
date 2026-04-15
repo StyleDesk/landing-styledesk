@@ -375,8 +375,8 @@
       .device-base { height: 14px; }
       .dash-track-btn { padding: 6px 18px; font-size: 11px; }
       .device-screen { touch-action: none; }
-      @keyframes peekHint { 0%,70%{transform:translateX(0)} 80%{transform:translateX(-20px)} 90%{transform:translateX(0)} 100%{transform:translateX(0)} }
-      .slide-track.peek-hint { animation: peekHint 4s ease-in-out infinite; }
+      @keyframes slideHandHint { 0%{transform:translateX(30px);opacity:0} 20%{opacity:0.6} 60%{opacity:0.6} 100%{transform:translateX(-30px);opacity:0} }
+      .swipe-hand { position: absolute; bottom: 20px; left: 50%; margin-left: -8px; z-index: 5; pointer-events: none; font-size: 20px; animation: slideHandHint 2.5s ease-in-out infinite; }
       .device-screen .slide-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
       .device-screen .slide-track.dragging { transition: none; }
       .device-screen .slide-track img { position: relative; opacity: 1; min-width: 100%; flex-shrink: 0; }
@@ -664,6 +664,7 @@
         <span style="background:#28c840"></span>
       </div>
       <div class="device-screen" id="dashSwipeArea">
+        <div class="swipe-hand" style="display:none;">👆</div>
         <div class="slide-track" id="slideTrack">
         <img src="images/basic-dashboard.png" alt="Basic Dashboard" id="dashImg0" loading="lazy"/>
         <img src="images/pro-dashboard.png" alt="Pro Dashboard" id="dashImg1" class="active" loading="lazy"/>
@@ -936,7 +937,8 @@
   // Initialize mobile slide position
   if (isMobile && slideTrack) {
     slideTrack.style.transform = 'translateX(-100%)'
-    slideTrack.classList.add('peek-hint')
+    var handEl = document.querySelector('.swipe-hand')
+    if (handEl) handEl.style.display = ''
   }
 
   // Touch swipe handling (mobile only)
@@ -952,7 +954,8 @@
         swiping = true
         swipeLocked = false
         swipeDir = null
-        slideTrack.classList.remove('peek-hint')
+        var hand = document.querySelector('.swipe-hand')
+        if (hand) hand.style.display = 'none'
         slideTrack.classList.add('dragging')
       }, { passive: true })
 
