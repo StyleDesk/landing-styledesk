@@ -376,7 +376,7 @@
       .dash-track-btn { padding: 6px 18px; font-size: 11px; }
       .device-screen { touch-action: none; }
       @keyframes slideHandHint { 0%{transform:translateX(30px);opacity:0} 20%{opacity:0.6} 60%{opacity:0.6} 100%{transform:translateX(-30px);opacity:0} }
-      .swipe-hand { position: absolute; bottom: 20px; left: 50%; margin-left: -8px; z-index: 5; pointer-events: none; font-size: 20px; animation: slideHandHint 2.5s ease-in-out infinite; }
+      .swipe-hand { position: absolute; bottom: 24px; left: 50%; margin-left: -12px; z-index: 5; pointer-events: none; animation: slideHandHint 2.5s ease-in-out infinite; opacity: 0; }
       .device-screen .slide-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
       .device-screen .slide-track.dragging { transition: none; }
       .device-screen .slide-track img { position: relative; opacity: 1; min-width: 100%; flex-shrink: 0; }
@@ -664,7 +664,7 @@
         <span style="background:#28c840"></span>
       </div>
       <div class="device-screen" id="dashSwipeArea">
-        <div class="swipe-hand" style="display:none;">👆</div>
+        <div class="swipe-hand" style="display:none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 00-4 0v1M14 10V4a2 2 0 00-4 0v6M10 10V6a2 2 0 00-4 0v8c0 4.418 3.582 8 8 8h0a8 8 0 008-8v-4a2 2 0 00-4 0v3"/></svg></div>
         <div class="slide-track" id="slideTrack">
         <img src="images/basic-dashboard.png" alt="Basic Dashboard" id="dashImg0" loading="lazy"/>
         <img src="images/pro-dashboard.png" alt="Pro Dashboard" id="dashImg1" class="active" loading="lazy"/>
