@@ -499,7 +499,7 @@
         <p class="hero-sub hero-sub-mobile">The only AI receptionist built exclusively for barbershops and nail salons. Answers calls, replies to texts, and books clients 24/7.</p>
         <div class="hero-btns">
           <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" rel="noopener noreferrer" class="btn-white">Book a Demo</a></span>
-          <a href="#pro-card" class="btn-outline" onclick="event.preventDefault();var el=document.getElementById('pro-card');if(el){var h=document.querySelector('header');var hh=h?h.offsetHeight:60;var y=el.getBoundingClientRect().top+window.pageYOffset-hh-8;window.scrollTo({top:y,behavior:'smooth'});}return false;">View Pricing ↓</a>
+          <a href="#pricing-cards" class="btn-outline" onclick="event.preventDefault();var el=document.querySelector('#pricing-cards .pricing-card');if(el){var h=document.querySelector('header');var hh=h?h.offsetHeight:60;var r=el.getBoundingClientRect();var y=r.top+window.pageYOffset+(r.height/2)-hh-(window.innerHeight/2);window.scrollTo({top:y,behavior:'smooth'});}return false;">View Pricing ↓</a>
         </div>
         <div class="trust-badges">
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 5 minutes</span></div>
