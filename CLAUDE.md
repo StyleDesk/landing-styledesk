@@ -74,7 +74,7 @@ styledesk-landing-wdky.vercel.app
 
 9\. Dashboard carousel — tier screenshots
 
-10\. Pricing — $49/$99/$179 with Stripe checkout links
+10\. Pricing — $49/$149/$249 with Stripe checkout links
 
 11\. Final CTA — "Ready to never miss a client again?"
 
