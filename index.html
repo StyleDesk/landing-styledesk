@@ -10,6 +10,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 100px; overflow-x: hidden; }
+    @media (max-width: 768px) {
+      html { scroll-padding-top: 60px; }
+    }
     .skip-nav { position: absolute; top: -100px; left: 0; background: #c9a064; color: #1a0008; padding: 10px 20px; font-size: 13px; font-weight: 600; z-index: 100; text-decoration: none; border-radius: 0 0 8px 0; }
     .skip-nav:focus { top: 0; }
     *:focus-visible { outline: 2px solid #c9a064; outline-offset: 2px; }
