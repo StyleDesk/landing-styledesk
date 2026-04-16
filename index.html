@@ -499,7 +499,7 @@
         <p class="hero-sub hero-sub-mobile">The only AI receptionist built exclusively for barbershops and nail salons. Answers calls, replies to texts, and books clients 24/7.</p>
         <div class="hero-btns">
           <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" rel="noopener noreferrer" class="btn-white">Book a Demo</a></span>
-          <a href="#pricing-cards" class="btn-outline" onclick="event.preventDefault();var el=document.querySelector('#pricing-cards .pricing-card');if(el){var h=document.querySelector('header');var hh=h?h.offsetHeight:60;var r=el.getBoundingClientRect();var y=r.top+window.pageYOffset+(r.height/2)-hh-(window.innerHeight/2);window.scrollTo({top:y,behavior:'smooth'});}return false;">View Pricing ↓</a>
+          <a href="#basic-trial-btn" class="btn-outline" onclick="event.preventDefault();var el=document.getElementById('basic-trial-btn');if(el){var h=document.querySelector('header');var hh=h?h.offsetHeight:60;var y=el.getBoundingClientRect().top+window.pageYOffset-hh-20;window.scrollTo({top:y,behavior:'smooth'});}return false;">View Pricing ↓</a>
         </div>
         <div class="trust-badges">
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 5 minutes</span></div>
@@ -744,7 +744,7 @@
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Simple call &amp; text history dashboard</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Ability to edit services, pricing, hours &amp; booking link</span></li>
         </ul>
-        <a href="https://dashboard-styledesk.vercel.app/onboard?plan=basic" class="pricing-btn">Start 14-Day Free Trial</a>
+        <a href="https://dashboard-styledesk.vercel.app/onboard?plan=basic" class="pricing-btn" id="basic-trial-btn">Start 14-Day Free Trial</a>
         <p class="pricing-renewal">After trial, $49/mo. Cancel anytime from your dashboard.</p>
       </div>
       <div class="pricing-card glass pro-featured reveal reveal-delay-2" id="pro-card">
