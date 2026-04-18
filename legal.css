@@ -1,0 +1,71 @@
+/* Shared stylesheet for StyleDesk.ai legal documents
+   Used by: terms.html, privacy.html, cookies.html, do-not-sell.html */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; line-height: 1.6; }
+a { color: #c9a064; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #f0c6cf; text-decoration: underline; }
+
+/* NAV */
+header.site-nav { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
+.header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+.logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
+.logo:hover { text-decoration: none; color: #fff; }
+.header-nav { display: flex; align-items: center; gap: 24px; }
+.header-nav a { font-size: 13px; color: rgba(255,255,255,0.5); }
+.header-nav a:hover { color: #fff; text-decoration: none; }
+.header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+.header-btn:hover { background: #c9a064; color: #1a0008; text-decoration: none; }
+
+/* LAYOUT */
+.legal-wrap { max-width: 1152px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
+@media (max-width: 900px) { .legal-wrap { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px 60px; } .toc { position: static !important; max-height: none !important; overflow: visible !important; } }
+
+/* TOC */
+.toc { position: sticky; top: 100px; align-self: start; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 12px; border-right: 0.5px solid rgba(255,255,255,0.08); }
+.toc::-webkit-scrollbar { width: 4px; }
+.toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+.toc h3 { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+.toc ol { list-style: none; counter-reset: toc; }
+.toc ol li { counter-increment: toc; margin-bottom: 8px; }
+.toc ol li a { font-size: 12px; color: rgba(255,255,255,0.55); display: block; padding: 4px 0; border-left: 2px solid transparent; padding-left: 10px; transition: all 0.15s; }
+.toc ol li a::before { content: counter(toc) ". "; color: rgba(255,255,255,0.3); }
+.toc ol li a:hover { color: #c9a064; border-left-color: #c9a064; text-decoration: none; }
+.toc ol li a.active { color: #c9a064; border-left-color: #c9a064; }
+
+/* CONTENT */
+.legal-content { max-width: 780px; counter-reset: section; }
+.legal-header { padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.legal-eyebrow { font-size: 11px; color: #c9a064; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+.legal-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; line-height: 1.2; }
+.legal-dates { font-size: 13px; color: rgba(255,255,255,0.55); }
+.legal-dates strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+.legal-content h2 { font-size: 20px; font-weight: 700; margin: 48px 0 16px; color: #fff; scroll-margin-top: 100px; }
+.legal-content h2::before { content: counter(section) ". "; counter-increment: section; color: #c9a064; font-weight: 800; margin-right: 2px; }
+.legal-content h3 { font-size: 15px; font-weight: 600; margin: 24px 0 10px; color: rgba(255,255,255,0.9); }
+.legal-content p { font-size: 14px; color: rgba(255,255,255,0.78); margin-bottom: 14px; }
+.legal-content ul, .legal-content ol { margin: 10px 0 18px 24px; }
+.legal-content ul li, .legal-content ol li { font-size: 14px; color: rgba(255,255,255,0.78); margin-bottom: 8px; padding-left: 4px; }
+.legal-content strong { color: #fff; font-weight: 600; }
+.legal-content .caps { text-transform: uppercase; font-weight: 600; color: #fff; font-size: 13px; letter-spacing: 0.3px; }
+.legal-content .defined { font-weight: 600; color: #f0c6cf; }
+.legal-content .note { background: rgba(201,160,100,0.08); border-left: 3px solid #c9a064; padding: 14px 18px; border-radius: 4px; margin: 18px 0; font-size: 13px; color: rgba(255,255,255,0.85); }
+
+/* OPT-OUT FORM (do-not-sell only) */
+.optout-form { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin: 24px 0; }
+.optout-form label { display: block; font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; font-weight: 500; }
+.optout-form input[type="email"], .optout-form input[type="text"], .optout-form textarea { width: 100%; padding: 10px 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-family: inherit; font-size: 14px; margin-bottom: 14px; }
+.optout-form input:focus, .optout-form textarea:focus { outline: none; border-color: #c9a064; }
+.optout-form button { background: #c9a064; color: #1a0008; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s; }
+.optout-form button:hover { background: #d4ad74; }
+
+/* FOOTER */
+footer { border-top: 0.5px solid rgba(255,255,255,0.06); padding: 40px 24px; margin-top: 60px; }
+.footer-inner { max-width: 1152px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.5); }
+.footer-links a:hover { color: #c9a064; text-decoration: none; }
+.footer-contact { font-size: 11px; color: rgba(255,255,255,0.3); }

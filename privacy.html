@@ -1,277 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy — StyleDesk.ai</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; }
-    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
-    .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
-    .logo span { color: rgba(255,255,255,0.35); }
-    .back-link { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-    .back-link:hover { color: #fff; }
-    .content { max-width: 768px; margin: 0 auto; padding: 60px 24px 80px; }
-    .content h1 { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
-    .updated { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 40px; }
-    .content h2 { font-size: 18px; font-weight: 600; margin-top: 40px; margin-bottom: 12px; color: #f0c6cf; }
-    .content h3 { font-size: 15px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
-    .content p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 14px; }
-    .content ul { list-style: none; margin-bottom: 14px; padding-left: 0; }
-    .content ul li { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; padding-left: 20px; position: relative; }
-    .content ul li::before { content: '•'; position: absolute; left: 4px; color: #c9a064; }
-    .content a { color: #c9a064; text-decoration: none; }
-    .content a:hover { text-decoration: underline; }
-    .content strong { color: rgba(255,255,255,0.75); font-weight: 600; }
-    .divider { height: 0.5px; background: rgba(255,255,255,0.06); margin: 40px 0; }
-    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 24px; text-align: center; }
-    footer p { font-size: 10px; color: rgba(255,255,255,0.25); }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy &mdash; StyleDesk.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/legal.css"/>
 </head>
 <body>
 
-<header>
+<header class="site-nav">
   <div class="header-inner">
-    <a href="index.html" class="logo">
-      <svg width="28" height="28" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
-      StyleDesk<span>.ai</span>
-    </a>
-    <a href="index.html" class="back-link">&larr; Back to home</a>
+    <a href="/" class="logo">StyleDesk<span>.ai</span></a>
+    <div class="header-nav">
+      <a href="/#how">How it works</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="https://dashboard-styledesk.vercel.app/login" class="header-btn">Sign in</a>
+    </div>
   </div>
 </header>
 
-<div class="content">
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: April 5, 2026</p>
+<div class="legal-wrap">
+  <aside class="toc" aria-label="Section navigation">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">Information we collect</a></li>
+      <li><a href="#s2">How we use your information</a></li>
+      <li><a href="#s3">Legal basis for processing</a></li>
+      <li><a href="#s4">How we share your information</a></li>
+      <li><a href="#s5">Data retention &amp; deletion</a></li>
+      <li><a href="#s6">Data security</a></li>
+      <li><a href="#s7">AI-generated content disclosure</a></li>
+      <li><a href="#s8">California rights (CCPA/CPRA)</a></li>
+      <li><a href="#s9">Canadian privacy rights</a></li>
+      <li><a href="#s10">Cookies &amp; tracking</a></li>
+      <li><a href="#s11">Other US state rights</a></li>
+      <li><a href="#s12">Children&rsquo;s privacy</a></li>
+      <li><a href="#s13">Third-party links</a></li>
+      <li><a href="#s14">International transfers</a></li>
+      <li><a href="#s15">Telecom data</a></li>
+      <li><a href="#s16">Marketing communications</a></li>
+      <li><a href="#s17">Do Not Sell or Share</a></li>
+      <li><a href="#s18">Changes to this policy</a></li>
+      <li><a href="#s19">Automated decision-making</a></li>
+      <li><a href="#s20">Contact</a></li>
+    </ol>
+  </aside>
 
-  <p>StyleDesk AI, LLC ("StyleDesk," "we," "us," or "our") operates the StyleDesk.ai platform, including our website, dashboards, AI receptionist service, and related tools. This Privacy Policy explains how we collect, use, store, share, and protect your information when you use our services.</p>
-  <p>By using StyleDesk.ai, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our services.</p>
+  <main class="legal-content">
+    <div class="legal-header">
+      <p class="legal-eyebrow">StyleDesk AI, LLC</p>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <p class="legal-dates"><strong>Effective:</strong> April 15, 2026 &nbsp;&middot;&nbsp; <strong>Last updated:</strong> April 18, 2026</p>
+    </div>
 
-  <div class="divider"></div>
+    <p>StyleDesk AI, LLC (&ldquo;<span class="defined">StyleDesk AI</span>,&rdquo; &ldquo;<span class="defined">we</span>,&rdquo; &ldquo;<span class="defined">us</span>,&rdquo; or &ldquo;<span class="defined">our</span>&rdquo;) is committed to protecting your privacy and handling your personal information with transparency and care. This Privacy Policy describes how we collect, use, disclose, retain, and protect personal information in connection with the StyleDesk AI platform and website at <a href="/">www.styledesk.ai</a> (collectively, the &ldquo;<span class="defined">Platform</span>&rdquo; or &ldquo;<span class="defined">Services</span>&rdquo;).</p>
+    <p>This Privacy Policy applies to: <strong>(a) Subscribers</strong> &mdash; barbershop owners, nail salon owners, and other business operators who register for and use the Platform; and <strong>(b) End-Users</strong> &mdash; clients and members of the public who interact with the Platform by calling or texting a Subscriber&rsquo;s dedicated phone number.</p>
+    <p>By accessing or using the Platform, you acknowledge that you have read and understood this Privacy Policy. If you do not agree, you must discontinue use of the Platform.</p>
 
-  <h2>1. Information We Collect</h2>
+    <h2 id="s1">Information We Collect</h2>
+    <h3>1.1 From Subscribers</h3>
+    <p>When you register, we collect: full name and business name; business address and location (used to assign a matching local area code); email address and telephone number; billing information (processed by Stripe, Inc. &mdash; we do not store full payment card data); subscription plan selection and preferences; business configuration data (service menus, pricing, hours, booking links, staff schedules, FAQ content); login credentials and account security information.</p>
+    <h3>1.2 From End-Users</h3>
+    <p>When an End-User calls or texts a Subscriber&rsquo;s dedicated StyleDesk AI phone number, we may collect: the End-User&rsquo;s phone number; call recordings and/or transcripts of voice communications; content of inbound and outbound text messages; <strong>images and media files sent by MMS</strong>, including reference photos of hairstyles or nail designs (Pro and Premium plans only); AI-generated captions describing those images; the End-User&rsquo;s name and appointment time or day, if voluntarily provided in response to an AI follow-up prompt; date, time, and duration of calls and text sessions; call disposition data (e.g., transfer, hangup, booking link sent).</p>
+    <div class="note">
+      <p><strong>A note on photos.</strong> When End-Users text a photo to a Pro or Premium Subscriber&rsquo;s dedicated number, we download the image from Telnyx&rsquo;s temporary media storage, store it in a private, access-controlled bucket on Supabase Storage, and run the image through OpenAI&rsquo;s vision API to generate a short caption (10 words or fewer). OpenAI processes these images in accordance with its API data-usage policy and does not train models on this data. Photos are retained for up to 180 days and are then automatically deleted.</p>
+    </div>
+    <h3>1.3 Automatically Collected</h3>
+    <p>When Subscribers access the Platform, we may automatically collect: IP address and approximate geographic location; browser type, version, and operating system; device identifiers; pages viewed, features accessed, and time spent; referring URLs and navigation paths; cookie identifiers and similar tracking technologies (see Section 10).</p>
 
-  <h3>1.1 Account Information</h3>
-  <p>When you create an account, we collect:</p>
-  <ul>
-    <li>Full name and business name</li>
-    <li>Email address</li>
-    <li>Phone number</li>
-    <li>Business address (if provided)</li>
-    <li>Booking platform URL</li>
-    <li>Service menu, pricing, and business hours</li>
-    <li>Plan selection and subscription status</li>
-  </ul>
+    <h2 id="s2">How We Use Your Information</h2>
+    <ul>
+      <li>To provision and operate the Platform, including activating Subscriber accounts, assigning dedicated phone numbers, and enabling AI answering, messaging, and photo intake features;</li>
+      <li>To authenticate Subscribers and maintain account security;</li>
+      <li>To process subscription payments and manage billing through Stripe;</li>
+      <li>To generate and deliver AI-powered responses to End-Users on behalf of Subscribers;</li>
+      <li>To generate AI captions for End-User-submitted photos for dashboard organization;</li>
+      <li>To populate Subscriber dashboards with call logs, text history, photo galleries, analytics, and performance data;</li>
+      <li>To send Subscribers notifications when End-Users submit photos (via SMS and/or daily email digest, subject to Subscriber preferences);</li>
+      <li>To provide customer support and troubleshoot technical issues;</li>
+      <li>To send transactional communications (account confirmations, billing notices, service updates, security alerts);</li>
+      <li>To send marketing and promotional communications to Subscribers, subject to applicable consent and opt-out rights;</li>
+      <li>To monitor, analyze, and improve Platform performance, reliability, and features;</li>
+      <li>To develop our AI models using aggregated and de-identified data (we do NOT use End-User photos, voice recordings, or text content to train generative AI models for third-party sale);</li>
+      <li>To detect and prevent fraud, abuse, security incidents, and violations of our Terms of Service;</li>
+      <li>To comply with applicable legal obligations and enforce our legal rights.</li>
+    </ul>
 
-  <h3>1.2 Call and Text Data</h3>
-  <p>When our AI receptionist handles calls and texts on your behalf, we collect:</p>
-  <ul>
-    <li>Caller and sender phone numbers</li>
-    <li>Call duration, timestamps, and status</li>
-    <li>Call recordings and transcriptions</li>
-    <li>Text message content and conversation history</li>
-    <li>Voicemail recordings and transcriptions</li>
-    <li>Topics discussed during calls (e.g., pricing, booking, hours)</li>
-    <li>Whether a booking link was sent</li>
-  </ul>
+    <h2 id="s3">Legal Basis for Processing (Where Applicable)</h2>
+    <ul>
+      <li><strong>Contractual Necessity:</strong> Processing necessary to perform our contract with you as a Subscriber;</li>
+      <li><strong>Legitimate Interests:</strong> Processing necessary for our legitimate business interests, including security, fraud prevention, analytics, and service improvement;</li>
+      <li><strong>Legal Obligation:</strong> Processing necessary to comply with applicable laws and regulations;</li>
+      <li><strong>Consent:</strong> Where we rely on your consent (such as for certain marketing communications or non-essential cookies), you may withdraw consent at any time.</li>
+    </ul>
 
-  <h3>1.3 Payment Information</h3>
-  <p>Payment processing is handled entirely by <strong>Stripe, Inc.</strong> We do not store, process, or have access to your full credit card number, debit card number, or bank account details. Stripe's privacy policy governs the handling of your payment data. We receive only a confirmation of payment status, last four digits of your card, and billing address from Stripe.</p>
+    <h2 id="s4">How We Share Your Information</h2>
+    <p><strong>StyleDesk AI does not sell your personal information to third parties.</strong> We do not share End-User call recordings, text message content, or submitted photos with any third party for advertising or analytics purposes.</p>
+    <h3>4.1 Service Providers</h3>
+    <p>We share personal information with the following vendors who assist us in operating the Platform:</p>
+    <ul>
+      <li><strong>Stripe, Inc.</strong> &mdash; payment processing;</li>
+      <li><strong>Telnyx, Inc.</strong> &mdash; telephony and SMS/MMS infrastructure;</li>
+      <li><strong>Supabase, Inc.</strong> &mdash; cloud hosting, database, and file storage (including photo storage);</li>
+      <li><strong>OpenAI, L.L.C.</strong> &mdash; AI language and vision model processing of call transcripts, SMS content, and submitted photos;</li>
+      <li><strong>Deepgram, Inc.</strong> &mdash; real-time speech-to-text transcription of inbound calls;</li>
+      <li><strong>ElevenLabs, Inc.</strong> &mdash; AI voice synthesis for outbound call audio;</li>
+      <li><strong>Resend</strong> &mdash; transactional email delivery;</li>
+      <li><strong>Vercel, Inc. and Railway Corp.</strong> &mdash; Platform hosting infrastructure;</li>
+      <li><strong>Google Analytics and PostHog</strong> &mdash; Platform usage analytics (see Section 10);</li>
+      <li><strong>Sentry</strong> &mdash; application error monitoring.</li>
+    </ul>
+    <p>All service providers are contractually obligated to use personal information only for the purposes for which it was shared and to maintain appropriate security measures.</p>
+    <h3>4.2 Business Transfers</h3>
+    <p>In the event of a merger, acquisition, sale of substantially all of our assets, or other business restructuring, personal information may be transferred to the acquiring entity. We will notify affected Subscribers prior to such transfer if practicable.</p>
+    <h3>4.3 Legal Requirements and Safety</h3>
+    <p>We may disclose personal information when we reasonably believe disclosure is necessary to: comply with a valid legal obligation; enforce our Terms of Service or protect our legal rights; investigate fraud or security incidents; or protect the safety, rights, or property of StyleDesk AI, our Subscribers, End-Users, or the public.</p>
+    <h3>4.4 With Your Consent</h3>
+    <p>We may share personal information for additional purposes with your prior express consent.</p>
 
-  <h3>1.4 Usage Data</h3>
-  <p>We automatically collect information about how you use our platform, including:</p>
-  <ul>
-    <li>Pages visited and features used within the dashboard</li>
-    <li>Browser type, device type, and operating system</li>
-    <li>IP address and approximate geographic location</li>
-    <li>Referring website or source</li>
-    <li>Session duration and interaction patterns</li>
-  </ul>
+    <h2 id="s5">Data Retention &amp; Deletion</h2>
+    <h3>5.1 Subscriber Account Data</h3>
+    <p>Retained for the duration of your active subscription and for twelve (12) months following account cancellation, after which we securely delete or de-identify it unless legal retention is required.</p>
+    <h3>5.2 Call Logs and Transcripts</h3>
+    <p>Retained for ninety (90) days from the date of the call.</p>
+    <h3>5.3 Text Message Records</h3>
+    <p>Retained for ninety (90) days from the date of each message exchange.</p>
+    <h3>5.4 Photo Intake (Pro and Premium)</h3>
+    <p>End-User-submitted photos and their AI-generated captions are retained for a maximum of one hundred eighty (180) days from the date of receipt. After 180 days, photos are automatically deleted. Subscribers may manually delete individual photos from their dashboard at any time (removed within 7 days). Subscribers may request that all photos from a specific End-User phone number be purged by emailing <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+    <h3>5.5 Billing Records</h3>
+    <p>Retained for a minimum of five (5) years for financial record-keeping and tax compliance.</p>
+    <h3>5.6 Deletion Requests</h3>
+    <p>Subscribers may request deletion of their personal information by contacting <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. We process requests in accordance with applicable law. Certain information may be retained to comply with legal obligations, resolve disputes, or enforce our agreements.</p>
+    <h3>5.7 End-User Data</h3>
+    <p>End-User Data (call recordings, transcripts, text content, submitted photos) is processed and retained on behalf of and at the direction of the Subscriber. End-Users seeking access to or deletion of their data should contact the Subscriber directly. If the Subscriber is unable to address the request, the End-User may contact <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
 
-  <h3>1.5 Cookies and Tracking</h3>
-  <p>We use cookies and similar technologies to maintain your session, remember your preferences, and analyze site traffic. You can control cookies through your browser settings, though disabling them may limit some functionality.</p>
+    <h2 id="s6">Data Security</h2>
+    <p>StyleDesk AI implements commercially reasonable administrative, technical, and physical safeguards:</p>
+    <ul>
+      <li>Encryption of data in transit using industry-standard TLS protocols;</li>
+      <li>Encryption of sensitive data at rest;</li>
+      <li>Access controls and role-based permissions;</li>
+      <li>Row-level security policies restricting photo access so that each Subscriber can only view photos sent to their own dedicated phone number;</li>
+      <li>Regular security reviews and vulnerability assessments;</li>
+      <li>Secure deletion procedures for personal information no longer required.</li>
+    </ul>
+    <p>No security system is impenetrable. In the event of a data security breach, we will notify affected parties in accordance with applicable law and without undue delay.</p>
 
-  <div class="divider"></div>
+    <h2 id="s7">AI-Generated Content Disclosure</h2>
+    <p>The StyleDesk AI Platform uses artificial intelligence technology to generate automated responses to inbound calls, text messages, and captions for submitted photos. Subscribers and End-Users should be aware that:</p>
+    <ul>
+      <li>All voice and text responses generated through the Platform are produced by an AI system and not by a human employee of StyleDesk AI or the Subscriber;</li>
+      <li>AI-generated photo captions are algorithmically produced and may not perfectly describe the image content;</li>
+      <li>AI-Generated Content is based on information provided by the Subscriber in the Platform&rsquo;s configuration and does not reflect independent knowledge or professional advice;</li>
+      <li>AI-Generated Content may be inaccurate, incomplete, or contextually inappropriate;</li>
+      <li>The Platform cannot engage in emergency services dispatch or crisis intervention. End-Users in an emergency should call 911 (US) or applicable emergency services.</li>
+    </ul>
+    <p>StyleDesk AI does not use End-User call recordings, text message content, or submitted photos to train generative AI models for sale or distribution to third parties without explicit authorization.</p>
 
-  <h2>2. How We Use Your Information</h2>
-  <p>We use the information we collect to:</p>
-  <ul>
-    <li>Provide, maintain, and improve our AI receptionist service</li>
-    <li>Answer calls and texts on your behalf using your business information</li>
-    <li>Send booking links to your callers and texters automatically</li>
-    <li>Display call and text history in your dashboard</li>
-    <li>Generate reports, insights, and analytics for your business</li>
-    <li>Process payments and manage your subscription</li>
-    <li>Send transactional emails (account confirmations, receipts, reports)</li>
-    <li>Detect and prevent fraud, abuse, or unauthorized access</li>
-    <li>Comply with legal obligations</li>
-    <li>Improve our AI models and service quality</li>
-    <li>Respond to your support requests</li>
-  </ul>
+    <h2 id="s8">California Privacy Rights (CCPA/CPRA)</h2>
+    <p>This Section applies to California residents.</p>
+    <h3>8.1 Categories of Personal Information Collected</h3>
+    <p>In the preceding twelve (12) months, we have collected the following categories of personal information from California residents:</p>
+    <ul>
+      <li><strong>Identifiers:</strong> Name, email, telephone number, IP address, account username;</li>
+      <li><strong>Commercial Information:</strong> Subscription plan, billing records, transaction history;</li>
+      <li><strong>Internet or Other Electronic Network Activity:</strong> Browsing behavior, dashboard usage, device information;</li>
+      <li><strong>Audio and Electronic Data:</strong> Call recordings, call transcripts, inbound text message content;</li>
+      <li><strong>Visual Information:</strong> Reference photos submitted by End-Users via MMS to Pro and Premium Subscribers, and AI-generated captions;</li>
+      <li><strong>Geolocation Data:</strong> Approximate location derived from IP address.</li>
+    </ul>
+    <h3>8.2 California Consumer Rights</h3>
+    <ul>
+      <li><strong>Right to Know:</strong> Request disclosure of categories and specific pieces of personal information we have collected;</li>
+      <li><strong>Right to Delete:</strong> Request deletion of personal information, subject to certain exceptions;</li>
+      <li><strong>Right to Correct:</strong> Request correction of inaccurate personal information;</li>
+      <li><strong>Right to Opt-Out of Sale or Sharing:</strong> Direct us not to sell or share your personal information for cross-context behavioral advertising (see our <a href="/do-not-sell.html">Do Not Sell or Share page</a>);</li>
+      <li><strong>Right to Limit Sensitive Information:</strong> Limit use and disclosure of sensitive personal information;</li>
+      <li><strong>Right to Non-Discrimination:</strong> Exercise privacy rights without discrimination.</li>
+    </ul>
+    <h3>8.3 How to Exercise CCPA/CPRA Rights</h3>
+    <p>Submit a verifiable consumer request to <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> with the subject line &ldquo;California Privacy Request.&rdquo; We respond within 45 days (with a possible 45-day extension).</p>
+    <h3>8.4 Do Not Sell or Share</h3>
+    <p>StyleDesk AI does not sell personal information for monetary consideration. To the extent we share personal information with analytics providers for cross-context behavioral advertising, California residents may opt out via our <a href="/do-not-sell.html">Do Not Sell or Share page</a>.</p>
+    <h3>8.5 Authorized Agent</h3>
+    <p>California residents may designate an authorized agent to submit requests on their behalf.</p>
 
-  <div class="divider"></div>
+    <h2 id="s9">Canadian Privacy Rights (PIPEDA &amp; Provincial Laws)</h2>
+    <h3>9.1 Consent</h3>
+    <p>StyleDesk AI collects, uses, and discloses personal information about Canadian individuals with their knowledge and consent, as required by PIPEDA. Consent is obtained at or before the time of collection.</p>
+    <h3>9.2 PIPEDA Rights</h3>
+    <p>Canadian individuals have the right to request access, challenge accuracy, have corrected, or withdraw consent. Contact <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> with the subject &ldquo;Canadian Privacy Request.&rdquo;</p>
+    <h3>9.3 Data Transfers</h3>
+    <p>Personal information of Canadian individuals may be transferred to and processed in the United States. By using the Platform, Canadian Subscribers consent to such transfers in accordance with applicable law.</p>
+    <h3>9.4 Quebec Law 25</h3>
+    <p>Residents of Quebec have additional rights under Quebec&rsquo;s Law 25, including rights relating to de-indexation, portability, and enhanced rights regarding automated decision-making.</p>
+    <h3>9.5 CASL</h3>
+    <p>Commercial electronic messages sent by StyleDesk AI include identity information and a functional unsubscribe mechanism. To unsubscribe, use the link in any marketing email or text, or contact <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
 
-  <h2>3. How We Share Your Information</h2>
-  <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties for marketing purposes. We share data only with the following categories of service providers, strictly as needed to operate our platform:</p>
+    <h2 id="s10">Cookies &amp; Tracking Technologies</h2>
+    <p>StyleDesk AI uses cookies and similar tracking technologies on our website and dashboard. For a complete description, see our <a href="/cookies.html">Cookie Policy</a>. In summary, we use:</p>
+    <ul>
+      <li><strong>Strictly Necessary Cookies</strong> &mdash; required for authentication, session management, and security;</li>
+      <li><strong>Analytics Cookies</strong> &mdash; via Google Analytics and PostHog, to understand Platform usage and improve performance;</li>
+      <li><strong>Functional Cookies</strong> &mdash; to remember preferences and settings.</li>
+    </ul>
+    <p>Where required by applicable law, we request consent for non-essential cookies through our cookie banner. California residents should also refer to Section 8. StyleDesk AI honors the Global Privacy Control (GPC) browser signal as a valid opt-out for California residents.</p>
 
-  <h3>3.1 Telecommunications</h3>
-  <p>We use <strong>Twilio, Inc.</strong> to power our phone number provisioning, call handling, and SMS messaging. Twilio processes caller phone numbers, call audio, and text message content on our behalf. Twilio's privacy policy applies to their handling of this data.</p>
+    <h2 id="s11">Additional US State Privacy Rights</h2>
+    <p>In addition to California, residents of the following states have specific privacy rights under applicable state law:</p>
+    <ul>
+      <li><strong>Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Texas (TDPSA):</strong> Rights to access, correct, delete, and port personal data, and to opt out of sale, targeted advertising, and profiling;</li>
+      <li><strong>Florida (FDBR):</strong> Rights to access, delete, and correct personal data, and to opt out of sale and targeted advertising (applicable to covered entities);</li>
+      <li><strong>Washington (MHMDA):</strong> Rights regarding consumer health data;</li>
+      <li><strong>Montana (MCDPA), Oregon (OCPA), and other states:</strong> Rights substantially similar to those above.</li>
+    </ul>
+    <p>To exercise any of these rights, contact <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> with the subject line &ldquo;State Privacy Request.&rdquo;</p>
 
-  <h3>3.2 Artificial Intelligence</h3>
-  <p>We use AI language models provided by <strong>OpenAI</strong> and/or <strong>Anthropic</strong> to generate conversational responses during calls and texts. Conversation content is sent to these providers for real-time processing. We do not use your data to train third-party AI models. These providers process data under strict data processing agreements.</p>
+    <h2 id="s12">Children&rsquo;s Privacy</h2>
+    <p>The Platform is not directed to children under the age of thirteen (13). We do not knowingly collect personal information from children under thirteen. If you believe a child under thirteen has provided us personal information, please contact <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
 
-  <h3>3.3 Payment Processing</h3>
-  <p>We use <strong>Stripe, Inc.</strong> to securely process all payments. Your payment information is transmitted directly to Stripe and is never stored on our servers.</p>
+    <h2 id="s13">Third-Party Links &amp; Integrations</h2>
+    <p>The Platform may contain links to third-party websites, applications, and services. This Privacy Policy does not apply to third-party practices. We encourage you to review the privacy policies of any third-party services you use in connection with StyleDesk AI.</p>
 
-  <h3>3.4 Infrastructure and Hosting</h3>
-  <p>We use trusted third-party cloud hosting, database, and content delivery providers to store and serve your data securely. All data is encrypted in transit and at rest.</p>
+    <h2 id="s14">International Data Transfers</h2>
+    <p>StyleDesk AI is based in the United States and processes data on US servers. If you are located outside the United States, your personal information will be transferred to and processed in the United States. By using the Platform, you consent to the transfer of your personal information to the United States for the purposes described in this Privacy Policy.</p>
 
-  <h3>3.5 Analytics</h3>
-  <p>We use analytics tools to understand how users interact with our website and platform. This data is anonymized and aggregated where possible.</p>
+    <h2 id="s15">Telecom &amp; Communications Data</h2>
+    <ul>
+      <li>Call recordings and transcripts may be generated automatically and stored in the Subscriber&rsquo;s dashboard;</li>
+      <li>The Subscriber is responsible for providing any required call recording disclosures to End-Users under applicable state law;</li>
+      <li>Text message content and MMS photos from End-Users are processed by the Platform to generate AI responses and stored in the Subscriber&rsquo;s dashboard;</li>
+      <li>StyleDesk AI processes telecommunications data as a service provider acting at the direction of the Subscriber.</li>
+    </ul>
 
-  <h3>3.6 Legal Requirements</h3>
-  <p>We may disclose your information if required to do so by law, regulation, legal process, or governmental request, or if we believe disclosure is necessary to protect our rights, your safety, or the safety of others, investigate fraud, or respond to a government request.</p>
+    <h2 id="s16">Marketing Communications</h2>
+    <h3>16.1 Subscriber Marketing</h3>
+    <p>We may send marketing communications to Subscribers regarding StyleDesk AI products, features, and promotions. Subscribers may opt out at any time via the unsubscribe link in any marketing email or by contacting <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+    <h3>16.2 Subscriber Broadcast Messaging</h3>
+    <p>Pro and Premium Subscribers have access to promotional broadcast messaging (including segmented broadcast groups on Premium) to their own End-User contacts. The Subscriber is solely responsible for ensuring such broadcasts comply with the TCPA, CASL, and applicable laws, and that End-User consent has been obtained.</p>
 
-  <div class="divider"></div>
+    <h2 id="s17">Do Not Sell or Share My Personal Information (California)</h2>
+    <p>StyleDesk AI does not sell your personal information for monetary consideration. We may share personal information with analytics providers (Google Analytics, PostHog) for purposes that may constitute &ldquo;sharing&rdquo; under the CCPA/CPRA. California residents have the right to opt out.</p>
+    <p>To opt out, visit our <a href="/do-not-sell.html">Do Not Sell or Share page</a>, or email <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> with the subject line &ldquo;Do Not Sell or Share Request.&rdquo; We process requests within 15 business days. We honor the Global Privacy Control (GPC) signal.</p>
 
-  <h2>4. Call Recording and AI Disclosure</h2>
-  <p>Our AI receptionist may record calls for quality assurance and to provide call transcription features. When applicable:</p>
-  <ul>
-    <li>Callers are informed at the beginning of the call that they are speaking with an AI assistant</li>
-    <li>Call recordings are stored securely and accessible only to the business owner through their dashboard</li>
-    <li>Recordings are retained in accordance with our data retention policy (see Section 8)</li>
-    <li>You are responsible for ensuring compliance with any state or local call recording laws that may apply to your jurisdiction</li>
-  </ul>
-  <p>Some states require all-party consent for call recording. StyleDesk provides an AI disclosure at the start of each call, but you should consult with a legal professional to ensure compliance with your specific state and local laws.</p>
+    <h2 id="s18">Changes to This Privacy Policy</h2>
+    <p>StyleDesk AI may modify this Privacy Policy at any time. Material changes will be notified by email or prominent notice on the Platform at least fourteen (14) days before they take effect. For Canadian Subscribers, material changes that affect collection purposes will require renewed consent where mandated.</p>
 
-  <div class="divider"></div>
+    <h2 id="s19">Automated Decision-Making</h2>
+    <p>The Platform uses automated processing to generate responses to inbound calls and text messages, captions for submitted photos, and to route callers based on configured schedules. This automated processing is not used to make significant decisions that produce legal or similarly significant effects on End-Users. The AI system generates informational responses only, and all decisions regarding whether to book an appointment or engage with a business remain with the End-User. Subscribers and End-Users retain the right to request human review of any AI-Generated Content.</p>
 
-  <h2>5. SMS and Text Messaging</h2>
-  <ul>
-    <li>When a customer texts your StyleDesk business number, they consent to receiving AI-generated replies related to your business services, pricing, hours, and booking information</li>
-    <li>By using our service, you (the business owner) authorize StyleDesk to send text messages on your behalf to customers who contact your business number</li>
-    <li>We do not send unsolicited marketing texts to customers unless you explicitly initiate a broadcast through the platform</li>
-    <li>Customers can stop receiving texts at any time by replying STOP to your business number</li>
-    <li>Standard message and data rates may apply to customers based on their carrier plan</li>
-  </ul>
+    <h2 id="s20">Contact Us</h2>
+    <div class="note">
+      <p><strong>StyleDesk AI, LLC</strong><br>
+      Privacy Inquiries: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a><br>
+      Website: <a href="/">www.styledesk.ai</a><br>
+      Mailing address: [ADDRESS TBD &mdash; replace with virtual mail service address before publishing]</p>
+    </div>
+    <p>Please include your name, contact information, and a description of your inquiry. For privacy rights requests, specify the applicable right and your state or province of residence. We respond within the time period required by applicable law.</p>
 
-  <div class="divider"></div>
-
-  <h2>6. Data Security</h2>
-  <p>We take the security of your data seriously and implement industry-standard measures to protect it, including:</p>
-  <ul>
-    <li>Encryption of data in transit using TLS/HTTPS</li>
-    <li>Encryption of data at rest in our databases</li>
-    <li>Row-level security to ensure users can only access their own data</li>
-    <li>Secure authentication and session management</li>
-    <li>Regular security reviews and updates</li>
-    <li>Limited employee access to production data on a need-to-know basis</li>
-  </ul>
-  <p>While we strive to protect your information, no method of electronic transmission or storage is 100% secure. We cannot guarantee absolute security but will notify you promptly in the event of a data breach that affects your personal information.</p>
-
-  <div class="divider"></div>
-
-  <h2>7. Your Rights and Choices</h2>
-  <p>You have the following rights regarding your data:</p>
-
-  <h3>7.1 Access and Portability</h3>
-  <p>You can access your call history, text conversations, and account information through your dashboard at any time. You may also request a copy of your data by contacting us.</p>
-
-  <h3>7.2 Correction</h3>
-  <p>You can update your business information, services, pricing, and hours at any time through your dashboard settings.</p>
-
-  <h3>7.3 Deletion</h3>
-  <p>You may request deletion of your account and all associated data by contacting us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. Upon receiving a verified deletion request, we will delete your data within 30 days, except where retention is required by law or for legitimate business purposes (such as fraud prevention or resolving disputes).</p>
-
-  <h3>7.4 Cancellation</h3>
-  <p>You may cancel your subscription at any time. Upon cancellation, your account will remain accessible until the end of your current billing period. After that, your data will be retained for 90 days before permanent deletion, giving you time to reactivate if needed.</p>
-
-  <h3>7.5 Opt-Out of Communications</h3>
-  <p>You can opt out of promotional emails by clicking the unsubscribe link in any email. Transactional emails (receipts, security alerts, service updates) cannot be opted out of while your account is active.</p>
-
-  <div class="divider"></div>
-
-  <h2>8. Data Retention</h2>
-  <ul>
-    <li><strong>Active accounts:</strong> All data is retained for the duration of your active subscription</li>
-    <li><strong>Cancelled accounts:</strong> Data is retained for 90 days after the end of your billing period, then permanently deleted</li>
-    <li><strong>Call recordings:</strong> Retained for 12 months from the date of the call, then automatically deleted</li>
-    <li><strong>Text message history:</strong> Retained for the duration of your active subscription plus 90 days after cancellation</li>
-    <li><strong>Payment records:</strong> Retained for 7 years as required by tax and accounting regulations</li>
-    <li><strong>Deletion requests:</strong> Processed within 30 days. Some data may be retained in encrypted backups for up to 90 additional days before full purge</li>
-  </ul>
-
-  <div class="divider"></div>
-
-  <h2>9. California Privacy Rights (CCPA/CPRA)</h2>
-  <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA):</p>
-  <ul>
-    <li><strong>Right to Know:</strong> You may request details about the categories and specific pieces of personal information we have collected about you</li>
-    <li><strong>Right to Delete:</strong> You may request deletion of your personal information, subject to certain exceptions</li>
-    <li><strong>Right to Opt-Out of Sale:</strong> We do not sell your personal information. This right does not apply.</li>
-    <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of your privacy rights</li>
-    <li><strong>Right to Correct:</strong> You may request correction of inaccurate personal information</li>
-    <li><strong>Right to Limit Use of Sensitive Information:</strong> You may limit our use of sensitive personal information to what is necessary to provide the service</li>
-  </ul>
-  <p>To exercise any of these rights, contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>. We will verify your identity before processing your request and respond within 45 days.</p>
-
-  <div class="divider"></div>
-
-  <h2>10. Other State Privacy Rights</h2>
-  <p>Residents of Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), and other states with consumer privacy laws may have similar rights to access, delete, and correct their data, as well as the right to opt out of targeted advertising and profiling. We do not engage in targeted advertising or profiling. To exercise your rights, contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
-
-  <div class="divider"></div>
-
-  <h2>11. Children's Privacy</h2>
-  <p>StyleDesk.ai is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If we become aware that we have collected data from a child under 18, we will take steps to delete that information promptly. If you believe a child has provided us with personal information, please contact us at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
-
-  <div class="divider"></div>
-
-  <h2>12. Third-Party Links</h2>
-  <p>Our website and platform may contain links to third-party websites, services, or applications (such as booking platforms, social media, or payment processors). We are not responsible for the privacy practices of these third parties. We encourage you to read their privacy policies before providing them with your information.</p>
-
-  <div class="divider"></div>
-
-  <h2>13. Business Transfers</h2>
-  <p>In the event of a merger, acquisition, reorganization, bankruptcy, or sale of all or a portion of our assets, your personal information may be transferred as part of that transaction. We will notify you via email and/or a prominent notice on our website of any change in ownership or use of your personal information, as well as any choices you may have regarding your information.</p>
-
-  <div class="divider"></div>
-
-  <h2>14. International Users</h2>
-  <p>StyleDesk.ai is operated from the United States. If you access our services from outside the United States, your information will be transferred to, stored, and processed in the United States. By using our services, you consent to the transfer of your information to the United States, which may have different data protection laws than your country of residence.</p>
-
-  <div class="divider"></div>
-
-  <h2>15. Changes to This Privacy Policy</h2>
-  <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will:</p>
-  <ul>
-    <li>Update the "Last updated" date at the top of this page</li>
-    <li>Notify you by email if the changes significantly affect how we handle your data</li>
-    <li>Post a notice on our website for at least 30 days</li>
-  </ul>
-  <p>Your continued use of StyleDesk.ai after changes are posted constitutes your acceptance of the updated Privacy Policy.</p>
-
-  <div class="divider"></div>
-
-  <h2>16. Contact Us</h2>
-  <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, contact us at:</p>
-  <p>
-    <strong>StyleDesk AI, LLC</strong><br/>
-    Email: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a><br/>
-    Website: <a href="https://styledesk.ai">styledesk.ai</a>
-  </p>
-  <p>We will respond to all privacy-related inquiries within 30 days.</p>
-
+    <p style="margin-top:40px; font-size: 12px; color: rgba(255,255,255,0.4); text-align: center;">This Privacy Policy was last updated on April 18, 2026. Copyright &copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
+  </main>
 </div>
 
 <footer>
-  <p>&copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookies.html">Cookies</a>
+      <a href="/do-not-sell.html">Do Not Sell My Info</a>
+    </div>
+    <div class="footer-contact">&copy; 2026 StyleDesk AI, LLC &middot; <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a></div>
+  </div>
 </footer>
 
+<script>
+  (function() {
+    const links = document.querySelectorAll('.toc a');
+    const sections = Array.from(document.querySelectorAll('.legal-content h2[id]'));
+    function update() {
+      const scroll = window.scrollY + 120;
+      let current = sections[0]?.id;
+      for (const s of sections) { if (s.offsetTop <= scroll) current = s.id; }
+      links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
 </body>
 </html>

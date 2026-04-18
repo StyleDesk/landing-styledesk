@@ -1,774 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StyleDesk.ai — AI Receptionist for Barbers & Nail Techs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; }
-
-    /* SCROLL ANIMATIONS */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.35s; }
-
-    /* NAV */
-    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
-    .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px 14px 12px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
-    .logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
-    .header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .header-btn:hover { background: #c9a064; color: #1a0008; }
-    .header-tagline { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; letter-spacing: 0.3px; }
-    .header-nav { display: flex; align-items: center; gap: 24px; }
-    .header-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-    .header-nav a:hover { color: #fff; }
-    .header-nav .header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-weight: 600; position: relative; z-index: 1; }
-    .header-nav .header-btn:hover { background: #c9a064; color: #1a0008; }
-
-    /* EXCLUSIVE BAR */
-    .exclusive-bar { width: 100%; border-bottom: 0.5px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); padding: 10px 0; text-align: center; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); display: flex; justify-content: center; align-items: center; gap: 24px; }
-    .exclusive-bar strong { color: rgba(255,255,255,0.75); font-weight: 600; }
-    .live-dot { display: inline-block; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: livePulse 2s infinite; }
-    @keyframes livePulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4)} 50%{opacity:0.7;box-shadow:0 0 0 4px rgba(34,197,94,0)} }
-    .stats-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.08); }
-    .exclusive-dot { display: inline-block; width: 3px; height: 3px; background: #c9a064; border-radius: 50%; margin: 0 10px; vertical-align: middle; position: relative; top: -1px; }
-
-    /* HERO */
-    .hero { padding: 80px 24px 60px; max-width: 1152px; margin: 0 auto; position: relative; }
-    .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(124,31,54,0.2) 0%, rgba(124,31,54,0.05) 40%, transparent 70%); pointer-events: none; z-index: 0; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; position: relative; z-index: 1; }
-    .ai-badge { display: inline-flex; border: 0.5px solid rgba(201,160,100,0.3); background: transparent; padding: 6px 14px; border-radius: 100px; font-size: 11px; margin-bottom: 14px; color: #c9a064; font-weight: 500; letter-spacing: 0.5px; }
-    .toggle-wrap { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); border-radius: 100px; padding: 3px; margin-bottom: 20px; backdrop-filter: blur(10px); }
-    .toggle-mobile { display: none; }
-    .toggle-desktop { display: flex; justify-content: center; margin-bottom: 14px; }
-    .toggle-btn { border: none; background: transparent; color: rgba(255,255,255,0.5); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.25s; }
-    .toggle-btn.active { background: #fff; color: #000; font-weight: 600; }
-    .hero h1 { font-size: clamp(40px, 5vw, 60px); font-weight: 600; line-height: 1.15; letter-spacing: -2px; margin-bottom: 20px; }
-    .hero h1 .pink { color: #f0c6cf; display: block; font-size: 1.3em; line-height: 1; margin-top: -0.85em; }
-    .hero-sub { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.6); margin-bottom: 28px; font-weight: 400; max-width: 460px; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-white { background: #fff; color: #1a0008; padding: 13px 24px; border-radius: 10px; font-weight: 600; font-size: 14px; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s; }
-    .btn-white:hover { background: #c9a064; color: #1a0008; }
-    .btn-glow { position: relative; display: inline-flex; border-radius: 12px; }
-    .btn-glow::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 12px; background: linear-gradient(135deg, #c9a064, #7c1f36, #c9a064); background-size: 200% 200%; animation: shimmer 3s linear infinite; opacity: 0.6; z-index: 0; }
-    .btn-glow .btn-white, .btn-glow .header-btn, .btn-glow .demo-btn { position: relative; z-index: 1; }
-    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-    .btn-outline { background: transparent; color: rgba(255,255,255,0.6); padding: 13px 24px; border-radius: 10px; font-weight: 500; font-size: 14px; text-decoration: none; border: 0.5px solid rgba(255,255,255,0.12); font-family: 'Inter', sans-serif; transition: all 0.2s; }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-    .trust-badges { display: flex; gap: 18px; margin-top: 40px; flex-wrap: wrap; }
-    .trust-badge { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.4); }
-
-    /* PHONE FRAME SMS PREVIEW */
-    .phone-frame { width: 280px; margin: 0 auto; }
-    .phone-outer { border-radius: 36px; border: 2.5px solid rgba(255,255,255,0.1); background: linear-gradient(145deg, rgba(60,60,60,0.4), rgba(20,20,20,0.8)); padding: 10px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3); }
-    .phone-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: #000; border-radius: 14px; z-index: 2; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
-    .phone-camera { width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #1a3a5c, #0a1520); border: 1px solid rgba(255,255,255,0.08); }
-    .phone-screen { border-radius: 28px; background: #000; padding: 0; min-height: 340px; overflow: hidden; }
-    .phone-statusbar { padding: 8px 16px 4px; display: flex; justify-content: space-between; align-items: center; }
-    .phone-statusbar-time { font-size: 9px; color: rgba(255,255,255,0.5); font-weight: 500; }
-    .phone-contact { padding: 4px 16px 8px; display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
-    .phone-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7c1f36, #5a1628); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #f0c6cf; }
-    .phone-contact-name { font-size: 11px; font-weight: 600; color: #fff; }
-    .phone-contact-num { font-size: 8px; color: rgba(255,255,255,0.35); }
-    .chat-messages { display: flex; flex-direction: column; gap: 6px; padding: 12px 12px; }
-    .chat-timestamp { text-align: center; margin-bottom: 4px; font-size: 8px; color: rgba(255,255,255,0.25); }
-    .msg-bubble { max-width: 80%; border-radius: 16px; padding: 8px 12px; font-size: 10px; line-height: 1.45; opacity: 0; animation: fadeInUp 0.4s ease forwards; }
-    .msg-right { margin-left: auto; background: #3b82f6; color: #fff; border-bottom-right-radius: 4px; }
-    .msg-left { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); border-bottom-left-radius: 4px; }
-    .msg-bubble:nth-child(2){animation-delay:.3s} .msg-bubble:nth-child(3){animation-delay:.8s}
-    .msg-bubble:nth-child(4){animation-delay:1.3s} .msg-bubble:nth-child(5){animation-delay:1.8s}
-    .msg-bubble:nth-child(6){animation-delay:2.3s} .msg-bubble:nth-child(7){animation-delay:2.8s}
-    @keyframes fadeInUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    .phone-input { padding: 6px 12px 10px; }
-    .phone-input-bar { background: rgba(255,255,255,0.06); border-radius: 20px; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; }
-    .phone-input-text { font-size: 10px; color: rgba(255,255,255,0.25); }
-    .phone-bar { width: 100px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 100px; margin: 6px auto 2px; }
-
-    /* GLASS CARD MIXIN */
-    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0.5px solid rgba(255,255,255,0.06); }
-
-    /* CALL DEMO */
-    .call-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .call-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-    .call-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 10px; }
-    .call-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 14px; }
-    .call-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 32px; font-weight: 400; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .call-btn { display: inline-flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(201,160,100,0.2); border-radius: 18px; padding: 20px 32px; text-decoration: none; color: #fff; transition: all 0.3s; box-shadow: 0 0 60px rgba(124,31,54,0.2), 0 0 120px rgba(124,31,54,0.08); margin-bottom: 36px; }
-    .call-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(201,160,100,0.35); box-shadow: 0 0 80px rgba(124,31,54,0.3), 0 0 140px rgba(124,31,54,0.1); }
-    .demo-cta-card { display: flex; align-items: center; gap: 14px; border-radius: 14px; padding: 18px 28px; cursor: pointer; box-shadow: 0 6px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06); transition: all 0.1s ease; transform: translateY(0); text-decoration: none; color: #fff; flex: 1; max-width: 280px; }
-    .demo-cta-card:active { transform: translateY(3px); box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04); border-bottom-width: 1px !important; }
-    .demo-cta-card.cta-maroon { background: rgba(124,31,54,0.08); border: 1px solid rgba(124,31,54,0.2); border-bottom: 3px solid rgba(124,31,54,0.3); }
-    .demo-cta-card.cta-blue { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-bottom: 3px solid rgba(59,130,246,0.3); }
-    .cta-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.1s ease; }
-    .demo-cta-card:active .cta-icon { transform: scale(0.95); }
-    .cta-icon.icon-maroon { background: #7c1f36; box-shadow: 0 4px 12px rgba(124,31,54,0.6), inset 0 -3px 6px rgba(0,0,0,0.3), inset 0 3px 6px rgba(240,198,207,0.15); }
-    .cta-icon.icon-blue { background: #3b82f6; box-shadow: 0 4px 12px rgba(59,130,246,0.6), inset 0 -3px 6px rgba(0,0,0,0.2), inset 0 3px 6px rgba(255,255,255,0.15); }
-    .demo-cta-card:active .cta-icon.icon-maroon { box-shadow: 0 1px 4px rgba(124,31,54,0.4), inset 0 -1px 3px rgba(0,0,0,0.3), inset 0 1px 3px rgba(240,198,207,0.1); }
-    .demo-cta-card:active .cta-icon.icon-blue { box-shadow: 0 1px 4px rgba(59,130,246,0.4), inset 0 -1px 3px rgba(0,0,0,0.2), inset 0 1px 3px rgba(255,255,255,0.1); }
-    .call-icon { width: 52px; height: 52px; background: #7c1f36; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 24px rgba(124,31,54,0.5); }
-    .call-num { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: #fff; letter-spacing: -0.5px; text-align: left; }
-    .call-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 3px; text-align: left; }
-    .try-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .try-pill { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 100px; padding: 8px 16px; font-size: 12px; color: rgba(255,255,255,0.6); transition: all 0.2s; }
-    .try-pill:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
-
-    /* PAIN */
-    .pain-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .pain-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-    .pain-inner h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; letter-spacing: -1px; margin-bottom: 36px; }
-    .pain-points p { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.7; }
-    .pain-cta { font-weight: 600; color: #c9a064; font-size: 17px; margin-top: 28px; line-height: 1.6; }
-
-    /* HOW IT WORKS */
-    .how-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .how-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 36px; }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1152px; margin: 0 auto; text-align: center; }
-    .step-card { border-radius: 16px; padding: 32px 20px; transition: all 0.3s; }
-    .step-card:hover { transform: translateY(-4px); }
-    .step-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-    .step-title { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-    .step-num { font-size: 12px; font-weight: 600; color: #c9a064; letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
-    .step-card p { color: rgba(255,255,255,0.55); font-size: 13px; line-height: 1.5; font-weight: 400; }
-
-    /* VALUE */
-    .value-banner { padding: 12px 24px; max-width: 896px; margin: 0 auto; }
-    .value-inner { border-radius: 14px; padding: 16px; text-align: center; }
-    .value-inner p:first-child { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-    .value-inner p:last-child { color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 400; }
-
-    /* SETUP */
-    /* DASHBOARD CAROUSEL */
-    .dash-carousel { padding: 60px 24px 40px; border-top: 0.5px solid rgba(255,255,255,0.05); max-width: 1152px; margin: 0 auto; }
-    .dash-carousel h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; }
-    .dash-carousel-sub { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 52px; }
-    .dash-stage { position: relative; height: 540px; max-width: 1100px; margin: 0 auto; overflow: visible; }
-    .dash-card { position: absolute; top: 50%; border-radius: 12px; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform, opacity, left, width; overflow: hidden; }
-    .dash-card img { width: 100%; border-radius: 12px; display: block; }
-    .dash-card[data-pos="left"] { left: -4%; width: 16%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
-    .dash-card[data-pos="center"] { left: 50%; width: 94%; transform: translate(-50%, -50%) scale(1); opacity: 1; z-index: 3; filter: none; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
-    .dash-card[data-pos="right"] { left: 88%; width: 16%; transform: translateY(-50%) scale(0.88) perspective(1200px) rotateY(-6deg); opacity: 0.3; z-index: 1; filter: blur(1.5px); cursor: pointer; }
-    .dash-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-    .dash-arrow:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
-    .dash-arrow-left { left: -120px; }
-    .dash-arrow-right { right: -120px; }
-    .dash-label { text-align: center; margin-top: 56px; font-size: 15px; font-weight: 600; transition: all 0.4s; }
-    .dash-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
-    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .dash-dot.active { background: #c9a064; width: 28px; border-radius: 4px; }
-
-    .setup-section { padding: 80px 24px; max-width: 896px; margin: 0 auto; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .setup-section h3 { font-size: clamp(18px, 2vw, 24px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
-    .setup-section p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; font-weight: 400; }
-
-    /* FEATURES */
-    .features-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .features-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; }
-    .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; }
-    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
-    .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); }
-    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 18px; }
-    .feature-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-    .feature-card p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; font-weight: 400; }
-
-    /* PRICING */
-    .pricing-section { padding: 100px 24px; max-width: 1152px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .pricing-section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 700; text-align: center; letter-spacing: -0.5px; margin-bottom: 40px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
-    .pricing-card { border-radius: 18px; padding: 24px; transition: all 0.4s; cursor: default; display: flex; flex-direction: column; position: relative; }
-    .pricing-card:hover { border-color: rgba(201,160,100,0.25); box-shadow: 0 0 40px rgba(124,31,54,0.15), 0 0 80px rgba(124,31,54,0.05); transform: translateY(-4px); }
-    .pricing-card.pro-featured { border-color: rgba(201,160,100,0.25); border-width: 1px; }
-    .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #c9a064; color: #1a0008; font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 100px; letter-spacing: 0.5px; }
-    .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.4); box-shadow: 0 0 50px rgba(201,160,100,0.12), 0 0 100px rgba(124,31,54,0.08); }
-    .pricing-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
-    .pricing-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; font-weight: 400; }
-    .pricing-price { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; flex: 1; }
-    .pricing-features li { display: flex; align-items: flex-start; gap: 6px; }
-    .check { color: #c9a064; font-weight: 600; font-size: 10px; margin-top: 2px; flex-shrink: 0; }
-    .pricing-btn { display: block; width: 100%; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: auto; transition: all 0.3s; box-sizing: border-box; border: 0.5px solid rgba(255,255,255,0.1); }
-    .pricing-features + .pricing-btn { margin-top: 20px; }
-    .pricing-btn:hover { background: #c9a064; color: #1a0008; border-color: #c9a064; }
-    .pro-featured .pricing-btn { background: #c9a064; color: #1a0008; border-color: #c9a064; }
-    .pro-featured .pricing-btn:hover { background: #d4ad74; }
-
-    /* RISK */
-    .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
-
-    /* DEMO */
-    .demo-section { padding: 80px 24px; max-width: 768px; margin: 0 auto; border-top: 0.5px solid rgba(255,255,255,0.05); }
-    .demo-card { border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; border-color: rgba(201,160,100,0.15); }
-    .demo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #c9a064, transparent); }
-    .demo-label { font-size: 11px; color: #c9a064; font-weight: 500; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
-    .demo-card h2 { font-size: clamp(20px, 2vw, 28px); font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-    .demo-card p { color: rgba(255,255,255,0.4); margin-bottom: 24px; font-size: 13px; font-weight: 400; }
-    .demo-btn-wrap { display: inline-block; position: relative; }
-    .demo-btn-wrap::before { content: ''; position: absolute; inset: -2px; border-radius: 12px; background: linear-gradient(135deg, #c9a064, #7c1f36, #c9a064); background-size: 200% 200%; animation: shimmer 3s linear infinite; opacity: 0.5; }
-    .demo-btn { display: block; position: relative; background: #c9a064; color: #1a0008; padding: 13px 40px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s; }
-    .demo-btn:hover { background: #d4ad74; }
-
-    /* FOOTER */
-    footer { border-top: 0.5px solid rgba(255,255,255,0.05); padding: 40px 24px 24px; max-width: 1152px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
-    .footer-logo { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
-    .footer-logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
-    .footer-brand-desc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 10px; max-width: 220px; }
-    .footer-col-title { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; }
-    .footer-col a { display: block; color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; margin-bottom: 8px; transition: color 0.2s; }
-    .footer-col a:hover { color: #fff; }
-    .footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.05); padding-top: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { font-size: 10px; color: rgba(255,255,255,0.25); font-weight: 400; }
-
-    /* WORKS WITH */
-    .works-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); }
-
-    /* STICKY MOBILE CTA */
-    .sticky-cta { display: none; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .sticky-cta { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); border-top: 0.5px solid rgba(255,255,255,0.08); padding: 10px 16px; align-items: center; justify-content: space-between; }
-      .sticky-cta-text { font-size: 11px; font-weight: 600; color: #fff; }
-      .sticky-cta-sub { font-size: 9px; color: rgba(255,255,255,0.35); }
-      .sticky-cta-btn { background: #fff; color: #000; padding: 8px 18px; border-radius: 8px; font-size: 11px; font-weight: 600; text-decoration: none; flex-shrink: 0; }
-      .header-tagline { display: none; }
-      .header-nav a:not(.header-btn) { display: none; }
-      .toggle-desktop { display: none; }
-      .toggle-mobile { display: inline-flex; margin-bottom: 20px; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero { padding: 30px 16px 30px; }
-      .hero h1 { font-size: 36px; }
-      .hero-sub { margin-left: auto; margin-right: auto; }
-      .hero-btns { flex-direction: column; align-items: center; }
-      .btn-white, .btn-outline { width: 100%; text-align: center; }
-      .phone-frame { width: 280px; margin: 0 auto; }
-      .pain-section { padding: 60px 16px; }
-      .pain-inner h2 { font-size: 28px; }
-      .pain-points p { font-size: 15px; }
-      .how-section { padding: 60px 16px; }
-      .steps-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-      .call-section { padding: 60px 16px; }
-      .call-inner { padding: 0; }
-      .call-btn { padding: 16px 24px; flex-direction: row; }
-      .call-num { font-size: 18px; }
-      .try-pills { gap: 8px; }
-      .try-pill { font-size: 11px; padding: 6px 12px; }
-      .features-section { padding: 60px 16px; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .feature-card { padding: 14px 12px; }
-      .feature-card h4 { font-size: 11px; }
-      .feature-card p { font-size: 9px; }
-      .setup-section { padding: 50px 16px; }
-      .dash-carousel { padding: 40px 16px 30px; }
-      .dash-carousel h2 { font-size: 22px; }
-      .dash-carousel-sub { margin-bottom: 32px; font-size: 13px; }
-      .dash-stage { height: 220px; }
-      .dash-card[data-pos="center"] { width: 88%; }
-      .dash-card[data-pos="left"] { left: -8%; width: 18%; }
-      .dash-card[data-pos="right"] { left: 90%; width: 18%; }
-      .dash-arrow { width: 36px; height: 36px; }
-      .dash-arrow-left { left: -8px; }
-      .dash-arrow-right { right: -8px; }
-      .dash-arrow svg { width: 16px; height: 16px; }
-      .dash-label { margin-top: 24px; font-size: 13px; }
-      .dash-dots { margin-top: 12px; }
-      .pricing-section { padding: 60px 16px; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-      .pricing-card.pro-featured { transform: none; }
-      .risk-section { padding: 24px 16px; font-size: 12px; }
-      .demo-section { padding: 50px 16px; }
-      .demo-card { padding: 24px 16px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .footer-bottom { flex-direction: column; }
-      .exclusive-bar { font-size: 11px; padding: 8px 16px; flex-direction: column; gap: 6px; }
-      .stats-divider { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 28px; }
-      .hero h1 .pink { font-size: 1.2em; }
-      .phone-frame { width: 240px; }
-      .features-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
-      .dash-stage { height: 180px; }
-      .dash-card[data-pos="center"] { width: 92%; }
-      .dash-card[data-pos="left"] { display: none; }
-      .dash-card[data-pos="right"] { display: none; }
-      .dash-arrow-left { left: 4px; }
-      .dash-arrow-right { right: 4px; }
-      .dash-arrow { width: 32px; height: 32px; }
-      .call-btn { padding: 14px 20px; }
-      .call-num { font-size: 16px; }
-      .call-icon { width: 44px; height: 44px; }
-      .pain-inner h2 { font-size: 24px; }
-      .pricing-grid { max-width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service &mdash; StyleDesk.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/legal.css"/>
 </head>
 <body>
 
-<header>
+<header class="site-nav">
   <div class="header-inner">
-    <a href="#" class="logo">
-      <svg width="34" height="34" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
-      StyleDesk<span>.ai</span>
-    </a>
+    <a href="/" class="logo">StyleDesk<span>.ai</span></a>
     <div class="header-nav">
-      <a href="#how">How it Works</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="header-btn">Book Demo</a></span>
+      <a href="/#how">How it works</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="https://dashboard-styledesk.vercel.app/login" class="header-btn">Sign in</a>
     </div>
   </div>
 </header>
 
-<div class="exclusive-bar">
-  <div style="display:flex;align-items:center;gap:8px;">
-    <div class="live-dot"></div>
-    <span>Live now · <strong id="callCount" style="font-family:'DM Mono',monospace;">0</strong> calls & <strong id="textCount" style="font-family:'DM Mono',monospace;">0</strong> texts handled and counting</span>
-  </div>
+<div class="legal-wrap">
+  <aside class="toc" aria-label="Section navigation">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">Definitions</a></li>
+      <li><a href="#s2">Eligibility &amp; registration</a></li>
+      <li><a href="#s3">Services &amp; subscription plans</a></li>
+      <li><a href="#s4">Fees, billing, payment</a></li>
+      <li><a href="#s5">Cancellation &amp; termination</a></li>
+      <li><a href="#s6">Subscriber responsibilities</a></li>
+      <li><a href="#s7">Indemnification</a></li>
+      <li><a href="#s8">Disclaimers</a></li>
+      <li><a href="#s9">Limitation of liability</a></li>
+      <li><a href="#s10">Intellectual property</a></li>
+      <li><a href="#s11">Confidentiality</a></li>
+      <li><a href="#s12">Data privacy &amp; security</a></li>
+      <li><a href="#s13">Canadian subscribers</a></li>
+      <li><a href="#s14">TCPA compliance</a></li>
+      <li><a href="#s15">State privacy law</a></li>
+      <li><a href="#s16">Governing law &amp; disputes</a></li>
+      <li><a href="#s17">Force majeure</a></li>
+      <li><a href="#s18">Modifications</a></li>
+      <li><a href="#s19">Electronic communications</a></li>
+      <li><a href="#s20">Assignment</a></li>
+      <li><a href="#s21">Waiver &amp; severability</a></li>
+      <li><a href="#s22">Entire agreement</a></li>
+      <li><a href="#s23">Relationship of parties</a></li>
+      <li><a href="#s24">Children&rsquo;s privacy</a></li>
+      <li><a href="#s25">Contact</a></li>
+    </ol>
+  </aside>
+
+  <main class="legal-content">
+    <div class="legal-header">
+      <p class="legal-eyebrow">StyleDesk AI, LLC</p>
+      <h1 class="legal-title">Terms of Service</h1>
+      <p class="legal-dates"><strong>Effective:</strong> April 15, 2026 &nbsp;&middot;&nbsp; <strong>Last updated:</strong> April 18, 2026</p>
+    </div>
+
+    <p class="caps">Please read these terms carefully before accessing or using the StyleDesk AI platform. By clicking &ldquo;I agree,&rdquo; completing registration, or accessing any portion of the platform, you acknowledge that you have read, understood, and agree to be legally bound by these terms. If you do not agree, you must not use the platform.</p>
+
+    <p>These Terms of Service (&ldquo;<span class="defined">Terms</span>&rdquo;) constitute a legally binding agreement between StyleDesk AI, LLC (&ldquo;<span class="defined">StyleDesk AI</span>,&rdquo; &ldquo;<span class="defined">we</span>,&rdquo; &ldquo;<span class="defined">us</span>,&rdquo; or &ldquo;<span class="defined">our</span>&rdquo;) and the individual or entity subscribing to or accessing the StyleDesk AI platform (&ldquo;<span class="defined">Subscriber</span>,&rdquo; &ldquo;<span class="defined">you</span>,&rdquo; or &ldquo;<span class="defined">your</span>&rdquo;). These Terms govern your access to and use of the StyleDesk AI website located at <a href="/">www.styledesk.ai</a>, the StyleDesk AI software-as-a-service platform, and all related applications, features, tools, telephone numbers, communications systems, dashboards, and services (collectively, the &ldquo;<span class="defined">Platform</span>&rdquo; or &ldquo;<span class="defined">Services</span>&rdquo;).</p>
+
+    <h2 id="s1">Definitions</h2>
+    <ul>
+      <li><strong>&ldquo;Platform&rdquo; or &ldquo;Services&rdquo;</strong> &mdash; the StyleDesk AI software-as-a-service product, including the AI-powered call and text answering system, dedicated phone number provisioning, booking link delivery, analytics dashboards, photo intake, team scheduling features, barge-in handling, broadcast messaging tools, and all associated tools and features made available by StyleDesk AI.</li>
+      <li><strong>&ldquo;Subscriber&rdquo;</strong> &mdash; the barbershop owner, nail salon owner, or other business operator who registers for, accesses, or uses the Platform under a paid or trial subscription.</li>
+      <li><strong>&ldquo;End-Users&rdquo; or &ldquo;End-Customers&rdquo;</strong> &mdash; the clients, customers, or members of the public who interact with the Platform indirectly by calling or texting the Subscriber&rsquo;s dedicated phone number provisioned through StyleDesk AI.</li>
+      <li><strong>&ldquo;Subscriber Data&rdquo;</strong> &mdash; all information, content, and data submitted to or processed through the Platform by or on behalf of the Subscriber, including business information, service menus, pricing, hours, booking links, and configuration settings.</li>
+      <li><strong>&ldquo;End-User Data&rdquo;</strong> &mdash; call recordings, call transcripts, text message content, phone numbers, images and media attached to text messages, and other information generated by or relating to End-Users that is processed through the Platform.</li>
+      <li><strong>&ldquo;AI-Generated Content&rdquo;</strong> &mdash; all responses, messages, call scripts, captions, and communications generated by the Platform&rsquo;s artificial intelligence system on behalf of the Subscriber.</li>
+      <li><strong>&ldquo;Subscription Plan&rdquo;</strong> &mdash; the specific tier of service selected by the Subscriber (Basic, Pro, or Premium) with associated features and fees.</li>
+      <li><strong>&ldquo;Dedicated Phone Number&rdquo;</strong> &mdash; the local telephone number assigned to the Subscriber upon activation, provisioned through third-party carrier infrastructure for use with the Platform.</li>
+    </ul>
+
+    <h2 id="s2">Eligibility &amp; Account Registration</h2>
+    <h3>2.1 Age and Capacity</h3>
+    <p>You must be at least eighteen (18) years of age and have full legal capacity to enter into binding contracts to access or use the Platform. By registering, you represent and warrant that you meet these requirements.</p>
+    <h3>2.2 Business Use Only</h3>
+    <p>The Platform is designed and intended exclusively for legitimate business purposes. You represent and warrant that you are using the Platform in connection with an active and lawfully operated business, including a barbershop, nail salon, or similar personal care service establishment.</p>
+    <h3>2.3 Accurate Registration Information</h3>
+    <p>You agree to provide accurate, complete, and current information during registration and to promptly update such information if it changes. Providing false or misleading information is grounds for immediate account termination.</p>
+    <h3>2.4 Account Security</h3>
+    <p>You are solely responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Notify StyleDesk AI immediately at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> if you suspect unauthorized access. StyleDesk AI shall not be liable for any losses arising from unauthorized access caused by your failure to adequately secure your credentials.</p>
+    <h3>2.5 One Account Per Business</h3>
+    <p>Unless otherwise expressly authorized by StyleDesk AI in writing, each business location may maintain only one Subscriber account. Multi-location operators must contact StyleDesk AI to discuss enterprise arrangements.</p>
+
+    <h2 id="s3">Services &amp; Subscription Plans</h2>
+    <h3>3.1 Platform Overview</h3>
+    <p>StyleDesk AI provides an AI-powered receptionist platform that automatically answers inbound calls and text messages on behalf of Subscribers, responds to frequently asked questions regarding services, pricing, and hours, delivers booking links to End-Users, accepts reference photos from End-Users via MMS (Pro and Premium plans), and provides analytics and team-scheduling features to Subscribers. The Platform does not itself operate a booking system but integrates with Subscriber-designated third-party scheduling applications.</p>
+    <h3>3.2 Subscription Tiers</h3>
+    <ul>
+      <li><strong>Basic Plan &mdash; $49.00 per month &mdash; 14-day free trial.</strong> Includes 24/7 AI-powered call and text answering, one (1) dedicated local phone number, responses to service / pricing / hours inquiries, press-1 call transfer, automated booking link delivery, live call and text history dashboard, the ability to edit services, pricing, hours, and booking link, and a TCPA-compliant call recording disclosure played to all callers.</li>
+      <li><strong>Pro Plan &mdash; $149.00 per month &mdash; 30-day free trial.</strong> Includes all Basic Plan features plus up to five (5) individual user logins and phone numbers plus one (1) owner login, smart upselling functionality on calls and texts, promotional broadcast messaging to client contacts, voicemail with AI transcription, repeat caller detection and top client insights, weekly AI insights (trends and patterns from the prior week), a weekly performance report emailed each Monday, and the ability to select up to five (5) AI response languages from the 30 supported.</li>
+      <li><strong>Premium Plan &mdash; $249.00 per month &mdash; 30-day free trial.</strong> Includes all Pro Plan features plus up to ten (10) individual user logins and phone numbers plus two (2) owner logins, custom AI voice and greeting in your shop&rsquo;s style, natural interruption handling (callers can talk over the AI), auto follow-up texts to unbooked callers, projected revenue tracking (weekly and monthly), staff booking leaderboard and performance rankings, segmented broadcast groups, smart FAQ builder for shop-specific answers, custom SMS signature, monthly report card PDF emailed on the first of each month, per-staff busy status indicator, team-member scheduling with per-day working hours and days off, photo intake via MMS with AI captions and dashboard gallery, and responses in all thirty (30) supported languages.</li>
+    </ul>
+    <h3>3.3 Feature Availability</h3>
+    <p>StyleDesk AI reserves the right to modify, add to, or remove features from any Subscription Plan upon reasonable notice. Material reductions to features on a paid plan will be communicated with at least thirty (30) days&rsquo; advance notice.</p>
+    <h3>3.4 Dedicated Phone Numbers</h3>
+    <p>Upon account activation, StyleDesk AI will provision a dedicated local telephone number with an area code matching or approximate to the Subscriber&rsquo;s business location. This number is licensed to the Subscriber for use with the Platform during an active subscription. Dedicated phone numbers are not portable and may not be transferred, reassigned, or ported out unless otherwise agreed in writing by StyleDesk AI.</p>
+    <h3>3.5 Third-Party Booking Integrations</h3>
+    <p>The Platform is designed to work with third-party booking applications including, without limitation, Booksy, Fresha, Square, and Vagaro. StyleDesk AI makes no representations or warranties regarding the availability, functionality, or compliance of any third-party booking application. Subscribers are solely responsible for ensuring that their third-party booking systems comply with applicable law.</p>
+    <h3>3.6 Photo Intake</h3>
+    <p>The Platform&rsquo;s photo intake feature (available on Pro and Premium plans) allows End-Users to text reference photos to the Subscriber&rsquo;s dedicated number. Photos are stored in the Subscriber&rsquo;s dashboard, captioned by AI for organization, and optionally delivered to the Subscriber via SMS notification and daily email digest. Photos are retained for up to 180 days by default, after which they are automatically deleted. The Subscriber is responsible for obtaining any necessary consent from End-Users before encouraging them to submit photos.</p>
+    <h3>3.7 AI Limitations</h3>
+    <p>The Subscriber acknowledges that AI-Generated Content may contain errors, inaccuracies, or omissions. The Platform&rsquo;s AI system responds based on the information provided by the Subscriber in the Platform&rsquo;s configuration settings. StyleDesk AI does not guarantee the accuracy, completeness, or appropriateness of any AI-Generated Content.</p>
+
+    <h2 id="s4">Fees, Billing, &amp; Payment</h2>
+    <h3>4.1 Subscription Fees</h3>
+    <p>You agree to pay the monthly subscription fee corresponding to your selected Subscription Plan. Current pricing is displayed on the Platform&rsquo;s pricing page at <a href="/#pricing">www.styledesk.ai/#pricing</a>. All fees are stated and billed in United States Dollars (USD) unless otherwise expressly indicated.</p>
+    <h3>4.2 Billing Cycle</h3>
+    <p>Subscription fees are billed on a recurring monthly basis, beginning on the date of your initial paid subscription activation following the conclusion of any applicable free trial period. Your subscription will automatically renew each month unless cancelled in accordance with Section 5.</p>
+    <h3>4.3 Free Trial</h3>
+    <p>New Subscribers are eligible for a free trial period: <strong>fourteen (14) days on the Basic Plan</strong> and <strong>thirty (30) days on the Pro and Premium Plans</strong> (the &ldquo;<span class="defined">Free Trial</span>&rdquo;). During the Free Trial, you will not be charged. At the conclusion of the Free Trial, your selected payment method will be automatically charged the applicable monthly subscription fee unless you cancel prior to the end of the trial period. You are responsible for cancelling before the trial ends if you do not wish to be charged.</p>
+    <h3>4.4 Payment Method</h3>
+    <p>All payments are processed through Stripe, Inc. By providing your payment information, you authorize StyleDesk AI to charge your designated payment method for all applicable subscription fees. StyleDesk AI does not store payment card information directly.</p>
+    <h3>4.5 Failed Payments</h3>
+    <p>If a scheduled payment fails, StyleDesk AI will notify you and attempt to process the payment again. If payment is not received within seven (7) calendar days following the failed payment date (the &ldquo;<span class="defined">Grace Period</span>&rdquo;), StyleDesk AI reserves the right to suspend access to the Platform. Suspended accounts may be reinstated upon receipt of all outstanding amounts.</p>
+    <h3>4.6 No Refunds on Partial Months</h3>
+    <p>All subscription fees are non-refundable. If you cancel your subscription, you will retain access to the Platform through the end of your current paid billing cycle, but no refunds or credits will be issued for any unused portion. Notwithstanding the foregoing, we will consider good-faith refund requests in the case of duplicate charges, billing errors, or extended service outages attributable to StyleDesk AI.</p>
+    <h3>4.7 Price Changes</h3>
+    <p>StyleDesk AI reserves the right to modify subscription pricing at any time. You will be notified of any pricing changes affecting your subscription at least thirty (30) days before the change takes effect. Continued use of the Platform following a price change constitutes acceptance of the new pricing.</p>
+    <h3>4.8 Taxes</h3>
+    <p>Subscription fees are exclusive of all applicable federal, state, provincial, local, and other taxes, levies, duties, or similar governmental charges (&ldquo;<span class="defined">Taxes</span>&rdquo;). You are solely responsible for determining and remitting any Taxes applicable to your use of the Platform.</p>
+
+    <h2 id="s5">Cancellation &amp; Termination</h2>
+    <h3>5.1 Cancellation by Subscriber</h3>
+    <p>You may cancel your subscription at any time from the Billing tab of your dashboard at <a href="https://app.styledesk.ai">app.styledesk.ai</a> by following the cancellation procedures provided therein. Cancellations take effect at the end of your current monthly billing cycle, and no prorated refunds will be issued.</p>
+    <h3>5.2 Effect of Cancellation</h3>
+    <p>Upon the effective date of cancellation, your access to the Platform will be disabled. Your Dedicated Phone Number will be returned to the available pool and may be reassigned to another subscriber following a reasonable grace period.</p>
+    <h3>5.3 Termination by StyleDesk AI</h3>
+    <p>StyleDesk AI may suspend or terminate your account, with or without notice, if: (a) you breach any provision of these Terms; (b) StyleDesk AI determines, in its sole discretion, that your use of the Platform violates applicable law or poses a risk of harm; (c) your payment method fails and the outstanding balance is not resolved within the Grace Period; or (d) applicable law requires such termination.</p>
+    <h3>5.4 Data Following Termination</h3>
+    <p>Following account termination or cancellation, StyleDesk AI will retain Subscriber Data and End-User Data in accordance with its data retention policy set forth in the <a href="/privacy.html">Privacy Policy</a>. You may request deletion of your data subject to applicable legal requirements.</p>
+
+    <h2 id="s6">Subscriber Responsibilities &amp; Acceptable Use</h2>
+    <h3>6.1 Lawful Use</h3>
+    <p>You agree to use the Platform solely for lawful purposes and in compliance with all applicable laws and regulations, including the Telephone Consumer Protection Act (&ldquo;<span class="defined">TCPA</span>&rdquo;), the CAN-SPAM Act, Canada&rsquo;s Anti-Spam Legislation (&ldquo;<span class="defined">CASL</span>&rdquo;), PIPEDA, Quebec&rsquo;s Law 25, and all applicable state and provincial privacy laws.</p>
+    <h3>6.2 End-User Consent Obligations</h3>
+    <p class="caps">The subscriber is solely and exclusively responsible for ensuring that all end-users who receive automated calls or text messages through the platform have provided prior express consent (or, where applicable, prior express written consent) as required by the TCPA and all applicable federal, state, and local telecommunications laws. For Canadian end-users, the subscriber is solely responsible for ensuring that all applicable CASL consent requirements have been met.</p>
+    <p>StyleDesk AI provides the technological infrastructure only. StyleDesk AI does not obtain, manage, or verify End-User consent on behalf of Subscribers.</p>
+    <h3>6.3 Accuracy of Configured Information</h3>
+    <p>You are responsible for ensuring that all information uploaded or configured in the Platform, including service menus, pricing, operating hours, booking links, staff schedules, and FAQ content, is accurate, complete, and current.</p>
+    <h3>6.4 Prohibited Uses</h3>
+    <p>You agree not to use the Platform to:</p>
+    <ul>
+      <li>Send or facilitate unsolicited commercial electronic messages in violation of the TCPA, CASL, or any other applicable law;</li>
+      <li>Harass, threaten, defraud, or deceive any End-User or third party;</li>
+      <li>Transmit unlawful, defamatory, obscene, pornographic, or otherwise objectionable content;</li>
+      <li>Impersonate any person, entity, or business in a manner that is misleading or deceptive;</li>
+      <li>Engage in any activity that constitutes unfair, deceptive, or abusive acts or practices under applicable consumer protection law;</li>
+      <li>Attempt to reverse-engineer, decompile, disassemble, or derive the source code of the Platform;</li>
+      <li>Use the Platform to collect data about End-Users beyond what is reasonably necessary;</li>
+      <li>Violate the intellectual property, privacy, or other rights of any third party;</li>
+      <li>Use the Platform for any purpose that competes with or is adverse to StyleDesk AI&rsquo;s business;</li>
+      <li>Interfere with, disrupt, or attempt to gain unauthorized access to any part of the Platform.</li>
+    </ul>
+    <h3>6.5 Compliance with Telecom Regulations</h3>
+    <p>The Subscriber acknowledges that the Platform operates calls and texts through regulated telecommunications channels, including 10-digit long code (10DLC) registered numbers. The Subscriber agrees to comply with all applicable carrier rules, A2P messaging guidelines, and FCC regulations.</p>
+    <h3>6.6 TCPA One-to-One Consent Rule</h3>
+    <p>Effective April 11, 2026, the FCC&rsquo;s one-to-one consent rule requires that consent to receive automated calls or texts be obtained from each individual End-User separately for each sender entity. You are responsible for ensuring that your End-User consent practices comply with this requirement.</p>
+
+    <h2 id="s7">Indemnification</h2>
+    <h3>7.1 Subscriber&rsquo;s Indemnification Obligation</h3>
+    <p>You agree to indemnify, defend, and hold harmless StyleDesk AI, LLC and its members, managers, officers, employees, agents, contractors, successors, and assigns (collectively, &ldquo;<span class="defined">Indemnified Parties</span>&rdquo;) from and against any and all claims, demands, actions, proceedings, damages, losses, liabilities, costs, and expenses (including reasonable attorneys&rsquo; fees) arising out of or relating to:</p>
+    <ul>
+      <li>Your breach of any representation, warranty, obligation, or covenant in these Terms;</li>
+      <li>Your violation of any applicable law or regulation, including any violation of the TCPA, CASL, PIPEDA, or any state privacy law;</li>
+      <li>Any failure to obtain required End-User consent;</li>
+      <li>Any content, information, or instructions you configure in the Platform;</li>
+      <li>Any claim by an End-User, regulatory authority, or third party arising from the manner in which you or your employees use the Platform;</li>
+      <li>Any claim that your use of the Platform infringes the intellectual property, privacy, or other rights of a third party;</li>
+      <li>Any negligent, willful, or fraudulent act or omission by you or your agents.</li>
+    </ul>
+    <h3>7.2 Indemnification Procedure</h3>
+    <p>StyleDesk AI will promptly notify you in writing of any Claim for which indemnification is sought. You will have the right to assume control of the defense of such Claim. You may not settle any Claim in a manner that imposes obligations or restrictions on StyleDesk AI without StyleDesk AI&rsquo;s prior written consent.</p>
+
+    <h2 id="s8">Disclaimers of Warranties</h2>
+    <h3>8.1 As-Is Basis</h3>
+    <p class="caps">The platform is provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis without any warranties of any kind, express or implied. To the fullest extent permitted by applicable law, StyleDesk AI disclaims all warranties, including implied warranties of merchantability, fitness for a particular purpose, non-infringement, title, and quiet enjoyment.</p>
+    <h3>8.2 No Guarantee of Uptime or Availability</h3>
+    <p>StyleDesk AI does not warrant that the Platform will be available, uninterrupted, error-free, or free of viruses or other harmful components.</p>
+    <h3>8.3 AI-Generated Content Disclaimer</h3>
+    <p class="caps">The subscriber expressly acknowledges that all communications delivered through the platform, including responses to calls, texts, and photo captions, are generated by an artificial intelligence system and not by a human employee. StyleDesk AI makes no representation that AI-generated content will be accurate, complete, appropriate, or suitable for any particular purpose.</p>
+    <h3>8.4 Third-Party Services</h3>
+    <p>StyleDesk AI makes no warranties regarding third-party services integrated with the Platform, including third-party booking applications, payment processors, or telephony carriers.</p>
+
+    <h2 id="s9">Limitation of Liability</h2>
+    <h3>9.1 Exclusion of Certain Damages</h3>
+    <p class="caps">To the maximum extent permitted by applicable law, in no event shall StyleDesk AI be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including loss of revenue, loss of profits, loss of business, loss of data, or loss of goodwill, arising out of or related to these terms or your use of the platform, even if StyleDesk AI has been advised of the possibility of such damages.</p>
+    <h3>9.2 Aggregate Liability Cap</h3>
+    <p class="caps">StyleDesk AI&rsquo;s total cumulative liability to you shall not exceed the total amount of subscription fees actually paid by you to StyleDesk AI in the three (3) calendar months immediately preceding the event giving rise to the claim.</p>
+    <h3>9.3 TCPA and Telecom Liability</h3>
+    <p class="caps">StyleDesk AI expressly disclaims all liability for any claims, damages, fines, penalties, or regulatory actions arising from any alleged violation of the TCPA, CASL, or any other telecommunications or anti-spam law, to the extent such claims arise from the subscriber&rsquo;s failure to obtain required end-user consent or from the subscriber&rsquo;s misuse of the platform.</p>
+    <h3>9.4 Essential Basis of Bargain</h3>
+    <p>The Subscriber acknowledges that the limitations of liability set forth in this Section 9 reflect a reasonable allocation of risk and are an essential element of the basis of the bargain between the parties.</p>
+    <h3>9.5 Jurisdictional Variations</h3>
+    <p>Some jurisdictions do not allow the exclusion or limitation of certain damages or warranties. To the extent any such limitations are not enforceable, they shall be modified only to the minimum extent necessary to make them enforceable.</p>
+
+    <h2 id="s10">Intellectual Property</h2>
+    <h3>10.1 StyleDesk AI Ownership</h3>
+    <p>The Platform, including all software, algorithms, AI systems, user interfaces, design elements, trademarks, trade names, service marks, logos, documentation, and related materials, is the exclusive property of StyleDesk AI, LLC and is protected by applicable intellectual property laws.</p>
+    <h3>10.2 License Grant</h3>
+    <p>Subject to your compliance with these Terms and timely payment of all applicable subscription fees, StyleDesk AI grants you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to access and use the Platform solely for your internal business purposes.</p>
+    <h3>10.3 Subscriber Data License</h3>
+    <p>You hereby grant StyleDesk AI a non-exclusive, worldwide, royalty-free license to access, use, process, and display your Subscriber Data solely to the extent necessary to provide the Services.</p>
+    <h3>10.4 Feedback</h3>
+    <p>If you submit suggestions, feedback, or recommendations regarding the Platform, you hereby assign to StyleDesk AI all right, title, and interest in such Feedback.</p>
+
+    <h2 id="s11">Confidentiality</h2>
+    <h3>11.1 Subscriber Confidential Information</h3>
+    <p>StyleDesk AI agrees to hold your non-public business information in confidence and not to disclose such information to third parties except as necessary to provide the Services or as required by law.</p>
+    <h3>11.2 StyleDesk AI Confidential Information</h3>
+    <p>You agree to keep confidential all non-public information about the Platform, including its features, functionality, performance data, and pricing structures.</p>
+    <h3>11.3 Exceptions</h3>
+    <p>Confidentiality obligations do not apply to information that: (a) is or becomes publicly available through no fault of the receiving party; (b) was known to the receiving party prior to disclosure; (c) is independently developed by the receiving party; or (d) is required to be disclosed by applicable law or court order.</p>
+
+    <h2 id="s12">Data Privacy &amp; Security</h2>
+    <h3>12.1 Privacy Policy</h3>
+    <p>StyleDesk AI&rsquo;s collection, use, storage, and disclosure of personal information is governed by the <a href="/privacy.html">Privacy Policy</a>, which is incorporated into these Terms by this reference.</p>
+    <h3>12.2 End-User Data</h3>
+    <p>The Subscriber acknowledges that End-User Data, including call recordings, call transcripts, text message content, and photos submitted via MMS, will be processed by StyleDesk AI in the course of providing the Services. The Subscriber represents and warrants that any End-User Data transmitted through the Platform has been lawfully obtained.</p>
+    <h3>12.3 Data Processing Relationship</h3>
+    <p>With respect to End-User Data, StyleDesk AI acts as a service provider or data processor on behalf of the Subscriber. The Subscriber is the data controller with respect to End-User personal information.</p>
+    <h3>12.4 Security</h3>
+    <p>StyleDesk AI implements commercially reasonable technical and organizational measures to protect the Platform and the data processed through it. However, no method of electronic transmission or storage is completely secure.</p>
+    <h3>12.5 Data Breach Notification</h3>
+    <p>In the event of a data security breach affecting Subscriber Data or End-User Data, StyleDesk AI will notify you in accordance with applicable law and without unreasonable delay.</p>
+
+    <h2 id="s13">Canadian Subscribers &mdash; PIPEDA and CASL</h2>
+    <h3>13.1 Application to Canadian Subscribers</h3>
+    <p>If you are located in Canada or your End-Users are located in Canada, the following additional terms apply in addition to all other provisions.</p>
+    <h3>13.2 PIPEDA Compliance</h3>
+    <p>StyleDesk AI processes personal information of Canadian Subscribers and End-Users in accordance with PIPEDA and, where applicable, provincial privacy legislation including British Columbia&rsquo;s PIPA, Alberta&rsquo;s PIPA, and Quebec&rsquo;s Law 25.</p>
+    <h3>13.3 CASL Subscriber Obligations</h3>
+    <p>The Subscriber acknowledges that CASL regulates the transmission of Commercial Electronic Messages (&ldquo;<span class="defined">CEMs</span>&rdquo;) to recipients in Canada. The Subscriber is solely responsible for obtaining express or implied consent from each End-User, ensuring each CEM includes identity and contact information, providing a functional unsubscribe mechanism (honoured within 10 business days), and maintaining records of CASL consent.</p>
+    <h3>13.4 CASL Disclaimer</h3>
+    <p>StyleDesk AI provides the Platform as technological infrastructure only and is not the initiator or sender of CEMs for purposes of CASL. The Subscriber is the sender of all messages transmitted through the Platform. CASL violations can result in administrative monetary penalties of up to CAD $1,000,000 per violation for individuals and up to CAD $10,000,000 per violation for organizations.</p>
+    <h3>13.5 Quebec Law 25</h3>
+    <p>Subscribers whose End-Users include Quebec residents acknowledge that Quebec&rsquo;s Law 25 imposes additional obligations regarding privacy impact assessments, data minimization, cross-border data transfers, and enhanced consent requirements.</p>
+
+    <h2 id="s14">Telephone Consumer Protection Act (TCPA) Compliance</h2>
+    <h3>14.1 Platform as Tool</h3>
+    <p>StyleDesk AI provides the Platform as a technological tool that facilitates automated communications on behalf of Subscribers. StyleDesk AI does not initiate calls or texts independently.</p>
+    <h3>14.2 Subscriber&rsquo;s TCPA Responsibility</h3>
+    <p>The Subscriber is solely and exclusively responsible for:</p>
+    <ul>
+      <li>Ensuring prior express consent from all End-Users;</li>
+      <li>Maintaining records of End-User consent;</li>
+      <li>Complying with the FCC&rsquo;s one-to-one consent rule;</li>
+      <li>Honoring all opt-out and do-not-contact requests promptly;</li>
+      <li>Ensuring calls and texts are not made to numbers on the National Do Not Call Registry;</li>
+      <li>Complying with all applicable state telemarketing and automated communications laws.</li>
+    </ul>
+    <h3>14.3 TCPA Indemnification</h3>
+    <p>The Subscriber expressly agrees to indemnify, defend, and hold harmless the Indemnified Parties from any Claims arising out of any alleged or actual violation of the TCPA or any applicable state telecommunications law.</p>
+
+    <h2 id="s15">State Privacy Law Compliance</h2>
+    <p>The Platform may be used by Subscribers and accessed by End-Users located in states with comprehensive privacy laws, including without limitation the CCPA/CPRA, VCDPA, CPA, CTDPA, TDPSA, FDBR, MHMDA, and MCDPA. The Subscriber is solely responsible for determining the applicability of any state privacy law to its collection and processing of End-User personal information.</p>
+
+    <h2 id="s16">Governing Law &amp; Dispute Resolution</h2>
+    <h3>16.1 Governing Law</h3>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, United States of America, without regard to its conflict of laws principles.</p>
+    <h3>16.2 Dispute Resolution &mdash; Negotiation</h3>
+    <p>The parties agree to attempt to resolve any dispute through good-faith negotiation before initiating any formal legal proceeding.</p>
+    <h3>16.3 Binding Arbitration</h3>
+    <p>If a Dispute is not resolved through negotiation within thirty (30) days of the notice, such Dispute shall be finally resolved by binding arbitration administered by the American Arbitration Association (&ldquo;<span class="defined">AAA</span>&rdquo;) in accordance with its Commercial Arbitration Rules. The arbitration shall take place in Delaware, United States.</p>
+    <h3>16.4 Class Action Waiver</h3>
+    <p class="caps">To the maximum extent permitted by applicable law, you agree that any dispute shall be conducted solely on an individual basis and not as a class, collective, consolidated, or representative action. You waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
+    <h3>16.5 Exceptions</h3>
+    <p>Notwithstanding the foregoing, either party may seek emergency injunctive or equitable relief in any court of competent jurisdiction to prevent irreparable harm pending the resolution of a Dispute.</p>
+
+    <h2 id="s17">Force Majeure</h2>
+    <p>StyleDesk AI shall not be liable for any failure or delay in performance under these Terms arising from circumstances beyond its reasonable control, including acts of God, natural disasters, pandemics, government actions, civil unrest, terrorism, telecommunications failures, carrier outages, cyberattacks, power failures, labor disputes, or failures of third-party service providers.</p>
+
+    <h2 id="s18">Modifications to Terms</h2>
+    <p>StyleDesk AI reserves the right to modify these Terms at any time. If StyleDesk AI makes material changes, it will notify you by email or by posting a prominent notice on the Platform at least fourteen (14) days before the changes take effect. Your continued use of the Platform after the effective date of any modification constitutes your acceptance of the revised Terms.</p>
+
+    <h2 id="s19">Electronic Communications &amp; Notices</h2>
+    <p>By registering for a StyleDesk AI account, you consent to receive electronic communications from StyleDesk AI, including notices, agreements, disclosures, and other communications required or permitted under these Terms. Notices to StyleDesk AI should be sent to <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+
+    <h2 id="s20">Assignment</h2>
+    <p>You may not assign or transfer your rights or obligations under these Terms, in whole or in part, without StyleDesk AI&rsquo;s prior written consent. StyleDesk AI may assign or transfer these Terms to any successor entity in connection with a merger, acquisition, sale of assets, or restructuring.</p>
+
+    <h2 id="s21">Waiver &amp; Severability</h2>
+    <h3>21.1 Waiver</h3>
+    <p>No failure or delay by StyleDesk AI to exercise any right or remedy under these Terms shall constitute a waiver.</p>
+    <h3>21.2 Severability</h3>
+    <p>If any provision of these Terms is held invalid, illegal, or unenforceable, such provision shall be modified to the minimum extent necessary to make it enforceable, and all remaining provisions shall continue in full force and effect.</p>
+
+    <h2 id="s22">Entire Agreement</h2>
+    <p>These Terms, together with the Privacy Policy and any other policies expressly incorporated herein, constitute the entire agreement between you and StyleDesk AI with respect to your use of the Platform.</p>
+
+    <h2 id="s23">Relationship of the Parties</h2>
+    <p>Nothing in these Terms shall be construed to create a partnership, joint venture, agency, franchise, fiduciary, employment, or similar relationship between the parties. You and StyleDesk AI are independent parties.</p>
+
+    <h2 id="s24">Children&rsquo;s Privacy</h2>
+    <p>The Platform is intended for use by business operators and is not directed to children under the age of thirteen (13) years. StyleDesk AI does not knowingly collect personal information from children under thirteen. If you believe that a child under thirteen has provided personal information through the Platform, please contact us immediately at <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>.</p>
+
+    <h2 id="s25">Contact Information</h2>
+    <p>For all inquiries, legal notices, or requests relating to these Terms, please contact:</p>
+    <div class="note">
+      <p><strong>StyleDesk AI, LLC</strong><br>
+      Email: <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a><br>
+      Website: <a href="/">www.styledesk.ai</a><br>
+      Mailing address: [ADDRESS TBD &mdash; replace with virtual mail service address before publishing]</p>
+    </div>
+    <p>For privacy-related requests, data deletion requests, or requests to exercise your rights under applicable privacy law, please email <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a> with the subject line &ldquo;Privacy Request&rdquo; and a description of your request. StyleDesk AI will endeavor to respond within the timeframe required by applicable law.</p>
+
+    <p style="margin-top:40px; font-size: 12px; color: rgba(255,255,255,0.4); text-align: center;">These Terms of Service were last updated on April 18, 2026. Copyright &copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
+  </main>
 </div>
 
-<main>
-<section class="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="ai-badge">AI Booking &amp; Analytics</div><br/>
-        <div class="toggle-wrap toggle-mobile">
-          <button class="toggle-btn active" onclick="switchType('barber')">Barbershop</button>
-          <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
-        </div>
-        <h1>Every Call.<br>Every Text.<span class="pink"><br>Handled.</span></h1>
-        <p class="hero-sub">We help barbershops and nail salons respond instantly, fill last-minute openings, and keep your schedule fully booked.</p>
-        <div class="hero-btns">
-          <span class="btn-glow"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="btn-white">Book Demo</a></span>
-          <a href="#pricing" class="btn-outline">View Pricing</a>
-        </div>
-        <div class="trust-badges">
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in under 5 minutes</span></div>
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cancel anytime</span></div>
-          <div class="trust-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Try it risk-free</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="toggle-desktop">
-          <div class="toggle-wrap" style="margin-bottom: 0;">
-            <button class="toggle-btn active" onclick="switchType('barber')">Barbershop</button>
-            <button class="toggle-btn" onclick="switchType('nail')">Nail Salon</button>
-          </div>
-        </div>
-        <div class="phone-frame">
-          <div class="phone-outer">
-            <div class="phone-island"><div class="phone-camera"></div></div>
-            <div class="phone-screen">
-              <div class="phone-statusbar">
-                <span class="phone-statusbar-time">9:41</span>
-                <div style="display:flex;gap:4px;align-items:center;">
-                  <svg width="12" height="9" viewBox="0 0 12 9"><rect x="0" y="5" width="2" height="4" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="3" y="3" width="2" height="6" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="6" y="1" width="2" height="8" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="9" y="0" width="2" height="9" rx="0.5" fill="rgba(255,255,255,0.5)"/></svg>
-                  <div style="width:18px;height:9px;border-radius:2px;border:1px solid rgba(255,255,255,0.4);position:relative;"><div style="position:absolute;left:1px;top:1px;bottom:1px;width:12px;background:rgba(255,255,255,0.5);border-radius:1px;"></div></div>
-                </div>
-              </div>
-              <div class="phone-contact">
-                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="rgba(100,160,255,0.8)" stroke-width="1.5"><path d="M6 1L1 6l5 5"/></svg>
-                <div class="phone-avatar">S</div>
-                <div>
-                  <div class="phone-contact-name">StyleDesk AI</div>
-                  <div class="phone-contact-num">(240) 863-1455</div>
-                </div>
-              </div>
-              <div class="chat-messages">
-                <div class="chat-timestamp">Today 2:14 PM</div>
-                <div class="msg-bubble msg-right" id="c1"></div>
-                <div class="msg-bubble msg-left"  id="b1"></div>
-                <div class="msg-bubble msg-right" id="c2"></div>
-                <div class="msg-bubble msg-left"  id="b2"></div>
-                <div class="msg-bubble msg-right" id="c3"></div>
-                <div class="msg-bubble msg-left"  id="b3"></div>
-              </div>
-              <div class="phone-input">
-                <div class="phone-input-bar">
-                  <span class="phone-input-text">Text Message</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(100,160,255,0.6)" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                </div>
-              </div>
-            </div>
-            <div class="phone-bar"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="pain-section">
-    <div class="pain-inner reveal">
-      <h2>Your phone is your biggest weakness... and your biggest opportunity.</h2>
-      <div class="pain-points">
-        <p>Right now, missed calls and unanswered texts are costing you clients.</p>
-        <p>But what if every call got answered, every text got a reply, and every client got a booking link sent to them automatically?</p>
-        <p>All while you focus on what you do best.</p>
-      </div>
-      <p class="pain-cta">StyleDesk handles it all, 24/7.</p>
-    </div>
-  </section>
-
-<section id="how" class="how-section">
-    <h2 class="reveal">How it works</h2>
-    <div class="steps-grid">
-      <div class="step-card glass reveal reveal-delay-1">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-        <div class="step-num">Step 01</div>
-        <div class="step-title">Get your number</div>
-        <p>Sign up and get a dedicated business number with your area code</p>
-      </div>
-      <div class="step-card glass reveal reveal-delay-2">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="14" rx="2"/><circle cx="12" cy="16" r="2"/></svg></div>
-        <div class="step-num">Step 02</div>
-        <div class="step-title">AI takes over</div>
-        <p>AI answers every call and text on your behalf, 24/7</p>
-      </div>
-      <div class="step-card glass reveal reveal-delay-3">
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
-        <div class="step-num">Step 03</div>
-        <div class="step-title">Clients booked</div>
-        <p>Clients get answers and a booking link sent to them automatically</p>
-      </div>
-    </div>
-  </section>
-
-<section class="call-section">
-    <div class="call-inner reveal">
-      <div class="call-label">Live demo</div>
-      <h2 class="call-title">Try StyleDesk right now</h2>
-      <p class="call-desc">Call or text our live demo number. Ask about services, pricing, or hours. The AI answers just like it would for any shop.</p>
-      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px;">
-        <a href="tel:+12408754777" class="demo-cta-card cta-maroon">
-          <div class="cta-icon icon-maroon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <div style="font-size: 16px; font-weight: 600; font-family: 'DM Mono', monospace;">(240) 875-4777</div>
-            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px;">Tap to call the AI</div>
-          </div>
-        </a>
-        <a href="sms:+12408754777" class="demo-cta-card cta-blue">
-          <div class="cta-icon icon-blue">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
-          <div>
-            <div style="font-size: 16px; font-weight: 600; font-family: 'DM Mono', monospace;">(240) 875-4777</div>
-            <div style="font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px;">Tap to text the AI</div>
-          </div>
-        </a>
-      </div>
-      <div class="try-pills">
-        <div class="try-pill">"How much is a haircut?"</div>
-        <div class="try-pill">"What are your hours?"</div>
-        <div class="try-pill">"How much is a full set?"</div>
-        <div class="try-pill">"Can I book?"</div>
-      </div>
-    </div>
-  </section>
-
-<!-- Works With Your Booking App -->
-  <section class="works-section">
-    <div style="max-width: 1152px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 48px;" class="reveal">
-        <p style="font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 12px;">No switching required</p>
-        <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;">We don't replace your booking app.<br><span style="color: #f0c6cf;">We make it work harder.</span></h2>
-        <p style="font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 600px; margin: 0 auto; font-weight: 400;">Keep using Booksy, Fresha, Square, or whatever you love. StyleDesk sits on top. Your clients book through your existing app, just like always.</p>
-      </div>
-
-      <div style="text-align: center;" class="reveal">
-        <p style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; letter-spacing: 1px;">WORKS WITH THE APPS YOU ALREADY USE</p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#00b67a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:14px;font-weight:700;color:white;font-family:'Inter',sans-serif;">b</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Booksy</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:0.5px solid rgba(255,255,255,0.15);">
-              <svg width="14" height="14" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="white"/></svg>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Square</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#3ecf8e;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:12px;font-weight:900;color:white;">Fr</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Fresha</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px 8px 8px;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05);">
-            <div style="width:26px;height:26px;border-radius:50%;background:#7b3fe4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="font-size:12px;font-weight:900;color:white;">V</span>
-            </div>
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Vagaro</span>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:100px;padding:8px 18px 8px 12px;backdrop-filter:blur(8px);">
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.3);">&amp; any other</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-<section id="features" class="features-section">
-    <p class="features-label reveal">Features</p>
-    <h2 class="features-title reveal">Included in every plan.</h2>
-    <div class="features-grid">
-      <div class="feature-card glass reveal reveal-delay-1"><div class="feature-icon">📞</div><h4>24/7 call answering</h4><p>AI picks up every call so you never lose a client.</p></div>
-      <div class="feature-card glass reveal reveal-delay-2"><div class="feature-icon">💬</div><h4>24/7 text replies</h4><p>Every text gets a fast, helpful reply. Even after hours.</p></div>
-      <div class="feature-card glass reveal reveal-delay-3"><div class="feature-icon">📱</div><h4>Dedicated local number</h4><p>Your own business number with your area code.</p></div>
-      <div class="feature-card glass reveal reveal-delay-4"><div class="feature-icon">📅</div><h4>Auto booking link</h4><p>StyleDesk texts your booking link automatically.</p></div>
-      <div class="feature-card glass reveal reveal-delay-1"><div class="feature-icon">⏰</div><h4>Hours, pricing &amp; services</h4><p>AI knows your full menu and answers every question accurately.</p></div>
-      <div class="feature-card glass reveal reveal-delay-2"><div class="feature-icon">☎️</div><h4>Press 1 to connect</h4><p>Clients can press 1 at any time to transfer directly to you.</p></div>
-      <div class="feature-card glass reveal reveal-delay-3"><div class="feature-icon">📊</div><h4>Call &amp; text dashboard</h4><p>See every call and full text conversation in your dashboard.</p></div>
-      <div class="feature-card glass reveal reveal-delay-4"><div class="feature-icon">✏️</div><h4>Edit your info anytime</h4><p>Update services, prices, hours and booking link instantly.</p></div>
-    </div>
-  </section>
-
-<section class="dash-carousel reveal">
-    <h2>See the dashboard in action</h2>
-    <p class="dash-carousel-sub">Each plan comes with its own powerful dashboard</p>
-    <div class="dash-stage">
-      <div class="dash-arrow dash-arrow-left" onclick="dashPrev()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
-      </div>
-      <div class="dash-arrow dash-arrow-right" onclick="dashNext()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
-      </div>
-      <div class="dash-card" data-pos="left" id="dashC0" onclick="dashGo(0)"><img src="images/basic-dashboard.png" alt="Basic Dashboard" loading="lazy"/></div>
-      <div class="dash-card" data-pos="center" id="dashC1" onclick="dashGo(1)"><img src="images/pro-dashboard.png" alt="Pro Dashboard" loading="lazy"/></div>
-      <div class="dash-card" data-pos="right" id="dashC2" onclick="dashGo(2)"><img src="images/premium-dashboard.png" alt="Premium Dashboard" loading="lazy"/></div>
-    </div>
-    <p class="dash-label" id="dashLabel"><span style="color:#f0c6cf;">Pro Dashboard</span></p>
-    <div class="dash-dots" id="dashDots">
-      <div class="dash-dot" onclick="dashGo(0)"></div>
-      <div class="dash-dot active" onclick="dashGo(1)"></div>
-      <div class="dash-dot" onclick="dashGo(2)"></div>
-    </div>
-  </section>
-
-
-<section id="pricing" class="pricing-section">
-    <h2 class="reveal">Pricing</h2>
-    <div class="pricing-grid">
-      <div class="pricing-card glass reveal reveal-delay-1">
-        <div class="pricing-name">Basic</div>
-        <div class="pricing-sub">Built for you · Solo operators</div>
-        <div class="pricing-price">$49/month</div>
-        <ul class="pricing-features">
-          <li><span class="check">✔</span><span>24/7 AI answering for every call &amp; text</span></li>
-          <li><span class="check">✔</span><span>Dedicated local business phone number</span></li>
-          <li><span class="check">✔</span><span>Texts your booking link to every caller</span></li>
-          <li><span class="check">✔</span><span>Press 1 to transfer calls to your phone anytime</span></li>
-          <li><span class="check">✔</span><span>Live call &amp; text history in your dashboard</span></li>
-          <li><span class="check">✔</span><span>Update services, prices &amp; hours anytime &mdash; live instantly</span></li>
-          <li><span class="check">✔</span><span>TCPA-compliant recording disclosure on every call</span></li>
-        </ul>
-        <a href="https://buy.stripe.com/eVqeVf6Vea0jgB3duPgEg04" target="_blank" class="pricing-btn">Start 14-Day Free Trial</a>
-      </div>
-      <div class="pricing-card glass pro-featured reveal reveal-delay-2">
-        <div class="pricing-name">Pro</div>
-        <div class="pricing-sub">Built for growing shops · Teams up to 5</div>
-        <div class="pricing-price">$149/month</div>
-        <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Everything in Basic, plus:</span></li>
-          <li><span class="check">✔</span><span>Up to 5 team logins with their own numbers (+ 1 owner)</span></li>
-          <li><span class="check">✔</span><span>Smart upselling on every call &amp; text</span></li>
-          <li><span class="check">✔</span><span>Promotional broadcasts to your entire client list</span></li>
-          <li><span class="check">✔</span><span>Voicemail with AI transcription</span></li>
-          <li><span class="check">✔</span><span>Repeat caller detection &amp; top client insights</span></li>
-          <li><span class="check">✔</span><span>Weekly AI insights &mdash; trends &amp; patterns from last week&rsquo;s data</span></li>
-          <li><span class="check">✔</span><span>Weekly performance report emailed every Monday</span></li>
-          <li><span class="check">✔</span><span>Reply in up to 5 languages (from 30 supported)</span></li>
-        </ul>
-        <a href="https://buy.stripe.com/5kQ28t2EY3BV1G99ezgEg05" target="_blank" class="pricing-btn">Start 30-Day Free Trial</a>
-      </div>
-      <div class="pricing-card glass reveal reveal-delay-3">
-        <div class="pricing-name">Premium</div>
-        <div class="pricing-sub">Built for busy shops · Teams up to 10</div>
-        <div class="pricing-price">$249/month</div>
-        <ul class="pricing-features">
-          <li><span class="check">✔</span><span>Everything in Pro, plus:</span></li>
-          <li><span class="check">✔</span><span>Up to 10 team logins with their own numbers (+ 2 owners)</span></li>
-          <li><span class="check">✔</span><span>Custom AI voice &amp; greeting in your shop&rsquo;s style</span></li>
-          <li><span class="check">✔</span><span>Natural interruption handling &mdash; callers can talk over the AI</span></li>
-          <li><span class="check">✔</span><span>Auto follow-up texts to unbooked callers</span></li>
-          <li><span class="check">✔</span><span>Projected revenue tracking (weekly + monthly)</span></li>
-          <li><span class="check">✔</span><span>Staff booking leaderboard &amp; performance rankings</span></li>
-          <li><span class="check">✔</span><span>Segmented broadcast groups &mdash; VIP, new clients, custom lists</span></li>
-          <li><span class="check">✔</span><span>Smart FAQ builder for shop-specific answers</span></li>
-          <li><span class="check">✔</span><span>Custom SMS signature on every text</span></li>
-          <li><span class="check">✔</span><span>Monthly report card PDF emailed on the 1st</span></li>
-          <li><span class="check">✔</span><span>Respond in all 30 supported languages</span></li>
-        </ul>
-        <a href="https://buy.stripe.com/14A14p7ZifkD70t4YjgEg06" target="_blank" class="pricing-btn">Start 30-Day Free Trial</a>
-      </div>
-    </div>
-  </section>
-
-
-<section id="demo" class="demo-section">
-    <div class="demo-card glass reveal">
-      <div class="demo-label">Limited Availability</div>
-      <h2>Ready to never miss a client again?</h2>
-      <p>Book a 15-minute demo. See how StyleDesk works for your shop.</p>
-      <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="demo-btn">Book Your Demo</a></span>
-    </div>
-  </section>
-
-
-</main>
-
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">
-        <svg width="26" height="26" viewBox="0 0 100 100" style="flex-shrink:0;margin-right:5px"><rect width="100" height="100" rx="24" fill="#222222"/><path d="M28 46 L28 33 L38 40 L50 24 L62 40 L72 33 L72 46 Z" fill="#7c1f36" stroke="#f0c6cf" stroke-width="2" stroke-linejoin="round"/><rect x="28" y="47" width="44" height="6" rx="3" fill="#f0c6cf"/><rect x="32" y="57" width="36" height="5" rx="2.5" fill="#9a7a80" opacity="0.9"/><rect x="36" y="66" width="28" height="4.5" rx="2.25" fill="#7a5a60" opacity="0.75"/><circle cx="50" cy="24" r="3.5" fill="#b8862d"/><circle cx="28" cy="33" r="3.5" fill="#b8862d"/><circle cx="72" cy="33" r="3.5" fill="#b8862d"/></svg>
-        StyleDesk<span>.ai</span>
-      </a>
-      <p class="footer-brand-desc">The only AI booking tool built exclusively for barbers and nail techs.</p>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookies.html">Cookies</a>
+      <a href="/do-not-sell.html">Do Not Sell My Info</a>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">PRODUCT</div>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#how">How it Works</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">COMPANY</div>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">CONNECT</div>
-      <a href="https://www.instagram.com/styledesk.ai" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/styledesk.ai" target="_blank">Facebook</a>
-      <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 StyleDesk AI, LLC. All rights reserved.</p>
-    <p style="font-style: italic; color: rgba(255,255,255,0.2);">"You Fade. You File. We Handle the Rest."</p>
+    <div class="footer-contact">&copy; 2026 StyleDesk AI, LLC &middot; <a href="mailto:hello@styledesk.ai">hello@styledesk.ai</a></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Live call & text counter with animation
-  function animateCount(el, target) {
-    var start = 0, duration = 1500, startTime = null
-    function step(ts) {
-      if (!startTime) startTime = ts
-      var progress = Math.min((ts - startTime) / duration, 1)
-      var eased = 1 - Math.pow(1 - progress, 3)
-      el.textContent = Math.floor(eased * target).toLocaleString()
-      if (progress < 1) requestAnimationFrame(step)
-      else el.textContent = target.toLocaleString()
+  (function() {
+    const links = document.querySelectorAll('.toc a');
+    const sections = Array.from(document.querySelectorAll('.legal-content h2[id]'));
+    function update() {
+      const scroll = window.scrollY + 120;
+      let current = sections[0]?.id;
+      for (const s of sections) { if (s.offsetTop <= scroll) current = s.id; }
+      links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
     }
-    requestAnimationFrame(step)
-  }
-  (async function() {
-    try {
-      var res = await fetch('https://bimnwybwdocaevadudcl.supabase.co/rest/v1/rpc/get_live_counts', {
-        method: 'POST',
-        headers: {
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ',
-          'Content-Type': 'application/json'
-        }
-      })
-      var data = await res.json()
-      if (data.calls !== undefined) animateCount(document.getElementById('callCount'), data.calls)
-      if (data.texts !== undefined) animateCount(document.getElementById('textCount'), data.texts)
-    } catch(e) {}
-  })()
-
-  const convos = {
-    barber: {
-      customer: ["Hey, how much is a haircut?","What are your hours today?","Yes please!"],
-      business: ["Hey! Haircuts start at $35, fades at $45. We also do beard trims for $20.","We're open Mon\u2013Sat 9AM to 7PM. You can walk in or book ahead to lock in your time. Want me to send you the booking link?","Here you go \u2014 tap to grab your spot anytime \uD83D\uDC47\ncal.com/styledesk-demo"],
-    },
-    nail: {
-      customer: ["Hi! How much is a full acrylic set?","What are your hours this week?","Yes, send it over!"],
-      business: ["Hey! Full acrylic sets start at $55. We can add gel color for $15 or nail art from $5 per nail.","We're open Tue\u2013Sat 10AM to 7PM and Sunday 11AM to 5PM. Closed Mondays! Want me to send you the booking link so you can pick a time?","Perfect! Here's your link \u2014 super quick to book \uD83D\uDC47\ncal.com/styledesk-nails"],
-    },
-  }
-  const subs = {
-    barber: "We help barbers capture missed calls, fill empty chairs, and keep your schedule fully booked without interrupting your cuts.",
-    nail: "We help nail salons respond instantly, fill last-minute openings, and keep your chairs fully booked throughout the day.",
-  }
-  function switchType(type) {
-    var allBtns = document.querySelectorAll('.toggle-btn')
-    allBtns.forEach(function(btn) {
-      if (btn.textContent === 'Barbershop') btn.classList.toggle('active', type === 'barber')
-      if (btn.textContent === 'Nail Salon') btn.classList.toggle('active', type === 'nail')
-    })
-    const c = convos[type]
-    for (let i = 1; i <= 3; i++) {
-      const cEl = document.getElementById('c'+i)
-      const bEl = document.getElementById('b'+i)
-      cEl.textContent = c.customer[i-1]
-      bEl.textContent = c.business[i-1]
-      cEl.style.animation = 'none'
-      bEl.style.animation = 'none'
-      cEl.offsetHeight
-      bEl.offsetHeight
-      cEl.style.animation = ''
-      bEl.style.animation = ''
-    }
-  }
-  switchType('barber')
-
-  // Dashboard carousel
-  var dashIdx = 1
-  var dashLabels = ['<span style="color:#e8ddd0">Basic Dashboard</span>', '<span style="color:#f0c6cf">Pro Dashboard</span>', '<span style="color:#c9a064">Premium Dashboard</span>']
-  var dashPosMap = {
-    0: {0:'center',1:'right',2:'left'},
-    1: {0:'left',1:'center',2:'right'},
-    2: {0:'right',1:'left',2:'center'}
-  }
-  function dashGo(i) {
-    dashIdx = i
-    var map = dashPosMap[dashIdx]
-    for (var s = 0; s < 3; s++) {
-      document.getElementById('dashC' + s).setAttribute('data-pos', map[s])
-    }
-    document.getElementById('dashLabel').innerHTML = dashLabels[dashIdx]
-    var dots = document.getElementById('dashDots').children
-    for (var d = 0; d < dots.length; d++) {
-      dots[d].className = 'dash-dot' + (d === dashIdx ? ' active' : '')
-    }
-  }
-  function dashNext() { dashGo((dashIdx + 1) % 3) }
-  function dashPrev() { dashGo((dashIdx + 2) % 3) }
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible')
-      }
-    })
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
 </script>
-<div class="sticky-cta">
-  <div>
-    <div class="sticky-cta-text">StyleDesk.ai</div>
-    <div class="sticky-cta-sub">AI receptionist for your shop</div>
-  </div>
-  <a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" class="sticky-cta-btn">Book Demo</a>
-</div>
 </body>
 </html>
