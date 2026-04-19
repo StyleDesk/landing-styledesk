@@ -259,7 +259,9 @@
       -webkit-backdrop-filter: blur(16px);
       padding: 38px 40px 36px;
       position: relative;
-      overflow: hidden;
+      /* No overflow:hidden — the "Most Popular" pill sits at top:-12px and
+         would get clipped. The ::after gradient has its own border-radius
+         so we don't need to clip the parent. */
       transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       box-shadow: 0 12px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
     }
