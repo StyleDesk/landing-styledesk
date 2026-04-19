@@ -249,25 +249,218 @@
     .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; z-index: 1; }
 
-    /* Tier lineup — three stacked bands showing what each plan unlocks */
-    .tier-lineup { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
-    .tier-band { border-radius: 20px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.08); padding: 26px 30px; transition: border 0.2s, transform 0.2s; backdrop-filter: blur(8px); }
-    .tier-band:hover { border-color: rgba(201,160,100,0.2); transform: translateY(-2px); }
-    .tier-band.tier-pro { border-left: 3px solid rgba(240,198,207,0.5); }
-    .tier-band.tier-premium { border-left: 3px solid rgba(201,160,100,0.55); background: linear-gradient(90deg, rgba(201,160,100,0.04), rgba(255,255,255,0.02)); }
-    .tier-band-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
-    .tier-band-name { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin: 0; }
-    .tier-band-name .tier-band-sub { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-left: 8px; font-weight: 500; text-transform: none; }
-    .tier-band-price { font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; }
-    .tier-band-price strong { color: #fff; font-weight: 700; font-size: 14px; }
-    .tier-band-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 24px; }
-    .tier-band-feature { font-size: 13px; color: rgba(255,255,255,0.78); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-    .tier-band-feature-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(80,200,120,0.15); color: #50c878; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .tier-band.tier-pro .tier-band-feature-icon { background: rgba(240,198,207,0.15); color: #f0c6cf; }
-    .tier-band.tier-premium .tier-band-feature-icon { background: rgba(201,160,100,0.2); color: #c9a064; }
+    /* ══ Tier lineup — premium glass cards, one per plan tier ══ */
+    .tier-lineup { display: flex; flex-direction: column; gap: 28px; position: relative; z-index: 1; margin-top: 24px; }
+    .tier-band {
+      border-radius: 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 38px 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .tier-band::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(201,160,100,0.04) 0%, transparent 35%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .tier-band:hover {
+      border-color: rgba(201,160,100,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,160,100,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .tier-band:hover::after { opacity: 1; }
+
+    /* Pro — soft pink tint + "Most Popular" floating badge */
+    .tier-band.tier-pro {
+      background: linear-gradient(135deg, rgba(240,198,207,0.04), rgba(255,255,255,0.02));
+      border-color: rgba(240,198,207,0.14);
+    }
+    .tier-band.tier-pro::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #c9a064, #b8902e);
+      color: #1a0008;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 5px 18px;
+      border-radius: 100px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(201,160,100,0.3);
+    }
+    .tier-band.tier-pro:hover { border-color: rgba(240,198,207,0.25); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(240,198,207,0.08), inset 0 1px 0 rgba(255,255,255,0.06); }
+
+    /* Premium — gold gradient + shimmering "The whole shop" badge */
+    .tier-band.tier-premium {
+      background: linear-gradient(135deg, rgba(201,160,100,0.05), rgba(255,255,255,0.02));
+      border-color: rgba(201,160,100,0.2);
+    }
+    .tier-band.tier-premium::before {
+      content: 'The whole shop';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f0c6cf 0%, #c9a064 50%, #f0c6cf 100%);
+      background-size: 200% 200%;
+      color: #1a0008;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 5px 18px;
+      border-radius: 100px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(201,160,100,0.35);
+      animation: gradShift 5s ease infinite;
+    }
+    .tier-band.tier-premium:hover { border-color: rgba(201,160,100,0.35); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 60px rgba(201,160,100,0.12), inset 0 1px 0 rgba(255,255,255,0.06); }
+
+    .tier-band-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .tier-band-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 48px;
+      height: 1.5px;
+      background: linear-gradient(90deg, #c9a064, transparent);
+    }
+    .tier-band.tier-pro .tier-band-header::after { background: linear-gradient(90deg, #f0c6cf, transparent); }
+
+    .tier-band-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #fff;
+      margin: 0;
+      text-transform: none;
+    }
+    .tier-band-name .tier-band-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      margin-left: 10px;
+      letter-spacing: 0.5px;
+      text-transform: none;
+      vertical-align: middle;
+    }
+    .tier-band-price {
+      font-family: 'DM Mono', monospace;
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .tier-band-price strong {
+      font-family: 'Playfair Display', serif;
+      color: #c9a064;
+      font-weight: 700;
+      font-size: 22px;
+      margin-right: 4px;
+      letter-spacing: -0.5px;
+    }
+    .tier-band.tier-pro .tier-band-price strong { color: #f0c6cf; }
+    .tier-band.tier-premium .tier-band-price strong {
+      background: linear-gradient(135deg, #c9a064, #f0c6cf);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tier-band-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .tier-band-feature {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.55;
+      letter-spacing: 0.1px;
+      transition: color 0.3s;
+    }
+    .tier-band-feature:hover { color: rgba(255,255,255,0.92); }
+
+    /* Premium check icon — SVG stroke, tier-tinted circle, subtle glow */
+    .tier-band-feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(80,200,120,0.1);
+      border: 1px solid rgba(80,200,120,0.22);
+      box-shadow: 0 0 12px rgba(80,200,120,0.12);
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: all 0.3s;
+    }
+    .tier-band-feature-icon svg {
+      width: 10px;
+      height: 10px;
+      stroke: #50c878;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .tier-band.tier-pro .tier-band-feature-icon {
+      background: rgba(240,198,207,0.08);
+      border-color: rgba(240,198,207,0.25);
+      box-shadow: 0 0 12px rgba(240,198,207,0.15);
+    }
+    .tier-band.tier-pro .tier-band-feature-icon svg { stroke: #f0c6cf; }
+    .tier-band.tier-premium .tier-band-feature-icon {
+      background: rgba(201,160,100,0.1);
+      border-color: rgba(201,160,100,0.32);
+      box-shadow: 0 0 14px rgba(201,160,100,0.2);
+    }
+    .tier-band.tier-premium .tier-band-feature-icon svg { stroke: #c9a064; }
+    .tier-band-feature:hover .tier-band-feature-icon {
+      transform: scale(1.08);
+      box-shadow: 0 0 18px rgba(80,200,120,0.28);
+    }
+    .tier-band.tier-pro .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 18px rgba(240,198,207,0.3); }
+    .tier-band.tier-premium .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 20px rgba(201,160,100,0.35); }
+
     @media (max-width: 768px) {
-      .tier-band { padding: 20px 18px; }
-      .tier-band-features { grid-template-columns: 1fr; gap: 8px; }
+      .tier-band { padding: 30px 22px 26px; border-radius: 20px; }
+      .tier-band-header { padding-bottom: 16px; margin-bottom: 18px; }
+      .tier-band-name { font-size: 20px; }
+      .tier-band-features { grid-template-columns: 1fr; gap: 12px; }
+      .tier-lineup { gap: 22px; }
     }
     .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); }
@@ -761,14 +954,14 @@
           <span class="tier-band-price"><strong>$49</strong>/mo and up</span>
         </div>
         <div class="tier-band-features">
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>24/7 AI call + text answering</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Knows 500+ shop terms (shape-up, skin fade, gel mani, dip powder…)</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>~2-second response time — faster than a human picking up</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Dedicated local phone number</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Auto booking link delivery via text</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Press 1 anytime to transfer to you</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Live dashboard — every call + text</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Edit services, prices, hours anytime</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>24/7 AI call + text answering</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Knows 500+ shop terms (shape-up, skin fade, gel mani, dip powder…)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>~2-second response time — faster than a human picking up</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dedicated local phone number</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Auto booking link delivery via text</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Press 1 anytime to transfer to you</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Live dashboard — every call + text</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Edit services, prices, hours anytime</span></div>
         </div>
       </div>
 
@@ -779,16 +972,16 @@
           <span class="tier-band-price"><strong>$149</strong>/mo · everything above + these</span>
         </div>
         <div class="tier-band-features">
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Clients text you style photos — AI captions every one and files it to the right appointment</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Up to 5 team members — each with their own dedicated number + login</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Per-stylist schedules &amp; days off ("Is Marcus in today?" gets a real answer)</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Real-time availability — Available, Steady, or Slammed at a tap</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Loyalty recognition — returning callers get warmer greetings</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Smart upsells that actually convert</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Broadcast messaging to your client list (TCPA-compliant)</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Weekly email reports &amp; voicemail transcription</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Client insights — repeat callers, most-asked questions</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>5 AI languages</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Clients text you style photos — AI captions every one and files it to the right appointment</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 5 team members — each with their own dedicated number + login</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Per-stylist schedules &amp; days off ("Is Marcus in today?" gets a real answer)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Real-time availability — Available, Steady, or Slammed at a tap</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Loyalty recognition — returning callers get warmer greetings</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Smart upsells that actually convert</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Broadcast messaging to your client list (TCPA-compliant)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Weekly email reports &amp; voicemail transcription</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Client insights — repeat callers, most-asked questions</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>5 AI languages</span></div>
         </div>
       </div>
 
@@ -799,15 +992,15 @@
           <span class="tier-band-price"><strong>$249</strong>/mo · everything above + these</span>
         </div>
         <div class="tier-band-features">
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Up to 10 team members + 2 owner logins</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom AI voice — pick from 6 voices</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom greeting + SMS signature</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom vocabulary — teach the AI your shop's unique terms</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>FAQ builder — add your own Q&amp;A the AI reads from</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Auto follow-up texts to unbooked callers</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Staff leaderboard with booking rankings</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>30 AI languages</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Monthly report card PDF emailed to you</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 10 team members + 2 owner logins</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom AI voice — pick from 6 voices</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom greeting + SMS signature</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom vocabulary — teach the AI your shop's unique terms</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>FAQ builder — add your own Q&amp;A the AI reads from</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Auto follow-up texts to unbooked callers</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Staff leaderboard with booking rankings</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>30 AI languages</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly report card PDF emailed to you</span></div>
         </div>
       </div>
     </div>
