@@ -18,6 +18,11 @@ header.site-nav { position: sticky; top: 0; z-index: 50; width: 100%; border-bot
 .header-nav a:hover { color: #fff; text-decoration: none; }
 .header-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
 .header-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); color: #1a0008; text-decoration: none; }
+.btn-glow { position: relative; display: inline-flex; border-radius: 12px; }
+.btn-glow::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 12px; background: linear-gradient(135deg, #c9a064, #7c1f36, #c9a064); background-size: 200% 200%; animation: shimmer 3s linear infinite; opacity: 0.5; z-index: 0; transition: opacity 0.4s; }
+.btn-glow:hover::before { opacity: 0.8; }
+.btn-glow .header-btn { position: relative; z-index: 1; }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
 /* LAYOUT */
 .legal-wrap { max-width: 1152px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
