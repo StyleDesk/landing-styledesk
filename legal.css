@@ -16,8 +16,8 @@ header.site-nav { position: sticky; top: 0; z-index: 50; width: 100%; border-bot
 .header-nav { display: flex; align-items: center; gap: 24px; }
 .header-nav a { font-size: 13px; color: rgba(255,255,255,0.5); }
 .header-nav a:hover { color: #fff; text-decoration: none; }
-.header-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; }
-.header-btn:hover { background: #c9a064; color: #1a0008; text-decoration: none; }
+.header-btn { background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+.header-btn:hover { background: linear-gradient(135deg, #d4ad74, #c9a064); color: #1a0008; text-decoration: none; }
 
 /* LAYOUT */
 .legal-wrap { max-width: 1152px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
