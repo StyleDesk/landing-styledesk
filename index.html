@@ -28,40 +28,6 @@
     *:focus-visible { outline: 2px solid #c9a064; outline-offset: 2px; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; position: relative; }
     html { background: #1a000b; } /* safety net so anything behind <body> is burgundy, not white */
-
-    /* Chrome iOS "open in Safari" banner — Chrome iOS paints a white
-       address bar regardless of theme-color (Google hasn't implemented
-       it for regular browsing). Only way to get our clean look is for
-       the user to open the page in Safari. */
-    .chrome-ios-banner { display: none; position: sticky; top: 0; z-index: 60; width: 100%;
-      background: linear-gradient(90deg, #2a0012, #3a0018 50%, #2a0012);
-      border-bottom: 1px solid rgba(201,160,100,0.2);
-      padding: 10px 16px; color: #f0c6cf; font-size: 12px;
-      display: none; align-items: center; justify-content: center; gap: 12px;
-      font-family: 'Inter', sans-serif; text-align: center; }
-    .chrome-ios-banner.show { display: flex; }
-    .chrome-ios-banner-text { flex: 1; min-width: 0; line-height: 1.4; color: rgba(255,255,255,0.85); }
-    .chrome-ios-banner-text strong { color: #c9a064; font-weight: 600; }
-    .chrome-ios-banner-btn { flex-shrink: 0; padding: 6px 12px; border-radius: 8px;
-      background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008;
-      text-decoration: none; font-size: 11px; font-weight: 600; white-space: nowrap;
-      border: none; cursor: pointer; transition: all 0.2s; }
-    .chrome-ios-banner-btn:active { transform: scale(0.95); }
-    .chrome-ios-banner-close { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
-      border: none; cursor: pointer; font-size: 14px; line-height: 1; padding: 0;
-      display: inline-flex; align-items: center; justify-content: center; }
-    .chrome-ios-banner-toast { position: fixed; top: 60px; left: 50%; transform: translateX(-50%) translateY(-8px);
-      z-index: 9999; padding: 12px 18px; border-radius: 12px;
-      background: #1a0008; border: 1px solid rgba(201,160,100,0.3);
-      color: #f0c6cf; font-size: 12px; font-family: 'Inter', sans-serif;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-      opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; }
-    .chrome-ios-banner-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-    @media (max-width: 420px) {
-      .chrome-ios-banner { font-size: 11px; padding: 9px 12px; gap: 8px; }
-      .chrome-ios-banner-btn { padding: 5px 10px; font-size: 10px; }
-    }
     body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; z-index: 100; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px 256px; }
     .ambient-glow { position: absolute; width: 100%; pointer-events: none; z-index: 0; overflow: hidden; height: 600px; }
     .ambient-glow::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,160,100,0.04) 0%, transparent 70%); }
@@ -530,20 +496,6 @@
   </style>
 </head>
 <body>
-
-<!-- Chrome iOS only: banner offering to open in Safari. Injected by
-     JS below only when CriOS is in the user agent. Dismissible,
-     remembered via localStorage. -->
-<div id="chromeIosBanner" class="chrome-ios-banner" role="alert" aria-live="polite">
-  <span class="chrome-ios-banner-text">
-    <strong>Looks cleaner in Safari.</strong> Tap Copy, then open Safari and paste.
-  </span>
-  <button type="button" class="chrome-ios-banner-btn" id="chromeIosCopyBtn">Copy link</button>
-  <button type="button" class="chrome-ios-banner-close" id="chromeIosCloseBtn" aria-label="Dismiss">×</button>
-</div>
-<div id="chromeIosToast" class="chrome-ios-banner-toast" role="status" aria-live="polite">
-  ✓ Copied! Paste into Safari's address bar.
-</div>
 
 <a href="#main-content" class="skip-nav">Skip to content</a>
 <header role="banner">
@@ -1291,78 +1243,6 @@
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible') })
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-
-  // ─── Chrome iOS → Safari banner ───
-  // Chrome iOS ignores our theme-color meta tag (Google limitation —
-  // documented as unsupported on iOS). Only way for Chrome iOS users
-  // to see our brand chrome is to reopen in Safari. Prompt once per
-  // session, remember dismissal in localStorage.
-  (function initChromeIosBanner() {
-    try {
-      var ua = navigator.userAgent || ''
-      var isChromeIos = /CriOS\//.test(ua)
-      if (!isChromeIos) return
-      if (localStorage.getItem('sdHideChromeIosBanner') === '1') return
-
-      var banner = document.getElementById('chromeIosBanner')
-      var copyBtn = document.getElementById('chromeIosCopyBtn')
-      var closeBtn = document.getElementById('chromeIosCloseBtn')
-      var toast = document.getElementById('chromeIosToast')
-      if (!banner) return
-      banner.classList.add('show')
-
-      function showToast(msg) {
-        if (!toast) return
-        if (msg) toast.textContent = msg
-        toast.classList.add('show')
-        setTimeout(function () { toast.classList.remove('show') }, 3200)
-      }
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', function () {
-          var url = window.location.href
-          // Best path: Clipboard API (Chrome iOS supports it in secure contexts).
-          // Fallback: hidden input + execCommand for older versions.
-          var done = false
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(url).then(function () {
-              done = true
-              showToast('✓ Copied! Open Safari and paste.')
-            }).catch(function () {
-              legacyCopy(url)
-            })
-          } else {
-            legacyCopy(url)
-          }
-          function legacyCopy(text) {
-            try {
-              var tmp = document.createElement('input')
-              tmp.value = text
-              tmp.style.position = 'fixed'
-              tmp.style.opacity = '0'
-              document.body.appendChild(tmp)
-              tmp.select()
-              tmp.setSelectionRange(0, text.length)
-              document.execCommand('copy')
-              document.body.removeChild(tmp)
-              showToast('✓ Copied! Open Safari and paste.')
-            } catch (e) {
-              showToast('Select the URL in the address bar to copy.')
-            }
-          }
-        })
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function () {
-          banner.classList.remove('show')
-          try { localStorage.setItem('sdHideChromeIosBanner', '1') } catch (e) {}
-        })
-      }
-    } catch (e) {
-      // Never break the page if UA detection or storage fails.
-    }
-  })()
 </script>
 </body>
 </html>
