@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- iOS Safari / Android Chrome: paint the browser chrome (status
+       bar + address bar backdrop) to match our burgundy page instead
+       of the default white. Without this, the mobile browser's own
+       UI renders as a white bar on top of the page. -->
+  <meta name="theme-color" content="#1a000b"/>
+  <meta name="theme-color" content="#1a000b" media="(prefers-color-scheme: dark)"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
   <title>StyleDesk.ai — AI Receptionist for Barbers & Nail Techs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
