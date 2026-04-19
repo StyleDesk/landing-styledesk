@@ -35,15 +35,7 @@
     .reveal-delay-4 { transition-delay: 0.35s; }
 
     /* NAV */
-    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(26, 0, 11, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    /* Mobile: force opaque burgundy — iOS Safari's backdrop-filter on
-       sticky/fixed elements at the top of the viewport can render
-       translucent backgrounds as washed-out white. Solid background
-       guarantees the top bar matches the page. */
-    @media (max-width: 768px) {
-      header { background: #1a000b; backdrop-filter: none; -webkit-backdrop-filter: none; }
-    }
-    html { background: #1a000b; }
+    header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); }
     .header-inner { max-width: 1152px; margin: 0 auto; padding: 14px 24px 14px 12px; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-family: Georgia, serif; font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 3px; }
     .logo span { color: rgba(255,255,255,0.35); letter-spacing: -1px; margin-left: -2px; }
