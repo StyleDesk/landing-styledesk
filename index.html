@@ -248,6 +248,27 @@
     .grad-text { background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 40px; text-align: center; position: relative; z-index: 1; background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; z-index: 1; }
+
+    /* Tier lineup — three stacked bands showing what each plan unlocks */
+    .tier-lineup { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
+    .tier-band { border-radius: 20px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.08); padding: 26px 30px; transition: border 0.2s, transform 0.2s; backdrop-filter: blur(8px); }
+    .tier-band:hover { border-color: rgba(201,160,100,0.2); transform: translateY(-2px); }
+    .tier-band.tier-pro { border-left: 3px solid rgba(240,198,207,0.5); }
+    .tier-band.tier-premium { border-left: 3px solid rgba(201,160,100,0.55); background: linear-gradient(90deg, rgba(201,160,100,0.04), rgba(255,255,255,0.02)); }
+    .tier-band-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+    .tier-band-name { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin: 0; }
+    .tier-band-name .tier-band-sub { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-left: 8px; font-weight: 500; text-transform: none; }
+    .tier-band-price { font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; }
+    .tier-band-price strong { color: #fff; font-weight: 700; font-size: 14px; }
+    .tier-band-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 24px; }
+    .tier-band-feature { font-size: 13px; color: rgba(255,255,255,0.78); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .tier-band-feature-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(80,200,120,0.15); color: #50c878; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tier-band.tier-pro .tier-band-feature-icon { background: rgba(240,198,207,0.15); color: #f0c6cf; }
+    .tier-band.tier-premium .tier-band-feature-icon { background: rgba(201,160,100,0.2); color: #c9a064; }
+    @media (max-width: 768px) {
+      .tier-band { padding: 20px 18px; }
+      .tier-band-features { grid-template-columns: 1fr; gap: 8px; }
+    }
     .feature-card { border-radius: 14px; padding: 22px 16px; transition: all 0.3s; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); }
     .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(124,31,54,0.25); border: 1px solid rgba(240,198,207,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 18px; }
@@ -278,6 +299,24 @@
     .compare-note { color: rgba(255,255,255,0.4); font-size: 12px; font-style: italic; }
     .compare-highlight { color: #c9a064; font-weight: 700; }
     .compare-cost-bad { color: #f87171; font-weight: 600; }
+
+    /* Real-world monthly cost scenarios — three side-by-side cards */
+    .compare-scenarios { margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .compare-scenario-card { padding: 24px 20px; border-radius: 18px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.08); position: relative; transition: border 0.2s, transform 0.2s; }
+    .compare-scenario-card:hover { border-color: rgba(201,160,100,0.25); transform: translateY(-2px); }
+    .compare-scenario-size { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a064; margin-bottom: 2px; }
+    .compare-scenario-min { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 400; margin-bottom: 18px; letter-spacing: 0.3px; }
+    .compare-scenario-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; }
+    .compare-scenario-row:last-child { border-bottom: none; padding-bottom: 4px; }
+    .compare-scenario-row.us { padding: 14px 12px; margin: 0 -12px 4px; border-radius: 10px; background: linear-gradient(90deg, rgba(201,160,100,0.15), rgba(201,160,100,0.05)); border: 1px solid rgba(201,160,100,0.25); }
+    .compare-scenario-row.us .compare-scenario-name { color: #fff; font-weight: 700; }
+    .compare-scenario-row.us .compare-scenario-price { color: #c9a064; font-weight: 700; font-size: 18px; }
+    .compare-scenario-name { color: rgba(255,255,255,0.55); font-weight: 400; }
+    .compare-scenario-price { color: rgba(255,255,255,0.85); font-weight: 600; font-family: 'DM Mono', monospace; font-size: 14px; }
+    .compare-scenario-price.bad { color: #f87171; }
+    .compare-scenarios-tagline { text-align: center; margin-top: 20px; font-size: 13px; color: #c9a064; font-weight: 500; letter-spacing: 0.5px; font-style: italic; }
+    @media (max-width: 768px) { .compare-scenarios { grid-template-columns: 1fr; gap: 12px; } .compare-scenario-card { padding: 18px; } }
+
     .compare-callout { margin-top: 36px; padding: 28px 32px; border-radius: 18px; background: linear-gradient(135deg, rgba(201,160,100,0.08), rgba(124,31,54,0.08)); border: 1px solid rgba(201,160,100,0.15); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
     .compare-callout p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.65; flex: 1; min-width: 280px; margin: 0; font-weight: 300; }
     .compare-callout p strong { color: #fff; font-weight: 600; }
@@ -304,6 +343,8 @@
     .pricing-card:hover::after { opacity: 1; }
     .pricing-card.pro-featured { border-color: rgba(201,160,100,0.2); background: rgba(201,160,100,0.03); }
     .pricing-card.pro-featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #c9a064, #b8902e); color: #1a0008; font-size: 9px; font-weight: 700; padding: 5px 18px; border-radius: 100px; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 4px 16px rgba(201,160,100,0.3); }
+    .pricing-features-more { font-size: 10px; color: rgba(255,255,255,0.35); margin: 6px 0 14px; font-style: italic; letter-spacing: 0.2px; }
+    .pricing-features-more:hover { color: rgba(201,160,100,0.6); }
     .pricing-card.pro-featured::after { opacity: 1; }
     .pricing-card.pro-featured:hover { border-color: rgba(201,160,100,0.35); box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 60px rgba(201,160,100,0.1); }
     .pricing-tier-label { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
@@ -710,16 +751,65 @@
     <div class="section-particles" aria-hidden="true"></div>
     <div class="features-inner">
     <p class="features-label reveal">Features</p>
-    <h2 class="features-title reveal">Included in every plan.</h2>
-    <div class="features-grid">
-      <div class="feature-card glass reveal reveal-delay-1"><div class="feature-icon">📞</div><h4>24/7 call answering</h4><p>AI picks up every call so you never lose a client.</p></div>
-      <div class="feature-card glass reveal reveal-delay-2"><div class="feature-icon">💬</div><h4>24/7 text replies</h4><p>Every text gets a fast, helpful reply. Even after hours.</p></div>
-      <div class="feature-card glass reveal reveal-delay-3"><div class="feature-icon">📱</div><h4>Dedicated local number</h4><p>Your own business number with your area code.</p></div>
-      <div class="feature-card glass reveal reveal-delay-4"><div class="feature-icon">📅</div><h4>Auto booking link</h4><p>StyleDesk texts your booking link automatically.</p></div>
-      <div class="feature-card glass reveal reveal-delay-1"><div class="feature-icon">⏰</div><h4>Hours, pricing &amp; services</h4><p>AI knows your full menu and answers every question accurately.</p></div>
-      <div class="feature-card glass reveal reveal-delay-2"><div class="feature-icon">☎️</div><h4>Press 1 to connect</h4><p>Clients can press 1 at any time to transfer directly to you.</p></div>
-      <div class="feature-card glass reveal reveal-delay-3"><div class="feature-icon">📊</div><h4>Call &amp; text dashboard</h4><p>See every call and full text conversation in your dashboard.</p></div>
-      <div class="feature-card glass reveal reveal-delay-4"><div class="feature-icon">✏️</div><h4>Edit your info anytime</h4><p>Update services, prices, hours and booking link instantly.</p></div>
+    <h2 class="features-title reveal">Everything you get.</h2>
+
+    <div class="tier-lineup">
+      <!-- All plans — the core AI receptionist everyone gets -->
+      <div class="tier-band reveal">
+        <div class="tier-band-header">
+          <h3 class="tier-band-name">Every plan <span class="tier-band-sub">starts with</span></h3>
+          <span class="tier-band-price"><strong>$49</strong>/mo and up</span>
+        </div>
+        <div class="tier-band-features">
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>24/7 AI call + text answering</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Knows 500+ shop terms (shape-up, skin fade, gel mani, dip powder…)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>~2-second response time — faster than a human picking up</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Dedicated local phone number</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Auto booking link delivery via text</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Press 1 anytime to transfer to you</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Live dashboard — every call + text</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">✓</span><span>Edit services, prices, hours anytime</span></div>
+        </div>
+      </div>
+
+      <!-- Pro — the "runs your whole front desk" upgrade -->
+      <div class="tier-band tier-pro reveal">
+        <div class="tier-band-header">
+          <h3 class="tier-band-name">Pro <span class="tier-band-sub">unlocks</span></h3>
+          <span class="tier-band-price"><strong>$149</strong>/mo · everything above + these</span>
+        </div>
+        <div class="tier-band-features">
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Clients text you style photos — AI captions every one and files it to the right appointment</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Up to 5 team members — each with their own dedicated number + login</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Per-stylist schedules &amp; days off ("Is Marcus in today?" gets a real answer)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Real-time availability — Available, Steady, or Slammed at a tap</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Loyalty recognition — returning callers get warmer greetings</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Smart upsells that actually convert</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Broadcast messaging to your client list (TCPA-compliant)</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Weekly email reports &amp; voicemail transcription</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>Client insights — repeat callers, most-asked questions</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">+</span><span>5 AI languages</span></div>
+        </div>
+      </div>
+
+      <!-- Premium — the polish layer -->
+      <div class="tier-band tier-premium reveal">
+        <div class="tier-band-header">
+          <h3 class="tier-band-name">Premium <span class="tier-band-sub">unlocks</span></h3>
+          <span class="tier-band-price"><strong>$249</strong>/mo · everything above + these</span>
+        </div>
+        <div class="tier-band-features">
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Up to 10 team members + 2 owner logins</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom AI voice — pick from 6 voices</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom greeting + SMS signature</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Custom vocabulary — teach the AI your shop's unique terms</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>FAQ builder — add your own Q&amp;A the AI reads from</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Auto follow-up texts to unbooked callers</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Staff leaderboard with booking rankings</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>30 AI languages</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon">★</span><span>Monthly report card PDF emailed to you</span></div>
+        </div>
+      </div>
     </div>
     </div>
   </section>
@@ -874,6 +964,61 @@
 
     <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:14px;font-style:italic;">*Competitor pricing reflects publicly advertised usage-based rates for AI voice APIs and typical virtual receptionist monthly retainers. Your costs with those alternatives will vary and typically exceed the minimum.</p>
 
+    <!-- Real-world monthly cost at common shop sizes — three cards -->
+    <div class="compare-scenarios reveal">
+      <div class="compare-scenario-card">
+        <p class="compare-scenario-size">Small shop</p>
+        <p class="compare-scenario-min">~500 caller min / mo</p>
+        <div class="compare-scenario-row us">
+          <span class="compare-scenario-name">StyleDesk</span>
+          <span class="compare-scenario-price">$49</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Dev APIs</span>
+          <span class="compare-scenario-price bad">~$100–200</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Human answering</span>
+          <span class="compare-scenario-price bad">$300–700</span>
+        </div>
+      </div>
+
+      <div class="compare-scenario-card">
+        <p class="compare-scenario-size">Typical shop</p>
+        <p class="compare-scenario-min">~1,000 caller min / mo</p>
+        <div class="compare-scenario-row us">
+          <span class="compare-scenario-name">StyleDesk</span>
+          <span class="compare-scenario-price">$149</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Dev APIs</span>
+          <span class="compare-scenario-price bad">~$150–400</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Human answering</span>
+          <span class="compare-scenario-price bad">$400–1,200</span>
+        </div>
+      </div>
+
+      <div class="compare-scenario-card">
+        <p class="compare-scenario-size">Busy shop</p>
+        <p class="compare-scenario-min">~2,000 caller min / mo</p>
+        <div class="compare-scenario-row us">
+          <span class="compare-scenario-name">StyleDesk</span>
+          <span class="compare-scenario-price">$249</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Dev APIs</span>
+          <span class="compare-scenario-price bad">~$250–600+</span>
+        </div>
+        <div class="compare-scenario-row">
+          <span class="compare-scenario-name">Human answering</span>
+          <span class="compare-scenario-price bad">$600–2,000+</span>
+        </div>
+      </div>
+    </div>
+    <p class="compare-scenarios-tagline reveal">Every size, every column — StyleDesk wins.</p>
+
     <div class="compare-callout reveal">
       <p><strong>The real question:</strong> do you want to spend 2–3 weeks writing AI prompts, hiring a developer, and wiring up a dashboard — or do you want to publish your new StyleDesk number this afternoon and be done?</p>
       <a href="#pricing" class="compare-cta">See pricing →</a>
@@ -901,13 +1046,11 @@
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>49</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 AI answering for every call &amp; text</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Understands 500+ shop terms out of the box</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Dedicated local business phone number</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Texts your booking link to every caller</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Press 1 to transfer calls to your phone anytime</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Live call &amp; text history in your dashboard</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Update services, prices &amp; hours anytime &mdash; live instantly</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>TCPA-compliant recording disclosure on every call</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Auto booking link delivery via text</span></li>
         </ul>
+        <p class="pricing-features-more">Full feature list in the Features section above ↑</p>
         <a href="https://dashboard-styledesk.vercel.app/onboard?plan=basic" class="pricing-btn" id="basic-trial-btn">Start 14-Day Free Trial</a>
         <p class="pricing-renewal">After trial, $49/mo. Cancel anytime from your dashboard.</p>
       </div>
@@ -917,16 +1060,13 @@
         <div class="pricing-sub">Built for growing shops · Teams up to 5</div>
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>149</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 5 team logins with their own numbers (+ 1 owner)</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Smart upselling on every call &amp; text</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Promotional broadcasts to your entire client list</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Voicemail with AI transcription</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Repeat caller detection &amp; top client insights</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Weekly AI insights &mdash; trends &amp; patterns from last week&rsquo;s data</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Weekly performance report emailed every Monday</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Reply in up to 5 languages (from 30 supported)</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Clients text you style photos — AI captions every one</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 5 team logins, each with their own dedicated number</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Per-stylist schedules &amp; busy status</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Smart upsells + broadcast messaging</span></li>
         </ul>
+        <p class="pricing-features-more">Full feature list in the Features section above ↑</p>
         <a href="https://dashboard-styledesk.vercel.app/onboard?plan=pro" class="pricing-btn">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">After trial, $149/mo. Cancel anytime from your dashboard.</p>
       </div>
@@ -936,19 +1076,13 @@
         <div class="pricing-sub">Built for busy shops · Teams up to 10</div>
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>249</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 10 team logins with their own numbers (+ 2 owners)</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom AI voice &amp; greeting in your shop&rsquo;s style</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Natural interruption handling &mdash; callers can talk over the AI</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c9a064" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 10 team logins (+ 2 owners)</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom AI voice &amp; greeting</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom vocabulary — teach the AI your shop's unique terms</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Auto follow-up texts to unbooked callers</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Projected revenue tracking (weekly + monthly)</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Staff booking leaderboard &amp; performance rankings</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Segmented broadcast groups &mdash; VIP, new clients, custom lists</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Smart FAQ builder for shop-specific answers</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom SMS signature on every text</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Monthly report card PDF emailed on the 1st</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Respond in all 30 supported languages</span></li>
         </ul>
+        <p class="pricing-features-more">Full feature list in the Features section above ↑</p>
         <a href="https://dashboard-styledesk.vercel.app/onboard?plan=premium" class="pricing-btn">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">After trial, $249/mo. Cancel anytime from your dashboard.</p>
       </div>
