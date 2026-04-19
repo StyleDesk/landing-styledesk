@@ -14,6 +14,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <title>StyleDesk.ai — AI Receptionist for Barbers & Nail Techs</title>
+  <link rel="icon" type="image/svg+xml" href="/styledesk-logo-circle.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/styledesk-logo.png"/>
+  <link rel="apple-touch-icon" href="/styledesk-logo.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet"/>
@@ -726,6 +729,27 @@
       .device-base { height: 10px; }
       .device-base-wrap { max-width: 100%; margin-left: 0; }
     }
+
+    /* FAQ */
+    .faq-section { padding: 100px 24px; border-top: 0.5px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    .faq-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 1; }
+    .faq-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a064; margin-bottom: 8px; text-align: center; }
+    .faq-title { font-size: clamp(26px, 3vw, 42px); font-weight: 700; letter-spacing: -1px; text-align: center; margin-bottom: 12px; background: linear-gradient(135deg, #fff 0%, #c9a064 33%, #f0c6cf 66%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradShift 6s ease infinite; }
+    .faq-sub { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.6; text-align: center; max-width: 600px; margin: 0 auto 36px; font-weight: 300; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; transition: border 0.2s, background 0.2s; }
+    .faq-item[open] { background: rgba(255,255,255,0.03); border-color: rgba(201,160,100,0.2); }
+    .faq-item summary { padding: 18px 22px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 22px; font-weight: 300; color: #c9a064; flex-shrink: 0; line-height: 1; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item summary:hover { color: #fff; }
+    .faq-item p { padding: 0 22px 20px; font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin: 0; }
+    @media (max-width: 768px) {
+      .faq-section { padding: 60px 16px; }
+      .faq-item summary { padding: 16px 18px; font-size: 14px; }
+      .faq-item p { padding: 0 18px 18px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
@@ -782,7 +806,7 @@
           <a href="#basic-card" class="btn-outline" onclick="event.preventDefault();document.getElementById('basic-card').scrollIntoView({behavior:'smooth',block:'start'});return false;">View Pricing ↓</a>
         </div>
         <div class="trust-badges">
-          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 5 minutes</span></div>
+          <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Setup in 15 minutes</span></div>
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cancel anytime</span></div>
           <div class="trust-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>No charge until trial ends</span></div>
         </div>
@@ -906,7 +930,7 @@
           </div>
         </a>
       </div>
-      <p style="font-size: 9px; color: rgba(255,255,255,0.2); margin-bottom: 24px; line-height: 1.5;">By calling or texting this number, you consent to receive automated AI-generated responses. Msg &amp; data rates may apply.</p>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 24px; line-height: 1.5;">By calling or texting this number, you consent to receive automated AI-generated responses. Msg &amp; data rates may apply.</p>
       <div class="try-pills">
         <div class="try-pill">"How much is a haircut?"</div>
         <div class="try-pill">"What are your hours?"</div>
@@ -968,7 +992,7 @@
       <div class="tier-band tier-pro reveal">
         <div class="tier-band-header">
           <h3 class="tier-band-name">Pro</h3>
-          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>179</strong>/mo · everything above + these</span>
+          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>179</strong>/mo · everything in Basic, plus:</span>
         </div>
         <div class="tier-band-features">
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 5 team members — each with their own dedicated number + login</span></div>
@@ -988,7 +1012,7 @@
       <div class="tier-band tier-premium reveal">
         <div class="tier-band-header">
           <h3 class="tier-band-name">Premium</h3>
-          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>299</strong>/mo · everything above + these</span>
+          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>299</strong>/mo · everything in Pro, plus:</span>
         </div>
         <div class="tier-band-features">
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 10 team members + 2 owner logins</span></div>
@@ -1051,7 +1075,7 @@
   <div class="section-particles" aria-hidden="true"></div>
   <div class="compare-inner">
     <p class="compare-eyebrow reveal">vs the alternatives</p>
-    <h2 class="compare-title reveal">Nothing else comes close.</h2>
+    <h2 class="compare-title reveal">Not even close on value.</h2>
     <p class="compare-sub reveal">We built StyleDesk specifically for barbers and nail techs. Everyone else built developer tools — then left you to figure out how to turn them into a product.</p>
 
     <div class="compare-table-wrap reveal">
@@ -1134,57 +1158,57 @@
     <!-- Real-world monthly cost at common shop sizes — three cards -->
     <div class="compare-scenarios reveal">
       <div class="compare-scenario-card">
-        <p class="compare-scenario-size">Small shop</p>
-        <p class="compare-scenario-min">~500 call min + ~150 texts / mo</p>
+        <p class="compare-scenario-size">Solo operator · Basic</p>
+        <p class="compare-scenario-min">~250 call minutes &amp; 100 texts / month</p>
         <div class="compare-scenario-row us">
           <span class="compare-scenario-name">StyleDesk</span>
           <span class="compare-scenario-price">$49</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Generic AI</span>
-          <span class="compare-scenario-price bad">~$75–200</span>
+          <span class="compare-scenario-price bad">from $50–100</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Human answering</span>
-          <span class="compare-scenario-price bad">$300–700</span>
+          <span class="compare-scenario-price bad">from $250–500</span>
         </div>
       </div>
 
       <div class="compare-scenario-card">
-        <p class="compare-scenario-size">Typical shop</p>
-        <p class="compare-scenario-min">~1,000 call min + ~300 texts / mo</p>
+        <p class="compare-scenario-size">Growing shop · Pro</p>
+        <p class="compare-scenario-min">~1,500 call minutes &amp; 700 texts / month</p>
         <div class="compare-scenario-row us">
           <span class="compare-scenario-name">StyleDesk</span>
           <span class="compare-scenario-price">$179</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Generic AI</span>
-          <span class="compare-scenario-price bad">~$150–400</span>
+          <span class="compare-scenario-price bad">from $225–600</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Human answering</span>
-          <span class="compare-scenario-price bad">$400–1,200</span>
+          <span class="compare-scenario-price bad">from $1,000–2,500</span>
         </div>
       </div>
 
       <div class="compare-scenario-card">
-        <p class="compare-scenario-size">Busy shop</p>
-        <p class="compare-scenario-min">~2,000 call min + ~600 texts / mo</p>
+        <p class="compare-scenario-size">Busy shop · Premium</p>
+        <p class="compare-scenario-min">~2,500 call minutes &amp; 1,300 texts / month</p>
         <div class="compare-scenario-row us">
           <span class="compare-scenario-name">StyleDesk</span>
           <span class="compare-scenario-price">$299</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Generic AI</span>
-          <span class="compare-scenario-price bad">~$300–700+</span>
+          <span class="compare-scenario-price bad">from $400–900+</span>
         </div>
         <div class="compare-scenario-row">
           <span class="compare-scenario-name">Human answering</span>
-          <span class="compare-scenario-price bad">$600–2,000+</span>
+          <span class="compare-scenario-price bad">from $1,500–4,000+</span>
         </div>
       </div>
     </div>
-    <p class="compare-scenarios-tagline reveal">Every size, every column — StyleDesk wins.</p>
+    <p class="compare-scenarios-tagline reveal">Flat pricing. No per-minute math. Cheaper at every real-world shop.</p>
 
     <div class="compare-callout reveal">
       <p><strong>The real question:</strong> do you want to spend 2–3 weeks writing AI prompts, hiring a developer, and wiring up a dashboard — or do you want to publish your new StyleDesk number this afternoon and be done?</p>
@@ -1227,7 +1251,7 @@
         <div class="pricing-sub">Built for growing shops · Teams up to 5</div>
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>179</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f0c6cf" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Clients text you style photos — AI captions every one</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 5 team logins, each with their own dedicated number</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Per-stylist schedules &amp; busy status</span></li>
@@ -1243,7 +1267,7 @@
         <div class="pricing-sub">Built for busy shops · Teams up to 10</div>
         <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>299</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c9a064" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 10 team logins (+ 2 owners)</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom AI voice &amp; greeting</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Auto follow-up texts to unbooked callers</span></li>
@@ -1257,12 +1281,52 @@
     </div>
   </section>
 
+<section id="faq" class="faq-section">
+  <div class="section-particles" aria-hidden="true"></div>
+  <div class="faq-inner">
+    <p class="faq-eyebrow reveal">Questions &amp; Answers</p>
+    <h2 class="faq-title reveal">Common questions</h2>
+    <p class="faq-sub reveal">Before you sign up, here's what shop owners ask us most.</p>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Can I keep my current phone number and still use the AI?</summary>
+        <p>Yes. StyleDesk gives you a new AI-handled number &mdash; your existing number stays yours. If you want every call to route through the AI, turn on call forwarding from your current number to your StyleDesk number. Takes about 60 seconds on your carrier's app (AT&amp;T, Verizon, T-Mobile, Google Voice all support it), and we walk you through it right after signup.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to be technical to set this up?</summary>
+        <p>No. If you can send a text, you can run StyleDesk. Setup is point-and-click in your browser &mdash; type your services, pick an area code, hit save. Most shops are live within 15 minutes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can the AI transfer a call to me if someone really needs to talk?</summary>
+        <p>Yes. Callers can press 1 anytime to reach you directly. If you don't pick up, they can leave a voicemail that appears in your dashboard &mdash; with an AI transcript on Pro and Premium plans so you can read it at a glance.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens during the free trial?</summary>
+        <p>Basic gets 14 days. Pro and Premium get 30 days. Full access to everything &mdash; no charge until the trial ends. Cancel anytime from your dashboard with one click.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will I get hit with extra charges if my shop gets busy?</summary>
+        <p>No. Every plan is flat monthly &mdash; no per-minute fees, no per-text fees, no overages. Your $49, $179, or $299 covers everything.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does the AI really understand what a shape-up or gel mani is?</summary>
+        <p>Yes. StyleDesk knows 500+ shop terms out of the box &mdash; fades, tapers, skin fades, shape-ups, gel manis, dip powder, ombre, and hundreds more. No configuration needed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can the AI talk to clients in Spanish?</summary>
+        <p>Yes. Pro lets you pick up to 5 languages from 30 supported (Spanish, French, Portuguese, and more). Premium unlocks all 30. Once enabled in your settings, the AI detects each caller's language and responds in it automatically &mdash; no prompting needed per call.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section id="demo" class="demo-section">
     <div class="section-particles" aria-hidden="true"></div>
     <div class="demo-inner">
     <div class="demo-card glass reveal">
       <div class="demo-label">Get Started</div>
       <h2 class="grad-text">Ready to never miss a client again?</h2>
+
       <p>Book a 15-minute demo. See how StyleDesk works for your shop.</p>
       <span class="demo-btn-wrap"><a href="https://meetings-na2.hubspot.com/tabish-akbar" target="_blank" rel="noopener noreferrer" class="demo-btn">Book Your Demo</a></span>
     </div>
@@ -1285,6 +1349,7 @@
       <a href="#features">Features</a>
       <a href="#compare">Compare</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="#how">How it Works</a>
     </div>
     <div class="footer-col">
