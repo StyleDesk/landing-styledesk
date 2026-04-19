@@ -27,6 +27,7 @@
     .skip-nav:focus { top: 0; }
     *:focus-visible { outline: 2px solid #c9a064; outline-offset: 2px; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #3a0018, #2a0012, #1a000b); min-height: 100vh; color: #fff; overflow-x: hidden; width: 100%; position: relative; }
+    html { background: #1a000b; } /* safety net so anything behind <body> is burgundy, not white */
     body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; z-index: 100; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px 256px; }
     .ambient-glow { position: absolute; width: 100%; pointer-events: none; z-index: 0; overflow: hidden; height: 600px; }
     .ambient-glow::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,160,100,0.04) 0%, transparent 70%); }
