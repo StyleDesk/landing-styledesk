@@ -846,9 +846,9 @@
               </div>
               <div class="phone-contact">
                 <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="rgba(100,160,255,0.8)" stroke-width="1.5"><path d="M6 1L1 6l5 5"/></svg>
-                <div class="phone-avatar">S</div>
+                <div class="phone-avatar" id="phoneAvatar">F</div>
                 <div style="flex:1;">
-                  <div class="phone-contact-name">StyleDesk AI</div>
+                  <div class="phone-contact-name" id="phoneContactName">Fresh Cuts Barbershop</div>
                   <div class="phone-contact-num">(301) 888-7454</div>
                 </div>
                 <div class="phone-toggle">
@@ -1472,6 +1472,19 @@
       if (btn.textContent === 'Barber') btn.classList.toggle('active', type === 'barber')
       if (btn.textContent === 'Nails') btn.classList.toggle('active', type === 'nail')
     })
+    // Swap the phone contact identity so the mockup shows what the client sees,
+    // not what StyleDesk sees. Names match our canonical demo shops.
+    var contactNameEl = document.getElementById('phoneContactName')
+    var avatarEl = document.getElementById('phoneAvatar')
+    if (contactNameEl && avatarEl) {
+      if (type === 'barber') {
+        contactNameEl.textContent = 'Fresh Cuts Barbershop'
+        avatarEl.textContent = 'F'
+      } else {
+        contactNameEl.textContent = 'Luxe Nails Studio'
+        avatarEl.textContent = 'L'
+      }
+    }
     const c = convos[type]
     for (let i = 1; i <= 3; i++) {
       const cEl = document.getElementById('c'+i)
