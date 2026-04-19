@@ -344,16 +344,6 @@
       margin: 0;
       text-transform: none;
     }
-    .tier-band-name .tier-band-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      font-weight: 400;
-      margin-left: 10px;
-      letter-spacing: 0.5px;
-      text-transform: none;
-      vertical-align: middle;
-    }
     .tier-band-price {
       font-family: 'DM Mono', monospace;
       color: rgba(255,255,255,0.45);
@@ -370,7 +360,31 @@
       margin-right: 4px;
       letter-spacing: -0.5px;
     }
-    .tier-band.tier-pro .tier-band-price strong { color: #f0c6cf; }
+    /* Matches the raised-superscript $ treatment used in .pricing-dollar
+       below, scaled to the smaller tier-band price. Lives inside the
+       <strong> so it inherits the tier color (gold / pink / gradient).
+       Weight bumped to 700 for contrast against the dark background. */
+    .tier-band-dollar {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      vertical-align: top;
+      position: relative;
+      top: 3px;
+      margin-right: 1px;
+    }
+    /* Premium: the <strong>'s gradient-clip-text makes the small Inter $
+       render too faintly. Override to a saturated solid gold so the $
+       stays punchy while the big "249" keeps its luxury gradient. */
+    .tier-band.tier-premium .tier-band-dollar {
+      -webkit-text-fill-color: #c9a064;
+      color: #c9a064;
+      background: none;
+    }
+    /* Pro price stays gold like Basic + Premium — keeps the "money is
+       gold" visual language consistent across all three tiers. Pink is
+       still Pro's identity color on the border, icons, and badge, but
+       the price specifically should read gold across the lineup. */
     .tier-band.tier-premium .tier-band-price strong {
       background: linear-gradient(135deg, #c9a064, #f0c6cf);
       -webkit-background-clip: text;
@@ -405,9 +419,9 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(80,200,120,0.1);
-      border: 1px solid rgba(80,200,120,0.22);
-      box-shadow: 0 0 12px rgba(80,200,120,0.12);
+      background: rgba(80,200,120,0.08);
+      border: 1px solid rgba(80,200,120,0.18);
+      box-shadow: 0 0 6px rgba(80,200,120,0.06);
       flex-shrink: 0;
       margin-top: 1px;
       transition: all 0.3s;
@@ -422,23 +436,23 @@
       stroke-linejoin: round;
     }
     .tier-band.tier-pro .tier-band-feature-icon {
-      background: rgba(240,198,207,0.08);
-      border-color: rgba(240,198,207,0.25);
-      box-shadow: 0 0 12px rgba(240,198,207,0.15);
+      background: rgba(240,198,207,0.06);
+      border-color: rgba(240,198,207,0.2);
+      box-shadow: 0 0 6px rgba(240,198,207,0.08);
     }
     .tier-band.tier-pro .tier-band-feature-icon svg { stroke: #f0c6cf; }
     .tier-band.tier-premium .tier-band-feature-icon {
-      background: rgba(201,160,100,0.1);
-      border-color: rgba(201,160,100,0.32);
-      box-shadow: 0 0 14px rgba(201,160,100,0.2);
+      background: rgba(201,160,100,0.08);
+      border-color: rgba(201,160,100,0.25);
+      box-shadow: 0 0 7px rgba(201,160,100,0.1);
     }
     .tier-band.tier-premium .tier-band-feature-icon svg { stroke: #c9a064; }
     .tier-band-feature:hover .tier-band-feature-icon {
       transform: scale(1.08);
-      box-shadow: 0 0 18px rgba(80,200,120,0.28);
+      box-shadow: 0 0 10px rgba(80,200,120,0.15);
     }
-    .tier-band.tier-pro .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 18px rgba(240,198,207,0.3); }
-    .tier-band.tier-premium .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 20px rgba(201,160,100,0.35); }
+    .tier-band.tier-pro .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 10px rgba(240,198,207,0.18); }
+    .tier-band.tier-premium .tier-band-feature:hover .tier-band-feature-icon { box-shadow: 0 0 12px rgba(201,160,100,0.2); }
 
     @media (max-width: 768px) {
       .tier-band { padding: 30px 22px 26px; border-radius: 20px; }
@@ -935,8 +949,8 @@
       <!-- All plans — the core AI receptionist everyone gets -->
       <div class="tier-band reveal">
         <div class="tier-band-header">
-          <h3 class="tier-band-name">Every plan <span class="tier-band-sub">starts with</span></h3>
-          <span class="tier-band-price"><strong>$49</strong>/mo and up</span>
+          <h3 class="tier-band-name">Every plan</h3>
+          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>49</strong>/mo and up</span>
         </div>
         <div class="tier-band-features">
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>24/7 AI call + text answering</span></div>
@@ -953,12 +967,12 @@
       <!-- Pro — the "runs your whole front desk" upgrade -->
       <div class="tier-band tier-pro reveal">
         <div class="tier-band-header">
-          <h3 class="tier-band-name">Pro <span class="tier-band-sub">unlocks</span></h3>
-          <span class="tier-band-price"><strong>$149</strong>/mo · everything above + these</span>
+          <h3 class="tier-band-name">Pro</h3>
+          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>149</strong>/mo · everything above + these</span>
         </div>
         <div class="tier-band-features">
-          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Clients text you style photos — AI captions every one and files it to the right appointment</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 5 team members — each with their own dedicated number + login</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Clients text you style photos — AI captions every one and files it to the right appointment</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Per-stylist schedules &amp; days off ("Is Marcus in today?" gets a real answer)</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Real-time availability — Available, Steady, or Slammed at a tap</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Loyalty recognition — returning callers get warmer greetings</span></div>
@@ -973,19 +987,18 @@
       <!-- Premium — the polish layer -->
       <div class="tier-band tier-premium reveal">
         <div class="tier-band-header">
-          <h3 class="tier-band-name">Premium <span class="tier-band-sub">unlocks</span></h3>
-          <span class="tier-band-price"><strong>$249</strong>/mo · everything above + these</span>
+          <h3 class="tier-band-name">Premium</h3>
+          <span class="tier-band-price"><strong><span class="tier-band-dollar">$</span>249</strong>/mo · everything above + these</span>
         </div>
         <div class="tier-band-features">
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Up to 10 team members + 2 owner logins</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom AI voice — pick from 6 voices</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom greeting + SMS signature</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom vocabulary — teach the AI your shop's unique terms</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>FAQ builder — add your own Q&amp;A the AI reads from</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Auto follow-up texts to unbooked callers</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Staff leaderboard with booking rankings</span></div>
-          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>30 AI languages</span></div>
           <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly report card PDF emailed to you</span></div>
+          <div class="tier-band-feature"><span class="tier-band-feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>30 AI languages</span></div>
         </div>
       </div>
     </div>
@@ -1257,8 +1270,8 @@
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c9a064" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Up to 10 team logins (+ 2 owners)</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom AI voice &amp; greeting</span></li>
-          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Custom vocabulary — teach the AI your shop's unique terms</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Auto follow-up texts to unbooked callers</span></li>
+          <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Staff leaderboard + monthly report card PDF</span></li>
         </ul>
         <p class="pricing-features-more">Full feature list in the Features section above ↑</p>
         <a href="https://dashboard-styledesk.vercel.app/onboard?plan=premium" class="pricing-btn">Start 30-Day Free Trial</a>
