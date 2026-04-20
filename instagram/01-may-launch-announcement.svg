@@ -20,15 +20,15 @@
   <rect width="1080" height="1350" fill="url(#glow)"/>
 
   <!-- eyebrow: moderate tracking so letters don't drift apart -->
-  <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="8" fill="#c9a064" text-anchor="middle">LAUNCHING · MAY 2026</text>
+  <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">LAUNCHING · MAY 2026</text>
 
   <!-- hero: matched size, weight + color contrast, neutral tracking -->
   <text x="540" y="580" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="160" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">The wait</text>
   <text x="540" y="790" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="160" font-weight="500" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">is over.</text>
 
   <!-- sub: airy, paired two-line -->
-  <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">The AI receptionist built only for</text>
-  <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">barbers &amp; nail techs.</text>
+  <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">The only AI receptionist</text>
+  <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">built for barbers and nail techs.</text>
 
   <!-- ornamental divider -->
   <line x1="470" y1="1135" x2="535" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
