@@ -27,7 +27,7 @@
 
   <!-- sub: math line + punchline -->
   <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">4 missed calls a day × $50 ticket × 30 days.</text>
-  <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">StyleDesk catches them all. $49/mo.</text>
+  <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">StyleDesk catches them all. From $49/mo.</text>
 
   <!-- ornamental divider -->
   <line x1="470" y1="1135" x2="535" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
