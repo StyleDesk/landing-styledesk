@@ -26,7 +26,7 @@
   <text x="540" y="705" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="220" font-weight="300" fill="url(#gold)" text-anchor="middle" letter-spacing="-4">$6,000.</text>
 
   <!-- sub: math line + punchline -->
-  <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">4 missed calls a day × $50 ticket × 30 days.</text>
+  <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">10 missed calls a month × $50 ticket. Every year.</text>
   <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">StyleDesk catches them all. From $49/mo.</text>
 
   <!-- ornamental divider -->
