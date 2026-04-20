@@ -1,0 +1,52 @@
+<!--
+  StyleDesk Instagram Post Template — 1080×1350 (4:5 portrait)
+  Copy this file, rename it (e.g. 06-new-post.svg), and only edit the
+  text strings between the EDIT markers. Don't touch anything else.
+
+  See DESIGN-SYSTEM.md for the full spec.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-label="StyleDesk post">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a0018"/>
+      <stop offset="55%" stop-color="#2a0012"/>
+      <stop offset="100%" stop-color="#1a000b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0c6cf"/>
+      <stop offset="50%" stop-color="#c9a064"/>
+      <stop offset="100%" stop-color="#f0c6cf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#c9a064" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#7c1f36" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c9a064" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background layers — DO NOT EDIT -->
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect width="1080" height="1350" fill="url(#glow)"/>
+
+  <!-- EDIT: eyebrow (ALL CAPS, 2-4 words) -->
+  <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">YOUR EYEBROW HERE</text>
+
+  <!-- EDIT: hero (single line, white "before" + gold "after").
+       Keep both tspans on ONE source line with no whitespace between.
+       Adjust font-size: ~105 for ~17 chars, ~150 for ~10 chars, ~220 for ~7 chars. -->
+  <text x="540" y="685" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="105" text-anchor="middle" letter-spacing="-1"><tspan font-weight="200" fill="#ffffff">Your hero </tspan><tspan font-weight="500" fill="url(#gold)">line.</tspan></text>
+
+  <!-- EDIT: sub line 1 (light, muted — context/setup) -->
+  <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">Your context line goes here.</text>
+
+  <!-- EDIT: sub line 2 (medium, bright — punchline / call-to-action) -->
+  <text x="540" y="1015" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">Your punchline here. From $49/mo.</text>
+
+  <!-- ornamental divider — DO NOT EDIT -->
+  <line x1="470" y1="1135" x2="535" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
+  <circle cx="540" cy="1135" r="3" fill="#c9a064" fill-opacity="0.8"/>
+  <line x1="545" y1="1135" x2="610" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
+
+  <!-- url — DO NOT EDIT -->
+  <text x="540" y="1240" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="22" font-weight="300" fill="#c9a064" text-anchor="middle" letter-spacing="8">STYLEDESK.AI</text>
+</svg>
