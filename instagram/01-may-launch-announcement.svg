@@ -22,9 +22,11 @@
   <!-- eyebrow: moderate tracking so letters don't drift apart -->
   <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">LAUNCHING · MAY 2026</text>
 
-  <!-- hero: matched size, weight + color contrast, neutral tracking -->
-  <text x="540" y="580" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="160" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">The wait</text>
-  <text x="540" y="790" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="160" font-weight="500" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">is over.</text>
+  <!-- hero: single line, weight + color contrast -->
+  <text x="540" y="685" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="115" text-anchor="middle" letter-spacing="-1">
+    <tspan font-weight="200" fill="#ffffff">The wait </tspan>
+    <tspan font-weight="500" fill="url(#gold)">is over.</tspan>
+  </text>
 
   <!-- sub: airy, paired two-line -->
   <text x="540" y="970" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">The only AI receptionist</text>
