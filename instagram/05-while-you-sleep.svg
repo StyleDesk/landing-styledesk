@@ -20,7 +20,7 @@
   <rect width="1080" height="1350" fill="url(#glow)"/>
 
   <!-- eyebrow -->
-  <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">WHILE YOU WERE CLOSED</text>
+  <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">THE NIGHT SHIFT</text>
 
   <!-- hero: single line, weight + color contrast -->
   <text x="540" y="480" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="115" text-anchor="middle" letter-spacing="-1"><tspan font-weight="200" fill="#ffffff">While you </tspan><tspan font-weight="500" fill="url(#gold)" font-style="italic">sleep.</tspan></text>
