@@ -19,14 +19,14 @@
   <rect width="1080" height="1350" fill="url(#bg)"/>
   <rect width="1080" height="1350" fill="url(#glow)"/>
 
-  <!-- top eyebrow: thin, wide-tracked -->
-  <line x1="360" y1="210" x2="460" y2="210" stroke="#c9a064" stroke-opacity="0.5"/>
+  <!-- top eyebrow: thin, wide-tracked, no flanking lines -->
   <text x="540" y="218" font-family="'Futura', 'Avenir Next', 'Century Gothic', 'Helvetica Neue', sans-serif" font-size="18" font-weight="300" letter-spacing="14" fill="#c9a064" text-anchor="middle">LAUNCHING  ·  MAY  2026</text>
-  <line x1="620" y1="210" x2="720" y2="210" stroke="#c9a064" stroke-opacity="0.5"/>
 
-  <!-- hero: editorial serif, light weights, high contrast -->
-  <text x="540" y="560" font-family="'Didot', 'Bodoni Moda', 'Bodoni 72', 'Playfair Display', Georgia, serif" font-size="118" font-weight="300" fill="#ffffff" text-anchor="middle" letter-spacing="-1">It's finally</text>
-  <text x="540" y="770" font-family="'Didot', 'Bodoni Moda', 'Bodoni 72', 'Playfair Display', Georgia, serif" font-style="italic" font-size="220" font-weight="400" fill="url(#gold)" text-anchor="middle" letter-spacing="-4">happening.</text>
+  <!-- hero hook (swap text between the markers if you want a different line) -->
+  <!-- HOOK:START -->
+  <text x="540" y="640" font-family="'Didot', 'Bodoni Moda', 'Bodoni 72', 'Playfair Display', Georgia, serif" font-size="130" font-weight="300" fill="#ffffff" text-anchor="middle" letter-spacing="-2">Meet your new</text>
+  <text x="540" y="790" font-family="'Didot', 'Bodoni Moda', 'Bodoni 72', 'Playfair Display', Georgia, serif" font-style="italic" font-size="180" font-weight="400" fill="url(#gold)" text-anchor="middle" letter-spacing="-3">receptionist.</text>
+  <!-- HOOK:END -->
 
   <!-- sub: lighter, airier -->
   <text x="540" y="950" font-family="'Futura', 'Avenir Next', 'Helvetica Neue', sans-serif" font-size="28" font-weight="300" fill="#ffffff" fill-opacity="0.6" text-anchor="middle" letter-spacing="1">The AI receptionist built only for</text>
