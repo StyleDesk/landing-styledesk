@@ -38,7 +38,7 @@
   </g>
 
   <!-- closer line -->
-  <text x="540" y="1000" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">You didn't lift a finger.</text>
+  <text x="540" y="1000" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">That's what 24/7 looks like.</text>
 
   <!-- ornamental divider -->
   <line x1="470" y1="1135" x2="535" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
