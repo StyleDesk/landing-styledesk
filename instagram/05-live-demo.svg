@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-label="Call our live AI demo">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a0018"/>
+      <stop offset="55%" stop-color="#2a0012"/>
+      <stop offset="100%" stop-color="#1a000b"/>
+    </linearGradient>
+    <linearGradient id="gold5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0c6cf"/>
+      <stop offset="50%" stop-color="#c9a064"/>
+      <stop offset="100%" stop-color="#f0c6cf"/>
+    </linearGradient>
+    <radialGradient id="greenGlow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#50c878" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#50c878" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg5)"/>
+  <rect width="1080" height="1350" fill="url(#greenGlow)"/>
+
+  <!-- live beacon -->
+  <g transform="translate(540,180)">
+    <circle cx="0" cy="0" r="8" fill="#50c878"/>
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#50c878" stroke-opacity="0.4"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#50c878" stroke-opacity="0.2"/>
+  </g>
+  <text x="540" y="260" font-family="'Inter', system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="8" fill="#50c878" text-anchor="middle">LIVE DEMO · NO SIGNUP</text>
+
+  <!-- headline -->
+  <text x="540" y="400" font-family="'Inter', system-ui, sans-serif" font-size="72" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-2">Don't trust us?</text>
+  <text x="540" y="485" font-family="Georgia, 'Playfair Display', serif" font-style="italic" font-size="72" font-weight="700" fill="url(#gold5)" text-anchor="middle" letter-spacing="-1">Call the AI yourself.</text>
+
+  <!-- big phone number card -->
+  <rect x="90" y="600" width="900" height="260" rx="28" fill="#ffffff" fill-opacity="0.05" stroke="#c9a064" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="540" y="680" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="4" fill="#c9a064" text-anchor="middle">TAP TO CALL OR TEXT</text>
+  <text x="540" y="800" font-family="'DM Mono', ui-monospace, monospace" font-size="110" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="-2">(301) 888-7454</text>
+
+  <!-- prompt pills -->
+  <g font-family="'Inter', system-ui, sans-serif" font-size="22" font-weight="500">
+    <g transform="translate(120,940)">
+      <rect width="280" height="56" rx="28" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="140" y="36" fill="#ffffff" fill-opacity="0.75" text-anchor="middle">"How much is a fade?"</text>
+    </g>
+    <g transform="translate(420,940)">
+      <rect width="240" height="56" rx="28" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="120" y="36" fill="#ffffff" fill-opacity="0.75" text-anchor="middle">"What are your hours?"</text>
+    </g>
+    <g transform="translate(680,940)">
+      <rect width="280" height="56" rx="28" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="140" y="36" fill="#ffffff" fill-opacity="0.75" text-anchor="middle">"Can I book tonight?"</text>
+    </g>
+  </g>
+
+  <!-- copy -->
+  <text x="540" y="1095" font-family="'Inter', system-ui, sans-serif" font-size="28" font-weight="400" fill="#ffffff" fill-opacity="0.65" text-anchor="middle">Ask it anything a client would ask you.</text>
+  <text x="540" y="1140" font-family="'Inter', system-ui, sans-serif" font-size="28" font-weight="600" fill="#ffffff" text-anchor="middle">It answers in 2 seconds. So does yours.</text>
+
+  <!-- divider -->
+  <line x1="420" y1="1210" x2="660" y2="1210" stroke="#c9a064" stroke-opacity="0.35"/>
+
+  <!-- url -->
+  <text x="540" y="1275" font-family="'DM Mono', ui-monospace, monospace" font-size="26" font-weight="600" fill="#c9a064" text-anchor="middle" letter-spacing="2">styledesk.ai</text>
+</svg>
