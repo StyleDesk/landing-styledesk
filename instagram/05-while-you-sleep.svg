@@ -23,25 +23,22 @@
   <text x="540" y="210" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="20" font-weight="300" letter-spacing="4" fill="#c9a064" text-anchor="middle">THE NIGHT SHIFT</text>
 
   <!-- hero: single line, weight + color contrast -->
-  <text x="540" y="480" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="115" text-anchor="middle" letter-spacing="-1"><tspan font-weight="200" fill="#ffffff">While you </tspan><tspan font-weight="500" fill="url(#gold)" font-style="italic">sleep.</tspan></text>
-
-  <!-- bridge line -->
-  <text x="540" y="620" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="26" font-weight="300" fill="#ffffff" fill-opacity="0.5" text-anchor="middle" letter-spacing="0.5">Last night, your phone —</text>
+  <text x="540" y="540" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="115" text-anchor="middle" letter-spacing="-1"><tspan font-weight="200" fill="#ffffff">While you </tspan><tspan font-weight="500" fill="url(#gold)" font-style="italic">sleep.</tspan></text>
 
   <!-- timestamp rows: time (gold mono) + action (white light) -->
   <g font-size="28">
-    <text x="250" y="770" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">11:43 pm</text>
-    <text x="440" y="770" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Texted Jake a booking link.</text>
+    <text x="250" y="730" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">11:43 pm</text>
+    <text x="440" y="730" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Texted Jake a booking link.</text>
 
-    <text x="250" y="840" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">2:17 am</text>
-    <text x="440" y="840" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Sent Maria your shop's address.</text>
+    <text x="250" y="800" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">2:17 am</text>
+    <text x="440" y="800" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Sent Maria your shop's address.</text>
 
-    <text x="250" y="910" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">5:54 am</text>
-    <text x="440" y="910" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Quoted a full set: $85.</text>
+    <text x="250" y="870" font-family="'DM Mono', ui-monospace, monospace" font-weight="500" fill="#c9a064" fill-opacity="0.95">5:54 am</text>
+    <text x="440" y="870" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-weight="300" fill="#ffffff" fill-opacity="0.85">Quoted a full set: $85.</text>
   </g>
 
   <!-- closer line -->
-  <text x="540" y="1040" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">You didn't lift a finger.</text>
+  <text x="540" y="1000" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="500" fill="#ffffff" fill-opacity="0.92" text-anchor="middle" letter-spacing="0.3">You didn't lift a finger.</text>
 
   <!-- ornamental divider -->
   <line x1="470" y1="1135" x2="535" y2="1135" stroke="#c9a064" stroke-opacity="0.45"/>
