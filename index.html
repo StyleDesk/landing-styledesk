@@ -574,6 +574,8 @@
     .pricing-price { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; letter-spacing: -1px; display: inline; }
     .pricing-dollar { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; vertical-align: top; position: relative; top: 4px; margin-right: 1px; }
     .pricing-price-period { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.35); margin-left: 2px; }
+    .pricing-price-strike { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.3); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: rgba(240,198,207,0.55); margin-right: 10px; letter-spacing: -0.5px; vertical-align: middle; position: relative; top: -4px; }
+    .pricing-badge-off { display: inline-block; margin-left: 10px; padding: 3px 9px 2px; background: linear-gradient(135deg, rgba(240,198,207,0.14), rgba(201,160,100,0.12)); border: 1px solid rgba(240,198,207,0.35); color: #f0c6cf; font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; border-radius: 20px; vertical-align: middle; text-transform: uppercase; position: relative; top: -4px; white-space: nowrap; }
     .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; flex: 1; letter-spacing: 0.2px; }
     .pricing-features li { display: flex; align-items: flex-start; gap: 8px; transition: color 0.3s; }
     .pricing-features li:hover { color: rgba(255,255,255,0.8); }
@@ -1153,9 +1155,9 @@
     <div class="pricing-grid" id="pricing-cards">
       <div class="pricing-card glass reveal reveal-delay-1" id="basic-card">
 
-        <div class="pricing-name">Basic</div>
+        <div class="pricing-name">Basic<span class="pricing-badge-off">20% off</span></div>
         <div class="pricing-sub">Built for you · Solo operators</div>
-        <div class="pricing-price-wrap"><span class="pricing-price"><span class="pricing-dollar">$</span>49</span><span class="pricing-price-period">/month</span></div>
+        <div class="pricing-price-wrap"><span class="pricing-price-strike">$49</span><span class="pricing-price"><span class="pricing-dollar">$</span>39</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 AI answering for every call &amp; text</span></li>
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Understands 500+ shop terms out of the box</span></li>
