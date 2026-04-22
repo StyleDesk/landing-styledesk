@@ -125,6 +125,21 @@
       for (const s of sections) { if (s.offsetTop <= scroll) current = s.id; }
       links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
     }
+    // Intercept TOC clicks: smooth-scroll without pushing to history, so
+    // the browser back button leaves the page in one click (otherwise each
+    // section jump adds a history entry that back has to step through).
+    links.forEach(a => {
+      a.addEventListener('click', function(e) {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.replaceState(null, '', href);
+      });
+    });
     window.addEventListener('scroll', update, { passive: true });
     update();
   })();
