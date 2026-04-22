@@ -28,7 +28,11 @@ styledesk-landing-wdky.vercel.app
 
 \- terms.html — terms of service
 
-\- styledesk-logo.png — crown logo (rounded square, 1427x1427)
+\- styledesk-logo.svg — canonical brand mark (rounded square SVG, 512×512, used as primary favicon + nav logo + email header logo across all repos)
+
+\- styledesk-logo.png — crown logo raster fallback (rounded square, 1427x1427) — kept for older browsers + iOS apple-touch-icon
+
+\- styledesk-logo-circle.svg — DEPRECATED legacy circle variant; kept only because past sent emails may still cache the URL. Don't reference in new code.
 
 \- images/basic-dashboard.png — Basic dashboard screenshot
 
