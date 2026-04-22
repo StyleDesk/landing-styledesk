@@ -1439,16 +1439,20 @@
   }
   (async function() {
     var supabaseUrl = 'https://bimnwybwdocaevadudcl.supabase.co'
-    var supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbW53eWJ3ZG9jYWV2YWR1ZGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMjg3MjUsImV4cCI6MjA4OTYwNDcyNX0.vsglgr-GsglBGWXHbUEDM411BFuOa85tflnPkUh8RbQ'
+    var supabaseKey = 'sb_publishable_fk3Tytm1fMhXrXSZaNIVYA_nhK5CdYK'
     var headers = { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey, 'Content-Type': 'application/json' }
-    try {
-      var callRes = await fetch(supabaseUrl + '/rest/v1/rpc/get_call_count', { method: 'POST', headers: headers })
-      var textRes = await fetch(supabaseUrl + '/rest/v1/rpc/get_sms_count', { method: 'POST', headers: headers })
-      var callCount = await callRes.json()
-      var textCount = await textRes.json()
-      if (callCount) animateCount(document.getElementById('callCount'), callCount)
-      if (textCount) animateCount(document.getElementById('textCount'), textCount)
-    } catch(e) {}
+    async function fetchCount(rpc) {
+      try {
+        var res = await fetch(supabaseUrl + '/rest/v1/rpc/' + rpc, { method: 'POST', headers: headers })
+        if (!res.ok) return null
+        var body = await res.json()
+        return typeof body === 'number' ? body : null
+      } catch(e) { return null }
+    }
+    var callCount = await fetchCount('get_call_count')
+    var textCount = await fetchCount('get_sms_count')
+    if (typeof callCount === 'number') animateCount(document.getElementById('callCount'), callCount)
+    if (typeof textCount === 'number') animateCount(document.getElementById('textCount'), textCount)
   })()
 
   const convos = {
