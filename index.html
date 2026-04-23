@@ -590,6 +590,29 @@
     .pro-featured .pricing-btn::before { display: none; }
     .pricing-renewal { font-size: 9px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 10px; line-height: 1.5; font-weight: 300; }
 
+    /* Solo/Team toggle inside Pro + Premium cards */
+    .sku-toggle {
+      display: inline-flex; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+      padding: 3px; margin-bottom: 14px; font-family: 'Inter', sans-serif;
+    }
+    .sku-toggle button {
+      background: none; border: none; color: rgba(255,255,255,0.55);
+      padding: 6px 16px; border-radius: 8px; cursor: pointer;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+      text-transform: uppercase; transition: all 0.2s; font-family: inherit;
+    }
+    .sku-toggle button.active {
+      background: rgba(201,160,100,0.18); color: #f0c6cf;
+      box-shadow: inset 0 0 0 1px rgba(201,160,100,0.3);
+    }
+    .sku-toggle button:hover:not(.active) { color: rgba(255,255,255,0.85); }
+    .sku-subtext {
+      font-size: 11px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.4px; margin-top: 2px; font-weight: 400;
+    }
+    .sku-trial { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 300; }
+
     /* RISK */
     .risk-section { padding: 16px 24px 40px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px; max-width: 896px; margin: 0 auto; font-weight: 400; }
 
@@ -1156,7 +1179,6 @@
       <div class="pricing-card glass reveal reveal-delay-1" id="basic-card">
 
         <div class="pricing-name">Basic<span class="pricing-badge-off">20% off</span></div>
-        <div class="pricing-sub">Built for you · Solo operators</div>
         <div class="pricing-price-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>49</span><span class="pricing-price"><span class="pricing-dollar">$</span>39</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 AI answering for every call &amp; text</span></li>
@@ -1184,21 +1206,19 @@
         <a href="https://dashboard-styledesk.vercel.app/onboard?plan=basic&amp;offer=founding" class="pricing-btn" id="basic-trial-btn">Start 14-Day Free Trial</a>
         <p class="pricing-renewal">After trial, $49/mo. Cancel anytime from your dashboard.</p>
       </div>
-      <div class="pricing-card glass pro-featured reveal reveal-delay-2" id="pro-card">
+      <div class="pricing-card glass pro-featured reveal reveal-delay-2" id="pro-card" data-sku="pro">
 
         <div class="pricing-name">Pro</div>
-        <div class="pricing-sub">Solo or team &middot; Pick your size</div>
-        <div class="pricing-price-wrap" style="gap:14px;flex-wrap:wrap">
-          <span style="display:inline-flex;flex-direction:column;align-items:center">
-            <span class="pricing-price" style="font-size:36px"><span class="pricing-dollar">$</span>79</span>
-            <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2px">Solo &middot; 1 stylist</span>
-          </span>
-          <span style="color:rgba(255,255,255,0.3);font-size:20px">or</span>
-          <span style="display:inline-flex;flex-direction:column;align-items:center">
-            <span class="pricing-price" style="font-size:36px"><span class="pricing-dollar">$</span>179</span>
-            <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2px">Team &middot; up to 5</span>
-          </span>
-          <span class="pricing-price-period" style="width:100%;text-align:center;margin-top:-2px">/month &middot; 30-day free trial</span>
+        <div class="pricing-sub">Pick your size</div>
+        <div class="sku-toggle" role="tablist" aria-label="Pro plan size">
+          <button type="button" class="sku-btn" data-size="solo">Solo</button>
+          <button type="button" class="sku-btn active" data-size="team">Team</button>
+        </div>
+        <div class="pricing-price-wrap">
+          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="79" data-team="179">179</span></span>
+          <span class="pricing-price-period">/month</span>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 5 stylists">up to 5 stylists</span></div>
+          <div class="sku-trial">30-day free trial</div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
@@ -1226,27 +1246,22 @@
             </ul>
           </div>
         </details>
-        <div style="display:flex;gap:8px;margin-top:4px">
-          <a href="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo" class="pricing-btn" style="flex:1;font-size:12px">Start Solo &middot; $79</a>
-          <a href="https://dashboard-styledesk.vercel.app/onboard?plan=pro" class="pricing-btn" style="flex:1;font-size:12px">Start Team &middot; $179</a>
-        </div>
+        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=pro" href="https://dashboard-styledesk.vercel.app/onboard?plan=pro">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">Cancel anytime. Switch between Solo and Team from your dashboard.</p>
       </div>
-      <div class="pricing-card glass reveal reveal-delay-3">
+      <div class="pricing-card glass reveal reveal-delay-3" data-sku="premium">
 
         <div class="pricing-name">Premium</div>
-        <div class="pricing-sub">Solo or team &middot; Unlimited AI training</div>
-        <div class="pricing-price-wrap" style="gap:14px;flex-wrap:wrap">
-          <span style="display:inline-flex;flex-direction:column;align-items:center">
-            <span class="pricing-price" style="font-size:36px"><span class="pricing-dollar">$</span>99</span>
-            <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2px">Solo &middot; 1 stylist</span>
-          </span>
-          <span style="color:rgba(255,255,255,0.3);font-size:20px">or</span>
-          <span style="display:inline-flex;flex-direction:column;align-items:center">
-            <span class="pricing-price" style="font-size:36px"><span class="pricing-dollar">$</span>299</span>
-            <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2px">Team &middot; up to 10</span>
-          </span>
-          <span class="pricing-price-period" style="width:100%;text-align:center;margin-top:-2px">/month &middot; 30-day free trial</span>
+        <div class="pricing-sub">Pick your size</div>
+        <div class="sku-toggle" role="tablist" aria-label="Premium plan size">
+          <button type="button" class="sku-btn" data-size="solo">Solo</button>
+          <button type="button" class="sku-btn active" data-size="team">Team</button>
+        </div>
+        <div class="pricing-price-wrap">
+          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="99" data-team="299">299</span></span>
+          <span class="pricing-price-period">/month</span>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 10 stylists">up to 10 stylists</span></div>
+          <div class="sku-trial">30-day free trial</div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
@@ -1271,10 +1286,7 @@
             </ul>
           </div>
         </details>
-        <div style="display:flex;gap:8px;margin-top:4px">
-          <a href="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo" class="pricing-btn" style="flex:1;font-size:12px">Start Solo &middot; $99</a>
-          <a href="https://dashboard-styledesk.vercel.app/onboard?plan=premium" class="pricing-btn" style="flex:1;font-size:12px">Start Team &middot; $299</a>
-        </div>
+        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=premium" href="https://dashboard-styledesk.vercel.app/onboard?plan=premium">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">Cancel anytime. Switch between Solo and Team from your dashboard.</p>
       </div>
     </div>
@@ -1557,6 +1569,28 @@
         var ps3 = document.getElementById('promoSticky'); if (ps3) ps3.style.display = 'none'
       })
     }
+
+    // Solo / Team toggle on Pro + Premium cards. Flips price, staff-count
+    // subtext, and the CTA href using data-solo / data-team attributes.
+    document.querySelectorAll('.pricing-card[data-sku] .sku-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('.pricing-card')
+        if (!card) return
+        var size = btn.getAttribute('data-size')
+        card.querySelectorAll('.sku-btn').forEach(function(b) {
+          b.classList.toggle('active', b === btn)
+        })
+        card.querySelectorAll('.sku-price, .sku-detail').forEach(function(el) {
+          var v = el.getAttribute('data-' + size)
+          if (v != null) el.textContent = v
+        })
+        var cta = card.querySelector('.sku-cta')
+        if (cta) {
+          var href = cta.getAttribute('data-' + size)
+          if (href) cta.setAttribute('href', href)
+        }
+      })
+    })
   })()
 
   const convos = {
