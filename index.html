@@ -609,6 +609,13 @@
       box-shadow: inset 0 0 0 1px rgba(201,160,100,0.3);
     }
     .sku-toggle button:hover:not(.active) { color: rgba(255,255,255,0.85); }
+    /* Static single-pill variant (Basic card — solo-only, no toggle).
+       Span needs inline-flex + min-height to match button sibling height. */
+    .sku-toggle-static .sku-btn {
+      cursor: default;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 40px; box-sizing: border-box;
+    }
     .sku-subtext {
       font-size: 11px; color: rgba(255,255,255,0.5);
       letter-spacing: 0.4px; margin-top: 8px; font-weight: 400;
@@ -1181,6 +1188,9 @@
       <div class="pricing-card glass reveal reveal-delay-1" id="basic-card">
 
         <div class="pricing-name">Basic<span class="pricing-badge-off">20% off</span></div>
+        <div class="sku-toggle sku-toggle-static" aria-label="Basic plan size">
+          <span class="sku-btn active">Solo</span>
+        </div>
         <div class="pricing-price-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>49</span><span class="pricing-price"><span class="pricing-dollar">$</span>39</span><span class="pricing-price-period">/month</span></div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 AI answering for every call &amp; text</span></li>
