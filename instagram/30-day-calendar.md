@@ -12,6 +12,14 @@ A 30-day launch runway built to drive the founding-100 promo. Each day has a the
   > **100 founding shops lock in 20% off — for life.**
   > **Link in bio. May 2026.**
 
+### Phasing
+- **Pre-launch (before May 1):** static posts only — use the locked design system
+- **Launch week (~May 1–19):** static posts continue; announce the launch, push founding signups
+- **May 20 onward:** introduce the **Shop Talk** video series. Every video carries the Shop Talk overlay (see `DESIGN-SYSTEM.md` §11). Days marked "Reel" in the calendar below convert to Shop Talk episodes from EP 01 → EP N.
+
+### Video positioning (important)
+You are **not** positioned as a shop owner on Shop Talk. You're the founder who talks to shops every day and shares what you learn. Stay in the operations/business/tech lane — never give craft advice (fades, gels, shapes). Interview real shop owners as guests whenever possible.
+
 ---
 
 ## Week 1 — Launch push (scroll-stoppers + founding offer)

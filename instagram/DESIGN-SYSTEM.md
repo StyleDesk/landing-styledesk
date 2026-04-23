@@ -212,3 +212,73 @@ When you're ready to post:
 ## 10. Quick-start
 
 To make a new post: copy `_template.svg`, swap the 4 text strings (eyebrow, hero "before" + "after", sub 1, sub 2). Don't touch anything else.
+
+---
+
+## 11. Video Series — "Shop Talk"
+
+Every video post (Reel, IGTV, video carousel) sits under a branded series: **Shop Talk**. This creates a persistent identity across videos independent of how many founding seats have sold or how many days into launch we are.
+
+### The overlay (top-left corner, every video)
+
+```
+SHOP TALK
+STYLEDESK · EP 01
+```
+
+| Spec | Value |
+|---|---|
+| Font | `'Helvetica Neue', 'Inter', -apple-system, sans-serif` |
+| Weight | SHOP TALK: 500 · subline: 300 |
+| Color | gold `#c9a064` |
+| Letter-spacing | SHOP TALK: +4 · subline: +2 |
+| Size | ~2% of screen height |
+| Opacity | 0.9 |
+| Position | top-left corner, safe margin ~5% from edges |
+| Background (optional) | 0.3-opacity black pill if video b-roll is busy |
+
+### Voice & positioning
+
+**You are NOT a shop owner.** Don't pose as one. Your credibility comes from being the founder/builder who **talks to** hundreds of shops and shares what you learn.
+
+**Stay in your lane:**
+
+| ✅ Do talk about | ❌ Don't talk about |
+|---|---|
+| Business operations | Craft technique (fades, nail shaping, gel cure times) |
+| Phones, bookings, texts, missed-call math | How to hold clippers |
+| Software, pricing, competition | How to apply dip powder |
+| Patterns across many shops | Anything you can't defend if challenged |
+| Industry trends, comparisons | Advice you'd lose in an argument with a pro |
+
+### Episode 1 — lock the brand in
+First episode should explicitly introduce the series so every future one feels familiar:
+
+> *"Shop Talk, Episode 1. Every week I'm breaking down one thing about running a shop that most owners don't talk about. I don't own a shop — I built the tool a lot of them use. I talk to ~50 shop owners a month. This is what I'm learning. Today: [first topic]. Let's go."*
+
+### The strongest format: **guest interviews**
+Solves the authenticity question completely. A real shop owner is literally on camera with you.
+
+> *"Shop Talk, EP 07. Today I've got [Nancy] — she runs [Nails by Nancy] in Landover, 35K followers, doing crazy numbers. Nancy, what's the biggest thing shop owners get wrong about their phones?"*
+
+Benefits:
+- Guest shares the episode to their audience → your reach multiplies
+- Content you couldn't make alone (their stories + your synthesis)
+- Authentic beyond question
+- Builds deep industry relationships
+
+Target guests from the earlier outreach list (Nancy, Hilda, others from DMV hashtag mining).
+
+### Opening hook templates
+Keep the warm, peer-to-peer tone. Shop Talk is conversation, not a pitch.
+
+- *"Alright, shop talk real quick…"*
+- *"Between clients? Let's talk shop."*
+- *"Listen — talked to 12 owners this week, here's what keeps coming up…"*
+- *"This one's for the shop."*
+
+### Hashtag
+Use `#shoptalk` on every Shop Talk video plus your regular niche bank.
+
+### When Shop Talk starts
+Post-launch, **starting ~May 20, 2026** (once launch-week static content has run). Static feed posts use the design system in sections 1–10 above. Video Reels use the Shop Talk overlay spec in this section.
