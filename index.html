@@ -853,7 +853,7 @@
     <div class="beacon-ring promo-beacon-ring"></div>
     <div class="beacon-core promo-beacon-core"></div>
   </div>
-  <span>Founding offer · <strong id="basicClaimed">0</strong> / <strong>100</strong> Basic spots claimed · <span class="promo-accent">20% off for life</span><span class="promo-arrow"> →</span></span>
+  <span>Founding offer · <strong id="basicClaimed">0</strong> / <strong>100</strong> Solo spots claimed · <span class="promo-accent">20% off any Solo plan for life</span><span class="promo-arrow"> →</span></span>
 </a>
 
 <main id="main-content">
@@ -1216,9 +1216,10 @@
           <button type="button" class="sku-btn" data-size="team">Team</button>
         </div>
         <div class="pricing-price-wrap">
-          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="79" data-team="179">79</span></span>
+          <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>79</span></span>
+          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="63" data-solo-regular="79" data-team="179">63</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 5 stylists">1 stylist</span></div>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist &middot; Founding rate for life" data-solo-regular="1 stylist" data-team="up to 5 stylists">1 stylist &middot; Founding rate for life</span></div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
@@ -1246,7 +1247,7 @@
             </ul>
           </div>
         </details>
-        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=pro" href="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo">Start 30-Day Free Trial</a>
+        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo&amp;offer=founding" data-solo-regular="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=pro" href="https://dashboard-styledesk.vercel.app/onboard?plan=pro-solo&amp;offer=founding">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">Cancel anytime. Switch between Solo and Team from your dashboard.</p>
       </div>
       <div class="pricing-card glass reveal reveal-delay-3" data-sku="premium">
@@ -1257,9 +1258,10 @@
           <button type="button" class="sku-btn" data-size="team">Team</button>
         </div>
         <div class="pricing-price-wrap">
-          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="99" data-team="299">99</span></span>
+          <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>99</span></span>
+          <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="79" data-solo-regular="99" data-team="299">79</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 10 stylists">1 stylist</span></div>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist &middot; Founding rate for life" data-solo-regular="1 stylist" data-team="up to 10 stylists">1 stylist &middot; Founding rate for life</span></div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
@@ -1284,7 +1286,7 @@
             </ul>
           </div>
         </details>
-        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=premium" href="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo">Start 30-Day Free Trial</a>
+        <a class="pricing-btn sku-cta" data-solo="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo&amp;offer=founding" data-solo-regular="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo" data-team="https://dashboard-styledesk.vercel.app/onboard?plan=premium" href="https://dashboard-styledesk.vercel.app/onboard?plan=premium-solo&amp;offer=founding">Start 30-Day Free Trial</a>
         <p class="pricing-renewal">Cancel anytime. Switch between Solo and Team from your dashboard.</p>
       </div>
     </div>
@@ -1438,8 +1440,8 @@
     <div class="beacon-core promo-beacon-core"></div>
   </div>
   <div class="promo-sticky-content">
-    <span class="promo-title"><strong id="basicClaimedMobile">0</strong> / 100 Basic spots claimed</span>
-    <span class="promo-sub"><span class="promo-accent">20% off for life</span> · Tap to grab yours</span>
+    <span class="promo-title"><strong id="basicClaimedMobile">0</strong> / 100 Solo founding spots</span>
+    <span class="promo-sub"><span class="promo-accent">20% off any Solo plan for life</span> · Tap to grab yours</span>
   </div>
   <button type="button" class="promo-sticky-dismiss" id="promoDismiss" aria-label="Dismiss">×</button>
 </a>
@@ -1549,6 +1551,19 @@
         // Offer closed — hide both bars
         var pb = document.getElementById('promoBar'); if (pb) pb.style.display = 'none'
         var ps = document.getElementById('promoSticky'); if (ps) ps.style.display = 'none'
+        // Revert any founding-rate pricing on Pro/Premium Solo cards to
+        // regular Solo prices. data-solo-regular holds the fallback value.
+        document.querySelectorAll('.pricing-card[data-sku]').forEach(function(card) {
+          card.querySelectorAll('[data-solo-regular]').forEach(function(el) {
+            el.setAttribute('data-solo', el.getAttribute('data-solo-regular'))
+          })
+          // Drop the strikethrough (no longer discounted)
+          var strike = card.querySelector('.sku-strike-wrap')
+          if (strike) strike.remove()
+          // Re-render the currently active toggle so prices/URLs update
+          var active = card.querySelector('.sku-btn.active')
+          if (active) active.click()
+        })
       } else {
         if (basicEl) animateCount(basicEl, basicCount)
         if (basicMobileEl) animateCount(basicMobileEl, basicCount)
@@ -1569,7 +1584,11 @@
     }
 
     // Solo / Team toggle on Pro + Premium cards. Flips price, staff-count
-    // subtext, and the CTA href using data-solo / data-team attributes.
+    // subtext, the CTA href, and the "$XX" strikethrough (only shown on
+    // Solo when the founding offer is still live) via data-solo / data-team
+    // attributes. If the founding cap is hit, applyFoundingSoldOut() above
+    // will have stripped the strikethrough + rewritten data-solo to the
+    // regular price, so the toggle continues to work without special-casing.
     document.querySelectorAll('.pricing-card[data-sku] .sku-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var card = btn.closest('.pricing-card')
@@ -1587,6 +1606,9 @@
           var href = cta.getAttribute('data-' + size)
           if (href) cta.setAttribute('href', href)
         }
+        // Strikethrough only renders on Solo (founding discount anchor).
+        var strike = card.querySelector('.sku-strike-wrap')
+        if (strike) strike.style.display = size === 'solo' ? '' : 'none'
       })
     })
   })()
