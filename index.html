@@ -1217,7 +1217,7 @@
       </div>
       <div class="pricing-card glass pro-featured reveal reveal-delay-2" id="pro-card" data-sku="pro">
 
-        <div class="pricing-name">Pro</div>
+        <div class="pricing-name">Pro<span class="pricing-badge-off sku-solo-only">20% off</span></div>
         <div class="sku-toggle" role="tablist" aria-label="Pro plan size">
           <button type="button" class="sku-btn active" data-size="solo">Solo</button>
           <button type="button" class="sku-btn" data-size="team">Team</button>
@@ -1226,7 +1226,7 @@
           <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>79</span></span>
           <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="63" data-solo-regular="79" data-team="179">63</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist &middot; Founding rate for life" data-solo-regular="1 stylist" data-team="up to 5 stylists">1 stylist &middot; Founding rate for life</span></div>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 5 stylists">1 stylist</span></div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
@@ -1259,7 +1259,7 @@
       </div>
       <div class="pricing-card glass reveal reveal-delay-3" data-sku="premium">
 
-        <div class="pricing-name">Premium</div>
+        <div class="pricing-name">Premium<span class="pricing-badge-off sku-solo-only">20% off</span></div>
         <div class="sku-toggle" role="tablist" aria-label="Premium plan size">
           <button type="button" class="sku-btn active" data-size="solo">Solo</button>
           <button type="button" class="sku-btn" data-size="team">Team</button>
@@ -1268,7 +1268,7 @@
           <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>99</span></span>
           <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="79" data-solo-regular="99" data-team="299">79</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist &middot; Founding rate for life" data-solo-regular="1 stylist" data-team="up to 10 stylists">1 stylist &middot; Founding rate for life</span></div>
+          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 10 stylists">1 stylist</span></div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
@@ -1564,9 +1564,10 @@
           card.querySelectorAll('[data-solo-regular]').forEach(function(el) {
             el.setAttribute('data-solo', el.getAttribute('data-solo-regular'))
           })
-          // Drop the strikethrough (no longer discounted)
+          // Drop the strikethrough + 20% off badge (no longer discounted)
           var strike = card.querySelector('.sku-strike-wrap')
           if (strike) strike.remove()
+          card.querySelectorAll('.sku-solo-only').forEach(function(el) { el.remove() })
           // Re-render the currently active toggle so prices/URLs update
           var active = card.querySelector('.sku-btn.active')
           if (active) active.click()
@@ -1613,9 +1614,13 @@
           var href = cta.getAttribute('data-' + size)
           if (href) cta.setAttribute('href', href)
         }
-        // Strikethrough only renders on Solo (founding discount anchor).
+        // Strikethrough + "20% off" badge only render on Solo (they're
+        // the founding discount anchors; Team plans aren't eligible).
         var strike = card.querySelector('.sku-strike-wrap')
         if (strike) strike.style.display = size === 'solo' ? '' : 'none'
+        card.querySelectorAll('.sku-solo-only').forEach(function(el) {
+          el.style.display = size === 'solo' ? '' : 'none'
+        })
       })
     })
   })()
