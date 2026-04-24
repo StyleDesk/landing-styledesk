@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/go/:token", "destination": "https://api.styledesk.ai/go/:token" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
