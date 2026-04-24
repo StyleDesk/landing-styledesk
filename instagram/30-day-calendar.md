@@ -5,15 +5,15 @@
 ---
 
 ## Strategy
-- **Goal:** 100 founding signups by May 2026 launch
+- **Goal:** 100 founding signups by June 2026 launch
 - **Emotion comes first, feature comes second.** If the viewer doesn't feel something in the first 2 seconds, they scroll.
 - **Every feed-post caption closes with the offer line:**
   > **100 founding shops lock in 20% off — for life.**
-  > **Link in bio. May 2026.**
+  > **Link in bio. June 2026.**
 
 ### Phasing
-- **Launch (~early May 2026):** quiet launch — product goes live, no big public push yet
-- **Content campaign starts May 20, 2026** (post-launch): the full 30-day runway below begins here. All static posts + the **Shop Talk** video series kick off the same day.
+- **Launch (~early June 2026):** quiet launch — product goes live, no big public push yet
+- **Content campaign starts ~June 20, 2026** (post-launch): the full 30-day runway below begins here. All static posts + the **Shop Talk** video series kick off the same day.
 - Every Reel from Day 1 of the campaign onward carries the Shop Talk overlay (see `DESIGN-SYSTEM.md` §11). Day numbers in the calendar are **days of the campaign**, not days until launch.
 
 ### Video positioning (important)
@@ -150,7 +150,7 @@ Use in that order across the 30 days. Don't start with FOMO — you haven't earn
 [bridge — optional, ties the feeling to StyleDesk]
 
 100 founding shops lock in 20% off — for life.
-Link in bio. May 2026.
+Link in bio. June 2026.
 
 #barberlife #nailtech #dmvbarber #dmvnailtech ...
 ```

@@ -178,7 +178,7 @@ Examples from the 3-post launch:
 
 | Post | Eyebrow | Hero | Sub 1 | Sub 2 |
 |---|---|---|---|---|
-| **1** Launch | LAUNCHING · MAY 2026 | The wait is over. | The only AI receptionist | built for barbers and nail techs. |
+| **1** Launch | LAUNCHING · JUNE 2026 | The wait is over. | The only AI receptionist | built for barbers and nail techs. |
 | **2** Math | THE COST OF MISSED CALLS | $6,000. | 10 missed calls a month × $50 ticket. Every year. | StyleDesk catches them all. From $49/mo. |
 | **3** 24/7 | THE NIGHT SHIFT | While you sleep. | (3 timestamp rows) | That's what 24/7 looks like. |
 
