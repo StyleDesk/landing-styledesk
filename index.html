@@ -1226,7 +1226,7 @@
           <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>79</span></span>
           <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="63" data-solo-regular="79" data-team="179">63</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 5 stylists">1 stylist</span></div>
+          <div class="sku-subtext sku-team-only" style="display:none">up to 5 stylists</div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Basic, plus:</span></li>
@@ -1268,7 +1268,7 @@
           <span class="sku-strike-wrap"><span class="pricing-price-strike"><span class="pricing-dollar">$</span>99</span></span>
           <span class="pricing-price"><span class="pricing-dollar">$</span><span class="sku-price" data-solo="79" data-solo-regular="99" data-team="299">79</span></span>
           <span class="pricing-price-period">/month</span>
-          <div class="sku-subtext"><span class="sku-detail" data-solo="1 stylist" data-team="up to 10 stylists">1 stylist</span></div>
+          <div class="sku-subtext sku-team-only" style="display:none">up to 10 stylists</div>
         </div>
         <ul class="pricing-features">
           <li><svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#50c878" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Pro, plus:</span></li>
@@ -1620,6 +1620,9 @@
         if (strike) strike.style.display = size === 'solo' ? '' : 'none'
         card.querySelectorAll('.sku-solo-only').forEach(function(el) {
           el.style.display = size === 'solo' ? '' : 'none'
+        })
+        card.querySelectorAll('.sku-team-only').forEach(function(el) {
+          el.style.display = size === 'team' ? '' : 'none'
         })
       })
     })
