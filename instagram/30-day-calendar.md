@@ -12,9 +12,9 @@
   > **Link in bio. May 2026.**
 
 ### Phasing
-- **Pre-launch (before May 1):** static posts only — use the locked design system
-- **Launch week (~May 1–19):** static posts continue; announce the launch, push founding signups
-- **May 20 onward:** introduce the **Shop Talk** video series. Every video carries the Shop Talk overlay (see `DESIGN-SYSTEM.md` §11). Days marked "Reel" in the calendar convert to Shop Talk episodes.
+- **Launch (~early May 2026):** quiet launch — product goes live, no big public push yet
+- **Content campaign starts May 20, 2026** (post-launch): the full 30-day runway below begins here. All static posts + the **Shop Talk** video series kick off the same day.
+- Every Reel from Day 1 of the campaign onward carries the Shop Talk overlay (see `DESIGN-SYSTEM.md` §11). Day numbers in the calendar are **days of the campaign**, not days until launch.
 
 ### Video positioning (important)
 You are **not** a shop owner on Shop Talk. You're the founder who talks to shops every day and shares what you learn. Stay in operations/business/tech — never give craft advice (fades, gels, shapes). Interview real shop owners as guests whenever possible.

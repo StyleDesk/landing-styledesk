@@ -281,4 +281,4 @@ Keep the warm, peer-to-peer tone. Shop Talk is conversation, not a pitch.
 Use `#shoptalk` on every Shop Talk video plus your regular niche bank.
 
 ### When Shop Talk starts
-Post-launch, **starting ~May 20, 2026** (once launch-week static content has run). Static feed posts use the design system in sections 1–10 above. Video Reels use the Shop Talk overlay spec in this section.
+**May 20, 2026.** The 30-day content campaign begins post-launch (product ships ~early May, content campaign starts May 20 once the shop is live). From Day 1 of the campaign onward, Reels carry the Shop Talk overlay. Static posts use the design system in sections 1–10.
