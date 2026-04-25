@@ -16,6 +16,25 @@
 - **Content campaign starts ~June 20, 2026** (post-launch): the full 30-day runway below begins here. All static posts + the **Shop Talk** video series kick off the same day.
 - Every Reel from Day 1 of the campaign onward carries the Shop Talk overlay (see `DESIGN-SYSTEM.md` §11). Day numbers in the calendar are **days of the campaign**, not days until launch.
 
+### Programming cadence — mix features and interviews
+**Don't run all 30 days of solo features then start interviews.** Sequential is easier but strategically weaker — you miss 30 days of audience-import from guest shares. Mix from Day 8 onward.
+
+**Recommended schedule:**
+- **Day 1–7:** Daily features only. Establish rhythm, prove consistency, build a baseline audience.
+- **Day 8 onward:** 5 daily features per week (Mon–Fri) + **1 Shop Talk interview drops every Sunday.**
+- By Day 30: ~25 daily features + ~3 Shop Talk episodes.
+
+**Why mixed beats sequential:**
+- Algorithm rewards format variety — solo content for 30 straight days gets stale fast
+- Each Shop Talk guest imports their audience to YOUR page when they share the episode → **your single biggest growth lever**
+- Sunday Shop Talk becomes "appointment viewing" → predictable, anticipation-building
+- Daily features are your "always-on" baseline (interviews are constrained by guest availability — features fill the gaps)
+
+**Action item — start cold-DM outreach NOW (don't wait for June 20):**
+Cold-DM 5 nail techs + 5 barbers in the DMV this week using the outreach template (see chat history, the Nancy DM). Cold-DM → confirmed booking → recorded episode = roughly 2 weeks per guest. With 8 weeks until campaign Day 1, you can bank **3–4 interviews before launch** so Shop Talk drops don't depend on a single guest saying yes the day-of.
+
+The biggest mistake is waiting for "1,000 followers" before reaching out. You don't need that — you need a real ask, $30 Venmo, and a clear plan. You have all three.
+
 ### Video positioning (important)
 You are **not** a shop owner on Shop Talk. You're the founder who talks to shops every day and shares what you learn. Stay in operations/business/tech — never give craft advice (fades, gels, shapes). Interview real shop owners as guests whenever possible.
 
@@ -69,7 +88,7 @@ Week 4: URGENCY + BELONGING     → "I need to be one of the 100"
 | 17 | **Confidence / command** | *One tap. Your whole shop knows. Every client knows. You stay in flow.* | Available/Steady/Slammed | Reel — tap-to-toggle demo | Feeling of command. |
 | 18 | **Earning without asking** | *The AI says "want a beard trim with that?" You get $15 extra without saying a word.* | Smart upsells | Static — quote treatment | Money feels earned effortlessly. |
 | 19 | **Reach / voice** | *Text your whole client list in one tap. Fill chairs you didn't know you could.* | Broadcast messaging (TCPA) | Carousel — explain + example | Amplification. Your influence multiplies. |
-| 20 | **Self-awareness / pride** 🎬 | *Every Monday, you open your inbox. And for the first time, you KNOW what your week actually looked like.* | Weekly reports — **Shop Talk EP 01 starts here** | Reel — Shop Talk format, overlay brand | Data dignity. You're a real operator now. |
+| 20 | **Self-awareness / pride** | *Every Monday, you open your inbox. And for the first time, you KNOW what your week actually looked like.* | Weekly reports | Reel — could be Shop Talk EP if a guest is booked, otherwise solo feature | Data dignity. You're a real operator now. |
 | 21 | **Wisdom / mastery** | *Who calls most. What they ask most. What they book most. Now you know. Now you can actually run your business.* | Client insights | Carousel — 3 insight cards | Insight = power. |
 
 ---
