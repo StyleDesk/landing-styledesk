@@ -282,3 +282,66 @@ Use `#shoptalk` on every Shop Talk video plus your regular niche bank.
 
 ### When Shop Talk starts
 **May 20, 2026.** The 30-day content campaign begins post-launch (product ships ~early May, content campaign starts May 20 once the shop is live). From Day 1 of the campaign onward, Reels carry the Shop Talk overlay. Static posts use the design system in sections 1–10.
+
+---
+
+## 12. Shop Talk Question Card — locked layout
+
+The on-screen question card used between guest answers in every Shop Talk episode. Reference: `shop-talk-question-card-example.svg` (canonical) · `_question-card-template.svg` (copy-paste with EDIT markers).
+
+### Canvas
+
+| Setting | Value |
+|---|---|
+| Dimensions | **1080 × 1920** (9:16 vertical — Reel/Story format) |
+| Background | Burgundy gradient `#3a0018 → #2a0012 → #1a000b` (same as feed posts) |
+| Ambient glow | Top-center radial — `#c9a064` at 0.18 opacity → `#7c1f36` at 0.08 → transparent |
+
+### Layout (from top to bottom)
+
+| Zone | Y position | Element |
+|---|---|---|
+| **Top-left overlay** | y=100 / y=135 | `SHOP TALK` (gold, weight 500, tracking +6, font-size 26) + `STYLEDESK · EP 01` (gold 70%, weight 300, tracking +3, font-size 20) |
+| **Eyebrow** | y=600 | `QUESTION 02` (gold, weight 300, tracking +6, font-size 22, centered) |
+| **Mini divider** | y=640 | Line · dot · line in gold under the eyebrow |
+| **Question line 1** | y=850 | Setup line — white, weight 200, font-size 78, tracking -1, centered |
+| **Question line 2** | y=950 | Setup line — same as line 1 |
+| **Question line 3 (punchline)** | y=1080 | **The punch** — gold gradient fill, weight 500, font-size 92, tracking -2, centered |
+| **Ornamental divider** | y=1500 | Line · dot · line in gold |
+| **URL** | y=1600 | `STYLEDESK.AI` (gold, weight 300, tracking +8, font-size 22, centered) |
+
+### Question construction rules
+
+Every question splits into **2 setup lines + 1 punchline** for visual rhythm and emotional emphasis:
+
+```
+[setup — white ultralight]
+[setup — white ultralight]
+[PUNCHLINE — gold medium]   ← the specific moment, the kicker, the gold
+```
+
+**Examples:**
+
+| Setup 1 | Setup 2 | Punchline (gold) |
+|---|---|---|
+| Walk me through | what your phone looks like | on a Saturday at 2pm. |
+| If you could change | one thing about running your shop, | what would it be? |
+| What's the one thing | that drives you crazy about | running this place? |
+| When was the last time | your phone felt like it was working | for you, not against you? |
+
+**Rules:**
+- Maximum 3 lines total. If the question runs longer, edit it shorter.
+- The gold punchline is always the **specific moment** or the **emotional pivot** — not just the last few words by accident.
+- Keep all lines centered with `text-anchor="middle"`.
+- Use the locked font stack: `'Helvetica Neue', 'Inter', -apple-system, sans-serif`.
+
+### Editing workflow
+
+1. Open `_question-card-template.svg`
+2. Save-as with the episode + question number (e.g., `ep-01-q02.svg`)
+3. Edit only the marked text strings:
+   - Episode number in the top-left overlay
+   - `QUESTION 02` eyebrow number
+   - 3 lines of the question
+4. Render to PNG via the puppeteer + Inter pipeline (same as the feed posts), or use an online SVG-to-PNG converter at 2× (2160×3840)
+5. Drop into CapCut between guest answer cuts, hold for ~1 second per card

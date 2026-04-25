@@ -1,0 +1,58 @@
+<!--
+  Shop Talk Question Card — 1080×1920 (9:16 vertical Reel/Story)
+  Copy this file, rename it (e.g. ep-01-q02.svg), and edit ONLY
+  the text strings between the EDIT markers. Don't touch
+  positions, colors, or anything else — see DESIGN-SYSTEM.md §12.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" role="img" aria-label="Shop Talk question card">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a0018"/>
+      <stop offset="55%" stop-color="#2a0012"/>
+      <stop offset="100%" stop-color="#1a000b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0c6cf"/>
+      <stop offset="50%" stop-color="#c9a064"/>
+      <stop offset="100%" stop-color="#f0c6cf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#c9a064" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#7c1f36" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c9a064" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background — DO NOT EDIT -->
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+
+  <!-- top-left Shop Talk overlay — EDIT only the episode number -->
+  <text x="80" y="100" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="26" font-weight="500" letter-spacing="6" fill="#c9a064" fill-opacity="0.9">SHOP TALK</text>
+  <text x="80" y="135" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="20" font-weight="300" letter-spacing="3" fill="#c9a064" fill-opacity="0.7">STYLEDESK · EP 01</text>
+
+  <!-- EDIT: question number -->
+  <text x="540" y="600" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="22" font-weight="300" letter-spacing="6" fill="#c9a064" text-anchor="middle">QUESTION 02</text>
+
+  <!-- mini divider — DO NOT EDIT -->
+  <line x1="490" y1="640" x2="540" y2="640" stroke="#c9a064" stroke-opacity="0.45"/>
+  <circle cx="545" cy="640" r="3" fill="#c9a064" fill-opacity="0.8"/>
+  <line x1="550" y1="640" x2="600" y2="640" stroke="#c9a064" stroke-opacity="0.45"/>
+
+  <!-- EDIT: question setup line 1 (white, weight 200) -->
+  <text x="540" y="850" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="78" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Setup line one</text>
+
+  <!-- EDIT: question setup line 2 (white, weight 200) -->
+  <text x="540" y="950" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="78" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Setup line two</text>
+
+  <!-- EDIT: punchline (gold gradient, weight 500) — the specific moment / emotional pivot -->
+  <text x="540" y="1080" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="92" font-weight="500" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">the punchline.</text>
+
+  <!-- ornamental divider — DO NOT EDIT -->
+  <line x1="470" y1="1500" x2="535" y2="1500" stroke="#c9a064" stroke-opacity="0.45"/>
+  <circle cx="540" cy="1500" r="3" fill="#c9a064" fill-opacity="0.8"/>
+  <line x1="545" y1="1500" x2="610" y2="1500" stroke="#c9a064" stroke-opacity="0.45"/>
+
+  <!-- url — DO NOT EDIT -->
+  <text x="540" y="1600" font-family="'Helvetica Neue', 'Inter', -apple-system, sans-serif" font-size="22" font-weight="300" fill="#c9a064" text-anchor="middle" letter-spacing="8">STYLEDESK.AI</text>
+</svg>
