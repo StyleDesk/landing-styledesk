@@ -22,7 +22,7 @@
 
   <text x="540" y="900" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="170" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Speed.</text>
 
-  <text x="540" y="1055" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="170" font-weight="700" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
+  <text x="540" y="1055" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="170" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
 
   <text x="540" y="1215" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="170" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Results.</text>
 </svg>
