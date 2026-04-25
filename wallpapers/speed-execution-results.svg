@@ -15,12 +15,6 @@
       <stop offset="55%" stop-color="#7c1f36" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#c9a064" stop-opacity="0"/>
     </radialGradient>
-    <!-- focused halo behind Execution -->
-    <radialGradient id="execHalo" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#c9a064" stop-opacity="0.38"/>
-      <stop offset="45%" stop-color="#c9a064" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#c9a064" stop-opacity="0"/>
-    </radialGradient>
   </defs>
 
   <rect width="1290" height="2796" fill="url(#bg)"/>
@@ -32,9 +26,6 @@
   <line x1="520" y1="1146" x2="635" y2="1146" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
   <circle cx="645" cy="1146" r="3" fill="#c9a064" fill-opacity="0.85"/>
   <line x1="655" y1="1146" x2="770" y2="1146" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
-
-  <!-- focused halo behind Execution -->
-  <ellipse cx="645" cy="1360" rx="780" ry="200" fill="url(#execHalo)"/>
 
   <text x="645" y="1398" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="190" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
 
