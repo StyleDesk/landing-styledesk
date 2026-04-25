@@ -20,19 +20,19 @@
   <rect width="1290" height="2796" fill="url(#bg)"/>
   <rect width="1290" height="2796" fill="url(#glow)"/>
 
-  <text x="645" y="1180" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="140" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Speed.</text>
+  <text x="645" y="998" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="140" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Speed.</text>
 
   <!-- premium gold divider 1 -->
-  <line x1="520" y1="1242" x2="635" y2="1242" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
-  <circle cx="645" cy="1242" r="3" fill="#c9a064" fill-opacity="0.85"/>
-  <line x1="655" y1="1242" x2="770" y2="1242" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="520" y1="1146" x2="635" y2="1146" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="645" cy="1146" r="3" fill="#c9a064" fill-opacity="0.85"/>
+  <line x1="655" y1="1146" x2="770" y2="1146" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
 
-  <text x="645" y="1408" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="190" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
+  <text x="645" y="1398" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="190" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
 
   <!-- premium gold divider 2 -->
-  <line x1="520" y1="1495" x2="635" y2="1495" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
-  <circle cx="645" cy="1495" r="3" fill="#c9a064" fill-opacity="0.85"/>
-  <line x1="655" y1="1495" x2="770" y2="1495" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="520" y1="1570" x2="635" y2="1570" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="645" cy="1570" r="3" fill="#c9a064" fill-opacity="0.85"/>
+  <line x1="655" y1="1570" x2="770" y2="1570" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
 
-  <text x="645" y="1640" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="140" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Results.</text>
+  <text x="645" y="1798" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="140" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="-1">Results.</text>
 </svg>
