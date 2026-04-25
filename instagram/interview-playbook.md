@@ -22,6 +22,48 @@ The funnel lives **outside** the audio:
 
 ---
 
+## Visual format: faceless interview with on-screen text question cards
+
+**The host (you) is never on camera.** Camera stays on the guest. Between answers, a beautiful brand-locked text card displays the next question, then we cut back to the guest answering. This format:
+
+- Keeps you private (no fame, no recognition, your stated goal)
+- Puts the guest in the spotlight (they're more likely to share + come back)
+- Reinforces brand on every cut (gold/burgundy/Helvetica = StyleDesk visual identity)
+- Looks editorial/premium (Vogue, NYT, Vox aesthetic — not amateur podcast)
+- Is repeatable as a template (build the question card once, swap text per question)
+
+### Card spec (locked from `DESIGN-SYSTEM.md`)
+
+| Element | Value |
+|---|---|
+| Canvas | 1080 × 1920 (9:16 vertical Reel/Story format) |
+| Background | Burgundy gradient `#3a0018 → #2a0012 → #1a000b` |
+| Ambient glow | Top-center radial, gold `#c9a064` at 0.18 opacity |
+| Top-left overlay | `SHOP TALK` (gold, weight 500) + `STYLEDESK · EP 01` (gold, weight 300) |
+| Eyebrow | `QUESTION 02` — gold, tracked +6, centered |
+| Question lines | Helvetica Neue / Inter, weight 200 (white) for setup, weight 500 (gold gradient) for the punchline |
+| Divider | Gold line · dot · line (matches feed posts) |
+| URL | `STYLEDESK.AI` — gold, tracked +8, centered |
+
+### Example file
+See **`shop-talk-question-card-example.svg`** in this folder — uses The Anchor question ("Walk me through what your phone looks like on a Saturday at 2pm.") as the demo. PNG render in `png-ready/shop-talk-question-card-example.png`.
+
+### Workflow per episode
+1. Record guest answering all questions in one sitting (audio + video)
+2. Build question cards by duplicating `shop-talk-question-card-example.svg` and swapping the question text + episode number (only 4 strings change per card)
+3. In CapCut: drop the video on the timeline → cut into Q&A segments → drop each card BEFORE the matching answer for ~1 second → done
+
+### Why not put your face in
+A faceless format would normally be a growth ceiling, but for StyleDesk it's actually a feature:
+- B2B/SaaS audiences buy on utility, not personality
+- Brand is more sellable later (no founder dependency)
+- Guests are MORE willing to come on when they're the only face
+- The locked design system already does the brand-recognition work that a face usually does
+
+The non-negotiables to make faceless work: excellent audio (DJI Mic 2), strong b-roll of the guest's shop/work to cut to, and this card system carrying the visual brand on every transition.
+
+---
+
 ## The format: spine + spice
 
 Every episode has 3 signature questions ("spine") asked in the same order, plus 5–7 questions chosen from a bank ("spice"). Spine builds brand recognition and clip-worthy moments; spice keeps episodes fresh.
