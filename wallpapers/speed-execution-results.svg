@@ -21,15 +21,6 @@
       <stop offset="45%" stop-color="#c9a064" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#c9a064" stop-opacity="0"/>
     </radialGradient>
-    <!-- soft emission glow on Execution text -->
-    <filter id="textGlow" x="-30%" y="-100%" width="160%" height="300%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.4 0" result="brightBlur"/>
-      <feMerge>
-        <feMergeNode in="brightBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
 
   <rect width="1290" height="2796" fill="url(#bg)"/>
@@ -45,7 +36,7 @@
   <!-- focused halo behind Execution -->
   <ellipse cx="645" cy="1360" rx="780" ry="200" fill="url(#execHalo)"/>
 
-  <text x="645" y="1398" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="190" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2" filter="url(#textGlow)">Execution.</text>
+  <text x="645" y="1398" font-family="'Helvetica Neue', 'Inter', -apple-system, 'SF Pro Display', sans-serif" font-size="190" font-weight="700" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="-2">Execution.</text>
 
   <!-- premium gold divider 2 -->
   <line x1="520" y1="1570" x2="635" y2="1570" stroke="#c9a064" stroke-opacity="0.5" stroke-width="1.5"/>
