@@ -24,6 +24,13 @@ header.site-nav { position: sticky; top: 0; z-index: 50; width: 100%; border-bot
 .btn-glow .header-btn { position: relative; z-index: 1; }
 @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
+/* Mobile: hide text nav links so they don't crowd the logo. Only the
+   Book Demo CTA stays visible — same pattern as the main landing page. */
+@media (max-width: 768px) {
+  .header-nav a:not(.header-btn) { display: none; }
+  .header-nav { gap: 0; }
+}
+
 /* LAYOUT */
 .legal-wrap { max-width: 1152px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
 @media (max-width: 900px) { .legal-wrap { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px 60px; } .toc { position: static !important; max-height: none !important; overflow: visible !important; } }
